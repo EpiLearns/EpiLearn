@@ -3,8 +3,8 @@
 #include <string.h>
 #include <assert.h>
 #include <math.h>
+#include <err.h>
 
- 
 int findpivot(const char* chaine,int size)
 {
     int i,nbparent,res;
@@ -48,9 +48,9 @@ int puissance(int a, int b)
     return res;
 }
 
+float calculR(const char* chaine,int size)
+ 
 
-
-int calculR(const char* chaine,int size)
 {
     int pos,op1,op2;
     if (chaine[0]=='(' && chaine[size-1]==')')
@@ -65,13 +65,13 @@ int calculR(const char* chaine,int size)
     switch(chaine[pos])
     {
     case '+':
-        return op1+op2;
+        return (float)op1+(float)op2;
     case '-':
-        return op1-op2;
+        return (float)op1-(float)op2;
     case '*':
-        return op1*op2;
+        return (float)op1*(float)op2;
     case '/':
-        return op1/op2;
+        return (float)op1/(float)op2;
     case '^':
         return puissance(op1,op2);
     default:
@@ -81,14 +81,64 @@ int calculR(const char* chaine,int size)
     return 0;
 }
  
-int calcul(const char* chaine)
+float calcul(const char* chaine)
 {
     return calculR(chaine,strlen(chaine));
 }
  
-int main()
+
+void decimal(int d, float res)
 {
-    int res = calcul("(2+3)*2");
-    printf("%d\n",res);
+    switch (d)
+    {
+    case 1:
+        printf("%.1g\n", res);
+        break;
+    case 2:
+        printf("%.2g\n", res);
+        break;
+    case 3:
+        printf("%.3g\n", res);
+        break;
+    case 4:
+        printf("%.4g\n", res);
+        break;
+    case 5:
+        printf("%.5g\n", res);
+        break;
+    case 6:
+        printf("%.6g\n", res);
+        break;
+    case 7:
+        printf("%.7g\n", res);
+        break;
+    case 8:
+        printf("%.8g\n", res);
+        break;
+    case 9:
+        printf("%.9g\n", res);
+        break;
+    default:
+        printf("%d\n", (int)res);
+        break;
+    }
+}
+
+int main()
+{    
+    const char* chain = " ";
+
+    char operation[20] = {0};
+    int d = 0;
+
+    printf("how many digits after the decimal point ? \n");
+    scanf("%i", &d);
+
+    printf("Please enter an operation \n");
+    scanf("%s",operation);
+    
+    chain = operation;
+    float res = calcul(chain);
+    decimal(d,res);
     return 0;
 }
