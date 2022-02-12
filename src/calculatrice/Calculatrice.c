@@ -1,33 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <assert.h>
-#include <math.h>
-#include <err.h>
+#include "Calculatrice.h"
 
-int findpivot(const char* chaine,int size)
+int findpivot(const char* chain,int size)
 {
     int i,nbparent,res;
     nbparent = 0;
     res = -1;
     for(i=0;i<size;i++)
     {
-        if (chaine[i]=='(')
+        if (chain[i]=='(')
             nbparent++;
-        if (chaine[i]==')')
+        if (chain[i]==')')
             nbparent--;
         if (nbparent==0)
         {
-            if (chaine[i]=='+' || chaine[i]=='-')
+            if (chain[i]=='+' || chain[i]=='-')
                 return i;
-            if (chaine[i]=='*' || chaine[i]=='/' || chaine[i] == '^')
+            if (chain[i]=='*' || chain[i]=='/' || chain[i] == '^' || chain[i] == '.')
                 res = i;
         }
     }
     return res;
 }
 
-int puissance(int a, int b)
+int power(int a, int b)
 {
     int res = a; 
     switch(b)
@@ -48,32 +45,55 @@ int puissance(int a, int b)
     return res;
 }
 
-float calculR(const char* chaine,int size)
+double calculR(const char* chain,int size, int x)
  
 
 {
-    int pos,op1,op2;
-    if (chaine[0]=='(' && chaine[size-1]==')')
-        return calculR(chaine+1,size-2);
-    pos = findpivot(chaine,size);
+    int pos;
+    double op1,op2;
+    int j = 0;
+    if (chain[0]=='(' && chain[size-1]==')')
+        { 
+            //printf("étape : %i\n",x);
+            return calculR(chain+1,size-2,x+1);
+        }
+                        
+    pos = findpivot(chain,size);
     if (pos==-1)
     { 
-        return atoi(chaine);
+        //printf("étape : %i\n",x);
+        return atoi(chain);
     }
-    op1 = calculR(chaine,pos);
-    op2 = calculR(chaine+pos+1,size-pos-1);
-    switch(chaine[pos])
+    op1 = calculR(chain,pos,x+1);
+    op2 = calculR(chain+pos+1,size-pos-1,x+1);
+    switch(chain[pos])
     {
+    case '.':
+        while( (int)op2%10 != 0)
+        {
+            (op2 = op2/10);
+        }
+        return op1+ (op2);        
     case '+':
-        return (float)op1+(float)op2;
+        //printf("étape : %i\n",x);
+        //printf("%.9g + %.9g\n" ,op1,op2);
+        return op1+op2;
     case '-':
-        return (float)op1-(float)op2;
+        //printf("étape : %i\n",x);
+        //printf("%.9g - %.9g\n" ,op1,op2);
+        return op1-op2;
     case '*':
-        return (float)op1*(float)op2;
+        //printf("étape : %i\n",x);
+        //printf("%.9g * %.9g\n" ,op1,op2);
+        return op1*op2;
     case '/':
-        return (float)op1/(float)op2;
+        //printf("étape : %i\n",x);
+        //printf("%.9g / %.9g\n" ,op1,op2);
+        return op1/op2;
     case '^':
-        return puissance(op1,op2);
+        //printf("étape : %i\n",x);
+        //printf("%.9g ^ %.9g\n" ,op1,op2);
+        return power(op1,op2);
     default:
         break;
     }
@@ -81,13 +101,13 @@ float calculR(const char* chaine,int size)
     return 0;
 }
  
-float calcul(const char* chaine)
+double calcul(const char* chain)
 {
-    return calculR(chaine,strlen(chaine));
+    return calculR(chain,strlen(chain),0);
 }
  
 
-void decimal(int d, float res)
+void decimal(int d, double res)
 {
     switch (d)
     {
@@ -138,7 +158,9 @@ int main()
     scanf("%s",operation);
     
     chain = operation;
-    float res = calcul(chain);
-    decimal(d,res);
+    
+    double res = calcul(chain);
+    
+    decimal(9,res);
     return 0;
 }
