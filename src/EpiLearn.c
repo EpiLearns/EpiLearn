@@ -4,6 +4,8 @@
 #include <gtk/gtk.h>
 #include "gui/gui.h"
 
-int main() {
+int main() 
+{
     init_gui();
+    return EXIT_SUCCESS;
 }

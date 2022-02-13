@@ -52,6 +52,8 @@ GtkBuilder *init_gui()
     // Buttons event handlers.
     menu_signals(builder);
 
+    gtk_widget_show(GTK_WIDGET(mainWindow));
+
     // Run the main window.
     gtk_main();
     
