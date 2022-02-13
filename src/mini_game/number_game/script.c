@@ -45,7 +45,7 @@ void setTimeout(int milliseconds)
     } while (milliseconds_since <= end);
 }
 
-void time_out(int time)
+void time_out(int time) // problem : print all seconds at the end. 
 {
     int i = 1;
     while (i <= time)
@@ -79,8 +79,6 @@ int number_level(int level)
         printf("wrong\n");
         return 0;
     }
-    
-
 }
 
 void number_game()
@@ -114,8 +112,12 @@ void number_game()
     printf("Level %d reached !!\n", i);
 }
 
+
+
+/*
 int main(int argc, char *argv[])
 {
     number_game();
     exit(EXIT_SUCCESS);
 }
+*/
