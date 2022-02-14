@@ -172,7 +172,7 @@ Dylan INNOU</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="close about us">
             <property name="label">close</property>
             <property name="width-request">600</property>
             <property name="height-request">25</property>
@@ -362,7 +362,7 @@ Dylan INNOU</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="back algo">
             <property name="label" translatable="yes">Back</property>
             <property name="width-request">120</property>
             <property name="height-request">50</property>
@@ -518,7 +518,7 @@ Dylan INNOU</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="back ca">
             <property name="label" translatable="yes">Back</property>
             <property name="width-request">120</property>
             <property name="height-request">50</property>
@@ -632,7 +632,7 @@ Dylan INNOU</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="back elec">
             <property name="label" translatable="yes">Back</property>
             <property name="width-request">120</property>
             <property name="height-request">50</property>
@@ -779,7 +779,7 @@ Dylan INNOU</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="login">
                         <property name="label" translatable="yes">Login</property>
                         <property name="width-request">200</property>
                         <property name="height-request">40</property>
@@ -977,7 +977,7 @@ Dylan INNOU</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem">
+                      <object class="GtkImageMenuItem" id="about us b">
                         <property name="label">gtk-about</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
@@ -1145,21 +1145,6 @@ Dylan INNOU</property>
                                       </object>
                                       <packing>
                                         <property name="x">575</property>
-                                        <property name="y">300</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkButton" id="Programming">
-                                        <property name="label" translatable="yes">Programming</property>
-                                        <property name="width-request">200</property>
-                                        <property name="height-request">80</property>
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">True</property>
-                                        <property name="receives-default">True</property>
-                                        <property name="relief">none</property>
-                                      </object>
-                                      <packing>
-                                        <property name="x">575</property>
                                         <property name="y">150</property>
                                       </packing>
                                     </child>
@@ -1237,7 +1222,7 @@ Dylan INNOU</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkButton">
+                                      <object class="GtkButton" id="mcq enter">
                                         <property name="label" translatable="yes">confirm</property>
                                         <property name="width-request">100</property>
                                         <property name="height-request">40</property>
@@ -1868,7 +1853,7 @@ Dylan INNOU</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="back maths">
             <property name="label" translatable="yes">Back</property>
             <property name="width-request">120</property>
             <property name="height-request">50</property>
@@ -2105,7 +2090,7 @@ Dylan INNOU</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="quit mcq">
             <property name="label">Quit</property>
             <property name="width-request">120</property>
             <property name="height-request">50</property>
@@ -2233,7 +2218,7 @@ Dylan INNOU</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="back phy">
             <property name="label">Back</property>
             <property name="width-request">120</property>
             <property name="height-request">40</property>
