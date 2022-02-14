@@ -4,11 +4,10 @@ OBJ_DIR = $(BUILD_DIR)/obj
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra --cflags gtk+-3.0`
-LDFLAGS = --libs gtk+-3.0`
+CFLAGS = -Wall -Wextra `pkg-config --cflags gtk+-3.0`
+LDFLAGS = `pkg-config --libs gtk+-3.0`
 
-SRC = $(shell find $(SOURCE_DIR) -name "*.c" ! -name "*main.c")
-OBJ = $(pathsubst $(SOURCE_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
+
 
 all: init EpiLearn
 
@@ -16,28 +15,26 @@ all: init EpiLearn
 init:
 	@mkdir -p $(BUILD_DIR) $(OBJ_DIR)
 
-EpiLearn: $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+EpiLearn: src/Epilearn.c src/gui/gui.c
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$@ $^ $(LDFLAGS)
 
-calculator: $(OBJ_DIR)/calculator.o
-	$(CC) -o $(BUILD_DIR)/$(@F) $^ $(LDFLAGS)
 
-ide: $(OBJ_DIR)/ide.o
-	$(CC) -o $(BUILD_DIR)/$(@F) $^ $(LDFLAGS)
+calculator: $(OBJ_DIR)/calculator/calculator.o
+	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
 
-#
-# mini_games
-#
+grid: $(OBJ_DIR)/mini_game/grid_game/window.o $(OBJ_DIR)/mini_game/grid_game/script.o
+	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
 
-grid: $(OBJ_DIR)/window.o $(OBJ_DIR)/script.o
-	$(CC) -o $(BUILD_DIR)/$(@F) $^ $(LDFLAGS)
-number: $(OBJ_DIR)/window.o $(OBJ_DIR)/script.o
-	$(CC) -o $(BUILD_DIR)/$(@F) $^ $(LDFLAGS)
+number: $(OBJ_DIR)/mini_game/number_game/window.o $(OBJ_DIR)/mini_game/number_game/script.o
+	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
 
-$(OBJ_DIR)/%.o: init %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+$(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.c
+	$(CC) $(CFLAGS) -c -o $(OBJ_DIR)/$(@F) $<
+
+
 
 .PHONY: clean
 
 clean:
 	rm -f -r $(OBJ_DIR)
+	rm $(BUILD_DIR)/*
