@@ -151,7 +151,7 @@ GtkBuilder *init_gui()
     builder = gtk_builder_new ();
 
     GError* error = NULL;
-    if (gtk_builder_add_from_file(builder, "res/EpiLearn.glade", &error) == 0)
+    if (gtk_builder_add_from_file(builder, "../res/EpiLearn.glade", &error) == 0)
     {
         g_printerr("Error loading file: %s\n", error->message);
         g_clear_error(&error);

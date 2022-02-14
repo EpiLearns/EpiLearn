@@ -15,7 +15,7 @@ all: init EpiLearn
 init:
 	@mkdir -p $(BUILD_DIR) $(OBJ_DIR)
 
-EpiLearn: src/Epilearn.c src/gui/gui.c
+EpiLearn: src/EpiLearn.c src/gui/gui.c
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$@ $^ $(LDFLAGS)
 
 
