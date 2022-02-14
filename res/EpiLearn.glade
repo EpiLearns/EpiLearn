@@ -4,7 +4,7 @@
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkWindow" id="org.epilearn.about_us">
     <property name="width-request">875</property>
-    <property name="height-request">575</property>
+    <property name="height-request">825</property>
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">About Epilearn</property>
     <property name="resizable">False</property>
@@ -23,7 +23,7 @@
           </object>
           <packing>
             <property name="x">300</property>
-            <property name="y">50</property>
+            <property name="y">75</property>
           </packing>
         </child>
         <child>
@@ -76,7 +76,7 @@ Dylan INNOU</property>
           </object>
           <packing>
             <property name="x">135</property>
-            <property name="y">200</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -122,7 +122,7 @@ Dylan INNOU</property>
           </object>
           <packing>
             <property name="x">135</property>
-            <property name="y">375</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -168,21 +168,23 @@ Dylan INNOU</property>
           </object>
           <packing>
             <property name="x">135</property>
-            <property name="y">450</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
           <object class="GtkButton" id="close about us">
-            <property name="label">close</property>
+            <property name="label">gtk-go-back</property>
             <property name="width-request">600</property>
             <property name="height-request">25</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <property name="use-stock">True</property>
+            <property name="always-show-image">True</property>
           </object>
           <packing>
             <property name="x">135</property>
-            <property name="y">525</property>
+            <property name="y">625</property>
           </packing>
         </child>
       </object>
@@ -363,12 +365,14 @@ Dylan INNOU</property>
         </child>
         <child>
           <object class="GtkButton" id="back algo">
-            <property name="label" translatable="yes">Back</property>
+            <property name="label">gtk-go-back</property>
             <property name="width-request">120</property>
             <property name="height-request">50</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <property name="use-stock">True</property>
+            <property name="always-show-image">True</property>
           </object>
           <packing>
             <property name="x">50</property>
@@ -519,12 +523,14 @@ Dylan INNOU</property>
         </child>
         <child>
           <object class="GtkButton" id="back ca">
-            <property name="label" translatable="yes">Back</property>
+            <property name="label">gtk-go-back</property>
             <property name="width-request">120</property>
             <property name="height-request">50</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <property name="use-stock">True</property>
+            <property name="always-show-image">True</property>
           </object>
           <packing>
             <property name="x">50</property>
@@ -633,12 +639,14 @@ Dylan INNOU</property>
         </child>
         <child>
           <object class="GtkButton" id="back elec">
-            <property name="label" translatable="yes">Back</property>
+            <property name="label">gtk-go-back</property>
             <property name="width-request">120</property>
             <property name="height-request">50</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <property name="use-stock">True</property>
+            <property name="always-show-image">True</property>
           </object>
           <packing>
             <property name="x">50</property>
@@ -780,12 +788,14 @@ Dylan INNOU</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="login">
-                        <property name="label" translatable="yes">Login</property>
+                        <property name="label">gtk-connect</property>
                         <property name="width-request">200</property>
                         <property name="height-request">40</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="use-stock">True</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="x">325</property>
@@ -843,129 +853,6 @@ Dylan INNOU</property>
             <property name="height-request">0</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <child>
-              <object class="GtkMenuItem" id="File">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">_File</property>
-                <property name="use-underline">True</property>
-                <child type="submenu">
-                  <object class="GtkMenu">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-new</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-open</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-save</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-save-as</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSeparatorMenuItem">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-quit</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem" id="Edit">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Edit</property>
-                <property name="use-underline">True</property>
-                <child type="submenu">
-                  <object class="GtkMenu">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-cut</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-copy</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-paste</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-delete</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem" id="Help">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">_Help</property>
-                <property name="use-underline">True</property>
-              </object>
-            </child>
             <child>
               <object class="GtkMenuItem" id="About us">
                 <property name="visible">True</property>
@@ -1065,23 +952,28 @@ Dylan INNOU</property>
                                         <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">The subject</property>
                                         <attributes>
-                                          <attribute name="font-desc" value="Sans Bold 10"/>
+                                          <attribute name="font-desc" value="Sans Bold 15"/>
                                           <attribute name="foreground" value="#000000000000"/>
                                         </attributes>
                                       </object>
                                       <packing>
+                                        <property name="x">25</property>
                                         <property name="y">50</property>
                                       </packing>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="Mathematics">
-                                        <property name="label" translatable="yes">Mathematics</property>
-                                        <property name="width-request">200</property>
-                                        <property name="height-request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
                                         <property name="receives-default">True</property>
                                         <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="pixbuf">math.png</property>
+                                          </object>
+                                        </child>
                                       </object>
                                       <packing>
                                         <property name="x">25</property>
@@ -1090,13 +982,17 @@ Dylan INNOU</property>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="Algorithm">
-                                        <property name="label" translatable="yes">Algorithm</property>
-                                        <property name="width-request">200</property>
-                                        <property name="height-request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
                                         <property name="receives-default">True</property>
                                         <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="pixbuf">algo.png</property>
+                                          </object>
+                                        </child>
                                       </object>
                                       <packing>
                                         <property name="x">300</property>
@@ -1105,47 +1001,145 @@ Dylan INNOU</property>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="Physic">
-                                        <property name="label" translatable="yes">Physic</property>
-                                        <property name="width-request">200</property>
-                                        <property name="height-request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
                                         <property name="receives-default">True</property>
                                         <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="pixbuf">physic.png</property>
+                                          </object>
+                                        </child>
                                       </object>
                                       <packing>
                                         <property name="x">25</property>
-                                        <property name="y">300</property>
+                                        <property name="y">350</property>
                                       </packing>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="Electronic">
-                                        <property name="label" translatable="yes">Electronic</property>
-                                        <property name="width-request">200</property>
-                                        <property name="height-request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
                                         <property name="receives-default">True</property>
                                         <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="pixbuf">elec.png</property>
+                                          </object>
+                                        </child>
                                       </object>
                                       <packing>
                                         <property name="x">300</property>
-                                        <property name="y">300</property>
+                                        <property name="y">350</property>
                                       </packing>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="Computer architecture">
-                                        <property name="label" translatable="yes">Computer architecture</property>
-                                        <property name="width-request">200</property>
-                                        <property name="height-request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
                                         <property name="receives-default">True</property>
                                         <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="pixbuf">computer_architecture.png</property>
+                                          </object>
+                                        </child>
                                       </object>
                                       <packing>
                                         <property name="x">575</property>
                                         <property name="y">150</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="width-request">100</property>
+                                        <property name="height-request">40</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="label" translatable="yes">Mathematics</property>
+                                        <attributes>
+                                          <attribute name="font-desc" value="Sans Bold 10"/>
+                                          <attribute name="foreground" value="#000000000000"/>
+                                        </attributes>
+                                      </object>
+                                      <packing>
+                                        <property name="x">35</property>
+                                        <property name="y">275</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="width-request">100</property>
+                                        <property name="height-request">40</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="label" translatable="yes">Algorithm</property>
+                                        <attributes>
+                                          <attribute name="font-desc" value="Sans Bold 10"/>
+                                          <attribute name="foreground" value="#000000000000"/>
+                                        </attributes>
+                                      </object>
+                                      <packing>
+                                        <property name="x">310</property>
+                                        <property name="y">275</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="width-request">100</property>
+                                        <property name="height-request">40</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="label" translatable="yes">Computer 
+Architecture</property>
+                                        <attributes>
+                                          <attribute name="font-desc" value="Sans Bold 10"/>
+                                          <attribute name="foreground" value="#000000000000"/>
+                                        </attributes>
+                                      </object>
+                                      <packing>
+                                        <property name="x">585</property>
+                                        <property name="y">275</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="width-request">100</property>
+                                        <property name="height-request">40</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="label" translatable="yes">Physic</property>
+                                        <attributes>
+                                          <attribute name="font-desc" value="Sans Bold 10"/>
+                                          <attribute name="foreground" value="#000000000000"/>
+                                        </attributes>
+                                      </object>
+                                      <packing>
+                                        <property name="x">35</property>
+                                        <property name="y">475</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="width-request">100</property>
+                                        <property name="height-request">40</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="label" translatable="yes">Electronic</property>
+                                        <attributes>
+                                          <attribute name="font-desc" value="Sans Bold 10"/>
+                                          <attribute name="foreground" value="#000000000000"/>
+                                        </attributes>
+                                      </object>
+                                      <packing>
+                                        <property name="x">315</property>
+                                        <property name="y">475</property>
                                       </packing>
                                     </child>
                                   </object>
@@ -1223,12 +1217,14 @@ Dylan INNOU</property>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="mcq enter">
-                                        <property name="label" translatable="yes">confirm</property>
+                                        <property name="label">gtk-ok</property>
                                         <property name="width-request">100</property>
                                         <property name="height-request">40</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
                                         <property name="receives-default">True</property>
+                                        <property name="use-stock">True</property>
+                                        <property name="always-show-image">True</property>
                                       </object>
                                       <packing>
                                         <property name="x">425</property>
@@ -1266,12 +1262,14 @@ Dylan INNOU</property>
                                     </child>
                                     <child>
                                       <object class="GtkButton">
-                                        <property name="label" translatable="yes">confirm</property>
+                                        <property name="label">gtk-ok</property>
                                         <property name="width-request">100</property>
                                         <property name="height-request">40</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
                                         <property name="receives-default">True</property>
+                                        <property name="use-stock">True</property>
+                                        <property name="always-show-image">True</property>
                                       </object>
                                       <packing>
                                         <property name="x">425</property>
@@ -1573,29 +1571,22 @@ Dylan INNOU</property>
         </child>
         <child>
           <object class="GtkButton" id="account">
-            <property name="label" translatable="yes">My account</property>
             <property name="width-request">125</property>
             <property name="height-request">50</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <property name="relief">none</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="pixbuf">profile.png</property>
+              </object>
+            </child>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">25</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkImage" id="user avatar">
-            <property name="width-request">100</property>
-            <property name="height-request">50</property>
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="stock">gtk-add</property>
-          </object>
-          <packing>
-            <property name="x">625</property>
-            <property name="y">25</property>
+            <property name="x">745</property>
           </packing>
         </child>
       </object>
@@ -1854,12 +1845,14 @@ Dylan INNOU</property>
         </child>
         <child>
           <object class="GtkButton" id="back maths">
-            <property name="label" translatable="yes">Back</property>
+            <property name="label">gtk-go-back</property>
             <property name="width-request">120</property>
             <property name="height-request">50</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <property name="use-stock">True</property>
+            <property name="always-show-image">True</property>
           </object>
           <packing>
             <property name="x">50</property>
@@ -1987,12 +1980,14 @@ Dylan INNOU</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="next">
-                        <property name="label">Next</property>
+                        <property name="label">gtk-media-next</property>
                         <property name="width-request">125</property>
                         <property name="height-request">40</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="use-stock">True</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="x">565</property>
@@ -2001,12 +1996,14 @@ Dylan INNOU</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="prev">
-                        <property name="label">Previous</property>
+                        <property name="label">gtk-media-previous</property>
                         <property name="width-request">125</property>
                         <property name="height-request">40</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="use-stock">True</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="x">425</property>
@@ -2015,12 +2012,14 @@ Dylan INNOU</property>
                     </child>
                     <child>
                       <object class="GtkButton">
-                        <property name="label" translatable="yes">Confirm</property>
+                        <property name="label">gtk-ok</property>
                         <property name="width-request">120</property>
                         <property name="height-request">40</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="use-stock">True</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="x">450</property>
@@ -2219,12 +2218,14 @@ Dylan INNOU</property>
         </child>
         <child>
           <object class="GtkButton" id="back phy">
-            <property name="label">Back</property>
+            <property name="label">gtk-go-back</property>
             <property name="width-request">120</property>
             <property name="height-request">40</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <property name="use-stock">True</property>
+            <property name="always-show-image">True</property>
           </object>
           <packing>
             <property name="x">50</property>
@@ -2339,7 +2340,7 @@ Dylan INNOU</property>
                         <property name="height-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="stock">gtk-add</property>
+                        <property name="pixbuf">profile.png</property>
                       </object>
                       <packing>
                         <property name="x">450</property>
@@ -2348,13 +2349,15 @@ Dylan INNOU</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="Edit profil">
-                        <property name="label">Edit profile</property>
+                        <property name="label">gtk-edit</property>
                         <property name="width-request">100</property>
                         <property name="height-request">50</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                         <property name="relief">none</property>
+                        <property name="use-stock">True</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="x">150</property>
@@ -2363,13 +2366,15 @@ Dylan INNOU</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="Back profil">
-                        <property name="label">Back</property>
+                        <property name="label">gtk-go-back</property>
                         <property name="width-request">100</property>
                         <property name="height-request">50</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                         <property name="relief">none</property>
+                        <property name="use-stock">True</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="x">25</property>
@@ -2432,6 +2437,18 @@ Dylan INNOU</property>
           <packing>
             <property name="x">90</property>
             <property name="y">125</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage">
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+          </object>
+          <packing>
+            <property name="x">200</property>
+            <property name="y">75</property>
           </packing>
         </child>
       </object>
