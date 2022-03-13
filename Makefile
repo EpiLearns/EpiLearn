@@ -5,7 +5,7 @@ OBJ_DIR = $(BUILD_DIR)/obj
 CC = gcc
 
 CFLAGS = -Wall -Wextra `pkg-config --cflags gtk+-3.0`
-LDFLAGS = `pkg-config --libs gtk+-3.0`
+LDFLAGS = `pkg-config --libs gtk+-3.0` -rdynamic
 
 
 

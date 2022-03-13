@@ -61,7 +61,7 @@ void time_out(int time) // problem : print all seconds at the end.
 int number_level(int level)
 {
     int r;
-    char *p;
+    //char *p;
     int n = generate_number(level);
     printf("%d\n",n);
     setTimeout(5000);

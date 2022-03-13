@@ -53,7 +53,7 @@ int lives = 3;
 
 // signal
 
-G_MODULE_EXPORT void	on_start_button_clicked (GtkButton *b);
+//G_MODULE_EXPORT void	on_start_button_clicked (GtkButton *b);
 
 
 int main(int argc, char *argv[]) {
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
 // establish contact with xml code used to adjust widget settings
 //---------------------------------------------------------------------
  
-	builder = gtk_builder_new_from_file ("window.glade");
+	builder = gtk_builder_new_from_file ("../src/mini_game/number_game/window.glade");
  
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
 	start = GTK_WIDGET(gtk_builder_get_object(builder, "start"));
@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
 
 // signal funtion
 
-gboolean on_number(gpointer user_data)
+gboolean on_number()
 {
     gtk_widget_hide(number_print);
     gtk_widget_show(response_entry);
@@ -114,7 +114,7 @@ gboolean on_number(gpointer user_data)
     return FALSE;
 }
 
-void	on_start_button_clicked (GtkButton *b) {
+void	on_start_button_clicked () {
     lives = 3;
 	gtk_widget_hide(start_button);
     n = generate_number(level);
@@ -124,7 +124,7 @@ void	on_start_button_clicked (GtkButton *b) {
     event = g_timeout_add(5000, on_number, number_print);
 	}
 
-void	on_response_confirm_clicked (GtkButton *b) {
+void	on_response_confirm_clicked () {
     if (strcmp(str,n_string) == 0)
     {
         level = level + 1;
@@ -162,7 +162,7 @@ void on_response_entry_changed (GtkEntry *e)
     sprintf(n_string,"%s", gtk_entry_get_text(e));
 }
 
-void on_restart_clicked (GtkButton *b)
+void on_restart_clicked ()
 {
     gtk_widget_hide(end_print);
     gtk_widget_hide(restart);
