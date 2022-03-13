@@ -47,14 +47,8 @@
             <span class="separation"></span>
 
             <h2>Progress</h2>
-            <div class="scroll">
-                <a></a>
-                <a></a>
-                <a></a>
-                <a></a>
-                <a></a>
-                <a></a>
-                <a></a>
+            <div id="scroll">
+
             </div>
         
             <span class="separation"></span>
@@ -119,10 +113,30 @@
                 <script>
                     const btnRepos = document.getElementById('btnRepos')
                     btnRepos.addEventListener('click', getRepos)
+                    
+                    const divResult = document.getElementById('divResult')
 
-                    function getRepos(){
-                        alert('test')
-                    }
+                    async function getRepos(){
+                        const headers = {
+                            'Authorization' : `Token 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`
+                        }
+
+                        const url = 'https://api.github.com/search/issues?q=+type:pr+org:Epilearns'
+
+                        const response = await fetch(url, {
+                            "method": "GET",
+                            "headers": headers
+                        })
+
+                        const result = await response.json()
+
+                        result.items.forEach(i => {
+
+                            const pr = document.createElement("a")
+                            pr.textContent = i.title
+                            divResult.appendChild(pr)
+                            divResult.appendChild(document.createElement('br'))
+                        })};
                 </script>
             </div>
         </div>
