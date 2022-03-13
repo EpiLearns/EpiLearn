@@ -22,6 +22,9 @@ EpiLearn: src/EpiLearn.c src/gui/gui.c
 calculator: $(OBJ_DIR)/calculator/calculator.o
 	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
 
+sort: $(OBJ_DIR)/sortingAlgorithm/question_sort.o
+	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
+
 grid: $(OBJ_DIR)/mini_game/grid_game/window.o $(OBJ_DIR)/mini_game/grid_game/script.o
 	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
 

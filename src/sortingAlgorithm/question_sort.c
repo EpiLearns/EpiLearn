@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "tri_question.h"
+#include "question_sort.h"
 
 void bubble_sorting(struct question T[], int N)
 {
