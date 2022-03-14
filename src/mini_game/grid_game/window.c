@@ -75,7 +75,7 @@ void create_grid2(int level,  int l[]) // 0 en trop !!
 
     srand(time(NULL));
     int length = 3;
-    int nb = 1;
+    int nb = level;
     int i = 1;
     while (i < level) // struct of the grid // <= ?
     {
@@ -83,7 +83,6 @@ void create_grid2(int level,  int l[]) // 0 en trop !!
         {
             length++;
         }
-        nb++; // +1 ?
         i++;
     }
 
@@ -101,7 +100,6 @@ void create_grid2(int level,  int l[]) // 0 en trop !!
     }
     
 }
-
 // signal
 
 G_MODULE_EXPORT void	on_start_button_clicked (GtkButton *b);
@@ -196,11 +194,129 @@ int main(int argc, char *argv[]) {
 
 // signal funtion
 
-void change_color()
+
+gboolean back_normal()
+{
+	int i = 0;
+	char s[5] = "NO";
+	int length;
+	if(level < 3)
+	{
+		length = 9;
+	}
+	else
+	{
+		if (level < 6)
+		{
+			length = 16;
+		}
+		else
+		{
+			length = 25;
+		}
+	}
+	while (i<length)
+	{
+		switch (i)
+		{
+		case 0:
+			gtk_button_set_label (GTK_BUTTON(button1), (const gchar*) s);
+			gtk_widget_show(button1);
+			break;
+		case 1:
+			gtk_button_set_label (GTK_BUTTON(button2), (const gchar*) s);
+			gtk_widget_show(button2);
+			break;
+		case 2:
+			gtk_button_set_label (GTK_BUTTON(button3), (const gchar*) s);
+			gtk_widget_show(button3);
+			break;
+		case 3:
+			gtk_button_set_label (GTK_BUTTON(button4), (const gchar*) s);
+			gtk_widget_show(button4);
+			break;
+		case 4:
+			gtk_button_set_label (GTK_BUTTON(button5), (const gchar*) s);
+			gtk_widget_show(button5);
+			break;
+		case 5:
+			gtk_button_set_label (GTK_BUTTON(button6), (const gchar*) s);
+			gtk_widget_show(button6);
+			break;
+		case 6:
+			gtk_button_set_label (GTK_BUTTON(button7), (const gchar*) s);
+			gtk_widget_show(button7);
+			break;
+		case 7:
+			gtk_button_set_label (GTK_BUTTON(button8), (const gchar*) s);
+			gtk_widget_show(button8);
+			break;
+		case 8:
+			gtk_button_set_label (GTK_BUTTON(button9), (const gchar*) s);
+			gtk_widget_show(button9);
+			break;
+		case 9:
+			gtk_button_set_label (GTK_BUTTON(button10), (const gchar*) s);
+			gtk_widget_show(button10);
+			break;
+		case 10:
+			gtk_button_set_label (GTK_BUTTON(button11), (const gchar*) s);
+			break;
+		case 11:
+			gtk_button_set_label (GTK_BUTTON(button12), (const gchar*) s);
+			break;
+		case 12:
+			gtk_button_set_label (GTK_BUTTON(button13), (const gchar*) s);
+			break;
+		case 13:
+			gtk_button_set_label (GTK_BUTTON(button14), (const gchar*) s);
+			break;
+		case 14:
+			gtk_button_set_label (GTK_BUTTON(button15), (const gchar*) s);
+			break;
+		case 15:
+			gtk_button_set_label (GTK_BUTTON(button16), (const gchar*) s);
+			break;
+		case 16:
+			gtk_button_set_label (GTK_BUTTON(button17), (const gchar*) s);
+			break;
+		case 17:
+			gtk_button_set_label (GTK_BUTTON(button18), (const gchar*) s);
+			break;
+		case 18:
+			gtk_button_set_label (GTK_BUTTON(button19), (const gchar*) s);
+			break;
+		case 19:
+			gtk_button_set_label (GTK_BUTTON(button20), (const gchar*) s);
+			break;
+		case 20:
+			gtk_button_set_label (GTK_BUTTON(button21), (const gchar*) s);
+			break;
+		case 21:
+			gtk_button_set_label (GTK_BUTTON(button22), (const gchar*) s);
+			break;
+		case 22:
+			gtk_button_set_label (GTK_BUTTON(button23), (const gchar*) s);
+			break;
+		case 23:
+			gtk_button_set_label (GTK_BUTTON(button24), (const gchar*) s);
+			break;
+		case 24:
+			gtk_button_set_label (GTK_BUTTON(button25), (const gchar*) s);
+			break;
+		default:
+			break;
+		}
+		i = i + 1;
+	}
+	return FALSE;
+}
+
+void change_color(int level)
 {
 	int i = 0;
 	int length;
-	char s[] = "ME";
+	char s[5] = "YES";
 	if(level < 3)
 	{
 		length = 9;
@@ -249,128 +365,69 @@ void change_color()
 			case 8:
 				gtk_button_set_label (GTK_BUTTON(button9), (const gchar*) s);
 				break;
+			case 9:
+				gtk_button_set_label (GTK_BUTTON(button10), (const gchar*) s);
+				break;
+			case 10:
+				gtk_button_set_label (GTK_BUTTON(button11), (const gchar*) s);
+				break;
+			case 11:
+				gtk_button_set_label (GTK_BUTTON(button12), (const gchar*) s);
+				break;
+			case 12:
+				gtk_button_set_label (GTK_BUTTON(button13), (const gchar*) s);
+				break;
+			case 13:
+				gtk_button_set_label (GTK_BUTTON(button14), (const gchar*) s);
+				break;
+			case 14:
+				gtk_button_set_label (GTK_BUTTON(button15), (const gchar*) s);
+				break;
+			case 15:
+				gtk_button_set_label (GTK_BUTTON(button16), (const gchar*) s);
+				break;
+			case 16:
+				gtk_button_set_label (GTK_BUTTON(button17), (const gchar*) s);
+				break;
+			case 17:
+				gtk_button_set_label (GTK_BUTTON(button18), (const gchar*) s);
+				break;
+			case 18:
+				gtk_button_set_label (GTK_BUTTON(button19), (const gchar*) s);
+				break;
+			case 19:
+				gtk_button_set_label (GTK_BUTTON(button20), (const gchar*) s);
+				break;
+			case 20:
+				gtk_button_set_label (GTK_BUTTON(button21), (const gchar*) s);
+				break;
+			case 21:
+				gtk_button_set_label (GTK_BUTTON(button22), (const gchar*) s);
+				break;
+			case 22:
+				gtk_button_set_label (GTK_BUTTON(button23), (const gchar*) s);
+				break;
+			case 23:
+				gtk_button_set_label (GTK_BUTTON(button24), (const gchar*) s);
+				break;
+			case 24:
+				gtk_button_set_label (GTK_BUTTON(button25), (const gchar*) s);
+				break;
 			default:
 				break;
 			}
 		}
 		i = i + 1;	
-	}	
-}
-
-gboolean back_normal()
-{
-	int i = 0;
-	char s[1] = "";
-	int length;
-	if(level < 3)
-	{
-		length = 9;
 	}
-	else
-	{
-		if (level < 6)
-		{
-			length = 16;
-		}
-		else
-		{
-			length = 25;
-		}
-	}
-	while (i<length)
-	{
-		switch (i)
-		{
-		case 0:
-			gtk_button_set_label (GTK_BUTTON(button1), (const gchar*) s);
-			break;
-		case 1:
-			gtk_button_set_label (GTK_BUTTON(button2), (const gchar*) s);
-			break;
-		case 2:
-			gtk_button_set_label (GTK_BUTTON(button3), (const gchar*) s);
-			break;
-		case 3:
-			gtk_button_set_label (GTK_BUTTON(button4), (const gchar*) s);
-			break;
-		case 4:
-			gtk_button_set_label (GTK_BUTTON(button5), (const gchar*) s);
-			break;
-		case 5:
-			gtk_button_set_label (GTK_BUTTON(button6), (const gchar*) s);
-			break;
-		case 6:
-			gtk_button_set_label (GTK_BUTTON(button7), (const gchar*) s);
-			break;
-		case 7:
-			gtk_button_set_label (GTK_BUTTON(button8), (const gchar*) s);
-			break;
-		case 8:
-			gtk_button_set_label (GTK_BUTTON(button9), (const gchar*) s);
-			break;
-		case 9:
-			gtk_button_set_label (GTK_BUTTON(button10), (const gchar*) s);
-			break;
-		case 10:
-			gtk_button_set_label (GTK_BUTTON(button11), (const gchar*) s);
-			break;
-		case 11:
-			gtk_button_set_label (GTK_BUTTON(button12), (const gchar*) s);
-			break;
-		case 12:
-			gtk_button_set_label (GTK_BUTTON(button13), (const gchar*) s);
-			break;
-		case 13:
-			gtk_button_set_label (GTK_BUTTON(button14), (const gchar*) s);
-			break;
-		case 14:
-			gtk_button_set_label (GTK_BUTTON(button5), (const gchar*) s);
-			break;
-		case 15:
-			gtk_button_set_label (GTK_BUTTON(button6), (const gchar*) s);
-			break;
-		case 16:
-			gtk_button_set_label (GTK_BUTTON(button17), (const gchar*) s);
-			break;
-		case 17:
-			gtk_button_set_label (GTK_BUTTON(button18), (const gchar*) s);
-			break;
-		case 18:
-			gtk_button_set_label (GTK_BUTTON(button19), (const gchar*) s);
-			break;
-		case 19:
-			gtk_button_set_label (GTK_BUTTON(button20), (const gchar*) s);
-			break;
-		case 20:
-			gtk_button_set_label (GTK_BUTTON(button21), (const gchar*) s);
-			break;
-		case 21:
-			gtk_button_set_label (GTK_BUTTON(button22), (const gchar*) s);
-			break;
-		case 22:
-			gtk_button_set_label (GTK_BUTTON(button23), (const gchar*) s);
-			break;
-		case 23:
-			gtk_button_set_label (GTK_BUTTON(button24), (const gchar*) s);
-			break;
-		case 24:
-			gtk_button_set_label (GTK_BUTTON(button25), (const gchar*) s);
-			break;
-		default:
-			break;
-		}
-		i = i + 1;
-	}
-	
-	
-	return FALSE;
+	event = g_timeout_add(2000, back_normal, NULL);
 }
 
 void change_level()
 {
 	create_grid2(level,l);
 	nb = level;
-	if (level == 6)
+	lives = 3;
+	if (level == 3)
 	{
 		gtk_widget_show(button10);
 		gtk_widget_show(button11);
@@ -380,7 +437,7 @@ void change_level()
 		gtk_widget_show(button15);
 		gtk_widget_show(button16);
 	}
-	if(level == 9)
+	if(level == 6)
 	{
 		gtk_widget_show(button17);
 		gtk_widget_show(button18);
@@ -395,8 +452,7 @@ void change_level()
 	char level_p[128];
     sprintf(level_p,"CURRENT LEVEL : %d",level);
     gtk_label_set_text (GTK_LABEL(level_print), (const gchar*) level_p);
-	change_color();
-	event = g_timeout_add(5000, back_normal, button1);
+	change_color(level);
 	
 }
 
@@ -414,7 +470,7 @@ void	on_start_button_clicked (GtkButton *b) {
 	gtk_widget_show(button9);
 	level = 1;
 	lives = 3;
-	change_level();
+	change_level(level);
 	}
 
 void on_restart_clicked (GtkButton *b)
@@ -433,22 +489,26 @@ void end_window()
     gtk_widget_show(restart);
 }
 
-
+/*
+void	on_button_clicked (GtkButton *b) {
+	gtk_button_get_label (GTK_BUTTON(b), (const gchar*) s);
+}
+*/
 
 void	on_button1_clicked (GtkButton *b) {
 	if(l[0] == 1)
 	{
 		l[0] == 2;
 		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
 	}
 	if(l[0] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{
@@ -466,15 +526,15 @@ void	on_button2_clicked (GtkButton *b) {
 	{
 		l[1] == 2;
 		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
 	}
 	if(l[1] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{
@@ -491,15 +551,15 @@ void	on_button3_clicked (GtkButton *b) {
 	{
 		l[2] == 2;
 		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
 	}
 	if(l[2] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{
@@ -516,15 +576,15 @@ void	on_button4_clicked (GtkButton *b) {
 	{
 		l[3] == 2;
 		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
 	}
 	if(l[3] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{
@@ -541,15 +601,15 @@ void	on_button5_clicked (GtkButton *b) {
 	{
 		l[4] == 2;
 		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
 	}
 	if(l[4] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{
@@ -566,15 +626,15 @@ void	on_button6_clicked (GtkButton *b) {
 	{
 		l[5] == 2;
 		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
 	}
 	if(l[5] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{
@@ -591,15 +651,15 @@ void	on_button7_clicked (GtkButton *b) {
 	{
 		l[6] == 2;
 		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
 	}
 	if(l[6] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{
@@ -616,15 +676,15 @@ void	on_button8_clicked (GtkButton *b) {
 	{
 		l[7] == 2;
 		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
 	}
 	if(l[7] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{
@@ -641,15 +701,15 @@ void	on_button9_clicked (GtkButton *b) {
 	{
 		l[8] == 2;
 		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
 	}
 	if(l[8] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{
@@ -666,15 +726,15 @@ void	on_button10_clicked (GtkButton *b) {
 	{
 		l[9] == 2;
 		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
 	}
 	if(l[9] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{
