@@ -8,6 +8,7 @@
 #include <math.h>
 #include <ctype.h>
 #include "script.h"
+#include <glib/gprintf.h>
 
 // gcc -Wno-format -o window window.c script.c -Wno-deprecated-declarations -rdynamic -Wno-format-security -lm `pkg-config --cflags --libs gtk+-3.0`
 // export DISPLAY=0:0 
@@ -53,6 +54,58 @@ GtkWidget	*button23;
 GtkWidget	*button24;
 GtkWidget	*button25;
 
+GtkWidget	*green1;
+GtkWidget	*green2;
+GtkWidget	*green3;
+GtkWidget	*green4;
+GtkWidget	*green5;
+GtkWidget	*green6;
+GtkWidget	*green7;
+GtkWidget	*green8;
+GtkWidget	*green9;
+GtkWidget	*green10;
+GtkWidget	*green11;
+GtkWidget	*green12;
+GtkWidget	*green13;
+GtkWidget	*green14;
+GtkWidget	*green15;
+GtkWidget	*green16;
+GtkWidget	*green17;
+GtkWidget	*green18;
+GtkWidget	*green19;
+GtkWidget	*green20;
+GtkWidget	*green21;
+GtkWidget	*green22;
+GtkWidget	*green23;
+GtkWidget	*green24;
+GtkWidget	*green25;
+
+GtkWidget	*red1;
+GtkWidget	*red2;
+GtkWidget	*red3;
+GtkWidget	*red4;
+GtkWidget	*red5;
+GtkWidget	*red6;
+GtkWidget	*red7;
+GtkWidget	*red8;
+GtkWidget	*red9;
+GtkWidget	*red10;
+GtkWidget	*red11;
+GtkWidget	*red12;
+GtkWidget	*red13;
+GtkWidget	*red14;
+GtkWidget	*red15;
+GtkWidget	*red16;
+GtkWidget	*red17;
+GtkWidget	*red18;
+GtkWidget	*red19;
+GtkWidget	*red20;
+GtkWidget	*red21;
+GtkWidget	*red22;
+GtkWidget	*red23;
+GtkWidget	*red24;
+GtkWidget	*red25;
+
 GtkWidget	*level_print;
 
 
@@ -75,7 +128,7 @@ void create_grid2(int level,  int l[]) // 0 en trop !!
 
     srand(time(NULL));
     int length = 3;
-    int nb = 1;
+    int nb = level;
     int i = 1;
     while (i < level) // struct of the grid // <= ?
     {
@@ -83,7 +136,6 @@ void create_grid2(int level,  int l[]) // 0 en trop !!
         {
             length++;
         }
-        nb++; // +1 ?
         i++;
     }
 
@@ -101,10 +153,7 @@ void create_grid2(int level,  int l[]) // 0 en trop !!
     }
     
 }
-
 // signal
-
-G_MODULE_EXPORT void	on_start_button_clicked (GtkButton *b);
 
 void hide_all()
 {
@@ -136,6 +185,62 @@ void hide_all()
 	gtk_widget_hide(level_print);
 }
 
+gboolean back_normal()
+{
+	gtk_widget_hide(green1);
+	gtk_widget_hide(green2);
+	gtk_widget_hide(green3);
+	gtk_widget_hide(green4);
+	gtk_widget_hide(green5);
+	gtk_widget_hide(green6);
+	gtk_widget_hide(green7);
+	gtk_widget_hide(green8);
+	gtk_widget_hide(green9);
+	gtk_widget_hide(green10);
+	gtk_widget_hide(green11);
+	gtk_widget_hide(green12);
+	gtk_widget_hide(green13);
+	gtk_widget_hide(green14);
+	gtk_widget_hide(green15);
+	gtk_widget_hide(green16);
+	gtk_widget_hide(green17);
+	gtk_widget_hide(green18);
+	gtk_widget_hide(green19);
+	gtk_widget_hide(green20);
+	gtk_widget_hide(green21);
+	gtk_widget_hide(green22);
+	gtk_widget_hide(green23);
+	gtk_widget_hide(green24);
+	gtk_widget_hide(green25);
+	gtk_widget_hide(red1);
+	gtk_widget_hide(red2);
+	gtk_widget_hide(red3);
+	gtk_widget_hide(red4);
+	gtk_widget_hide(red5);
+	gtk_widget_hide(red6);
+	gtk_widget_hide(red7);
+	gtk_widget_hide(red8);
+	gtk_widget_hide(red9);
+	gtk_widget_hide(red10);
+	gtk_widget_hide(red11);
+	gtk_widget_hide(red12);
+	gtk_widget_hide(red13);
+	gtk_widget_hide(red14);
+	gtk_widget_hide(red15);
+	gtk_widget_hide(red16);
+	gtk_widget_hide(red17);
+	gtk_widget_hide(red18);
+	gtk_widget_hide(red19);
+	gtk_widget_hide(red20);
+	gtk_widget_hide(red21);
+	gtk_widget_hide(red22);
+	gtk_widget_hide(red23);
+	gtk_widget_hide(red24);
+	gtk_widget_hide(red25);
+
+	return FALSE;
+}
+
 int main(int argc, char *argv[]) {
 
 	gtk_init(&argc, &argv); // init Gtk
@@ -144,7 +249,7 @@ int main(int argc, char *argv[]) {
 // establish contact with xml code used to adjust widget settings
 //---------------------------------------------------------------------
  
-	builder = gtk_builder_new_from_file ("window.glade");
+	builder = gtk_builder_new_from_file ("../src/mini_game/grid_game/window.glade");
  
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
 
@@ -181,10 +286,70 @@ int main(int argc, char *argv[]) {
 	button24 = GTK_WIDGET(gtk_builder_get_object(builder, "button24"));
 	button25 = GTK_WIDGET(gtk_builder_get_object(builder, "button25"));
 
+	//green
+	green1 = GTK_WIDGET(gtk_builder_get_object(builder, "green1"));
+	green2 = GTK_WIDGET(gtk_builder_get_object(builder, "green2"));
+	green3 = GTK_WIDGET(gtk_builder_get_object(builder, "green3"));
+	green4 = GTK_WIDGET(gtk_builder_get_object(builder, "green4"));
+	green5 = GTK_WIDGET(gtk_builder_get_object(builder, "green5"));
+	green6 = GTK_WIDGET(gtk_builder_get_object(builder, "green6"));
+	green7 = GTK_WIDGET(gtk_builder_get_object(builder, "green7"));
+	green8 = GTK_WIDGET(gtk_builder_get_object(builder, "green8"));
+	green9 = GTK_WIDGET(gtk_builder_get_object(builder, "green9"));
+	green10 = GTK_WIDGET(gtk_builder_get_object(builder, "green10"));
+	green11 = GTK_WIDGET(gtk_builder_get_object(builder, "green11"));
+	green12 = GTK_WIDGET(gtk_builder_get_object(builder, "green12"));
+	green13 = GTK_WIDGET(gtk_builder_get_object(builder, "green13"));
+	green14 = GTK_WIDGET(gtk_builder_get_object(builder, "green14"));
+	green15 = GTK_WIDGET(gtk_builder_get_object(builder, "green15"));
+	green16 = GTK_WIDGET(gtk_builder_get_object(builder, "green16"));
+	green17 = GTK_WIDGET(gtk_builder_get_object(builder, "green17"));
+	green18 = GTK_WIDGET(gtk_builder_get_object(builder, "green18"));
+	green19 = GTK_WIDGET(gtk_builder_get_object(builder, "green19"));
+	green20 = GTK_WIDGET(gtk_builder_get_object(builder, "green20"));
+	green21 = GTK_WIDGET(gtk_builder_get_object(builder, "green21"));
+	green22 = GTK_WIDGET(gtk_builder_get_object(builder, "green22"));
+	green23 = GTK_WIDGET(gtk_builder_get_object(builder, "green23"));
+	green24 = GTK_WIDGET(gtk_builder_get_object(builder, "green24"));
+	green25 = GTK_WIDGET(gtk_builder_get_object(builder, "green25"));
+
+	//red
+	red1 = GTK_WIDGET(gtk_builder_get_object(builder, "red1"));
+	red2 = GTK_WIDGET(gtk_builder_get_object(builder, "red2"));
+	red3 = GTK_WIDGET(gtk_builder_get_object(builder, "red3"));
+	red4 = GTK_WIDGET(gtk_builder_get_object(builder, "red4"));
+	red5 = GTK_WIDGET(gtk_builder_get_object(builder, "red5"));
+	red6 = GTK_WIDGET(gtk_builder_get_object(builder, "red6"));
+	red7 = GTK_WIDGET(gtk_builder_get_object(builder, "red7"));
+	red8 = GTK_WIDGET(gtk_builder_get_object(builder, "red8"));
+	red9 = GTK_WIDGET(gtk_builder_get_object(builder, "red9"));
+	red10 = GTK_WIDGET(gtk_builder_get_object(builder, "red10"));
+	red11 = GTK_WIDGET(gtk_builder_get_object(builder, "red11"));
+	red12 = GTK_WIDGET(gtk_builder_get_object(builder, "red12"));
+	red13 = GTK_WIDGET(gtk_builder_get_object(builder, "red13"));
+	red14 = GTK_WIDGET(gtk_builder_get_object(builder, "red14"));
+	red15 = GTK_WIDGET(gtk_builder_get_object(builder, "red15"));
+	red16 = GTK_WIDGET(gtk_builder_get_object(builder, "red16"));
+	red17 = GTK_WIDGET(gtk_builder_get_object(builder, "red17"));
+	red18 = GTK_WIDGET(gtk_builder_get_object(builder, "red18"));
+	red19 = GTK_WIDGET(gtk_builder_get_object(builder, "red19"));
+	red20 = GTK_WIDGET(gtk_builder_get_object(builder, "red20"));
+	red21 = GTK_WIDGET(gtk_builder_get_object(builder, "red21"));
+	red22 = GTK_WIDGET(gtk_builder_get_object(builder, "red22"));
+	red23 = GTK_WIDGET(gtk_builder_get_object(builder, "red23"));
+	red24 = GTK_WIDGET(gtk_builder_get_object(builder, "red24"));
+	red25 = GTK_WIDGET(gtk_builder_get_object(builder, "red25"));
+
 	level_print = GTK_WIDGET(gtk_builder_get_object(builder, "level"));
 
 	gtk_widget_show(window);
 	hide_all();
+	gboolean x = back_normal();
+	if(x == 123)
+	{
+		return 0;
+	}
+	
 
 	gtk_widget_hide(restart);
 	gtk_widget_hide(end_print);
@@ -196,11 +361,11 @@ int main(int argc, char *argv[]) {
 
 // signal funtion
 
-void change_color()
+
+void change_color(int level)
 {
 	int i = 0;
 	int length;
-	char s[] = "ME";
 	if(level < 3)
 	{
 		length = 9;
@@ -223,154 +388,178 @@ void change_color()
 			switch (i)
 			{
 			case 0:
-				gtk_button_set_label (GTK_BUTTON(button1), (const gchar*) s);
+				gtk_widget_show(green1);
 				break;
 			case 1:
-				gtk_button_set_label (GTK_BUTTON(button2), (const gchar*) s);
+				gtk_widget_show(green2);
 				break;
 			case 2:
-				gtk_button_set_label (GTK_BUTTON(button3), (const gchar*) s);
+				gtk_widget_show(green3);
 				break;
 			case 3:
-				gtk_button_set_label (GTK_BUTTON(button4), (const gchar*) s);
+				gtk_widget_show(green4);
 				break;
 			case 4:
-				gtk_button_set_label (GTK_BUTTON(button5), (const gchar*) s);
+				gtk_widget_show(green5);
 				break;
 			case 5:
-				gtk_button_set_label (GTK_BUTTON(button6), (const gchar*) s);
+				gtk_widget_show(green6);
 				break;
 			case 6:
-				gtk_button_set_label (GTK_BUTTON(button7), (const gchar*) s);
+				gtk_widget_show(green7);
 				break;
 			case 7:
-				gtk_button_set_label (GTK_BUTTON(button8), (const gchar*) s);
+				gtk_widget_show(green8);
 				break;
 			case 8:
-				gtk_button_set_label (GTK_BUTTON(button9), (const gchar*) s);
+				gtk_widget_show(green9);
+				break;
+			case 9:
+				gtk_widget_show(green10);
+				break;
+			case 10:
+				gtk_widget_show(green11);
+				break;
+			case 11:
+				gtk_widget_show(green12);
+				break;
+			case 12:
+				gtk_widget_show(green13);
+				break;
+			case 13:
+				gtk_widget_show(green14);
+				break;
+			case 14:
+				gtk_widget_show(green15);
+				break;
+			case 15:
+				gtk_widget_show(green16);
+				break;
+			case 16:
+				gtk_widget_show(green17);
+				break;
+			case 17:
+				gtk_widget_show(green18);
+				break;
+			case 18:
+				gtk_widget_show(green19);
+				break;
+			case 19:
+				gtk_widget_show(green20);
+				break;
+			case 20:
+				gtk_widget_show(green21);
+				break;
+			case 21:
+				gtk_widget_show(green22);
+				break;
+			case 22:
+				gtk_widget_show(green23);
+				break;
+			case 23:
+				gtk_widget_show(green24);
+				break;
+			case 24:
+				gtk_widget_show(green25);
+				break;
+			default:
+				break;
+			}
+		}
+		if (l[i] == 0)
+		{
+			switch (i)
+			{
+			case 0:
+				gtk_widget_show(red1);
+				break;
+			case 1:
+				gtk_widget_show(red2);
+				break;
+			case 2:
+				gtk_widget_show(red3);
+				break;
+			case 3:
+				gtk_widget_show(red4);
+				break;
+			case 4:
+				gtk_widget_show(red5);
+				break;
+			case 5:
+				gtk_widget_show(red6);
+				break;
+			case 6:
+				gtk_widget_show(red7);
+				break;
+			case 7:
+				gtk_widget_show(red8);
+				break;
+			case 8:
+				gtk_widget_show(red9);
+				break;
+			case 9:
+				gtk_widget_show(red10);
+				break;
+			case 10:
+				gtk_widget_show(red11);
+				break;
+			case 11:
+				gtk_widget_show(red12);
+				break;
+			case 12:
+				gtk_widget_show(red13);
+				break;
+			case 13:
+				gtk_widget_show(red14);
+				break;
+			case 14:
+				gtk_widget_show(red15);
+				break;
+			case 15:
+				gtk_widget_show(red16);
+				break;
+			case 16:
+				gtk_widget_show(red17);
+				break;
+			case 17:
+				gtk_widget_show(red18);
+				break;
+			case 18:
+				gtk_widget_show(red19);
+				break;
+			case 19:
+				gtk_widget_show(red20);
+				break;
+			case 20:
+				gtk_widget_show(red21);
+				break;
+			case 21:
+				gtk_widget_show(red22);
+				break;
+			case 22:
+				gtk_widget_show(red23);
+				break;
+			case 23:
+				gtk_widget_show(red24);
+				break;
+			case 24:
+				gtk_widget_show(red25);
 				break;
 			default:
 				break;
 			}
 		}
 		i = i + 1;	
-	}	
-}
-
-gboolean back_normal()
-{
-	int i = 0;
-	char s[1] = "";
-	int length;
-	if(level < 3)
-	{
-		length = 9;
 	}
-	else
-	{
-		if (level < 6)
-		{
-			length = 16;
-		}
-		else
-		{
-			length = 25;
-		}
-	}
-	while (i<length)
-	{
-		switch (i)
-		{
-		case 0:
-			gtk_button_set_label (GTK_BUTTON(button1), (const gchar*) s);
-			break;
-		case 1:
-			gtk_button_set_label (GTK_BUTTON(button2), (const gchar*) s);
-			break;
-		case 2:
-			gtk_button_set_label (GTK_BUTTON(button3), (const gchar*) s);
-			break;
-		case 3:
-			gtk_button_set_label (GTK_BUTTON(button4), (const gchar*) s);
-			break;
-		case 4:
-			gtk_button_set_label (GTK_BUTTON(button5), (const gchar*) s);
-			break;
-		case 5:
-			gtk_button_set_label (GTK_BUTTON(button6), (const gchar*) s);
-			break;
-		case 6:
-			gtk_button_set_label (GTK_BUTTON(button7), (const gchar*) s);
-			break;
-		case 7:
-			gtk_button_set_label (GTK_BUTTON(button8), (const gchar*) s);
-			break;
-		case 8:
-			gtk_button_set_label (GTK_BUTTON(button9), (const gchar*) s);
-			break;
-		case 9:
-			gtk_button_set_label (GTK_BUTTON(button10), (const gchar*) s);
-			break;
-		case 10:
-			gtk_button_set_label (GTK_BUTTON(button11), (const gchar*) s);
-			break;
-		case 11:
-			gtk_button_set_label (GTK_BUTTON(button12), (const gchar*) s);
-			break;
-		case 12:
-			gtk_button_set_label (GTK_BUTTON(button13), (const gchar*) s);
-			break;
-		case 13:
-			gtk_button_set_label (GTK_BUTTON(button14), (const gchar*) s);
-			break;
-		case 14:
-			gtk_button_set_label (GTK_BUTTON(button5), (const gchar*) s);
-			break;
-		case 15:
-			gtk_button_set_label (GTK_BUTTON(button6), (const gchar*) s);
-			break;
-		case 16:
-			gtk_button_set_label (GTK_BUTTON(button17), (const gchar*) s);
-			break;
-		case 17:
-			gtk_button_set_label (GTK_BUTTON(button18), (const gchar*) s);
-			break;
-		case 18:
-			gtk_button_set_label (GTK_BUTTON(button19), (const gchar*) s);
-			break;
-		case 19:
-			gtk_button_set_label (GTK_BUTTON(button20), (const gchar*) s);
-			break;
-		case 20:
-			gtk_button_set_label (GTK_BUTTON(button21), (const gchar*) s);
-			break;
-		case 21:
-			gtk_button_set_label (GTK_BUTTON(button22), (const gchar*) s);
-			break;
-		case 22:
-			gtk_button_set_label (GTK_BUTTON(button23), (const gchar*) s);
-			break;
-		case 23:
-			gtk_button_set_label (GTK_BUTTON(button24), (const gchar*) s);
-			break;
-		case 24:
-			gtk_button_set_label (GTK_BUTTON(button25), (const gchar*) s);
-			break;
-		default:
-			break;
-		}
-		i = i + 1;
-	}
-	
-	
-	return FALSE;
+	event = g_timeout_add(2000, back_normal, NULL);
 }
 
 void change_level()
 {
 	create_grid2(level,l);
 	nb = level;
-	if (level == 6)
+	lives = 3;
+	if (level == 3)
 	{
 		gtk_widget_show(button10);
 		gtk_widget_show(button11);
@@ -380,7 +569,7 @@ void change_level()
 		gtk_widget_show(button15);
 		gtk_widget_show(button16);
 	}
-	if(level == 9)
+	if(level == 6)
 	{
 		gtk_widget_show(button17);
 		gtk_widget_show(button18);
@@ -395,12 +584,11 @@ void change_level()
 	char level_p[128];
     sprintf(level_p,"CURRENT LEVEL : %d",level);
     gtk_label_set_text (GTK_LABEL(level_print), (const gchar*) level_p);
-	change_color();
-	event = g_timeout_add(5000, back_normal, button1);
+	change_color(level);
 	
 }
 
-void	on_start_button_clicked (GtkButton *b) {
+void	on_start_button_clicked () {
 	gtk_widget_hide(start_button);
 	gtk_widget_show(level_print);
 	gtk_widget_show(button1);
@@ -414,10 +602,10 @@ void	on_start_button_clicked (GtkButton *b) {
 	gtk_widget_show(button9);
 	level = 1;
 	lives = 3;
-	change_level();
+	change_level(level);
 	}
 
-void on_restart_clicked (GtkButton *b)
+void on_restart_clicked ()
 {
     gtk_widget_hide(end_print);
     gtk_widget_hide(restart);
@@ -435,20 +623,105 @@ void end_window()
  
 
 
-void	on_button1_clicked (GtkButton *b) {
-	if(l[0] == 1)
+void	on_button_clicked (GtkButton *b) {
+	//char text[128];
+	//g_sprintf(text, "%s", gtk_label_get_text(b));
+	const gchar *text = gtk_button_get_label (b);
+	int i;
+	int a = atoi(text);
+	switch (a)
 	{
-		l[0] == 2;
-		nb = nb - 1;
+		case 1:
+			i = 0;
+			break;
+		case 2:
+			i = 1;
+			break;
+		case 3:
+			i = 2;
+			break;
+		case 4:
+			i = 3;
+			break;
+		case 5:
+			i = 4;
+			break;
+		case 6:
+			i = 5;
+			break;
+		case 7:
+			i = 6;
+			break;
+		case 8:
+			i = 7;
+			break;
+		case 9:
+			i = 8;
+			break;
+		case 10:
+			i = 9;
+			break;
+		case 11:
+			i = 10;
+			break;
+		case 12:
+			i = 11;
+			break;
+		case 13:
+			i = 12;
+			break;
+		case 14:
+			i = 13;
+			break;
+		case 15:
+			i = 14;
+			break;
+		case 16:
+			i = 15;
+			break;
+		case 17:
+			i = 16;
+			break;
+		case 18:
+			i = 17;
+			break;
+		case 19:
+			i = 18;
+			break;
+		case 20:
+			i = 19;
+			break;
+		case 21:
+			i = 20;
+			break;
+		case 22:
+			i = 21;
+			break;
+		case 23:
+			i = 22;
+			break;
+		case 24:
+			i = 23;
+			break;
+		case 25:
+			i = 24;
+			break;
+		default:
+			break;
 	}
-	if(l[0] == 0)
+	if(l[i] == 1)
+	{
+
+		nb = nb - 1;
+		if (nb == 0)
+		{
+			level = level+1;
+			change_level();
+		}
+	}
+	if(l[i] == 0)
 	{
 		lives = lives - 1;
-	}
-	if (nb == 0)
-	{
-		level = level+1;
-		change_level();
 	}
 	if (lives < 0)
 	{

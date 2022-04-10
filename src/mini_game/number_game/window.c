@@ -41,10 +41,13 @@ GtkWidget	*end_print;
 GtkWidget	*restart;
 
 // game
+GtkWidget	*background;
+GtkWidget	*level_print;
  
 int level = 1;
 int n;
 char str[128];
+char l_string[128];
 char n_string[128];
 guint event;
 int lives = 3;
@@ -93,8 +96,13 @@ int main(int argc, char *argv[]) {
 
     restart = GTK_WIDGET(gtk_builder_get_object(builder, "restart"));
 
+    background = GTK_WIDGET(gtk_builder_get_object(builder, "background"));
+    level_print = GTK_WIDGET(gtk_builder_get_object(builder, "level_print"));
+
 
 	gtk_widget_show(window);
+    gtk_widget_show(background);
+    gtk_widget_hide(level_print);
     gtk_widget_hide(response_entry);
     gtk_widget_hide(response_confirm);
     gtk_widget_hide(restart);
@@ -115,13 +123,16 @@ gboolean on_number()
 }
 
 void	on_start_button_clicked () {
+    gtk_widget_show(level_print);
+    sprintf(l_string,"CURRENT LEVEL : %d",level);
+    gtk_label_set_text (GTK_LABEL(level_print), (const gchar*) l_string);
     lives = 3;
 	gtk_widget_hide(start_button);
     n = generate_number(level);
     sprintf(str,"%d",n);
     gtk_label_set_text (GTK_LABEL(number_print), (const gchar*) str);
     gtk_widget_show(number_print);
-    event = g_timeout_add(5000, on_number, number_print);
+    event = g_timeout_add(3000, on_number, number_print);
 	}
 
 void	on_response_confirm_clicked () {
@@ -138,6 +149,7 @@ void	on_response_confirm_clicked () {
     {
         gtk_widget_hide(response_confirm);
         gtk_widget_hide(response_entry);
+        gtk_widget_hide(level_print);
         char end_level[128];
         sprintf(end_level,"YOU REACHED LEVEL : %d",level);
         gtk_label_set_text (GTK_LABEL(end_print), (const gchar*) end_level);
@@ -148,11 +160,13 @@ void	on_response_confirm_clicked () {
     {
         gtk_widget_hide(response_confirm);
         gtk_widget_hide(response_entry);
+        sprintf(l_string,"CURRENT LEVEL : %d",level);
+        gtk_label_set_text (GTK_LABEL(level_print), (const gchar*) l_string);
         n = generate_number(level);
         sprintf(str,"%d",n);
         gtk_label_set_text (GTK_LABEL(number_print), (const gchar*) str);
         gtk_widget_show(number_print);
-        event = g_timeout_add(8000, on_number, number_print);
+        event = g_timeout_add(3000, on_number, number_print); // 8 sec !!
     }
     gtk_editable_delete_text(GTK_EDITABLE(response_entry),0,-1);
 }
