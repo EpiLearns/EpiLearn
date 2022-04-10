@@ -2,22 +2,6 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkWindow">
-    <property name="name">org.epilearn.calculatrice</property>
-    <property name="width_request">875</property>
-    <property name="height_request">875</property>
-    <property name="can_focus">False</property>
-    <property name="resizable">False</property>
-    <child type="titlebar">
-      <placeholder/>
-    </child>
-    <child>
-      <object class="GtkFixed">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-      </object>
-    </child>
-  </object>
   <object class="GtkWindow" id="org.epilearn.about_us">
     <property name="width_request">875</property>
     <property name="height_request">825</property>
@@ -6892,12 +6876,15 @@ est nulle lorsque le mouvement est uniforme.
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">Question n° :</property>
+                        <property name="label" translatable="yes">Question n° 0 :</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#000000000000"/>
                         </attributes>
                       </object>
+                      <packing>
+                        <property name="y">100</property>
+                      </packing>
                     </child>
                     <child>
                       <object class="GtkLabel" id="statement1">
@@ -6905,10 +6892,10 @@ est nulle lorsque le mouvement est uniforme.
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">Statement: </property>
+                        <property name="label" translatable="yes">Combien vaut 2^n?</property>
                         <attributes>
-                          <attribute name="font-desc" value="Sans Bold 10"/>
-                          <attribute name="foreground" value="#000000000000"/>
+                          <attribute name="font-desc" value="Sans Bold 15"/>
+                          <attribute name="foreground" value="#4e4e9a9a0606"/>
                         </attributes>
                       </object>
                       <packing>
@@ -6932,11 +6919,13 @@ est nulle lorsque le mouvement est uniforme.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry">
+                      <object class="GtkEntry" id="reponse1">
                         <property name="width_request">0</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="max_length">5</property>
+                        <property name="input_purpose">number</property>
                       </object>
                       <packing>
                         <property name="x">250</property>
@@ -6966,7 +6955,6 @@ est nulle lorsque le mouvement est uniforme.
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">../20</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#000000000000"/>
@@ -7046,7 +7034,7 @@ est nulle lorsque le mouvement est uniforme.
       </object>
     </child>
   </object>
-  <object class="GtkWindow" id="org.epilearn.qcm.maths.nc">
+  <object class="GtkWindow" id="org.epilearn.qcm.maths.mt1">
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
@@ -7076,7 +7064,7 @@ est nulle lorsque le mouvement est uniforme.
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkLabel" id="question2">
+                      <object class="GtkLabel" id="q_mt1">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
@@ -7087,17 +7075,20 @@ est nulle lorsque le mouvement est uniforme.
                           <attribute name="foreground" value="#000000000000"/>
                         </attributes>
                       </object>
+                      <packing>
+                        <property name="y">100</property>
+                      </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkLabel" id="qe_mt1">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label">Statement: </property>
                         <attributes>
-                          <attribute name="font-desc" value="Sans Bold 10"/>
-                          <attribute name="foreground" value="#000000000000"/>
+                          <attribute name="font-desc" value="Sans Bold 15"/>
+                          <attribute name="foreground" value="#4e4e9a9a0606"/>
                         </attributes>
                       </object>
                       <packing>
@@ -7105,39 +7096,7 @@ est nulle lorsque le mouvement est uniforme.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="next2">
-                        <property name="label">gtk-media-next</property>
-                        <property name="width_request">125</property>
-                        <property name="height_request">40</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                      </object>
-                      <packing>
-                        <property name="x">565</property>
-                        <property name="y">75</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="prev2">
-                        <property name="label">gtk-media-previous</property>
-                        <property name="width_request">125</property>
-                        <property name="height_request">40</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                      </object>
-                      <packing>
-                        <property name="x">425</property>
-                        <property name="y">75</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="valide_mt1">
                         <property name="label">gtk-ok</property>
                         <property name="width_request">120</property>
                         <property name="height_request">40</property>
@@ -7148,7 +7107,7 @@ est nulle lorsque le mouvement est uniforme.
                         <property name="always_show_image">True</property>
                       </object>
                       <packing>
-                        <property name="x">425</property>
+                        <property name="x">525</property>
                         <property name="y">315</property>
                       </packing>
                     </child>
@@ -7169,18 +7128,6 @@ est nulle lorsque le mouvement est uniforme.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton">
-                        <property name="width_request">20</property>
-                        <property name="height_request">0</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                      </object>
-                      <packing>
-                        <property name="x">75</property>
-                        <property name="y">315</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkLabel">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
@@ -7193,19 +7140,64 @@ est nulle lorsque le mouvement est uniforme.
                         </attributes>
                       </object>
                       <packing>
-                        <property name="x">200</property>
+                        <property name="x">250</property>
                         <property name="y">290</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton">
-                        <property name="width_request">100</property>
+                      <object class="GtkEntry" id="im_mt1">
+                        <property name="width_request">0</property>
+                        <property name="height_request">0</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>
                       <packing>
-                        <property name="x">275</property>
+                        <property name="x">75</property>
                         <property name="y">315</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="re_mt1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                      </object>
+                      <packing>
+                        <property name="x">325</property>
+                        <property name="y">315</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Score</property>
+                        <attributes>
+                          <attribute name="font-desc" value="Sans Bold 15"/>
+                          <attribute name="foreground" value="#000000000000"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="x">400</property>
+                        <property name="y">25</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="score_mt1">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">0/0</property>
+                        <attributes>
+                          <attribute name="font-desc" value="Sans Bold 15"/>
+                          <attribute name="foreground" value="#000000000000"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="x">525</property>
+                        <property name="y">25</property>
                       </packing>
                     </child>
                   </object>
@@ -7242,7 +7234,7 @@ est nulle lorsque le mouvement est uniforme.
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="quit_qcm_mt1">
             <property name="label">gtk-go-back</property>
             <property name="width_request">120</property>
             <property name="height_request">50</property>

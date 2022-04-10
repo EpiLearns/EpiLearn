@@ -4,6 +4,9 @@
 #include <gtk/gtk.h>
 #include "gui.h"
 #include <stdlib.h>
+#include <string.h>
+
+#include "../property/mathamatics/complex_number/complex_number.h"
 
 GtkBuilder* builder;
 
@@ -156,6 +159,9 @@ GtkButton* pt1;
 GtkWindow* qcmarchi;
 
 GtkButton* quit_qcm_a;
+
+GtkWindow* qcmmt1;
+GtkButton* quit_qcm_mt1;
 
 void enter_main()
 {
@@ -505,31 +511,155 @@ void close_phy_1_2()
     gtk_widget_show(GTK_WIDGET(phyWindow));
 }
 
-GtkButton* valid_1;
+GtkButton* valide_1;
 GtkWidget* score_a;
 GtkWidget* question1;
 GtkWidget* statement1;
+GtkWidget* reponse1;
 
-void enter_ct1(User* user)
+void enter_ct1()
 {
-    user->num_of_question = 0;
-    user->score = 0;
     gtk_widget_hide(GTK_WIDGET(mainWindow));
     gtk_widget_show(GTK_WIDGET(qcmarchi));
 }
 
-void close_ct1(User* user)
-{
+void close_ct1()
+{   
     gtk_widget_hide(GTK_WIDGET(qcmarchi));
     gtk_widget_show(GTK_WIDGET(mainWindow));
 }
 
-void next_question(User* user)
+void enter_question_ct1(User* client)
 {
-    user->num_of_question += 1;
+    client->num_of_question += 1;
 
-    gtk_label_set_text(GTK_LABEL(question1),(const gchar*) "Question n° 1");
-    gtk_label_set_text(GTK_LABEL(score_a),(const gchar*) "0/20");
+    char question [100];
+    char state[256];
+    char note[32];
+
+    char rep[8];
+
+    sprintf(rep,"%s",gtk_entry_get_text(GTK_ENTRY(reponse1)));
+    gtk_entry_set_text(GTK_ENTRY(reponse1),"");
+    
+    if (strlen(rep) != 0)
+    {   
+        if (strcmp(rep,client->answer) == 0)
+        {
+            client->score += 1;
+        }
+    }
+
+    int n = rand()%17;
+
+    sprintf(question,"Question n° %i :",client->num_of_question);
+    sprintf(state,"Combien fait 2^%i ?",n);
+    sprintf(note,"%i/%i",client->score,client->num_of_question-1);
+
+    gtk_label_set_text(GTK_LABEL(question1),(const gchar*) question);
+
+    gtk_label_set_text(GTK_LABEL(statement1),(const gchar*) state);
+
+    gtk_label_set_text(GTK_LABEL(score_a),(const gchar*) note);
+    
+    sprintf(client->answer,"%i",1<<n);
+}
+
+GtkButton* valide_mt1;
+GtkWidget* score_mt1;
+GtkWidget* q_mt1;
+GtkWidget* qe_mt1;
+GtkWidget* im_mt1;
+GtkWidget* re_mt1;
+
+void enter_mt1()
+{
+    gtk_widget_hide(GTK_WIDGET(mainWindow));
+    gtk_widget_show(GTK_WIDGET(qcmmt1));
+}
+
+void close_mt1()
+{   
+    gtk_widget_hide(GTK_WIDGET(qcmmt1));
+    gtk_widget_show(GTK_WIDGET(mainWindow));
+}
+
+void enter_question_mt1(User* client)
+{
+    client->qmt1 += 1;
+    char question[100];
+    char state[256];
+    char note[32];
+
+    char rep_im[8];
+    char rep_re[8];
+
+    sprintf(rep_im,"%s",gtk_entry_get_text(GTK_ENTRY(im_mt1)));
+    sprintf(rep_re,"%s",gtk_entry_get_text(GTK_ENTRY(re_mt1)));
+
+    gtk_entry_set_text(GTK_ENTRY(im_mt1),"");
+    gtk_entry_set_text(GTK_ENTRY(re_mt1),"");
+    
+    if (strlen(rep_im) != 0 && strlen(rep_re) != 0)
+    {   
+        if (strcmp(rep_im,client->answer_im) == 0 && strcmp(rep_re,client->answer_re) == 0)
+        {
+            client->scoremt1 += 1;
+        }
+    }
+
+    int n = rand()%3;
+
+    //generate complex number
+    client->a = random_comp(); 
+    client->b = random_comp();
+
+    Complex* rep; 
+
+    if (n == 0)
+    {
+        sprintf(state,"Soit Z1 = %i i + %i et Z2 = %i i + %i que vaut Z1 + Z2 ?",(int) client->a->Im,(int) client->a->Re,(int) client->b->Im,(int)client->b->Re);
+        rep = comp_plus(client->a,client->b);
+    }
+
+    if (n == 1)
+    {
+        sprintf(state,"Soit Z1 = %i i + %i et Z2 = %i i + %i que vaut Z1 - Z2 ?",(int) client->a->Im,(int) client->a->Re,(int) client->b->Im,(int)client->b->Re);
+        rep = comp_minus(client->a,client->b);
+    }
+
+    else
+    {
+        sprintf(state,"Soit Z1 = %i i + %i et Z2 = %i i + %i que vaut Z1 * Z2 ?",(int) client->a->Im,(int) client->a->Re,(int) client->b->Im,(int)client->b->Re);
+        rep = comp_mult(client->a,client->b);
+    }
+
+    sprintf(question,"Question n° %i :",client->qmt1);
+    sprintf(note,"%i/%i",client->scoremt1,client->qmt1-1);
+
+    gtk_label_set_text(GTK_LABEL(q_mt1),(const gchar*) question);
+
+    gtk_label_set_text(GTK_LABEL(qe_mt1),(const gchar*) state);
+
+    gtk_label_set_text(GTK_LABEL(score_mt1),(const gchar*) note);
+    
+    sprintf(client->answer_im,"%i",(int)rep->Im);
+    sprintf(client->answer_re,"%i",(int)rep->Re);
+}
+
+void init_qcm()
+{
+    gtk_label_set_text(GTK_LABEL(question1),(const gchar*) "Cliquez sur le button valider pour commencer l'épreuve");
+
+    gtk_label_set_text(GTK_LABEL(statement1),(const gchar*) "Les questions seront afficher ici");
+
+    gtk_label_set_text(GTK_LABEL(score_a),(const gchar*) "0/0");
+
+    gtk_label_set_text(GTK_LABEL(q_mt1),(const gchar*) "Cliquez sur le button valider pour commencer l'épreuve");
+
+    gtk_label_set_text(GTK_LABEL(qe_mt1),(const gchar*) "Les questions seront afficher ici");
+
+    gtk_label_set_text(GTK_LABEL(score_mt1),(const gchar*) "0/0");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -550,8 +680,14 @@ GtkBuilder *init_gui()
         return NULL;
     }
 
-    User* user = calloc(1,sizeof(User));
-    
+    User* client = calloc(1,sizeof(User));
+
+    if (!client)
+
+    {
+        return NULL;
+    }
+
     // Gets the widgets.
     mainWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.main"));
     loginWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.login"));
@@ -668,12 +804,23 @@ GtkBuilder *init_gui()
     qcmarchi = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi"));
     quit_qcm_a = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_a"));
 
+    qcmmt1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.maths.mt1"));
+    quit_qcm_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_mt1"));
+    valide_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_mt1"));
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    valid_1 = GTK_BUTTON(gtk_builder_get_object(builder, "valid_1"));
+    valide_1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_1"));
     score_a = GTK_WIDGET(gtk_builder_get_object(builder, "score_a"));
-    question1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_1"));
-    statement1 = GTK_WIDGET(gtk_builder_get_object(builder, "statement_1"));
+    question1 = GTK_WIDGET(gtk_builder_get_object(builder, "question1"));
+    statement1 = GTK_WIDGET(gtk_builder_get_object(builder, "statement1"));
+    reponse1 = GTK_WIDGET(gtk_builder_get_object(builder, "reponse1"));
+
+    score_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "score_mt1"));
+    q_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "q_mt1"));
+    qe_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "qe_mt1"));
+    im_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "im_mt1"));
+    re_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "re_mt1"));
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -697,6 +844,24 @@ GtkBuilder *init_gui()
     back_mcq = GTK_BUTTON(gtk_builder_get_object(builder,"quit mcq"));
 
     close_about_us = GTK_BUTTON(gtk_builder_get_object(builder,"close about us"));
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    init_qcm();
+
+    g_signal_connect(ct1,"clicked",G_CALLBACK(enter_ct1),NULL);
+    g_signal_connect(quit_qcm_a,"clicked",G_CALLBACK(close_ct1),NULL);
+
+    g_signal_connect(valide_1,"clicked",G_CALLBACK(enter_question_ct1),client);
+
+
+    g_signal_connect(mt1,"clicked",G_CALLBACK(enter_mt1),NULL);
+    g_signal_connect(quit_qcm_mt1,"clicked",G_CALLBACK(close_mt1),NULL);
+
+    g_signal_connect(valide_mt1,"clicked",G_CALLBACK(enter_question_mt1),client);
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     // Connects event handlers.
     g_signal_connect(mainWindow, "destroy", G_CALLBACK(gtk_main_quit), NULL);
@@ -785,16 +950,9 @@ GtkBuilder *init_gui()
     g_signal_connect(quit_phy_1_1,"clicked",G_CALLBACK(close_phy_1_1),NULL);
 
     g_signal_connect(phy_1_2,"clicked",G_CALLBACK(enter_phy_1_2),NULL);
-    g_signal_connect(quit_phy_1_2,"clicked",G_CALLBACK(close_phy_1_2),NULL);
+    g_signal_connect(quit_phy_1_2,"clicked",G_CALLBACK(close_phy_1_2),NULL);    
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    g_signal_connect(ct1,"clicked",G_CALLBACK(enter_ct1),user);
-    g_signal_connect(quit_qcm_a,"clicked",G_CALLBACK(close_ct1),user);
-
-    g_signal_connect(valid_1,"clicked",G_CALLBACK(next_question),user);
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Run the main window.
     gtk_main();
