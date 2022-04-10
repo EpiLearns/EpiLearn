@@ -1,188 +1,302 @@
-
-   
+#include <gtk/gtk.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "calculator.h"
+#include <string.h>
+#include "node.h"
+#include "parser.h"
+#include <math.h>
 
-int findpivot(const char* chain,int size)
-{
-    int i,nbparent,res;
-    nbparent = 0;
-    res = -1;
-    for(i=0;i<size;i++)
-    {
-        if (chain[i]=='(')
-            nbparent++;
-        if (chain[i]==')')
-            nbparent--;
-        if (nbparent==0)
-        {
-            if (chain[i]=='+' || chain[i]=='-')
-                return i;
-            if (chain[i]=='*' || chain[i]=='/' || chain[i] == '^' || chain[i] == '.')
-                res = i;
-                
-                
-        }
-                
-        
-    }
-    return res;
-}
+GtkBuilder *builder;
+GtkWidget *entrycalculator;
+GtkWidget *labelcalculator;
+char* expressioncalculator = "";
 
-int sign(const char* chain,int size)
+const char* f(char *expression)
 {
-    int i,nbparent,res;
-    nbparent = 0;
-    res = -1;
-    for(i=0;i<size;i++)
-    {
-        if (chain[i]=='(')
-            nbparent++;
-        if (chain[i]==')')
-            nbparent--;
-        if (nbparent==0)
-        {
-            if (chain[i]=='+' || chain[i]=='-' || chain[i]=='*' || chain[i]=='/')
-                return i;
-        }
-    }
+    node* head;
+    double result;
     
-    return nbparent;
-}
-
-
-int power(int a, int b)
-{
-    int res = a; 
-    switch(b)
-    { 
-        case 1:
-            return a;
-        case 0:
-            return res;
-        default:
-            break;
-    }
-    while (b > 1)
+    int syntax = checkSyntax(expression);
+    if (syntax)
     {
-        res = res*a;
-        b--;
-        
+        head = parseExpression(expression);
+        result = evaluate(head);
+        printf("%f\n", result);
     }
-    return res;
+    const char *s = malloc(sizeof(double));
+    sprintf((char*)s,"%.2f",result);
+    return s;
 }
 
-double calculR(const char* chain,int size)
+void on_button_enter_calculator(GtkWidget *e, gpointer user_data)
 {
-    int pos;
-    double op1,op2;
-    int j = 0;
-    if (chain[0]=='(' && chain[size-1]==')' && sign(chain, size) == 0 )
-        { 
-           
-            return calculR(chain+1,size-2);
-        }
-                        
-    pos = findpivot(chain,size);
-    if (pos==-1)
-    { 
-        
-        return atoi(chain);
-    }
-    op1 = calculR(chain,pos);
-    op2 = calculR(chain+pos+1,size-pos-1);
-    switch(chain[pos])
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    gtk_label_set_text(GTK_LABEL(labelcalculator), f(expressioncalculator));
+    
+
+}
+
+void on_button_clear_calculator(GtkWidget *e, gpointer user_data)
+{
+    expressioncalculator = NULL;
+    const char *entryvalue = "";
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator), entryvalue);
+    g_print("expression when button2 = %s\n", expressioncalculator);
+}
+
+void on_button_po(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "(");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_pc(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, ")");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_star(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "^");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_number9(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "9");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+void on_button_number8(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "8");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_number7(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "7");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_number6(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "6");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_number5(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "5");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_number4(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "4");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+void on_button_number3(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "3");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+void on_button_number2(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "2");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+void on_button_number1(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "1");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_number0(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "0");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_dot(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, ".");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_equal(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "=");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_calculatorplus(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "+");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_calculatorminus(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "-");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_calculatorproduct(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "*");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_calculatorslash(GtkWidget *e, gpointer user_data)
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "/");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+int main(int argc, char **argv)
+{
+    GtkWidget *windowcalculator;
+    GtkWidget *buttonentercalculator;
+    GtkWidget *buttonclearcalculator;
+    GtkWidget *buttonpo;
+    GtkWidget *buttonpc;
+    GtkWidget *buttonstar;
+    GtkWidget *buttonnumber9;
+    GtkWidget *buttonnumber8;
+    GtkWidget *buttonnumber7;
+    GtkWidget *buttonnumber6;
+    GtkWidget *buttonnumber5;
+    GtkWidget *buttonnumber4;
+    GtkWidget *buttonnumber3;
+    GtkWidget *buttonnumber2;
+    GtkWidget *buttonnumber1;
+    GtkWidget *buttonnumber0;
+    GtkWidget *buttondot;
+    GtkWidget *buttonequal;
+    GtkWidget *buttoncalculatorplus;
+    GtkWidget *buttoncalculatorminus;
+    GtkWidget *buttoncalculatorproduct;
+    GtkWidget *buttoncalculatorslash;
+
+    gtk_init (&argc, &argv);
     {
-    case '.':
-        while( (int)op2%10 != 0)
-        {
-            (op2 = op2/10);
-        }
-        return op1+ (op2);        
-    case '+':
+        builder = gtk_builder_new_from_file("calculator.glade");
+        windowcalculator = GTK_WIDGET(gtk_builder_get_object(builder,"windowcalculator"));
+        gtk_builder_connect_signals(builder, NULL);
+
+        entrycalculator = GTK_WIDGET(gtk_builder_get_object(builder,"entrycalculator"));
+        labelcalculator = GTK_WIDGET(gtk_builder_get_object(builder,"labelcalculator"));
+        buttonentercalculator = GTK_WIDGET(gtk_builder_get_object(builder,"buttonentercalculator"));
+        buttonclearcalculator = GTK_WIDGET(gtk_builder_get_object(builder,"buttonclearcalculator"));
+        buttonpo = GTK_WIDGET(gtk_builder_get_object(builder,"button("));
+        buttonpc = GTK_WIDGET(gtk_builder_get_object(builder,"button)"));
+        buttonstar = GTK_WIDGET(gtk_builder_get_object(builder,"button^"));
+        buttonnumber9 = GTK_WIDGET(gtk_builder_get_object(builder,"buttonnumber9"));
+        buttonnumber8 = GTK_WIDGET(gtk_builder_get_object(builder,"buttonnumber8"));
+        buttonnumber7 = GTK_WIDGET(gtk_builder_get_object(builder,"buttonnumber7"));
+        buttonnumber6 = GTK_WIDGET(gtk_builder_get_object(builder,"buttonnumber6"));
+        buttonnumber5 = GTK_WIDGET(gtk_builder_get_object(builder,"buttonnumber5"));
+        buttonnumber4 = GTK_WIDGET(gtk_builder_get_object(builder,"buttonnumber4"));
+        buttonnumber3 = GTK_WIDGET(gtk_builder_get_object(builder,"buttonnumber3"));
+        buttonnumber2 = GTK_WIDGET(gtk_builder_get_object(builder,"buttonnumber2"));
+        buttonnumber1 = GTK_WIDGET(gtk_builder_get_object(builder,"buttonnumber1"));
+        buttonnumber0 = GTK_WIDGET(gtk_builder_get_object(builder,"buttonnumber0"));
+        buttondot = GTK_WIDGET(gtk_builder_get_object(builder,"button."));
+        buttonequal = GTK_WIDGET(gtk_builder_get_object(builder,"button="));
+        buttoncalculatorplus = GTK_WIDGET(gtk_builder_get_object(builder,"button+"));
+        buttoncalculatorminus = GTK_WIDGET(gtk_builder_get_object(builder,"button-"));
+        buttoncalculatorproduct = GTK_WIDGET(gtk_builder_get_object(builder,"button*;"));
+        buttoncalculatorslash = GTK_WIDGET(gtk_builder_get_object(builder,"button/"));
+
+        
     
-        return op1+op2;
-    case '-':
+
+        gtk_widget_show_all(windowcalculator);
+        gtk_main();
+        return 0;
+
         
-        return op1-op2;
-    case '*':
-        
-        return op1*op2;
-    case '/':
-        
-        return op1/op2;
-    case '^':
-        
-        return power(op1,op2);
-    default:
-        break;
     }
-    assert(0);
-    return 0;
+
+
+
 }
- 
-double calcul(const char* chain)
-{
-    return calculR(chain,strlen(chain));
-}
- 
-
-void decimal(int d, double res)
-{
-    switch (d)
-    {
-    case 1:
-        printf("%.2g\n", res);
-        break;
-    case 2:
-        printf("%.3g\n", res);
-        break;
-    case 3:
-        printf("%.4g\n", res);
-        break;
-    case 4:
-        printf("%.5g\n", res);
-        break;
-    case 5:
-        printf("%.6g\n", res);
-        break;
-    case 6:
-        printf("%.7g\n", res);
-        break;
-    case 7:
-        printf("%.8g\n", res);
-        break;
-    case 8:
-        printf("%.9g\n", res);
-        break;
-    case 9:
-        printf("%.10g\n", res);
-        break;
-    default:
-        printf("%.1g\n", res);
-        break;
-    }
-}
-
-int main()
-{    
-    const char* chain = " ";
-
-    char operation[20] = {0};
-    int d = 0;
-
-    printf("how many digits after the decimal point ? \n");
-    scanf("%i", &d);
-
-    printf("Please enter an operation \n");
-    scanf("%s",operation);
-    
-    chain = operation;
-    
-    double res = calcul(chain);
-    
-    decimal(d,res);
-    return 0;
-}
-
