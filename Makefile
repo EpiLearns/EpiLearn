@@ -5,7 +5,7 @@ OBJ_DIR = $(BUILD_DIR)/obj
 CC = gcc
 
 CFLAGS = -Wall -Wextra `pkg-config --cflags gtk+-3.0`
-LDFLAGS = `pkg-config --libs gtk+-3.0` -rdynamic
+LDFLAGS = `pkg-config --libs gtk+-3.0` -rdynamic -lm
 
 
 
@@ -19,11 +19,14 @@ EpiLearn: src/EpiLearn.c src/gui/gui.c src/property/mathamatics/complex_number/c
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$@ $^ $(LDFLAGS)
 
 
-calculator: $(OBJ_DIR)/calculator/calculator.o
-	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
+calculator: src/calculator/calculator.c  src/calculator/node.c  src/calculator/parser.c
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$@ $^ $(LDFLAGS)
 
-sort: $(OBJ_DIR)/sortingAlgorithm/question_sort.o
-	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
+graph: src/graph/graph.c  src/graph/node.c  src/graph/parser.c
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$@ $^ $(LDFLAGS)
+
+sort: src/sortingAlgorithm/question_sort.c
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$@ $^ $(LDFLAGS)
 
 grid: $(OBJ_DIR)/mini_game/grid_game/window.o #$(OBJ_DIR)/mini_game/grid_game/script.o
 	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
