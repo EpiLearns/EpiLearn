@@ -61,7 +61,6 @@ on_draw (GtkWidget *widget, cairo_t *cr, gpointer user_data)
             &da.y,
             &da.width,
             &da.height);
-
     */
     cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
     cairo_paint (cr);
@@ -144,7 +143,6 @@ int main (int argc, char **argv)
     
     GtkWidget *window;
     GtkWidget *da;
-    GtkWidget *label1;
     GtkWidget *button1;
     GtkWidget *button2;
     GtkWidget *plusbutton;
@@ -155,7 +153,7 @@ int main (int argc, char **argv)
     
     gtk_init (&argc, &argv);
 
-    builder = gtk_builder_new_from_file("graph.glade");
+    builder = gtk_builder_new_from_file("../src/graph/graph.glade");
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
 
     gtk_builder_connect_signals(builder, NULL);
@@ -166,7 +164,6 @@ int main (int argc, char **argv)
     plusbutton = GTK_WIDGET(gtk_builder_get_object(builder, "plusbutton"));
     minusbutton = GTK_WIDGET(gtk_builder_get_object(builder, "minusbutton"));
     quitbutton = GTK_WIDGET(gtk_builder_get_object(builder, "quitbutton"));
-    label1 = GTK_WIDGET(gtk_builder_get_object(builder,"label1"));
     da = GTK_WIDGET(gtk_builder_get_object(builder, "da"));
 
 
@@ -184,7 +181,3 @@ int main (int argc, char **argv)
 
     return 0;
 }
-
-
-
-

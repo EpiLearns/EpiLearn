@@ -22,25 +22,8 @@ void bubble_sorting(struct question T[], int N)
     }      
 }
 
-int compare(char *a, char *b)
-{
-    int i = 0;
-    int res =0;
-    while (a[i] != 0)
-    {
-        if(a[i] != b[i])
-        {
-            return 1;
-        }
-        if (a[i] == 0 && b[i] != 0)
-            return 1;
-        i++;
-    }
-}
-
 int answer(struct question T[], char *a[], size_t len)
 {
-    int i =0;
     int res = 0;
     
     for (size_t i = 0; i< len; i++)
@@ -48,7 +31,7 @@ int answer(struct question T[], char *a[], size_t len)
         int tmp = 0;
         //printf("T[%li].answer = %s\n", i, T[i].answer);
         //printf("&a[%li] = %s\n", i, a[i]);
-        tmp = compare(T[i].answer, a[i]);
+        tmp = strcmp(T[i].answer,a[i]);//compare(T[i].answer, a[i]);
         if (tmp == 1)
         {
             res = tmp;
@@ -64,7 +47,7 @@ int answer(struct question T[], char *a[], size_t len)
 
 size_t count(struct question T[], int d, size_t len)
 {
-    int i = 0;
+    size_t i = 0;
     size_t count = 0;
     while (i < len &&T[i].difficulty <=  d)
     {
@@ -80,7 +63,7 @@ size_t count(struct question T[], int d, size_t len)
     return count;
 }
 
-struct question give(struct question T[], int difficulty, size_t len, size_t count, struct question res[])
+struct question give(struct question T[], int difficulty, size_t len, struct question res[])
 {
     size_t i = 0;
     size_t j = 0;
@@ -97,18 +80,18 @@ struct question give(struct question T[], int difficulty, size_t len, size_t cou
     return *res;
 }
 
-int launch(struct question q[], int lvl, size_t len)
+int launch(struct question q[], int lvl)
 {
     bubble_sorting(q,7);
     size_t c = count(q,lvl,7);
     char *rep[7];
     struct question *res = calloc(c, sizeof(question));
-    give(q,lvl,7,c,res);
-    for (int i = 0; i < c; i++)
+    give(q,lvl,7,res);
+    for (size_t i = 0; i < c; i++)
     {   
         //char *a = calloc(10,sizeof(char));
         char *a = malloc(sizeof(char*));
-        printf("res[%i] = %s\n", i, res[i].question);
+        printf("res[%li] = %s\n", i, res[i].question);
         scanf("%s", a);
         //printf("%s\n", a);
         rep[i] = a;
@@ -168,7 +151,6 @@ int main()
     
 
     printf("your level : %i\n", thomas.level);
-    size_t len = 7;
     /*
     bubble_sorting(q, 7);
     
@@ -215,13 +197,13 @@ int main()
     */
     while(continu == 0)
     {
-        thomas.level = launch(q,thomas.level,len);
+        thomas.level = launch(q,thomas.level);
         printf("your level : %i\n", thomas.level);
         printf("Would you continue? Yes \n");
         char *a = malloc(sizeof(char));
         scanf("%s",a);
 
-        if(compare(a,"Yes") != 0)
+        if(strcmp(a,"Yes") != 0)
         {
             continu = 1;
         }
