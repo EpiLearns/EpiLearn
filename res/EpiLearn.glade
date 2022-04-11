@@ -6871,12 +6871,12 @@ est nulle lorsque le mouvement est uniforme.
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkLabel" id="question1">
+                      <object class="GtkLabel">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Question n° 0 :</property>
+                        <property name="label" translatable="yes">Question :</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#000000000000"/>
@@ -6950,36 +6950,18 @@ est nulle lorsque le mouvement est uniforme.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="score_a">
+                      <object class="GtkLabel" id="rep_ct1">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
-                          <attribute name="foreground" value="#000000000000"/>
+                          <attribute name="foreground" value="#a4a400000000"/>
                         </attributes>
                       </object>
                       <packing>
-                        <property name="x">525</property>
-                        <property name="y">25</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Score</property>
-                        <attributes>
-                          <attribute name="font-desc" value="Sans Bold 15"/>
-                          <attribute name="foreground" value="#000000000000"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="x">400</property>
-                        <property name="y">25</property>
+                        <property name="y">405</property>
                       </packing>
                     </child>
                   </object>
@@ -7064,12 +7046,12 @@ est nulle lorsque le mouvement est uniforme.
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkLabel" id="q_mt1">
+                      <object class="GtkLabel">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">Question n° :</property>
+                        <property name="label">Question :</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#000000000000"/>
@@ -7167,37 +7149,18 @@ est nulle lorsque le mouvement est uniforme.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkLabel" id="rep_mt1">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Score</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
-                          <attribute name="foreground" value="#000000000000"/>
+                          <attribute name="foreground" value="#a4a400000000"/>
                         </attributes>
                       </object>
                       <packing>
-                        <property name="x">400</property>
-                        <property name="y">25</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="score_mt1">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">0/0</property>
-                        <attributes>
-                          <attribute name="font-desc" value="Sans Bold 15"/>
-                          <attribute name="foreground" value="#000000000000"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="x">525</property>
-                        <property name="y">25</property>
+                        <property name="y">405</property>
                       </packing>
                     </child>
                   </object>
