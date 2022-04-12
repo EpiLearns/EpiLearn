@@ -11,24 +11,38 @@ GtkWidget *entrycalculator;
 GtkWidget *labelcalculator;
 char* expressioncalculator = "";
 
+char* suppression(const char *string)
+{
+    
+    size_t len = strlen(string);
+    if (len == 0)
+    {
+        return "";
+    }
+    char *res = calloc(len-1,sizeof(char));
+    for(size_t i = 0; i < len-1; i++)
+    {
+        res[i] = string[i];
+    }
+    return res;
+}
 const char* f(char *expression)
 {
     node* head;
     double result;
-    
+
     int syntax = checkSyntax(expression);
     if (syntax)
     {
         head = parseExpression(expression);
         result = evaluate(head);
-        printf("%f\n", result);
     }
     const char *s = malloc(sizeof(double));
     sprintf((char*)s,"%.2f",result);
     return s;
 }
 
-void on_button_enter_calculator()//GtkWidget *e, gpointer user_data)
+void on_button_enter_calculator()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -38,15 +52,14 @@ void on_button_enter_calculator()//GtkWidget *e, gpointer user_data)
 
 }
 
-void on_button_clear_calculator()//GtkWidget *e, gpointer user_data)
+void on_button_clear_calculator()
 {
     expressioncalculator = NULL;
     const char *entryvalue = "";
     gtk_entry_set_text(GTK_ENTRY(entrycalculator), entryvalue);
-    g_print("expression when button2 = %s\n", expressioncalculator);
 }
 
-void on_button_po()//GtkWidget *e, gpointer user_data)
+void on_button_po()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -56,7 +69,7 @@ void on_button_po()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_pc()//GtkWidget *e, gpointer user_data)
+void on_button_pc()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -66,7 +79,7 @@ void on_button_pc()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_star()//GtkWidget *e, gpointer user_data)
+void on_button_star()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -76,7 +89,7 @@ void on_button_star()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_number9()//GtkWidget *e, gpointer user_data)
+void on_button_number9()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -85,7 +98,7 @@ void on_button_number9()//GtkWidget *e, gpointer user_data)
    
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
-void on_button_number8()//GtkWidget *e, gpointer user_data)
+void on_button_number8()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -95,7 +108,7 @@ void on_button_number8()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_number7()//GtkWidget *e, gpointer user_data)
+void on_button_number7()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -105,7 +118,7 @@ void on_button_number7()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_number6()//GtkWidget *e, gpointer user_data)
+void on_button_number6()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -115,7 +128,7 @@ void on_button_number6()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_number5()//GtkWidget *e, gpointer user_data)
+void on_button_number5()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -125,7 +138,7 @@ void on_button_number5()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_number4()//GtkWidget *e, gpointer user_data)
+void on_button_number4()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -134,7 +147,7 @@ void on_button_number4()//GtkWidget *e, gpointer user_data)
    
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
-void on_button_number3()//GtkWidget *e, gpointer user_data)
+void on_button_number3()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -143,7 +156,7 @@ void on_button_number3()//GtkWidget *e, gpointer user_data)
    
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
-void on_button_number2()//GtkWidget *e, gpointer user_data)
+void on_button_number2()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -152,7 +165,7 @@ void on_button_number2()//GtkWidget *e, gpointer user_data)
    
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
-void on_button_number1()//GtkWidget *e, gpointer user_data)
+void on_button_number1()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -162,7 +175,7 @@ void on_button_number1()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_number0()//GtkWidget *e, gpointer user_data)
+void on_button_number0()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -172,7 +185,7 @@ void on_button_number0()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_dot()//GtkWidget *e, gpointer user_data)
+void on_button_dot()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -182,7 +195,7 @@ void on_button_dot()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_equal()//GtkWidget *e, gpointer user_data)
+void on_button_equal()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -192,7 +205,7 @@ void on_button_equal()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_calculatorplus()//GtkWidget *e, gpointer user_data)
+void on_button_calculatorplus()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -202,7 +215,7 @@ void on_button_calculatorplus()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_calculatorminus()//GtkWidget *e, gpointer user_data)
+void on_button_calculatorminus()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -212,7 +225,7 @@ void on_button_calculatorminus()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_calculatorproduct()//GtkWidget *e, gpointer user_data)
+void on_button_calculatorproduct()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -222,7 +235,7 @@ void on_button_calculatorproduct()//GtkWidget *e, gpointer user_data)
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
 
-void on_button_calculatorslash()//GtkWidget *e, gpointer user_data)
+void on_button_calculatorslash()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
@@ -230,6 +243,14 @@ void on_button_calculatorslash()//GtkWidget *e, gpointer user_data)
     expressioncalculator = strcat(expressioncalculator, "/");
    
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_calculatorsuppr()
+{
+    const char* entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = suppression(entryvalue);
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator), expressioncalculator); 
 }
 
 int main(int argc, char **argv)
