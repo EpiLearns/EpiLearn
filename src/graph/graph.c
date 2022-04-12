@@ -43,12 +43,12 @@ double f (double x)
 
 
 static gboolean
-on_draw (GtkWidget *widget, cairo_t *cr, gpointer user_data)
+on_draw (GtkWidget *widget, cairo_t *cr/*, gpointer user_data*/)
 {
     GdkRectangle da;            /* GtkDrawingArea size */
     double dx = 5.0, dy = 5.0; /* Pixels between each point */
     double i, clip_x1 = 0.0, clip_y1 = 0.0, clip_x2 = 0.0, clip_y2 = 0.0;
-    GtkDrawingArea *window = user_data;
+    GtkDrawingArea *window = GTK_DRAWING_AREA(widget);//user_data;
 
     /* Determine GtkDrawingArea dimensions */
     da.x = 0;
@@ -101,7 +101,7 @@ on_draw (GtkWidget *widget, cairo_t *cr, gpointer user_data)
     return FALSE;
 }
 
-void on_button2_clicked(GtkWidget *e, gpointer user_data)
+void on_button2_clicked(/*GtkWidget *e, gpointer user_data*/)
 {
     /*function that clear the entry text and sets the expression to NULL*/
     expression = NULL;
@@ -113,7 +113,7 @@ void on_button2_clicked(GtkWidget *e, gpointer user_data)
 }
 
 
-void on_button1_clicked(GtkButton *e, gpointer user_data)
+void on_button1_clicked(/*GtkButton *e, gpointer user_data*/)
 {
     /*function that retrieves the input*/
     const char *entry_value; 
@@ -121,19 +121,19 @@ void on_button1_clicked(GtkButton *e, gpointer user_data)
     expression = strdup(entry_value);
 }
 
-void on_plusbutton_clicked(GtkButton *e, gpointer user_data)
+void on_plusbutton_clicked(/*GtkButton *e, gpointer user_data*/)
 {
     ZOOM_X = ZOOM_X + (double)10;
     ZOOM_Y = ZOOM_Y + (double)10;
 }
 
-void on_minusbutton_clicked(GtkButton *e, gpointer user_data)
+void on_minusbutton_clicked(/*GtkButton *e, gpointer user_data*/)
 {
     ZOOM_X = ZOOM_X -(double)10;
     ZOOM_Y = ZOOM_Y - (double)10;
 }
 
-void on_quitbutton_clicked(GtkButton *e, gpointer user_data)
+void on_quitbutton_clicked(/*GtkButton *e,*/ gpointer user_data)
 {
     gtk_window_close(GTK_WINDOW(user_data));
 }
@@ -144,7 +144,6 @@ int main (int argc, char **argv)
     GtkWidget *window;
     GtkWidget *da;
     GtkWidget *button1;
-    GtkWidget *button2;
     GtkWidget *plusbutton;
     GtkWidget *minusbutton;
     GtkWidget *quitbutton;
@@ -160,7 +159,6 @@ int main (int argc, char **argv)
     entry1 = GTK_WIDGET(gtk_builder_get_object(builder, "entry1"));
     
     button1 = GTK_WIDGET(gtk_builder_get_object(builder, "button1"));
-    button2 = GTK_WIDGET(gtk_builder_get_object(builder, "button2"));
     plusbutton = GTK_WIDGET(gtk_builder_get_object(builder, "plusbutton"));
     minusbutton = GTK_WIDGET(gtk_builder_get_object(builder, "minusbutton"));
     quitbutton = GTK_WIDGET(gtk_builder_get_object(builder, "quitbutton"));
@@ -170,7 +168,6 @@ int main (int argc, char **argv)
     gtk_window_set_title (GTK_WINDOW (window), "Graph drawing");
     g_signal_connect (G_OBJECT (window), "destroy", gtk_main_quit, NULL);
     g_signal_connect(G_OBJECT(button1), "clicked", G_CALLBACK(on_button1_clicked),NULL);
-    g_signal_connect(G_OBJECT(button2), "clicked", G_CALLBACK(on_button2_clicked),NULL);
     g_signal_connect(G_OBJECT(plusbutton), "clicked", G_CALLBACK(on_plusbutton_clicked),NULL);
     g_signal_connect(G_OBJECT(minusbutton), "clicked", G_CALLBACK(on_minusbutton_clicked),NULL);
     g_signal_connect(G_OBJECT(quitbutton), "clicked", G_CALLBACK(on_quitbutton_clicked), window);
