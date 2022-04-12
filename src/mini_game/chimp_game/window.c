@@ -9,7 +9,7 @@
 #include <ctype.h>
 #include <glib/gprintf.h>
 
-// gcc -Wno-format -o window window.c script.c -Wno-deprecated-declarations -rdynamic -Wno-format-security -lm `pkg-config --cflags --libs gtk+-3.0`
+// gcc -Wno-format -o window window.c -Wno-deprecated-declarations -rdynamic -Wno-format-security -lm `pkg-config --cflags --libs gtk+-3.0`
 // export DISPLAY=0:0 
 
 // Make them global
@@ -590,7 +590,7 @@ void change_level()
 void	on_start_button_clicked () {
 	gtk_widget_hide(start_button);
 	gtk_widget_show(level_print);
-	level = 3;
+	level = 8;
 	current = 0;
 	change_level(level);
 	}
