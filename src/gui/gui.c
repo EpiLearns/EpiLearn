@@ -20,7 +20,6 @@ GtkWindow* elecWindow;
 GtkWindow* archiWindow;
 GtkWindow* profileWindow;
 GtkWindow* aboutUsWindow;
-GtkWindow* mcqWindow;
 
 GtkButton* login;
 
@@ -168,6 +167,10 @@ GtkWindow* qcmarchi2;
 
 GtkButton* quit_qcm_a1;
 
+
+GtkWindow* qcmat1;
+GtkButton* quit_at1;
+
 void enter_main()
 {
     gtk_widget_hide(GTK_WIDGET(loginWindow));
@@ -210,10 +213,10 @@ void enter_archi()
     gtk_widget_show(GTK_WIDGET(archiWindow));
 }
 
-void enter_mcq()
+void enter_at1()
 {
     gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(mcqWindow));
+    gtk_widget_show(GTK_WIDGET(qcmat1));
 }
 
 void enter_aboutUs()
@@ -259,9 +262,9 @@ void close_archi()
     gtk_widget_show(GTK_WIDGET(mainWindow));
 }
 
-void close_mcq()
+void close_at1()
 {
-    gtk_widget_hide(GTK_WIDGET(mcqWindow));
+    gtk_widget_hide(GTK_WIDGET(qcmat1));
     gtk_widget_show(GTK_WIDGET(mainWindow));
 }
 
@@ -533,8 +536,9 @@ void close_ct1()
     gtk_widget_show(GTK_WIDGET(mainWindow));
 }
 
-void enter_question_ct1(User* client)
+void enter_question_ct1(gpointer user)
 {
+    User* client = user;
     char state[256];
     char rep[8];
     char reponse[256];
@@ -583,8 +587,10 @@ void close_ct2()
     gtk_widget_show(GTK_WIDGET(mainWindow));
 }
 
-void enter_question_ct2(User* client)
+void enter_question_ct2(gpointer user)
 {
+    User* client = user;
+    
     char rep[64];
     char reponse[256];
    
@@ -642,8 +648,10 @@ void close_mt1()
     gtk_widget_show(GTK_WIDGET(mainWindow));
 }
 
-void enter_question_mt1(User* client)
+void enter_question_mt1(gpointer user)
 {
+    User* client = user;
+
     char state[256];
     char rep_im[8];
     char rep_re[8];
@@ -740,7 +748,6 @@ GtkBuilder *init_gui()
     archiWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.computer_architecture"));
     profileWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.profil"));
     aboutUsWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.about_us"));
-    mcqWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.mcq"));
 
     //courses
 
@@ -852,6 +859,9 @@ GtkBuilder *init_gui()
     qcmarchi2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_1"));
     quit_qcm_a1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_a1"));
 
+    qcmat1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm_at1"));
+    quit_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_at1"));
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     valide_1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_1"));
@@ -924,7 +934,6 @@ GtkBuilder *init_gui()
     g_signal_connect(Physic,"clicked",G_CALLBACK(enter_phy),NULL);
     g_signal_connect(Electronic,"clicked",G_CALLBACK(enter_elec),NULL);
     g_signal_connect(Computer_architecture,"clicked",G_CALLBACK(enter_archi),NULL);
-    g_signal_connect(mcq,"clicked",G_CALLBACK(enter_mcq),NULL);
     g_signal_connect(account,"clicked",G_CALLBACK(enter_profile),NULL);
     g_signal_connect(aboutUs,"activate",G_CALLBACK(enter_aboutUs),NULL);
 
@@ -933,7 +942,6 @@ GtkBuilder *init_gui()
     g_signal_connect(back_phy,"clicked",G_CALLBACK(close_phy),NULL);
     g_signal_connect(back_elec,"clicked",G_CALLBACK(close_elec),NULL);
     g_signal_connect(back_ca,"clicked",G_CALLBACK(close_archi),NULL);
-    g_signal_connect(back_mcq,"clicked",G_CALLBACK(close_mcq),NULL);
     g_signal_connect(back_profil,"clicked",G_CALLBACK(close_profile),NULL);
     g_signal_connect(close_about_us,"clicked",G_CALLBACK(close_aboutUs),NULL);
 
@@ -1001,6 +1009,10 @@ GtkBuilder *init_gui()
 
     g_signal_connect(phy_1_2,"clicked",G_CALLBACK(enter_phy_1_2),NULL);
     g_signal_connect(quit_phy_1_2,"clicked",G_CALLBACK(close_phy_1_2),NULL);    
+
+    g_signal_connect(at1,"clicked",G_CALLBACK(enter_at1),NULL);
+    g_signal_connect(quit_at1,"clicked",G_CALLBACK(close_at1),NULL);
+    g_signal_connect(quit_phy_1_2,"clicked",G_CALLBACK(close_phy_1_2),NULL);   
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
