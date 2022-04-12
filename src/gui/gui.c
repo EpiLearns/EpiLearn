@@ -703,13 +703,6 @@ void enter_question_mt1(User* client)
     sprintf(client->answer_re,"%i",(int)rep->Re);
 }
 
-void init_qcm()
-{
-    gtk_label_set_text(GTK_LABEL(statement1),(const gchar*) "Les questions seront afficher ici");
-    gtk_label_set_text(GTK_LABEL(statement2),(const gchar*) "Les questions seront afficher ici");
-    gtk_label_set_text(GTK_LABEL(qe_mt1),(const gchar*) "Les questions seront afficher ici");
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 GtkBuilder *init_gui()
@@ -901,8 +894,6 @@ GtkBuilder *init_gui()
     close_about_us = GTK_BUTTON(gtk_builder_get_object(builder,"close about us"));
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    init_qcm();
 
     g_signal_connect(ct1,"clicked",G_CALLBACK(enter_ct1),NULL);
     g_signal_connect(quit_qcm_a,"clicked",G_CALLBACK(close_ct1),NULL);
