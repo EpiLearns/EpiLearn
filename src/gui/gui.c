@@ -12,6 +12,7 @@
 
 GtkBuilder* builder;
 GtkMenuItem* Calculatrice;
+//GtkMenuItem* Graphe;
 
 GtkWindow* mainWindow;
 GtkWindow* loginWindow;
@@ -865,6 +866,7 @@ GtkBuilder *init_gui()
     quit_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_at1"));
 
     Calculatrice = GTK_MENU_ITEM(gtk_builder_get_object(builder, "Calculatrice"));
+    //Graphe = GTK_MENU_ITEM(gtk_builder_get_object(builder, "Graphe"));
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -925,6 +927,7 @@ GtkBuilder *init_gui()
     g_signal_connect(valide_2,"clicked",G_CALLBACK(enter_question_ct2),client);
     
     g_signal_connect(Calculatrice,"activate",G_CALLBACK(open_calculator),NULL);
+    //g_signal_connect(Graphe,"activate",G_CALLBACK(open_graphe),NULL);
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
