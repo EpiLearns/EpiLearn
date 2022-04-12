@@ -46,5 +46,5 @@ void on_button_calculatorslash();
 
 void on_button_calculatorsuppr();
 
-int open_calculator();
+void open_calculator();
 #endif
