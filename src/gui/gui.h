@@ -15,6 +15,7 @@ typedef struct User
     char answer_im[8];
     char answer_re[8];
     char answer_archi[8];
+    char answer_archi1[64];
 
     Complex* a;
     Complex* b;

@@ -7,6 +7,7 @@
 #include <string.h>
 
 #include "../property/mathamatics/complex_number/complex_number.h"
+#include "../property/computer_architecture/integer_representation/integer_representation.h"
 
 GtkBuilder* builder;
 
@@ -162,6 +163,10 @@ GtkButton* quit_qcm_a;
 
 GtkWindow* qcmmt1;
 GtkButton* quit_qcm_mt1;
+
+GtkWindow* qcmarchi2;
+
+GtkButton* quit_qcm_a1;
 
 void enter_main()
 {
@@ -561,6 +566,63 @@ void enter_question_ct1(User* client)
     sprintf(client->answer_archi,"%i",1<<n);
 }
 
+GtkButton* valide_2;
+GtkWidget* statement2;
+GtkWidget* reponse2;
+GtkWidget* rep_ct2;
+
+void enter_ct2()
+{
+    gtk_widget_hide(GTK_WIDGET(mainWindow));
+    gtk_widget_show(GTK_WIDGET(qcmarchi2));
+}
+
+void close_ct2()
+{
+    gtk_widget_hide(GTK_WIDGET(qcmarchi2));
+    gtk_widget_show(GTK_WIDGET(mainWindow));
+}
+
+void enter_question_ct2(User* client)
+{
+    char rep[64];
+    char reponse[256];
+   
+    sprintf(rep,"%s",gtk_entry_get_text(GTK_ENTRY(reponse2)));
+    gtk_entry_set_text(GTK_ENTRY(reponse2),"");
+    gtk_label_set_text(GTK_LABEL(rep_ct2),(const gchar*)"");
+
+    if (strlen(rep) != 0)
+    { 
+        if (strcmp(rep,client->answer_archi1) == 0)
+        {
+            gtk_label_set_text(GTK_LABEL(rep_ct2),(const gchar*) "Bonne réponse !");
+        }
+
+        else
+        {
+            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_archi1);
+            gtk_label_set_text(GTK_LABEL(rep_ct2),(const gchar*)reponse);
+        }
+    }
+
+    char state[256];
+
+    int depart = rand()%9 + 2;
+    int arrivee = rand()%9 + 2;
+
+    int nbre = rand()%100;
+
+    unsigned long nbre_base_depart = convertirEnbase(depart,(unsigned long)nbre,10);
+    unsigned long nbre_base_arrivee = convertirEnbase(arrivee,(unsigned long) nbre,10);
+
+    sprintf(client->answer_archi1,"%lu",nbre_base_arrivee);
+
+    sprintf(state,"Donner la représentation en base %i de %lu (en base %i)?",arrivee,nbre_base_depart,depart);
+    gtk_label_set_text(GTK_LABEL(statement2),(const gchar*) state);
+    
+}
+
 GtkButton* valide_mt1;
 GtkWidget* qe_mt1;
 GtkWidget* im_mt1;
@@ -644,7 +706,7 @@ void enter_question_mt1(User* client)
 void init_qcm()
 {
     gtk_label_set_text(GTK_LABEL(statement1),(const gchar*) "Les questions seront afficher ici");
-
+    gtk_label_set_text(GTK_LABEL(statement2),(const gchar*) "Les questions seront afficher ici");
     gtk_label_set_text(GTK_LABEL(qe_mt1),(const gchar*) "Les questions seront afficher ici");
 }
 
@@ -794,6 +856,9 @@ GtkBuilder *init_gui()
     quit_qcm_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_mt1"));
     valide_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_mt1"));
 
+    qcmarchi2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_1"));
+    quit_qcm_a1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_a1"));
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     valide_1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_1"));
@@ -805,6 +870,12 @@ GtkBuilder *init_gui()
     im_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "im_mt1"));
     re_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "re_mt1"));
     rep_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "rep_mt1"));
+
+    valide_2 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_2"));
+    statement2 = GTK_WIDGET(gtk_builder_get_object(builder, "statement2"));
+    reponse2 = GTK_WIDGET(gtk_builder_get_object(builder, "reponse2"));
+    rep_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "rep_ct2"));
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -842,6 +913,11 @@ GtkBuilder *init_gui()
     g_signal_connect(quit_qcm_mt1,"clicked",G_CALLBACK(close_mt1),NULL);
 
     g_signal_connect(valide_mt1,"clicked",G_CALLBACK(enter_question_mt1),client);
+
+    g_signal_connect(ct2,"clicked",G_CALLBACK(enter_ct2),NULL);
+    g_signal_connect(quit_qcm_a1,"clicked",G_CALLBACK(close_ct2),NULL);
+
+    g_signal_connect(valide_2,"clicked",G_CALLBACK(enter_question_ct2),client);
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
