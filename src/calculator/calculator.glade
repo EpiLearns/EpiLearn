@@ -3,11 +3,12 @@
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkWindow" id="windowcalculator">
-    <property name="width_request">400</property>
-    <property name="height_request">500</property>
+    <property name="width_request">0</property>
+    <property name="height_request">0</property>
     <property name="can_focus">False</property>
-    <property name="default_width">875</property>
-    <property name="default_height">825</property>
+    <property name="resizable">False</property>
+    <property name="default_width">300</property>
+    <property name="default_height">300</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -23,7 +24,7 @@
             <property name="can_focus">True</property>
           </object>
           <packing>
-            <property name="x">117</property>
+            <property name="x">41</property>
             <property name="y">6</property>
           </packing>
         </child>
@@ -38,7 +39,7 @@
             <signal name="clicked" handler="on_button_enter_calculator" swapped="no"/>
           </object>
           <packing>
-            <property name="x">327</property>
+            <property name="x">246</property>
             <property name="y">7</property>
           </packing>
         </child>
@@ -53,7 +54,7 @@
             <signal name="clicked" handler="on_button_clear_calculator" swapped="no"/>
           </object>
           <packing>
-            <property name="x">327</property>
+            <property name="x">247</property>
             <property name="y">42</property>
           </packing>
         </child>
@@ -310,11 +311,21 @@
               </packing>
             </child>
             <child>
-              <placeholder/>
+              <object class="GtkButton" id="buttoncalculatorsuppr">
+                <property name="label" translatable="yes">suppr</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_button_calculatorsuppr" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
             </child>
           </object>
           <packing>
-            <property name="x">120</property>
+            <property name="x">31</property>
             <property name="y">84</property>
           </packing>
         </child>
@@ -326,7 +337,7 @@
             <property name="can_focus">False</property>
           </object>
           <packing>
-            <property name="x">117</property>
+            <property name="x">42</property>
             <property name="y">42</property>
           </packing>
         </child>

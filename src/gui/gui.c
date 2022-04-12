@@ -8,8 +8,10 @@
 
 #include "../property/mathamatics/complex_number/complex_number.h"
 #include "../property/computer_architecture/integer_representation/integer_representation.h"
+#include "../calculator/calculator.h"
 
 GtkBuilder* builder;
+GtkMenuItem* Calculatrice;
 
 GtkWindow* mainWindow;
 GtkWindow* loginWindow;
@@ -862,6 +864,8 @@ GtkBuilder *init_gui()
     qcmat1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm_at1"));
     quit_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_at1"));
 
+    Calculatrice = GTK_MENU_ITEM(gtk_builder_get_object(builder, "Calculatrice"));
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     valide_1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_1"));
@@ -919,6 +923,8 @@ GtkBuilder *init_gui()
     g_signal_connect(quit_qcm_a1,"clicked",G_CALLBACK(close_ct2),NULL);
 
     g_signal_connect(valide_2,"clicked",G_CALLBACK(enter_question_ct2),client);
+    
+    g_signal_connect(Calculatrice,"activate",G_CALLBACK(open_calculator),NULL);
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
