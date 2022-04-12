@@ -5,9 +5,14 @@
 typedef struct question
 {
     int difficulty;
-    char* name;
+    char* question;
+    char* answer;
 
 } question;
+typedef struct student
+{
+    int level;
+} student;
 
     
 void bubble_sorting(struct question T[], int N);

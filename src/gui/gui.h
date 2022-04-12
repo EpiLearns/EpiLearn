@@ -3,6 +3,7 @@
 
 #include <gtk/gtk.h>
 #include<stdlib.h>
+#include "../property/mathamatics/complex_number/complex_number.h"
 
 typedef struct User
 {
@@ -10,8 +11,14 @@ typedef struct User
     char password[256];
     char email[256];
 
-    int num_of_question;
-    int score;
+    char answer[8];
+    char answer_im[8];
+    char answer_re[8];
+    char answer_archi[8];
+    char answer_archi1[64];
+
+    Complex* a;
+    Complex* b;
     
 } User;
 
