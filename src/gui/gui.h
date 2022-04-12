@@ -12,13 +12,11 @@ typedef struct User
     char email[256];
 
     char answer[8];
-    int num_of_question;
-    int score;
-
-    int qmt1;
-    int scoremt1;
     char answer_im[8];
     char answer_re[8];
+    char answer_archi[8];
+    char answer_archi1[64];
+
     Complex* a;
     Complex* b;
     
