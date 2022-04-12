@@ -253,11 +253,11 @@ void on_button_calculatorsuppr()
     gtk_entry_set_text(GTK_ENTRY(entrycalculator), expressioncalculator); 
 }
 
-int main(int argc, char **argv)
+void open_calculator()
 {
     GtkWidget *windowcalculator;
 
-    gtk_init (&argc, &argv);
+    gtk_init (NULL,NULL);
     {
         builder = gtk_builder_new_from_file("../src/calculator/calculator.glade");
         windowcalculator = GTK_WIDGET(gtk_builder_get_object(builder,"windowcalculator"));
@@ -266,16 +266,7 @@ int main(int argc, char **argv)
         entrycalculator = GTK_WIDGET(gtk_builder_get_object(builder,"entrycalculator"));
         labelcalculator = GTK_WIDGET(gtk_builder_get_object(builder,"labelcalculator"));
 
-        
-    
-
         gtk_widget_show_all(windowcalculator);
-        gtk_main();
-        return 0;
-
-        
+        gtk_main();   
     }
-
-
-
 }

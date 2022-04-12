@@ -15,7 +15,7 @@ all: init EpiLearn
 init:
 	@mkdir -p $(BUILD_DIR) $(OBJ_DIR)
 
-EpiLearn: src/EpiLearn.c src/gui/gui.c src/property/mathamatics/complex_number/complex_number.c src/property/computer_architecture/integer_representation/integer_representation.c
+EpiLearn: src/EpiLearn.c src/gui/gui.c src/property/mathamatics/complex_number/complex_number.c src/property/computer_architecture/integer_representation/integer_representation.c src/calculator/calculator.c src/calculator/parser.c src/calculator/node.c
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$@ $^ $(LDFLAGS)
 
 
