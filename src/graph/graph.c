@@ -27,7 +27,7 @@ double f (double x)
     double result;
     char* res = NULL;
     char *s = malloc(sizeof(double));
-    sprintf(s,"%.2f", x);
+    sprintf(s,"(%.2f)", x);
     res = replaceWord(expression, "x", s);
     int syntax = checkSyntax(res);
     if(syntax)
@@ -43,7 +43,7 @@ double f (double x)
 
 
 static gboolean
-on_draw (GtkWidget *widget, cairo_t *cr/*, gpointer user_data*/)
+on_draw (GtkWidget *widget, cairo_t *cr)
 {
     GdkRectangle da;            /* GtkDrawingArea size */
     double dx = 5.0, dy = 5.0; /* Pixels between each point */
@@ -101,7 +101,7 @@ on_draw (GtkWidget *widget, cairo_t *cr/*, gpointer user_data*/)
     return FALSE;
 }
 
-void on_button2_clicked(/*GtkWidget *e, gpointer user_data*/)
+void on_button2_clicked()
 {
     /*function that clear the entry text and sets the expression to NULL*/
     expression = NULL;
@@ -113,7 +113,7 @@ void on_button2_clicked(/*GtkWidget *e, gpointer user_data*/)
 }
 
 
-void on_button1_clicked(/*GtkButton *e, gpointer user_data*/)
+void on_button1_clicked()
 {
     /*function that retrieves the input*/
     const char *entry_value; 
@@ -121,21 +121,21 @@ void on_button1_clicked(/*GtkButton *e, gpointer user_data*/)
     expression = strdup(entry_value);
 }
 
-void on_plusbutton_clicked(/*GtkButton *e, gpointer user_data*/)
+void on_plusbutton_clicked()
 {
     ZOOM_X = ZOOM_X + (double)10;
     ZOOM_Y = ZOOM_Y + (double)10;
 }
 
-void on_minusbutton_clicked(/*GtkButton *e, gpointer user_data*/)
+void on_minusbutton_clicked()
 {
     ZOOM_X = ZOOM_X -(double)10;
     ZOOM_Y = ZOOM_Y - (double)10;
 }
 
-void on_quitbutton_clicked(/*GtkButton *e,*/ gpointer user_data)
+void on_quitbutton_clicked(gpointer user_data)
 {
-    gtk_window_close(GTK_WINDOW(user_data));
+    gtk_window_close(user_data);
 }
 
 int main (int argc, char **argv)
