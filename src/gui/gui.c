@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../mcqGenerator/mcqGenerator.h"
+
 #include "../property/mathematics/complex_number/complex_number.h"
 #include "../property/computer_architecture/integer_representation/integer_representation.h"
 
@@ -586,14 +588,14 @@ void update_mcq_ct1(GtkButton* button,gpointer user)
 
     if (strlen(rep) != 0)
     { 
-        if (strcmp(rep,client->answer_archi) == 0)
+        if (strcmp(rep,client->answer_ct1) == 0)
         {
             gtk_label_set_text(GTK_LABEL(answer_ct1),(const gchar*) "Bonne réponse !");
         }
 
         else
         {
-            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_archi);
+            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_ct1);
             gtk_label_set_text(GTK_LABEL(answer_ct1),(const gchar*)reponse);
         }
     }
@@ -604,7 +606,7 @@ void update_mcq_ct1(GtkButton* button,gpointer user)
 
     gtk_label_set_text(GTK_LABEL(question_ct1),(const gchar*) state);
     
-    sprintf(client->answer_archi,"%i",1<<n);
+    sprintf(client->answer_ct1,"%i",1<<n);
 }
 
 void update_mcq_ct2(GtkButton* button,gpointer user)
@@ -620,14 +622,14 @@ void update_mcq_ct2(GtkButton* button,gpointer user)
 
     if (strlen(rep) != 0)
     { 
-        if (strcmp(rep,client->answer_archi1) == 0)
+        if (strcmp(rep,client->answer_ct2) == 0)
         {
             gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*) "Bonne réponse !");
         }
 
         else
         {
-            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_archi1);
+            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_ct2);
             gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*)reponse);
         }
     }
@@ -642,7 +644,7 @@ void update_mcq_ct2(GtkButton* button,gpointer user)
     unsigned long nbre_base_depart = convertirEnbase(depart,(unsigned long)nbre,10);
     unsigned long nbre_base_arrivee = convertirEnbase(arrivee,(unsigned long) nbre,10);
 
-    sprintf(client->answer_archi1,"%lu",nbre_base_arrivee);
+    sprintf(client->answer_ct2,"%lu",nbre_base_arrivee);
 
     sprintf(state,"Donner la représentation en base %i de %lu (en base %i)?",arrivee,nbre_base_depart,depart);
     gtk_label_set_text(GTK_LABEL(question_ct2),(const gchar*) state);
