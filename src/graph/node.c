@@ -8,7 +8,7 @@
 
 
 
-node* createNode(void){
+node* graph_createNode(void){
     node* out = malloc(sizeof(node));
     out->left = NULL;
     out->right = NULL;
@@ -17,10 +17,10 @@ node* createNode(void){
     return out; 
 }
 
-double evaluate(node* head){
+double graph_evaluate(node* head){
     if(head == NULL) return 0;
     
-    //evaluate operator first, value only if operator is null
+    //graph_evaluate operator first, value only if operator is null
     if(head->operator == NULL){
         double value = head->value;
         free(head);
@@ -31,28 +31,28 @@ double evaluate(node* head){
         node* left = head->left;
         node* right = head->right;
         free(head);
-        return operator(evaluate(left), evaluate(right));
+        return operator(graph_evaluate(left), graph_evaluate(right));
     }
 }
 
-double add(double a, double b){
+double graph_add(double a, double b){
     return a + b;
 }
-double sub(double a, double b){
+double graph_sub(double a, double b){
     return a - b;
 }
-double mult(double a, double b){
+double graph_mult(double a, double b){
     return a*b;
 }
-double divi(double a, double b){
+double graph_divi(double a, double b){
     if (b == 0){
-        printf("$: Warning: division by 0. This will return 0 as fallback.\n");
+        printf("$: Warning: graph_division by 0. This will return 0 as fallback.\n");
         return 0;
     }
     float test = (float) a/b;
-    if (fabs(test - a/b) > 0.00001) printf("$: Warning: division will return rounded down integer value.\n");
+    if (fabs(test - a/b) > 0.00001) printf("$: Warning: graph_division will return rounded down integer value.\n");
     return a/b;
 }
-double power(double a, double b){
+double graph_power(double a, double b){
     return pow(a,b);
 }

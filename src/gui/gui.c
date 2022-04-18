@@ -6,15 +6,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../property/mathamatics/complex_number/complex_number.h"
+#include "../property/mathematics/complex_number/complex_number.h"
 #include "../property/computer_architecture/integer_representation/integer_representation.h"
+
 #include "../calculator/calculator.h"
+#include "../graph/graph.h"
 
 GtkBuilder* builder;
 GtkWindow* current_window; 
 GtkMenuItem* open_calculator;
-//GtkMenuItem* open_graph;
-
+GtkMenuItem* open_graph;
 
 // Function that return allocated User struct
 User* init_user()
@@ -686,7 +687,7 @@ GtkBuilder *init_gui()
     get_mcq_object();
 
     open_calculator = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_calculator"));
-    //Graphe = GTK_MENU_ITEM(gtk_builder_get_object(builder, "Graphe"));
+    open_graph = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_graph"));
 
     //UI signals
 
@@ -696,7 +697,7 @@ GtkBuilder *init_gui()
     training_signal();
 
     g_signal_connect(open_calculator,"activate",G_CALLBACK(open_calculator_fct),NULL);
-    //g_signal_connect(Graphe,"activate",G_CALLBACK(open_graphe),NULL);
+    g_signal_connect(open_graph,"activate",G_CALLBACK(open_graph_fct),NULL);
 
     //Mcq signals
 

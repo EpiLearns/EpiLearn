@@ -6625,7 +6625,6 @@ est nulle lorsque le mouvement est uniforme.
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">training computer_architecture</property>
     <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
@@ -6801,7 +6800,6 @@ est nulle lorsque le mouvement est uniforme.
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">training computer_architecture</property>
     <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
@@ -7176,13 +7174,12 @@ est nulle lorsque le mouvement est uniforme.
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">mcq</property>
     <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
     <child>
-      <object class="GtkFixed" id="mcq page">
+      <object class="GtkFixed">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
@@ -7203,7 +7200,7 @@ est nulle lorsque le mouvement est uniforme.
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkLabel" id="question">
+                      <object class="GtkLabel">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
@@ -7216,7 +7213,7 @@ est nulle lorsque le mouvement est uniforme.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkLabel" id="question_at1">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
@@ -7232,7 +7229,7 @@ est nulle lorsque le mouvement est uniforme.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="a">
+                      <object class="GtkCheckButton" id="at1_choice_number_a">
                         <property name="label" translatable="yes">premier choix</property>
                         <property name="width_request">100</property>
                         <property name="height_request">60</property>
@@ -7247,7 +7244,7 @@ est nulle lorsque le mouvement est uniforme.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="b">
+                      <object class="GtkCheckButton" id="at1_choice_number_b">
                         <property name="label" translatable="yes">deuxieme choix</property>
                         <property name="width_request">100</property>
                         <property name="height_request">60</property>
@@ -7262,7 +7259,7 @@ est nulle lorsque le mouvement est uniforme.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="c">
+                      <object class="GtkCheckButton" id="at1_choice_number_c">
                         <property name="label" translatable="yes">troisieme choix</property>
                         <property name="width_request">100</property>
                         <property name="height_request">60</property>
@@ -7277,7 +7274,7 @@ est nulle lorsque le mouvement est uniforme.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="d">
+                      <object class="GtkCheckButton" id="at1_choice_number_d">
                         <property name="label" translatable="yes">dernier choix</property>
                         <property name="width_request">100</property>
                         <property name="height_request">60</property>

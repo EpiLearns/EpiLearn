@@ -3,7 +3,7 @@
 
 #include <gtk/gtk.h>
 #include<stdlib.h>
-#include "../property/mathamatics/complex_number/complex_number.h"
+#include "../property/mathematics/complex_number/complex_number.h"
 
 typedef struct User
 {

@@ -5,7 +5,7 @@
 #include <string.h>
 
 
-char* replaceWord(char* s, char* oldW,char* newW)
+char* calculator_replaceWord(char* s, char* oldW,char* newW)
 {
     char* result;
     int i, cnt = 0;
@@ -42,7 +42,7 @@ char* replaceWord(char* s, char* oldW,char* newW)
     return result;
 }
 
-int checkSyntax(char* string){
+int calculator_checkSyntax(char* string){
 
     //Check syntax, right now only checks if the characters are valid.
     /*
@@ -63,8 +63,8 @@ int checkSyntax(char* string){
     else return 1;
 }
 
-node* parseExpression(char *string){
-    node* current = createNode();
+node* calculator_parseExpression(char *string){
+    node* current = calculator_createNode();
     int len = strlen(string);
     int parenthesisLevel = 0;
 
@@ -85,10 +85,10 @@ node* parseExpression(char *string){
     //Second "base" case, check if entire string is within parenthesis
     //not really a base case if it calls itself again, but it behaves like one
 
-    if(string[0] == '(' && string[len - 1] == ')' && findMatchingParenthesisIndexRight(string, 0) == len - 1){
+    if(string[0] == '(' && string[len - 1] == ')' && calculator_findMatchingParenthesisIndexRight(string, 0) == len - 1){
         string[len - 1] = '\0';
         free(current);
-        current = parseExpression(&string[1]);
+        current = calculator_parseExpression(&string[1]);
         return current;
     }
 
@@ -102,9 +102,9 @@ node* parseExpression(char *string){
 
         if (parenthesisLevel == 0 && (c == '+' || c == '-')){
             string[i] = 0;
-            current->operator = (c == '+' ? add : sub);
-            current->left = parseExpression(string);
-            current->right = parseExpression(&string[i + 1]);
+            current->operator = (c == '+' ? calculator_add : calculator_sub);
+            current->left = calculator_parseExpression(string);
+            current->right = calculator_parseExpression(&string[i + 1]);
             return current;
         }
     }
@@ -119,9 +119,9 @@ node* parseExpression(char *string){
 
         if (parenthesisLevel == 0 && (c == '*' || c == '/')){
             string[i] = 0;
-            current->operator = (c == '*' ? mult : divi);
-            current->left = parseExpression(string);
-            current->right = parseExpression(&string[i + 1]);
+            current->operator = (c == '*' ? calculator_mult : calculator_divi);
+            current->left = calculator_parseExpression(string);
+            current->right = calculator_parseExpression(&string[i + 1]);
             return current;
         }
     }
@@ -135,16 +135,16 @@ node* parseExpression(char *string){
 
         if (c == '^' && parenthesisLevel == 0){
             string[i] = 0;
-            current->operator = power;
-            current->left = parseExpression(string);
-            current->right = parseExpression(&string[i + 1]);
+            current->operator = calculator_power;
+            current->left = calculator_parseExpression(string);
+            current->right = calculator_parseExpression(&string[i + 1]);
             return current;
         }
     }
     return NULL;
 }
 
-void removeSpaces(char* str){
+void calculator_removeSpaces(char* str){
     
 
     int oLen = strlen(str);
@@ -159,9 +159,7 @@ void removeSpaces(char* str){
     return;
 }
 
-
-
-int findMatchingParenthesisIndexRight(char* string, int index){
+int calculator_findMatchingParenthesisIndexRight(char* string, int index){
     int len = strlen(string);
     int parentesisLevel = 1;
     for (int i = index + 1; i < len; i++){
@@ -179,7 +177,7 @@ int findMatchingParenthesisIndexRight(char* string, int index){
 
 //Not used, but useful to have anyways
 
-int findMatchingParenthesisIndexLeft(char* string, int index){
+int calculator_findMatchingParenthesisIndexLeft(char* string, int index){
     int parentesisLevel = 1;
     for (int i = index - 1; i >= 0; i--){
         char c = string[i];

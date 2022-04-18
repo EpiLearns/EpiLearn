@@ -11,31 +11,35 @@ GtkWidget *entrycalculator;
 GtkWidget *labelcalculator;
 char* expressioncalculator = "";
 
-char* suppression(const char *string)
+char* calculator_suppression(const char *string)
 {
-    
     size_t len = strlen(string);
+
     if (len == 0)
     {
         return "";
     }
+
     char *res = calloc(len-1,sizeof(char));
+
     for(size_t i = 0; i < len-1; i++)
     {
         res[i] = string[i];
     }
+
     return res;
 }
-const char* f(char *expression)
+
+const char* calculator_f(char *expression)
 {
     node* head;
     double result;
 
-    int syntax = checkSyntax(expression);
+    int syntax = calculator_checkSyntax(expression);
     if (syntax)
     {
-        head = parseExpression(expression);
-        result = evaluate(head);
+        head = calculator_parseExpression(expression);
+        result = calculator_evaluate(head);
     }
     const char *s = malloc(sizeof(double));
     sprintf((char*)s,"%.2f",result);
@@ -47,9 +51,7 @@ void on_button_enter_calculator()
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
     expressioncalculator = strdup(entryvalue);
-    gtk_label_set_text(GTK_LABEL(labelcalculator), f(expressioncalculator));
-    
-
+    gtk_label_set_text(GTK_LABEL(labelcalculator), calculator_f(expressioncalculator));
 }
 
 void on_button_clear_calculator()
@@ -98,6 +100,7 @@ void on_button_number9()
    
     gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
+
 void on_button_number8()
 {
     const char *entryvalue;
@@ -249,7 +252,7 @@ void on_button_calculatorsuppr()
 {
     const char* entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
-    expressioncalculator = suppression(entryvalue);
+    expressioncalculator = calculator_suppression(entryvalue);
     gtk_entry_set_text(GTK_ENTRY(entrycalculator), expressioncalculator); 
 }
 

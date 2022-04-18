@@ -20,7 +20,7 @@ double ZOOM_Y  = 100.0;
 
 char* expression = NULL;
 
-double f (double x)
+double graph_f (double x)
 {
     /*function that calculates the expression */
     node* head;
@@ -28,19 +28,18 @@ double f (double x)
     char* res = NULL;
     char *s = malloc(sizeof(double));
     sprintf(s,"(%.2f)", x);
-    res = replaceWord(expression, "x", s);
-    int syntax = checkSyntax(res);
+    res = graph_replaceWord(expression, "x", s);
+    int syntax = graph_checkSyntax(res);
     if(syntax)
     {
-        head = parseExpression(res);
-        result = evaluate(head);
+        head = graph_parseExpression(res);
+        result = graph_evaluate(head);
     }
     return result;
     
 
 
 }
-
 
 static gboolean
 on_draw (GtkWidget *widget, cairo_t *cr)
@@ -90,7 +89,7 @@ on_draw (GtkWidget *widget, cairo_t *cr)
         {
             break;
         } 
-        cairo_line_to (cr, i, f (i));
+        cairo_line_to (cr, i,graph_f(i));
         
     }
     /* Draw the curve */
@@ -111,7 +110,6 @@ void on_button2_clicked()
     
     
 }
-
 
 void on_button1_clicked()
 {
@@ -138,19 +136,16 @@ void on_quitbutton_clicked(gpointer user_data)
     gtk_window_close(user_data);
 }
 
-int main (int argc, char **argv)
+void open_graph_fct()
 {
-    
     GtkWidget *window;
     GtkWidget *da;
     GtkWidget *button1;
     GtkWidget *plusbutton;
     GtkWidget *minusbutton;
     GtkWidget *quitbutton;
-
-
     
-    gtk_init (&argc, &argv);
+    gtk_init (NULL, NULL);
 
     builder = gtk_builder_new_from_file("../src/graph/graph.glade");
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
@@ -175,6 +170,4 @@ int main (int argc, char **argv)
 
     gtk_widget_show_all(window);
     gtk_main ();
-
-    return 0;
 }
