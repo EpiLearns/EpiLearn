@@ -253,7 +253,7 @@ void on_button_calculatorsuppr()
     gtk_entry_set_text(GTK_ENTRY(entrycalculator), expressioncalculator); 
 }
 
-void open_calculator()
+void open_calculator_fct()
 {
     GtkWidget *windowcalculator;
 
