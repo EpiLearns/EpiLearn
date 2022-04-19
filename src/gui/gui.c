@@ -6,89 +6,76 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../property/mathamatics/complex_number/complex_number.h"
+#include "../mcqGenerator/mcqGenerator.h"
+
+#include "../property/mathematics/complex_number/complex_number.h"
 #include "../property/computer_architecture/integer_representation/integer_representation.h"
+
 #include "../calculator/calculator.h"
+#include "../graph/graph.h"
 
 GtkBuilder* builder;
-GtkMenuItem* Calculatrice;
-//GtkMenuItem* Graphe;
+GtkWindow* current_window; 
+GtkMenuItem* open_calculator;
+GtkMenuItem* open_graph;
+
+// Function that return allocated User struct
+User* init_user()
+{
+    User* client = calloc(1,sizeof(User));
+
+    if (!client)
+    {
+        return NULL;
+    }
+
+    return client;
+}
+
+
+// Function to change page
+void enter_page(GtkButton* button,gpointer parameter)
+{
+    GtkWindow* new_window = parameter;
+
+    gtk_widget_hide(GTK_WIDGET(current_window));
+    gtk_widget_show(GTK_WIDGET(new_window));
+
+    current_window = new_window;
+}
+
+// Functions that get all the windows that is used
 
 GtkWindow* mainWindow;
 GtkWindow* loginWindow;
+GtkWindow* profileWindow;
+GtkWindow* aboutUsWindow;
+
+void get_window()
+{
+    mainWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.main"));
+    loginWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.login"));
+
+    profileWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.profil"));
+    aboutUsWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.about_us"));
+
+    current_window = loginWindow;
+}
+
 GtkWindow* mathsWindow;
 GtkWindow* algoWindow;
 GtkWindow* phyWindow;
 GtkWindow* elecWindow;
 GtkWindow* archiWindow;
-GtkWindow* profileWindow;
-GtkWindow* aboutUsWindow;
 
-GtkButton* login;
-
-GtkButton* Mathematics;
-GtkButton* Algorithm;
-GtkButton* Physic;
-GtkButton* Electronic;
-GtkButton* Computer_architecture;
-GtkButton* mcq;
-GtkMenuItem* aboutUs;
-
-GtkButton* account;
-
-GtkButton* back_profil;
-GtkButton* back_maths;
-GtkButton* back_algo;
-GtkButton* back_ca;
-GtkButton* back_elec;
-GtkButton* back_phy;
-GtkButton* back_mcq;
-
-GtkButton* close_about_us;
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-GtkWindow* cours_algo_1_1;
-GtkWindow* cours_algo_2_1;
-GtkWindow* cours_algo_2_2;
-GtkWindow* cours_algo_3_1;
-GtkWindow* cours_algo_3_2;
-
-GtkButton* algo_1_1;
-GtkButton* quit_algo_1_1;
-
-GtkButton* algo_2_1;
-GtkButton* quit_algo_2_1;
-
-GtkButton* algo_2_2;
-GtkButton* quit_algo_2_2;
-
-GtkButton* algo_3_1;
-GtkButton* quit_algo_3_1;
-
-
-GtkWindow* cours_archi_1_1;
-GtkWindow* cours_archi_1_2;
-GtkWindow* cours_archi_1_3;
-GtkWindow* cours_archi_1_4;
-
-GtkButton* archi_1_1;
-GtkButton* quit_archi_1_1;
-
-GtkButton* archi_1_2;
-GtkButton* quit_archi_1_2;
-
-GtkButton* archi_1_3;
-GtkButton* quit_archi_1_3;
-
-GtkButton* archi_1_4;
-GtkButton* quit_archi_1_4;
-
-
-GtkWindow* cours_elec_1_1;
-
-GtkButton* elec_1_1;
-GtkButton* quit_elec_1_1;
+void get_courses_window()
+{
+    mathsWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.mathematics"));
+    algoWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.algorithm"));
+    phyWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.physic"));
+    elecWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.electronic"));
+    archiWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.computer_architecture"));
+}
 
 
 GtkWindow* cours_math_1_1;
@@ -101,557 +88,431 @@ GtkWindow* cours_math_3_3;
 GtkWindow* cours_math_4_1;
 GtkWindow* cours_math_4_2;
 
-GtkButton* math_1_1;
-GtkButton* quit_math_1_1;
+GtkWindow* cours_algo_1_1;
+GtkWindow* cours_algo_2_1;
+GtkWindow* cours_algo_2_2;
+GtkWindow* cours_algo_3_1;
 
-GtkButton* math_1_2;
-GtkButton* quit_math_1_2;
+GtkWindow* cours_archi_1_1;
+GtkWindow* cours_archi_1_2;
+GtkWindow* cours_archi_1_3;
+GtkWindow* cours_archi_1_4;
 
-GtkButton* math_2_1;
-GtkButton* quit_math_2_1;
-
-GtkButton* math_2_2;
-GtkButton* quit_math_2_2;
-
-GtkButton* math_3_1;
-GtkButton* quit_math_3_1;
-
-GtkButton* math_3_2;
-GtkButton* quit_math_3_2;
-
-GtkButton* math_3_3;
-GtkButton* quit_math_3_3;
-
-GtkButton* math_4_1;
-GtkButton* quit_math_4_1;
-
-GtkButton* math_4_2;
-GtkButton* quit_math_4_2;
-
+GtkWindow* cours_elec_1_1;
 
 GtkWindow* cours_phy_1_1;
 GtkWindow* cours_phy_1_2;
 
-GtkButton* phy_1_1;
-GtkButton* quit_phy_1_1;
+void get_courses_page()
+{
+    cours_math_1_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap1.lesson1"));
+    cours_math_1_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap1.lesson2"));
+    cours_math_2_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap2.lesson1"));
+    cours_math_2_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap2.lesson2"));
+    cours_math_3_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap3.lesson1"));
+    cours_math_3_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap3.lesson2"));
+    cours_math_3_3 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap3.lesson3"));
+    cours_math_4_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap4.lesson1"));
+    cours_math_4_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap4.lesson2"));
 
+    cours_algo_1_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.algo.chap1.lesson1"));
+    cours_algo_2_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.algo.chap2.lesson1"));
+    cours_algo_2_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.algo.chap2.lesson2"));
+    cours_algo_3_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.algo.chap3.lesson1"));
+
+    cours_archi_1_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.archi.chap1.lesson1"));
+    cours_archi_1_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.archi.chap1.lesson2"));
+    cours_archi_1_3 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.archi.chap1.lesson3"));
+    cours_archi_1_4 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.archi.chap1.lesson4"));
+
+    cours_elec_1_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.elec.chap1.lesson1"));
+
+    cours_phy_1_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.phy.chap1.lesson1"));
+    cours_phy_1_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.phy.chap1.lesson2"));
+}
+
+GtkWindow* qcm_mt1;
+
+GtkWindow* qcm_at1;
+
+GtkWindow* qcm_archi1;
+GtkWindow* qcm_archi2;
+
+void get_training_window()
+{
+    qcm_mt1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.maths.mt1"));
+
+    qcm_at1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm_at1"));
+
+    qcm_archi1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_1"));
+    qcm_archi2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_2"));
+
+
+}
+
+// Functions that get all the buttons that is used
+
+GtkButton* open_main;
+GtkMenuItem* open_about_us;
+GtkButton* open_profil;
+
+void get_main_enter_button()
+{
+    open_main = GTK_BUTTON(gtk_builder_get_object(builder,"open_main"));
+    open_about_us = GTK_MENU_ITEM(gtk_builder_get_object(builder,"open_about_us"));
+    open_profil = GTK_BUTTON(gtk_builder_get_object(builder,"open_profil"));   
+}
+
+GtkButton* close_about_us;
+GtkButton* close_profil;
+
+void get_main_close_button()
+{
+    close_about_us = GTK_BUTTON(gtk_builder_get_object(builder,"close_about_us"));
+    close_profil = GTK_BUTTON(gtk_builder_get_object(builder,"close_profil"));
+}
+
+GtkButton* open_mathematics;
+GtkButton* open_algorithm;
+GtkButton* open_physic;
+GtkButton* open_electronic;
+GtkButton* open_computer_architecture;
+
+void get_courses_enter_button()
+{
+    open_mathematics = GTK_BUTTON(gtk_builder_get_object(builder,"open_mathematics"));
+    open_algorithm = GTK_BUTTON(gtk_builder_get_object(builder,"open_algorithm"));
+    open_physic = GTK_BUTTON(gtk_builder_get_object(builder,"open_physic"));
+    open_electronic = GTK_BUTTON(gtk_builder_get_object(builder,"open_electronic"));
+    open_computer_architecture = GTK_BUTTON(gtk_builder_get_object(builder,"open_computer_architecture"));
+
+
+}
+
+GtkButton* close_mathematics;
+GtkButton* close_algorithm;
+GtkButton* close_physic;
+GtkButton* close_electronic;
+GtkButton* close_computer_architecture;
+
+void get_courses_close_button()
+{
+    close_mathematics = GTK_BUTTON(gtk_builder_get_object(builder,"close_mathematics"));
+    close_algorithm = GTK_BUTTON(gtk_builder_get_object(builder,"close_algorithm"));
+    close_computer_architecture = GTK_BUTTON(gtk_builder_get_object(builder,"close_computer_architecture"));
+    close_electronic = GTK_BUTTON(gtk_builder_get_object(builder,"close_electronic"));
+    close_physic = GTK_BUTTON(gtk_builder_get_object(builder,"close_physic"));
+}
+
+GtkButton* math_1_1;
+GtkButton* math_1_2;
+GtkButton* math_2_1;
+GtkButton* math_2_2;
+GtkButton* math_3_1;
+GtkButton* math_3_2;
+GtkButton* math_3_3;
+GtkButton* math_4_1;
+GtkButton* math_4_2;
+
+GtkButton* algo_1_1;
+GtkButton* algo_2_1;
+GtkButton* algo_2_2;
+GtkButton* algo_3_1;
+
+GtkButton* archi_1_1;
+GtkButton* archi_1_2;
+GtkButton* archi_1_3;
+GtkButton* archi_1_4;
+
+GtkButton* elec_1_1;
+
+GtkButton* phy_1_1;
 GtkButton* phy_1_2;
+
+
+void get_courses_page_enter_button()
+{
+    math_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"math_1_1"));
+    math_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"math_1_2"));
+    math_2_1 = GTK_BUTTON(gtk_builder_get_object(builder,"math_2_1"));
+    math_2_2 = GTK_BUTTON(gtk_builder_get_object(builder,"math_2_2"));
+    math_3_1 = GTK_BUTTON(gtk_builder_get_object(builder,"math_3_1"));
+    math_3_2 = GTK_BUTTON(gtk_builder_get_object(builder,"math_3_2"));
+    math_3_3 = GTK_BUTTON(gtk_builder_get_object(builder,"math_3_3"));
+    math_4_1 = GTK_BUTTON(gtk_builder_get_object(builder,"math_4_1"));
+    math_4_2 = GTK_BUTTON(gtk_builder_get_object(builder,"math_4_2"));
+
+    algo_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"algo_1_1"));
+    algo_2_1 = GTK_BUTTON(gtk_builder_get_object(builder,"algo_2_1"));
+    algo_2_2 = GTK_BUTTON(gtk_builder_get_object(builder,"algo_2_2"));
+    algo_3_1 = GTK_BUTTON(gtk_builder_get_object(builder,"algo_3_1"));
+    
+    archi_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"archi_1_1"));
+    archi_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"archi_1_2"));
+    archi_1_3 = GTK_BUTTON(gtk_builder_get_object(builder,"archi_1_3"));
+    archi_1_4 = GTK_BUTTON(gtk_builder_get_object(builder,"archi_1_4"));
+
+    elec_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"elec_1_1"));;
+
+    phy_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"phy_1_1"));
+    phy_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"phy_1_2"));
+}
+
+GtkButton* quit_math_1_1;
+GtkButton* quit_math_1_2;
+GtkButton* quit_math_2_1;
+GtkButton* quit_math_2_2;
+GtkButton* quit_math_3_1;
+GtkButton* quit_math_3_2;
+GtkButton* quit_math_3_3;
+GtkButton* quit_math_4_1;
+GtkButton* quit_math_4_2;
+
+GtkButton* quit_algo_1_1;
+GtkButton* quit_algo_2_1;
+GtkButton* quit_algo_2_2;
+GtkButton* quit_algo_3_1;
+
+GtkButton* quit_archi_1_1;
+GtkButton* quit_archi_1_2;
+GtkButton* quit_archi_1_3;
+GtkButton* quit_archi_1_4;
+
+GtkButton* quit_elec_1_1;
+
+GtkButton* quit_phy_1_1;
 GtkButton* quit_phy_1_2;
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void get_courses_page_close_button()
+{
+    quit_math_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_1_1"));
+    quit_math_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_1_2"));
+    quit_math_2_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_2_1"));    
+    quit_math_2_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_2_2"));
+    quit_math_3_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_3_1"));
+    quit_math_3_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_3_2"));
+    quit_math_3_3 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_3_3"));    
+    quit_math_4_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_4_1"));
+    quit_math_4_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_4_2"));
 
-//training button
+    quit_algo_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_algo_1_1"));
+    quit_algo_2_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_algo_2_1"));
+    quit_algo_2_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_algo_2_2"));
+    quit_algo_3_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_algo_3_1"));
 
-GtkButton* mt1;
-GtkButton* mt2;
-GtkButton* mt3;
-GtkButton* mt4;
+    quit_archi_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_archi_1_1"));
+    quit_archi_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_archi_1_2"));
+    quit_archi_1_3 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_archi_1_3"));
+    quit_archi_1_4 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_archi_1_4"));
 
-GtkButton* at1;
-GtkButton* at2;
-GtkButton* at3;
+    quit_elec_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_elec_1_1"));
 
-GtkButton* ct1;
-GtkButton* ct2;
-GtkButton* ct3;
+    quit_phy_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_phy_1_1"));
+    quit_phy_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_phy_1_2"));
+}
 
-GtkButton* et1;
+GtkButton* open_mt1;
+GtkButton* open_mt2;
+GtkButton* open_mt3;
+GtkButton* open_mt4;
 
-GtkButton* pt1;
+GtkButton* open_at1;
+GtkButton* open_at2;
+GtkButton* open_at3;
 
-GtkWindow* qcmarchi;
+GtkButton* open_ct1;
+GtkButton* open_ct2;
+GtkButton* open_ct3;
 
-GtkButton* quit_qcm_a;
+GtkButton* open_et1;
 
-GtkWindow* qcmmt1;
+GtkButton* open_pt1;
+
+void get_enter_training_button()
+{
+    open_mt1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt1"));
+    open_mt2 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt2"));
+    open_mt3 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt3"));
+    open_mt4 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt4"));
+
+    open_at1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_at1"));
+    open_at2 = GTK_BUTTON(gtk_builder_get_object(builder,"open_at2"));
+    open_at3 = GTK_BUTTON(gtk_builder_get_object(builder,"open_at3"));
+
+    open_ct1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_ct1"));
+    open_ct2 = GTK_BUTTON(gtk_builder_get_object(builder,"open_ct2"));
+    open_ct3 = GTK_BUTTON(gtk_builder_get_object(builder,"open_ct3"));
+
+    open_et1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_et1"));
+
+    open_pt1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_pt1"));
+}
+
 GtkButton* quit_qcm_mt1;
 
-GtkWindow* qcmarchi2;
+GtkButton* quit_qcm_at1;
 
-GtkButton* quit_qcm_a1;
+GtkButton* quit_qcm_ct1;
+GtkButton* quit_qcm_ct2;
 
-
-GtkWindow* qcmat1;
-GtkButton* quit_at1;
-
-void enter_main()
+void get_close_training_button()
 {
-    gtk_widget_hide(GTK_WIDGET(loginWindow));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
+    quit_qcm_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_mt1"));
+
+    quit_qcm_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_at1"));
+
+    quit_qcm_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct1"));
+    quit_qcm_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct2"));
 }
 
-void enter_profile()
+// Functions G_signal for the UI
+
+void main_signal()
 {
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(profileWindow));
+    g_signal_connect(open_main,"clicked",G_CALLBACK(enter_page),mainWindow);
+    g_signal_connect(open_profil,"clicked",G_CALLBACK(enter_page),profileWindow);
+    g_signal_connect(open_about_us,"activate",G_CALLBACK(enter_page),aboutUsWindow);
+
+    g_signal_connect(close_profil,"clicked",G_CALLBACK(enter_page),mainWindow);
+    g_signal_connect(close_about_us,"clicked",G_CALLBACK(enter_page),mainWindow);
 }
 
-void enter_maths()
+void courses_signal()
 {
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(mathsWindow));
+    g_signal_connect(open_computer_architecture,"clicked",G_CALLBACK(enter_page),archiWindow);
+    g_signal_connect(open_mathematics,"clicked",G_CALLBACK(enter_page),mathsWindow);
+    g_signal_connect(open_algorithm,"clicked",G_CALLBACK(enter_page),algoWindow);
+    g_signal_connect(open_physic,"clicked",G_CALLBACK(enter_page),phyWindow);
+    g_signal_connect(open_electronic,"clicked",G_CALLBACK(enter_page),elecWindow);
+
+    g_signal_connect(close_mathematics,"clicked",G_CALLBACK(enter_page),mainWindow);
+    g_signal_connect(close_algorithm,"clicked",G_CALLBACK(enter_page),mainWindow);
+    g_signal_connect(close_physic,"clicked",G_CALLBACK(enter_page),mainWindow);
+    g_signal_connect(close_electronic,"clicked",G_CALLBACK(enter_page),mainWindow);
+    g_signal_connect(close_computer_architecture,"clicked",G_CALLBACK(enter_page),mainWindow);
 }
 
-void enter_algo()
+void courses_page_signal()
 {
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(algoWindow));
-}
-
-void enter_phy()
-{
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(phyWindow));
-}
-
-void enter_elec()
-{
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(elecWindow));
-}
-
-void enter_archi()
-{
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(archiWindow));
-}
-
-void enter_at1()
-{
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(qcmat1));
-}
-
-void enter_aboutUs()
-{
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(aboutUsWindow));
-}
-
-
-void close_profile()
-{
-    gtk_widget_hide(GTK_WIDGET(profileWindow));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-void close_maths()
-{
-    gtk_widget_hide(GTK_WIDGET(mathsWindow));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-void close_algo()
-{
-    gtk_widget_hide(GTK_WIDGET(algoWindow));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-void close_phy()
-{
-    gtk_widget_hide(GTK_WIDGET(phyWindow));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-void close_elec()
-{
-    gtk_widget_hide(GTK_WIDGET(elecWindow));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-void close_archi()
-{
-    gtk_widget_hide(GTK_WIDGET(archiWindow));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-void close_at1()
-{
-    gtk_widget_hide(GTK_WIDGET(qcmat1));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-void close_aboutUs()
-{
-    gtk_widget_hide(GTK_WIDGET(aboutUsWindow));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void enter_algo_1_1()
-{
-    gtk_widget_hide(GTK_WIDGET(algoWindow));
-    gtk_widget_show(GTK_WIDGET(cours_algo_1_1));
-}
-
-void close_algo_1_1()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_algo_1_1));
-    gtk_widget_show(GTK_WIDGET(algoWindow));
-}
-
-void enter_algo_2_1()
-{
-    gtk_widget_hide(GTK_WIDGET(algoWindow));
-    gtk_widget_show(GTK_WIDGET(cours_algo_2_1));
-}
-
-void close_algo_2_1()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_algo_2_1));
-    gtk_widget_show(GTK_WIDGET(algoWindow));
-}
-
-void enter_algo_2_2()
-{
-    gtk_widget_hide(GTK_WIDGET(algoWindow));
-    gtk_widget_show(GTK_WIDGET(cours_algo_2_2));
-}
-
-void close_algo_2_2()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_algo_2_2));
-    gtk_widget_show(GTK_WIDGET(algoWindow));
-}
-
-void enter_algo_3_1()
-{
-    gtk_widget_hide(GTK_WIDGET(algoWindow));
-    gtk_widget_show(GTK_WIDGET(cours_algo_3_1));
-}
-
-void close_algo_3_1()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_algo_3_1));
-    gtk_widget_show(GTK_WIDGET(algoWindow));
-}
-
-void enter_archi_1_1()
-{
-    gtk_widget_hide(GTK_WIDGET(archiWindow));
-    gtk_widget_show(GTK_WIDGET(cours_archi_1_1));
-}
-
-void close_archi_1_1()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_archi_1_1));
-    gtk_widget_show(GTK_WIDGET(archiWindow));
-}
-
-void enter_archi_1_2()
-{
-    gtk_widget_hide(GTK_WIDGET(archiWindow));
-    gtk_widget_show(GTK_WIDGET(cours_archi_1_2));
-}
-
-void close_archi_1_2()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_archi_1_2));
-    gtk_widget_show(GTK_WIDGET(archiWindow));
-}
-
-void enter_archi_1_3()
-{
-    gtk_widget_hide(GTK_WIDGET(archiWindow));
-    gtk_widget_show(GTK_WIDGET(cours_archi_1_3));
-}
-
-void close_archi_1_3()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_archi_1_3));
-    gtk_widget_show(GTK_WIDGET(archiWindow));
-}
-
-void enter_archi_1_4()
-{
-    gtk_widget_hide(GTK_WIDGET(archiWindow));
-    gtk_widget_show(GTK_WIDGET(cours_archi_1_4));
-}
-
-void close_archi_1_4()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_archi_1_4));
-    gtk_widget_show(GTK_WIDGET(archiWindow));
-}
-
-void enter_elec_1_1()
-{
-    gtk_widget_hide(GTK_WIDGET(elecWindow));
-    gtk_widget_show(GTK_WIDGET(cours_elec_1_1));
-}
-
-void close_elec_1_1()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_elec_1_1));
-    gtk_widget_show(GTK_WIDGET(elecWindow));
-}
-
-void enter_math_1_1()
-{
-    gtk_widget_hide(GTK_WIDGET(mathsWindow));
-    gtk_widget_show(GTK_WIDGET(cours_math_1_1));
-}
-
-void close_math_1_1()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_math_1_1));
-    gtk_widget_show(GTK_WIDGET(mathsWindow));
-}
-
-void enter_math_1_2()
-{
-    gtk_widget_hide(GTK_WIDGET(mathsWindow));
-    gtk_widget_show(GTK_WIDGET(cours_math_1_2));
-}
-
-void close_math_1_2()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_math_1_2));
-    gtk_widget_show(GTK_WIDGET(mathsWindow));
-}
-
-void enter_math_2_1()
-{
-    gtk_widget_hide(GTK_WIDGET(mathsWindow));
-    gtk_widget_show(GTK_WIDGET(cours_math_2_1));
-}
-
-void close_math_2_1()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_math_2_1));
-    gtk_widget_show(GTK_WIDGET(mathsWindow));
-}
-
-void enter_math_2_2()
-{
-    gtk_widget_hide(GTK_WIDGET(mathsWindow));
-    gtk_widget_show(GTK_WIDGET(cours_math_2_2));
-}
-
-void close_math_2_2()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_math_2_2));
-    gtk_widget_show(GTK_WIDGET(mathsWindow));
-}
-
-
-void enter_math_3_1()
-{
-    gtk_widget_hide(GTK_WIDGET(mathsWindow));
-    gtk_widget_show(GTK_WIDGET(cours_math_3_1));
-}
-
-void close_math_3_1()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_math_3_1));
-    gtk_widget_show(GTK_WIDGET(mathsWindow));
-}
-
-void enter_math_3_2()
-{
-    gtk_widget_hide(GTK_WIDGET(mathsWindow));
-    gtk_widget_show(GTK_WIDGET(cours_math_3_2));
-}
-
-void close_math_3_2()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_math_3_2));
-    gtk_widget_show(GTK_WIDGET(mathsWindow));
-}
-
-void enter_math_3_3()
-{
-    gtk_widget_hide(GTK_WIDGET(mathsWindow));
-    gtk_widget_show(GTK_WIDGET(cours_math_3_3));
-}
-
-void close_math_3_3()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_math_3_3));
-    gtk_widget_show(GTK_WIDGET(mathsWindow));
-}
-
-
-void enter_math_4_1()
-{
-    gtk_widget_hide(GTK_WIDGET(mathsWindow));
-    gtk_widget_show(GTK_WIDGET(cours_math_4_1));
-}
-
-void close_math_4_1()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_math_4_1));
-    gtk_widget_show(GTK_WIDGET(mathsWindow));
-}
-
-void enter_math_4_2()
-{
-    gtk_widget_hide(GTK_WIDGET(mathsWindow));
-    gtk_widget_show(GTK_WIDGET(cours_math_4_2));
-}
-
-void close_math_4_2()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_math_4_2));
-    gtk_widget_show(GTK_WIDGET(mathsWindow));
-}
-
-
-void enter_phy_1_1()
-{
-    gtk_widget_hide(GTK_WIDGET(phyWindow));
-    gtk_widget_show(GTK_WIDGET(cours_phy_1_1));
-}
-
-void close_phy_1_1()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_phy_1_1));
-    gtk_widget_show(GTK_WIDGET(phyWindow));
-}
-
-void enter_phy_1_2()
-{
-    gtk_widget_hide(GTK_WIDGET(phyWindow));
-    gtk_widget_show(GTK_WIDGET(cours_phy_1_2));
-}
-
-void close_phy_1_2()
-{
-    gtk_widget_hide(GTK_WIDGET(cours_phy_1_2));
-    gtk_widget_show(GTK_WIDGET(phyWindow));
-}
-
-GtkButton* valide_1;
-GtkWidget* statement1;
-GtkWidget* reponse1;
-GtkWidget* rep_ct1;
-
-void enter_ct1()
-{
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(qcmarchi));
-}
-
-void close_ct1()
-{   
-    gtk_widget_hide(GTK_WIDGET(qcmarchi));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-void enter_question_ct1(gpointer user)
-{
-    User* client = user;
-    char state[256];
-    char rep[8];
-    char reponse[256];
-   
-    sprintf(rep,"%s",gtk_entry_get_text(GTK_ENTRY(reponse1)));
-    gtk_entry_set_text(GTK_ENTRY(reponse1),"");
-    gtk_label_set_text(GTK_LABEL(rep_ct1),(const gchar*)"");
-
-    if (strlen(rep) != 0)
-    { 
-        if (strcmp(rep,client->answer_archi) == 0)
-        {
-            gtk_label_set_text(GTK_LABEL(rep_ct1),(const gchar*) "Bonne réponse !");
-        }
-
-        else
-        {
-            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_archi);
-            gtk_label_set_text(GTK_LABEL(rep_ct1),(const gchar*)reponse);
-        }
-    }
-
-    int n = rand()%17;
-
-    sprintf(state,"Combien fait 2^%i ?",n);
-
-    gtk_label_set_text(GTK_LABEL(statement1),(const gchar*) state);
+    g_signal_connect(math_1_1,"clicked",G_CALLBACK(enter_page),cours_math_1_1);
+    g_signal_connect(math_1_2,"clicked",G_CALLBACK(enter_page),cours_math_1_2);
+    g_signal_connect(math_2_1,"clicked",G_CALLBACK(enter_page),cours_math_2_1);
+    g_signal_connect(math_2_2,"clicked",G_CALLBACK(enter_page),cours_math_2_2);
+    g_signal_connect(math_3_1,"clicked",G_CALLBACK(enter_page),cours_math_3_1);
+    g_signal_connect(math_3_2,"clicked",G_CALLBACK(enter_page),cours_math_3_2);
+    g_signal_connect(math_3_3,"clicked",G_CALLBACK(enter_page),cours_math_3_3);
+    g_signal_connect(math_4_1,"clicked",G_CALLBACK(enter_page),cours_math_4_1);
+    g_signal_connect(math_4_2,"clicked",G_CALLBACK(enter_page),cours_math_4_2);
+
+    g_signal_connect(algo_1_1,"clicked",G_CALLBACK(enter_page),cours_algo_1_1);
+    g_signal_connect(algo_2_1,"clicked",G_CALLBACK(enter_page),cours_algo_2_1);
+    g_signal_connect(algo_2_2,"clicked",G_CALLBACK(enter_page),cours_algo_2_2);
+    g_signal_connect(algo_3_1,"clicked",G_CALLBACK(enter_page),cours_algo_3_1);
+
+    g_signal_connect(archi_1_1,"clicked",G_CALLBACK(enter_page),cours_archi_1_1);
+    g_signal_connect(archi_1_2,"clicked",G_CALLBACK(enter_page),cours_archi_1_2);
+    g_signal_connect(archi_1_3,"clicked",G_CALLBACK(enter_page),cours_archi_1_3);
+    g_signal_connect(archi_1_4,"clicked",G_CALLBACK(enter_page),cours_archi_1_4);
+
+    g_signal_connect(elec_1_1,"clicked",G_CALLBACK(enter_page),cours_elec_1_1);
+
+    g_signal_connect(phy_1_1,"clicked",G_CALLBACK(enter_page),cours_phy_1_1);
+    g_signal_connect(phy_1_2,"clicked",G_CALLBACK(enter_page),cours_phy_1_2);
+
+
+
+    g_signal_connect(quit_math_1_1,"clicked",G_CALLBACK(enter_page),mathsWindow);
+    g_signal_connect(quit_math_1_2,"clicked",G_CALLBACK(enter_page),mathsWindow);    
+    g_signal_connect(quit_math_2_1,"clicked",G_CALLBACK(enter_page),mathsWindow);
+    g_signal_connect(quit_math_2_2,"clicked",G_CALLBACK(enter_page),mathsWindow);
+    g_signal_connect(quit_math_3_1,"clicked",G_CALLBACK(enter_page),mathsWindow);
+    g_signal_connect(quit_math_3_2,"clicked",G_CALLBACK(enter_page),mathsWindow);
+    g_signal_connect(quit_math_3_3,"clicked",G_CALLBACK(enter_page),mathsWindow);
+    g_signal_connect(quit_math_4_1,"clicked",G_CALLBACK(enter_page),mathsWindow);
+    g_signal_connect(quit_math_4_2,"clicked",G_CALLBACK(enter_page),mathsWindow);
+     
+    g_signal_connect(quit_algo_1_1,"clicked",G_CALLBACK(enter_page),algoWindow);
+    g_signal_connect(quit_algo_2_1,"clicked",G_CALLBACK(enter_page),algoWindow);
+    g_signal_connect(quit_algo_2_2,"clicked",G_CALLBACK(enter_page),algoWindow);
+    g_signal_connect(quit_algo_3_1,"clicked",G_CALLBACK(enter_page),algoWindow);
     
-    sprintf(client->answer_archi,"%i",1<<n);
-}
-
-GtkButton* valide_2;
-GtkWidget* statement2;
-GtkWidget* reponse2;
-GtkWidget* rep_ct2;
-
-void enter_ct2()
-{
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(qcmarchi2));
-}
-
-void close_ct2()
-{
-    gtk_widget_hide(GTK_WIDGET(qcmarchi2));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-void enter_question_ct2(gpointer user)
-{
-    User* client = user;
+    g_signal_connect(quit_archi_1_1,"clicked",G_CALLBACK(enter_page),archiWindow);
+    g_signal_connect(quit_archi_1_2,"clicked",G_CALLBACK(enter_page),archiWindow);
+    g_signal_connect(quit_archi_1_3,"clicked",G_CALLBACK(enter_page),archiWindow);   
+    g_signal_connect(quit_archi_1_4,"clicked",G_CALLBACK(enter_page),archiWindow);
     
-    char rep[64];
-    char reponse[256];
-   
-    sprintf(rep,"%s",gtk_entry_get_text(GTK_ENTRY(reponse2)));
-    gtk_entry_set_text(GTK_ENTRY(reponse2),"");
-    gtk_label_set_text(GTK_LABEL(rep_ct2),(const gchar*)"");
+    g_signal_connect(quit_elec_1_1,"clicked",G_CALLBACK(enter_page),elecWindow);
 
-    if (strlen(rep) != 0)
-    { 
-        if (strcmp(rep,client->answer_archi1) == 0)
-        {
-            gtk_label_set_text(GTK_LABEL(rep_ct2),(const gchar*) "Bonne réponse !");
-        }
-
-        else
-        {
-            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_archi1);
-            gtk_label_set_text(GTK_LABEL(rep_ct2),(const gchar*)reponse);
-        }
-    }
-
-    char state[256];
-
-    int depart = rand()%9 + 2;
-    int arrivee = rand()%9 + 2;
-
-    int nbre = rand()%100;
-
-    unsigned long nbre_base_depart = convertirEnbase(depart,(unsigned long)nbre,10);
-    unsigned long nbre_base_arrivee = convertirEnbase(arrivee,(unsigned long) nbre,10);
-
-    sprintf(client->answer_archi1,"%lu",nbre_base_arrivee);
-
-    sprintf(state,"Donner la représentation en base %i de %lu (en base %i)?",arrivee,nbre_base_depart,depart);
-    gtk_label_set_text(GTK_LABEL(statement2),(const gchar*) state);
-    
+    g_signal_connect(quit_phy_1_1,"clicked",G_CALLBACK(enter_page),phyWindow);    
+    g_signal_connect(quit_phy_1_2,"clicked",G_CALLBACK(enter_page),phyWindow);    
 }
 
+void training_signal()
+{
+    g_signal_connect(open_mt1,"clicked",G_CALLBACK(enter_page),qcm_mt1);
+    
+    g_signal_connect(open_at1,"clicked",G_CALLBACK(enter_page),qcm_at1);
+
+    g_signal_connect(open_ct1,"clicked",G_CALLBACK(enter_page),qcm_archi1);
+    g_signal_connect(open_ct2,"clicked",G_CALLBACK(enter_page),qcm_archi2);
+
+
+
+    g_signal_connect(quit_qcm_mt1,"clicked",G_CALLBACK(enter_page),mainWindow);
+
+    g_signal_connect(quit_qcm_at1,"clicked",G_CALLBACK(enter_page),mainWindow);
+
+    g_signal_connect(quit_qcm_ct1,"clicked",G_CALLBACK(enter_page),mainWindow); 
+    g_signal_connect(quit_qcm_ct2,"clicked",G_CALLBACK(enter_page),mainWindow);
+
+}
+
+// Function G_signal that launch mcq
+
+// For qcm_mt1
 GtkButton* valide_mt1;
-GtkWidget* qe_mt1;
+GtkWidget* question_mt1;
+
 GtkWidget* im_mt1;
 GtkWidget* re_mt1;
 
-GtkWidget* rep_mt1;
+GtkWidget* answer_mt1;
 
-void enter_mt1()
+// For qcm_ct1
+GtkButton* valide_ct1;
+GtkWidget* question_ct1;
+GtkWidget* user_answer_ct1;
+GtkWidget* answer_ct1;
+
+// For qcm_ct2
+GtkButton* valide_ct2;
+GtkWidget* question_ct2;
+GtkWidget* user_answer_ct2;
+GtkWidget* answer_ct2;
+
+void get_mcq_object()
 {
-    gtk_widget_hide(GTK_WIDGET(mainWindow));
-    gtk_widget_show(GTK_WIDGET(qcmmt1));
+    // For qcm_mt1
+    question_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_mt1"));
+    im_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "im_mt1"));
+    re_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "re_mt1"));
+    answer_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_mt1"));
+    valide_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_mt1"));
+
+    // For qcm_ct1
+    valide_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_ct1"));
+    question_ct1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_ct1"));
+    user_answer_ct1 = GTK_WIDGET(gtk_builder_get_object(builder, "user_answer_ct1"));
+    answer_ct1 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_ct1"));
+
+    // For qcm_ct2
+    valide_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_ct2"));
+    question_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "question_ct2"));
+    user_answer_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "user_answer_ct2"));
+    answer_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_ct2"));
 }
 
-void close_mt1()
-{   
-    gtk_widget_hide(GTK_WIDGET(qcmmt1));
-    gtk_widget_show(GTK_WIDGET(mainWindow));
-}
-
-void enter_question_mt1(gpointer user)
+void update_mcq_mt1(GtkButton* button,gpointer user)
 {
     User* client = user;
 
@@ -666,19 +527,19 @@ void enter_question_mt1(gpointer user)
     gtk_entry_set_text(GTK_ENTRY(im_mt1),"");
     gtk_entry_set_text(GTK_ENTRY(re_mt1),"");
 
-    gtk_label_set_text(GTK_LABEL(rep_mt1),(const gchar*)"");
+    gtk_label_set_text(GTK_LABEL(answer_mt1),(const gchar*)"");
     
     if (strlen(rep_im) != 0 || strlen(rep_re) != 0)
     {   
         if (strcmp(rep_im,client->answer_im) == 0 && strcmp(rep_re,client->answer_re) == 0)
         {
-            gtk_label_set_text(GTK_LABEL(rep_mt1),"Bonne réponse !");
+            gtk_label_set_text(GTK_LABEL(answer_mt1),"Bonne réponse !");
         }
 
         else
         {
             sprintf(reponse,"Mauvaise Réponse!\n Correction: %s i + %s", client->answer_im,client->answer_re);
-            gtk_label_set_text(GTK_LABEL(rep_mt1), reponse);
+            gtk_label_set_text(GTK_LABEL(answer_mt1), reponse);
         }
     }
 
@@ -708,23 +569,95 @@ void enter_question_mt1(gpointer user)
         rep = comp_mult(client->a,client->b);
     }
 
-    gtk_label_set_text(GTK_LABEL(qe_mt1),(const gchar*) state);
+    gtk_label_set_text(GTK_LABEL(question_mt1),(const gchar*) state);
     
     sprintf(client->answer_im,"%i",(int)rep->Im);
     sprintf(client->answer_re,"%i",(int)rep->Re);
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void update_mcq_ct1(GtkButton* button,gpointer user)
+{
+    User* client = user;
+    char state[256];
+    char rep[8];
+    char reponse[256];
+   
+    sprintf(rep,"%s",gtk_entry_get_text(GTK_ENTRY(user_answer_ct1)));
+    gtk_entry_set_text(GTK_ENTRY(user_answer_ct1),"");
+    gtk_label_set_text(GTK_LABEL(answer_ct1),(const gchar*)"");
+
+    if (strlen(rep) != 0)
+    { 
+        if (strcmp(rep,client->answer_ct1) == 0)
+        {
+            gtk_label_set_text(GTK_LABEL(answer_ct1),(const gchar*) "Bonne réponse !");
+        }
+
+        else
+        {
+            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_ct1);
+            gtk_label_set_text(GTK_LABEL(answer_ct1),(const gchar*)reponse);
+        }
+    }
+
+    int n = rand()%17;
+
+    sprintf(state,"Combien fait 2^%i ?",n);
+
+    gtk_label_set_text(GTK_LABEL(question_ct1),(const gchar*) state);
+    
+    sprintf(client->answer_ct1,"%i",1<<n);
+}
+
+void update_mcq_ct2(GtkButton* button,gpointer user)
+{
+    User* client = user;
+    
+    char rep[64];
+    char reponse[256];
+   
+    sprintf(rep,"%s",gtk_entry_get_text(GTK_ENTRY(user_answer_ct2)));
+    gtk_entry_set_text(GTK_ENTRY(user_answer_ct2),"");
+    gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*)"");
+
+    if (strlen(rep) != 0)
+    { 
+        if (strcmp(rep,client->answer_ct2) == 0)
+        {
+            gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*) "Bonne réponse !");
+        }
+
+        else
+        {
+            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_ct2);
+            gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*)reponse);
+        }
+    }
+
+    char state[256];
+
+    int depart = rand()%9 + 2;
+    int arrivee = rand()%9 + 2;
+
+    int nbre = rand()%100;
+
+    unsigned long nbre_base_depart = convertirEnbase(depart,(unsigned long)nbre,10);
+    unsigned long nbre_base_arrivee = convertirEnbase(arrivee,(unsigned long) nbre,10);
+
+    sprintf(client->answer_ct2,"%lu",nbre_base_arrivee);
+
+    sprintf(state,"Donner la représentation en base %i de %lu (en base %i)?",arrivee,nbre_base_depart,depart);
+    gtk_label_set_text(GTK_LABEL(question_ct2),(const gchar*) state);
+    
+}
+
 
 GtkBuilder *init_gui()
 {
-    // Initializes GTK.
     gtk_init(NULL, NULL);
-
-    // Constructs a GtkBuilder instance.
     builder = gtk_builder_new ();
-
     GError* error = NULL;
+
     if (gtk_builder_add_from_file(builder, "../res/EpiLearn.glade", &error) == 0)
     {
         g_printerr("Error loading file: %s\n", error->message);
@@ -732,299 +665,51 @@ GtkBuilder *init_gui()
         return NULL;
     }
 
-    User* client = calloc(1,sizeof(User));
+    User* client = init_user();
 
-    if (!client)
+    //get GtkWidget
 
-    {
-        return NULL;
-    }
+    get_window();
+    get_courses_window();
+    get_courses_page();
+    get_training_window();
 
-    // Gets the widgets.
-    mainWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.main"));
-    loginWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.login"));
-    
-    mathsWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.mathematics"));
-    algoWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.algorithm"));
-    phyWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.physic"));
-    elecWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.electronic"));
-    archiWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.computer_architecture"));
-    profileWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.profil"));
-    aboutUsWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.about_us"));
+    get_main_enter_button();
+    get_main_close_button();
 
-    //courses
+    get_courses_enter_button();
+    get_courses_close_button();
 
-    cours_algo_1_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.algo.chap1.lesson1"));
-    algo_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"algo_1_1"));
-    quit_algo_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_algo_1_1"));
+    get_courses_page_enter_button();
+    get_courses_page_close_button();
 
-    cours_algo_2_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.algo.chap2.lesson1"));
-    algo_2_1 = GTK_BUTTON(gtk_builder_get_object(builder,"algo_2_1"));
-    quit_algo_2_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_algo_2_1"));
+    get_enter_training_button();
+    get_close_training_button();
 
-    cours_algo_2_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.algo.chap2.lesson2"));
-    algo_2_2 = GTK_BUTTON(gtk_builder_get_object(builder,"algo_2_2"));
-    quit_algo_2_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_algo_2_2"));
+    get_mcq_object();
 
-    cours_algo_3_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.algo.chap3.lesson1"));
-    algo_3_1 = GTK_BUTTON(gtk_builder_get_object(builder,"algo_3_1"));
-    quit_algo_3_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_algo_3_1"));
+    open_calculator = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_calculator"));
+    open_graph = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_graph"));
 
+    //UI signals
 
-    cours_archi_1_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.archi.chap1.lesson1"));
-    cours_archi_1_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.archi.chap1.lesson2"));
-    cours_archi_1_3 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.archi.chap1.lesson3"));
-    cours_archi_1_4 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.archi.chap1.lesson4"));
+    main_signal();
+    courses_signal();
+    courses_page_signal();
+    training_signal();
 
-    archi_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"archi_1_1"));
-    archi_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"archi_1_2"));
-    archi_1_3 = GTK_BUTTON(gtk_builder_get_object(builder,"archi_1_3"));
-    archi_1_4 = GTK_BUTTON(gtk_builder_get_object(builder,"archi_1_4"));
+    g_signal_connect(open_calculator,"activate",G_CALLBACK(open_calculator_fct),NULL);
+    g_signal_connect(open_graph,"activate",G_CALLBACK(open_graph_fct),NULL);
 
-    quit_archi_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_archi_1_1"));
-    quit_archi_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_archi_1_2"));
-    quit_archi_1_3 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_archi_1_3"));
-    quit_archi_1_4 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_archi_1_4"));
+    //Mcq signals
 
-    
-    cours_elec_1_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.elec.chap1.lesson1"));
-
-    elec_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"elec_1_1"));;
-
-    quit_elec_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_elec_1_1"));
-
-
-    cours_math_1_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap1.lesson1"));
-    cours_math_1_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap1.lesson2"));
-    cours_math_2_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap2.lesson1"));
-    cours_math_2_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap2.lesson2"));
-    cours_math_3_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap3.lesson1"));
-    cours_math_3_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap3.lesson2"));
-    cours_math_3_3 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap3.lesson3"));
-    cours_math_4_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap4.lesson1"));
-    cours_math_4_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.math.chap4.lesson2"));
-
-    math_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"math_1_1"));
-    math_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"math_1_2"));
-    math_2_1 = GTK_BUTTON(gtk_builder_get_object(builder,"math_2_1"));
-    math_2_2 = GTK_BUTTON(gtk_builder_get_object(builder,"math_2_2"));
-    math_3_1 = GTK_BUTTON(gtk_builder_get_object(builder,"math_3_1"));
-    math_3_2 = GTK_BUTTON(gtk_builder_get_object(builder,"math_3_2"));
-    math_3_3 = GTK_BUTTON(gtk_builder_get_object(builder,"math_3_3"));
-    math_4_1 = GTK_BUTTON(gtk_builder_get_object(builder,"math_4_1"));
-    math_4_2 = GTK_BUTTON(gtk_builder_get_object(builder,"math_4_2"));
-   
-    quit_math_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_1_1"));
-    quit_math_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_1_2"));
-    quit_math_2_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_2_1"));    
-    quit_math_2_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_2_2"));
-    quit_math_3_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_3_1"));
-    quit_math_3_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_3_2"));
-    quit_math_3_3 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_3_3"));    
-    quit_math_4_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_4_1"));
-    quit_math_4_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_4_2"));
-
-    cours_phy_1_1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.phy.chap1.lesson1"));
-    cours_phy_1_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.phy.chap1.lesson2"));
-
-    phy_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"phy_1_1"));
-    phy_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"phy_1_2"));
-
-    quit_phy_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_phy_1_1"));
-    quit_phy_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_phy_1_2"));
-
-    //traning button
-
-    mt1 = GTK_BUTTON(gtk_builder_get_object(builder,"mt1"));
-    mt2 = GTK_BUTTON(gtk_builder_get_object(builder,"mt2"));
-    mt3 = GTK_BUTTON(gtk_builder_get_object(builder,"mt3"));
-    mt4 = GTK_BUTTON(gtk_builder_get_object(builder,"mt'"));
-
-    at1 = GTK_BUTTON(gtk_builder_get_object(builder,"at1"));
-    at2 = GTK_BUTTON(gtk_builder_get_object(builder,"at2"));
-    at3 = GTK_BUTTON(gtk_builder_get_object(builder,"at3"));
-
-    ct1 = GTK_BUTTON(gtk_builder_get_object(builder,"ct1"));
-    ct2 = GTK_BUTTON(gtk_builder_get_object(builder,"ct2"));
-    ct3 = GTK_BUTTON(gtk_builder_get_object(builder,"ct3"));
-
-    et1 = GTK_BUTTON(gtk_builder_get_object(builder,"et1"));
-
-    pt1 = GTK_BUTTON(gtk_builder_get_object(builder,"pt1"));
-
-    qcmarchi = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi"));
-    quit_qcm_a = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_a"));
-
-    qcmmt1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.maths.mt1"));
-    quit_qcm_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_mt1"));
-    valide_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_mt1"));
-
-    qcmarchi2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_1"));
-    quit_qcm_a1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_a1"));
-
-    qcmat1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm_at1"));
-    quit_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_at1"));
-
-    Calculatrice = GTK_MENU_ITEM(gtk_builder_get_object(builder, "Calculatrice"));
-    //Graphe = GTK_MENU_ITEM(gtk_builder_get_object(builder, "Graphe"));
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    valide_1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_1"));
-    statement1 = GTK_WIDGET(gtk_builder_get_object(builder, "statement1"));
-    reponse1 = GTK_WIDGET(gtk_builder_get_object(builder, "reponse1"));
-    rep_ct1 = GTK_WIDGET(gtk_builder_get_object(builder, "rep_ct1"));
-
-    qe_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "qe_mt1"));
-    im_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "im_mt1"));
-    re_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "re_mt1"));
-    rep_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "rep_mt1"));
-
-    valide_2 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_2"));
-    statement2 = GTK_WIDGET(gtk_builder_get_object(builder, "statement2"));
-    reponse2 = GTK_WIDGET(gtk_builder_get_object(builder, "reponse2"));
-    rep_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "rep_ct2"));
-
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    login = GTK_BUTTON(gtk_builder_get_object(builder,"login"));
-    Mathematics = GTK_BUTTON(gtk_builder_get_object(builder,"Mathematics"));
-    Algorithm = GTK_BUTTON(gtk_builder_get_object(builder,"Algorithm"));
-    Physic = GTK_BUTTON(gtk_builder_get_object(builder,"Physic"));
-    Electronic = GTK_BUTTON(gtk_builder_get_object(builder,"Electronic"));
-    Computer_architecture = GTK_BUTTON(gtk_builder_get_object(builder,"Computer architecture"));
-    mcq = GTK_BUTTON(gtk_builder_get_object(builder,"mcq enter"));
-    aboutUs = GTK_MENU_ITEM(gtk_builder_get_object(builder,"about us b"));
-
-    account = GTK_BUTTON(gtk_builder_get_object(builder,"account"));
-
-    back_profil = GTK_BUTTON(gtk_builder_get_object(builder,"Back profil"));
-    back_maths = GTK_BUTTON(gtk_builder_get_object(builder,"back maths"));
-    back_algo = GTK_BUTTON(gtk_builder_get_object(builder,"back algo"));
-    back_ca = GTK_BUTTON(gtk_builder_get_object(builder,"back ca"));
-    back_elec = GTK_BUTTON(gtk_builder_get_object(builder,"back elec"));
-    back_phy = GTK_BUTTON(gtk_builder_get_object(builder,"back phy"));
-    back_mcq = GTK_BUTTON(gtk_builder_get_object(builder,"quit mcq"));
-
-    close_about_us = GTK_BUTTON(gtk_builder_get_object(builder,"close about us"));
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    g_signal_connect(ct1,"clicked",G_CALLBACK(enter_ct1),NULL);
-    g_signal_connect(quit_qcm_a,"clicked",G_CALLBACK(close_ct1),NULL);
-
-    g_signal_connect(valide_1,"clicked",G_CALLBACK(enter_question_ct1),client);
-
-    g_signal_connect(mt1,"clicked",G_CALLBACK(enter_mt1),NULL);
-    g_signal_connect(quit_qcm_mt1,"clicked",G_CALLBACK(close_mt1),NULL);
-
-    g_signal_connect(valide_mt1,"clicked",G_CALLBACK(enter_question_mt1),client);
-
-    g_signal_connect(ct2,"clicked",G_CALLBACK(enter_ct2),NULL);
-    g_signal_connect(quit_qcm_a1,"clicked",G_CALLBACK(close_ct2),NULL);
-
-    g_signal_connect(valide_2,"clicked",G_CALLBACK(enter_question_ct2),client);
-    
-    g_signal_connect(Calculatrice,"activate",G_CALLBACK(open_calculator),NULL);
-    //g_signal_connect(Graphe,"activate",G_CALLBACK(open_graphe),NULL);
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    g_signal_connect(valide_mt1,"clicked",G_CALLBACK(update_mcq_mt1),client);
+    g_signal_connect(valide_ct1,"clicked",G_CALLBACK(update_mcq_ct1),client);
+    g_signal_connect(valide_ct2,"clicked",G_CALLBACK(update_mcq_ct2),client);
 
     // Connects event handlers.
     g_signal_connect(mainWindow, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-
     gtk_widget_show(GTK_WIDGET(loginWindow));
-
-    g_signal_connect(login,"clicked",G_CALLBACK(enter_main),NULL);
-    g_signal_connect(Mathematics,"clicked",G_CALLBACK(enter_maths),NULL);
-    g_signal_connect(Algorithm,"clicked",G_CALLBACK(enter_algo),NULL);
-    g_signal_connect(Physic,"clicked",G_CALLBACK(enter_phy),NULL);
-    g_signal_connect(Electronic,"clicked",G_CALLBACK(enter_elec),NULL);
-    g_signal_connect(Computer_architecture,"clicked",G_CALLBACK(enter_archi),NULL);
-    g_signal_connect(account,"clicked",G_CALLBACK(enter_profile),NULL);
-    g_signal_connect(aboutUs,"activate",G_CALLBACK(enter_aboutUs),NULL);
-
-    g_signal_connect(back_maths,"clicked",G_CALLBACK(close_maths),NULL);
-    g_signal_connect(back_algo,"clicked",G_CALLBACK(close_algo),NULL);
-    g_signal_connect(back_phy,"clicked",G_CALLBACK(close_phy),NULL);
-    g_signal_connect(back_elec,"clicked",G_CALLBACK(close_elec),NULL);
-    g_signal_connect(back_ca,"clicked",G_CALLBACK(close_archi),NULL);
-    g_signal_connect(back_profil,"clicked",G_CALLBACK(close_profile),NULL);
-    g_signal_connect(close_about_us,"clicked",G_CALLBACK(close_aboutUs),NULL);
-
-    //courses
-    g_signal_connect(algo_1_1,"clicked",G_CALLBACK(enter_algo_1_1),NULL);
-    g_signal_connect(quit_algo_1_1,"clicked",G_CALLBACK(close_algo_1_1),NULL);
-
-    g_signal_connect(algo_2_1,"clicked",G_CALLBACK(enter_algo_2_1),NULL);
-    g_signal_connect(quit_algo_2_1,"clicked",G_CALLBACK(close_algo_2_1),NULL);
-
-    g_signal_connect(algo_2_2,"clicked",G_CALLBACK(enter_algo_2_2),NULL);
-    g_signal_connect(quit_algo_2_2,"clicked",G_CALLBACK(close_algo_2_2),NULL);
-
-    g_signal_connect(algo_3_1,"clicked",G_CALLBACK(enter_algo_3_1),NULL);
-    g_signal_connect(quit_algo_3_1,"clicked",G_CALLBACK(close_algo_3_1),NULL);
-
-
-    g_signal_connect(archi_1_1,"clicked",G_CALLBACK(enter_archi_1_1),NULL);
-    g_signal_connect(quit_archi_1_1,"clicked",G_CALLBACK(close_archi_1_1),NULL);
-
-    g_signal_connect(archi_1_2,"clicked",G_CALLBACK(enter_archi_1_2),NULL);
-    g_signal_connect(quit_archi_1_2,"clicked",G_CALLBACK(close_archi_1_2),NULL);
-
-    g_signal_connect(archi_1_3,"clicked",G_CALLBACK(enter_archi_1_3),NULL);
-    g_signal_connect(quit_archi_1_3,"clicked",G_CALLBACK(close_archi_1_3),NULL);
-
-    g_signal_connect(archi_1_4,"clicked",G_CALLBACK(enter_archi_1_4),NULL);
-    g_signal_connect(quit_archi_1_4,"clicked",G_CALLBACK(close_archi_1_4),NULL);
-
-
-    g_signal_connect(elec_1_1,"clicked",G_CALLBACK(enter_elec_1_1),NULL);
-    g_signal_connect(quit_elec_1_1,"clicked",G_CALLBACK(close_elec_1_1),NULL);
-
-
-    g_signal_connect(math_1_1,"clicked",G_CALLBACK(enter_math_1_1),NULL);
-    g_signal_connect(quit_math_1_1,"clicked",G_CALLBACK(close_math_1_1),NULL);
-
-    g_signal_connect(math_1_2,"clicked",G_CALLBACK(enter_math_1_2),NULL);
-    g_signal_connect(quit_math_1_2,"clicked",G_CALLBACK(close_math_1_2),NULL);
-
-    g_signal_connect(math_2_1,"clicked",G_CALLBACK(enter_math_2_1),NULL);
-    g_signal_connect(quit_math_2_1,"clicked",G_CALLBACK(close_math_2_1),NULL);
-
-    g_signal_connect(math_2_2,"clicked",G_CALLBACK(enter_math_2_2),NULL);
-    g_signal_connect(quit_math_2_2,"clicked",G_CALLBACK(close_math_2_2),NULL);
-
-    g_signal_connect(math_3_1,"clicked",G_CALLBACK(enter_math_3_1),NULL);
-    g_signal_connect(quit_math_3_1,"clicked",G_CALLBACK(close_math_3_1),NULL);
-
-    g_signal_connect(math_3_2,"clicked",G_CALLBACK(enter_math_3_2),NULL);
-    g_signal_connect(quit_math_3_2,"clicked",G_CALLBACK(close_math_3_2),NULL);
-
-    g_signal_connect(math_3_3,"clicked",G_CALLBACK(enter_math_3_3),NULL);
-    g_signal_connect(quit_math_3_3,"clicked",G_CALLBACK(close_math_3_3),NULL);
-
-    g_signal_connect(math_4_1,"clicked",G_CALLBACK(enter_math_4_1),NULL);
-    g_signal_connect(quit_math_4_1,"clicked",G_CALLBACK(close_math_4_1),NULL);
-
-    g_signal_connect(math_4_2,"clicked",G_CALLBACK(enter_math_4_2),NULL);
-    g_signal_connect(quit_math_4_2,"clicked",G_CALLBACK(close_math_4_2),NULL);
-
-
-    g_signal_connect(phy_1_1,"clicked",G_CALLBACK(enter_phy_1_1),NULL);
-    g_signal_connect(quit_phy_1_1,"clicked",G_CALLBACK(close_phy_1_1),NULL);
-
-    g_signal_connect(phy_1_2,"clicked",G_CALLBACK(enter_phy_1_2),NULL);
-    g_signal_connect(quit_phy_1_2,"clicked",G_CALLBACK(close_phy_1_2),NULL);    
-
-    g_signal_connect(at1,"clicked",G_CALLBACK(enter_at1),NULL);
-    g_signal_connect(quit_at1,"clicked",G_CALLBACK(close_at1),NULL);
-    g_signal_connect(quit_phy_1_2,"clicked",G_CALLBACK(close_phy_1_2),NULL);   
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     // Run the main window.
     gtk_main();
     
