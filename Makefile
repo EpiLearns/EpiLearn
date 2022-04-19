@@ -34,6 +34,9 @@ grid: $(OBJ_DIR)/mini_game/grid_game/window.o #$(OBJ_DIR)/mini_game/grid_game/sc
 number: $(OBJ_DIR)/mini_game/number_game/window.o $(OBJ_DIR)/mini_game/number_game/script.o
 	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
 
+chimp: $(OBJ_DIR)/mini_game/chimp_game/window.o #$(OBJ_DIR)/mini_game/grid_game/script.o
+	$(CC) -o $(BUILD_DIR)/$@ $(addprefix $(OBJ_DIR)/, $(^F)) $(LDFLAGS)
+
 $(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.c
 	$(CC) $(CFLAGS) -c -o $(OBJ_DIR)/$(@F) $<
 
