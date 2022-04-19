@@ -45,6 +45,19 @@ void init_mcq_ct1(Mcq *mcq)
     }
 }
 
+void free_qcm_ct1(Mcq* mcq)
+{
+    Mcq* tmp;
+
+    while (mcq)
+    {
+        tmp = mcq;
+        mcq = mcq->next_question;
+
+        free(tmp);
+    }
+}
+
 /*int main()
 {
     Mcq* mcq = calloc(1,sizeof(Mcq));

@@ -629,7 +629,7 @@ void enter_mcq_ct1(GtkButton* button, gpointer user)
 
     current_window = qcm_archi1;
 
-    User *client = calloc(1,sizeof(User));
+    User *client = user;
     client->score = 0;
 
     client->mcq =  calloc(1,sizeof(Mcq));
@@ -665,10 +665,7 @@ void enter_mcq_ct1(GtkButton* button, gpointer user)
     gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),TRUE);
     gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,TRUE);
     gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
-
-    g_signal_connect(client->mcqObject->valide_button,"clicked",G_CALLBACK(check_reponse),(gpointer) client);
-    g_signal_connect(client->mcqObject->prev_button,"clicked",G_CALLBACK(mcq_prev),(gpointer) client);
-    g_signal_connect(client->mcqObject->next_button,"clicked",G_CALLBACK(mcq_next),(gpointer) client);
+    gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),"");
 }
 
 // Function G_signal that launch mcq
@@ -799,7 +796,15 @@ void update_mcq_ct2(GtkButton* button,gpointer user)
     
 }
 
+void training_update_signal(User* user)
+{
+    g_signal_connect(valide_ct1,"clicked",G_CALLBACK(check_reponse),(gpointer) user);
+    g_signal_connect(prev_ct1,"clicked",G_CALLBACK(mcq_prev),(gpointer) user);
+    g_signal_connect(next_ct1,"clicked",G_CALLBACK(mcq_next),(gpointer) user);
 
+    g_signal_connect(valide_mt1,"clicked",G_CALLBACK(update_mcq_mt1),user);
+    g_signal_connect(valide_ct2,"clicked",G_CALLBACK(update_mcq_ct2),user);
+}
 
 GtkBuilder *init_gui()
 {
@@ -846,17 +851,13 @@ GtkBuilder *init_gui()
     courses_signal();
     courses_page_signal();
     training_signal(client);
+    training_update_signal(client);
 
     g_signal_connect(open_calculator,"activate",G_CALLBACK(open_calculator_fct),NULL);
     g_signal_connect(open_graph,"activate",G_CALLBACK(open_graph_fct),NULL);
 
-    //Mcq signals
-
-    g_signal_connect(valide_mt1,"clicked",G_CALLBACK(update_mcq_mt1),client);
-    g_signal_connect(valide_ct2,"clicked",G_CALLBACK(update_mcq_ct2),client);
-
     // Connects event handlers.
-    g_signal_connect(mainWindow, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect(mainWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);
     gtk_widget_show(GTK_WIDGET(loginWindow));
     // Run the main window.
     gtk_main();
