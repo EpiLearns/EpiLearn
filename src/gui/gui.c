@@ -315,8 +315,6 @@ void get_courses_page_close_button()
 
 GtkButton* open_mt1;
 GtkButton* open_mt2;
-GtkButton* open_mt3;
-GtkButton* open_mt4;
 
 GtkButton* open_at1;
 GtkButton* open_at2;
@@ -334,8 +332,6 @@ void get_enter_training_button()
 {
     open_mt1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt1"));
     open_mt2 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt2"));
-    open_mt3 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt3"));
-    open_mt4 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt4"));
 
     open_at1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_at1"));
     open_at2 = GTK_BUTTON(gtk_builder_get_object(builder,"open_at2"));
@@ -525,7 +521,7 @@ void mcq_prev(GtkButton* button, gpointer user)
     gtk_label_set_text(GTK_LABEL(client->mcqObject->question_text),client->mcq->question);
     
     
-    gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),client->mcq->user_answer);
+    gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),client->mcq->user_answer1);
     gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),client->mcq->correction);
 
     gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),FALSE);
@@ -566,7 +562,7 @@ void mcq_next(GtkButton* button, gpointer user)
     
     if (!client->mcq->activate_validate_button)
     {
-        gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),client->mcq->user_answer);
+        gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),client->mcq->user_answer1);
         gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),client->mcq->correction);
     }
 }
@@ -576,11 +572,11 @@ void check_reponse(GtkButton* button, gpointer user)
     User *client = user;
     char score_buffer[256];
 
-    sprintf(client->mcq->user_answer,"%s",gtk_entry_get_text(GTK_ENTRY(user_answer_ct1)));
+    sprintf(client->mcq->user_answer1,"%s",gtk_entry_get_text(GTK_ENTRY(user_answer_ct1)));
 
-    if (strlen(client->mcq->user_answer) != 0)
+    if (strlen(client->mcq->user_answer1) != 0)
     { 
-        if (strcmp(client->mcq->user_answer,client->mcq->answer1) == 0)
+        if (strcmp(client->mcq->user_answer1,client->mcq->answer1) == 0)
         {
             client->score += 2;
 

@@ -32,7 +32,8 @@ typedef struct Mcq
     char answer1[256];
     char answer2[256];
 
-    char user_answer[256];
+    char user_answer1[256];
+    char user_answer2[256];
 
     char correction[256];
 

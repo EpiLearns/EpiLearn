@@ -54,7 +54,7 @@
                         <property name="height_request">150</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">Realized by the group FastLearners composed of:
+                        <property name="label">Réalisé par le groupe FastLearners composé de:
 
 Alexandre BAO
 Michel Choi
@@ -151,7 +151,7 @@ Dylan INNOU</property>
                         <property name="height_request">0</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">View more on us website: </property>
+                        <property name="label" translatable="yes">En savoir plus sur notre site</property>
                         <attributes>
                           <attribute name="font-desc" value="Ubuntu 10"/>
                           <attribute name="foreground" value="#777776767b7b"/>
@@ -347,7 +347,7 @@ ieme(λ, 3) = e3</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 1: Lists </property>
+            <property name="label" translatable="yes">Chapitre 1: Les listes</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -553,14 +553,14 @@ nombre d’éléments, il est conseillé d’utiliser des recherches plus effica
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 2: Searching in a list</property>
+            <property name="label" translatable="yes">Chapitre 2: Recherche dans une liste</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">275</property>
+            <property name="x">225</property>
             <property name="y">25</property>
           </packing>
         </child>
@@ -768,14 +768,14 @@ entre log2(n) et log2(log2(n)) soit suffisamment grande.</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 2: Searching in a list</property>
+            <property name="label" translatable="yes">Chapitre 2: Recherche dans une liste triée</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">275</property>
+            <property name="x">200</property>
             <property name="y">25</property>
           </packing>
         </child>
@@ -990,7 +990,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 3: Binary tree</property>
+            <property name="label" translatable="yes">Chapitre 3: Arbre Binaire</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -1071,7 +1071,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Chapiter 1: Lists</property>
+                        <property name="label" translatable="yes">Chapitre 1: Les listes</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -1088,7 +1088,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Chapiter 2: Searching in a list</property>
+                        <property name="label" translatable="yes">Chapitre 2: Recherche dans une liste</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -1105,7 +1105,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Chapiter 3: Binary trees</property>
+                        <property name="label" translatable="yes">Chapiter 3: Les arbres binaires</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -1118,7 +1118,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="algo_1_1">
-                        <property name="label" translatable="yes">1/ Basic list operations</property>
+                        <property name="label" translatable="yes">1/ Les opérations basiques sur les listes</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -1132,7 +1132,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="algo_2_1">
-                        <property name="label" translatable="yes">1/ Sequential search</property>
+                        <property name="label" translatable="yes">1/ Recherche séquentielle</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -1146,7 +1146,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="algo_2_2">
-                        <property name="label" translatable="yes">2/  Dichotomy search</property>
+                        <property name="label" translatable="yes">2/  Recherches  dichotomiques</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -1160,7 +1160,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="algo_3_1">
-                        <property name="label" translatable="yes">1/ Binary trees - Description and terminology</property>
+                        <property name="label" translatable="yes">1/ Les arbres binaires</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -1523,14 +1523,14 @@ par la base n. Dans le cas contraire, il faut passer par la base 10.
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 1: Integer representations</property>
+            <property name="label" translatable="yes">Chapitre 1: Représentation des nombres entiers</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">250</property>
+            <property name="x">150</property>
             <property name="y">25</property>
           </packing>
         </child>
@@ -1949,14 +1949,14 @@ Décimal Hexadécimal Binaire
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 1: Integer representations</property>
+            <property name="label" translatable="yes">Chapitre 1: Représentation des nombres entiers</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">250</property>
+            <property name="x">150</property>
             <property name="y">25</property>
           </packing>
         </child>
@@ -2130,14 +2130,14 @@ Le complément à deux est principalement utilisé pour l’encodage des entiers
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 1: Integer representations</property>
+            <property name="label" translatable="yes">Chapitre 1: Représentation des nombres entiers</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">250</property>
+            <property name="x">150</property>
             <property name="y">25</property>
           </packing>
         </child>
@@ -2495,14 +2495,14 @@ Mot binaire sur 8 bits 10001101 Extension de signe</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 1: Integer representations</property>
+            <property name="label" translatable="yes">Chapitre 1: Représentation des nombres entiers</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">250</property>
+            <property name="x">150</property>
             <property name="y">25</property>
           </packing>
         </child>
@@ -2544,7 +2544,7 @@ Mot binaire sur 8 bits 10001101 Extension de signe</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Computer achitecture</property>
+            <property name="label" translatable="yes">Architecture des ordinateurs</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 20"/>
               <attribute name="foreground" value="#1a1a5f5fb4b4"/>
@@ -2576,7 +2576,7 @@ Mot binaire sur 8 bits 10001101 Extension de signe</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Interger Representations</property>
+                        <property name="label" translatable="yes">Représentation des nombres entiers</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -2589,8 +2589,7 @@ Mot binaire sur 8 bits 10001101 Extension de signe</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="archi_1_1">
-                        <property name="label" translatable="yes">1/ Number Bases                    </property>
-                        <property name="width_request">100</property>
+                        <property name="label" translatable="yes">1/ Bases de numération</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2603,7 +2602,7 @@ Mot binaire sur 8 bits 10001101 Extension de signe</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="archi_1_2">
-                        <property name="label" translatable="yes">2/ Basic Binary Operations</property>
+                        <property name="label" translatable="yes">2/Opérations fondamentales en représentation binaire</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -2617,7 +2616,7 @@ Mot binaire sur 8 bits 10001101 Extension de signe</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="archi_1_3">
-                        <property name="label" translatable="yes">3/ Bits, Words and Bytes    </property>
+                        <property name="label" translatable="yes">3/ Bits, mots et octets</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -2631,7 +2630,7 @@ Mot binaire sur 8 bits 10001101 Extension de signe</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="archi_1_4">
-                        <property name="label" translatable="yes">4/ Encoding Integers             </property>
+                        <property name="label" translatable="yes">4/ Encodage d’entiers</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -2753,7 +2752,7 @@ courant) est toujours nulle</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 1: Theorem</property>
+            <property name="label" translatable="yes">Chapitre 1: Théorème</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -2802,7 +2801,7 @@ courant) est toujours nulle</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Electronic</property>
+            <property name="label" translatable="yes">Electronique</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 20"/>
               <attribute name="foreground" value="#1a1a5f5fb4b4"/>
@@ -2834,7 +2833,7 @@ courant) est toujours nulle</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Theorem</property>
+                        <property name="label" translatable="yes">Théorème</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -2847,7 +2846,7 @@ courant) est toujours nulle</property>
                     </child>
                     <child>
                       <object class="GtkButton" id="elec_1_1">
-                        <property name="label" translatable="yes">1/ Law of nodes and law of meshes</property>
+                        <property name="label" translatable="yes">1/  Loi des noeuds et loi des mailles</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -2919,14 +2918,14 @@ courant) est toujours nulle</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label">Welcome to EpiLearn</property>
+            <property name="label">Bienvenue sur EpiLearn</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 20"/>
               <attribute name="foreground" value="#1a1a5f5fb4b4"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">290</property>
+            <property name="x">275</property>
             <property name="y">100</property>
           </packing>
         </child>
@@ -2967,14 +2966,14 @@ courant) est toujours nulle</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">User name</property>
+                        <property name="label">Nom de l'utilisateur</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 10"/>
                           <attribute name="foreground" value="#000000000000"/>
                         </attributes>
                       </object>
                       <packing>
-                        <property name="x">50</property>
+                        <property name="x">25</property>
                         <property name="y">75</property>
                       </packing>
                     </child>
@@ -3011,7 +3010,7 @@ courant) est toujours nulle</property>
                     </child>
                     <child>
                       <object class="GtkButton">
-                        <property name="label" translatable="yes">Create account</property>
+                        <property name="label" translatable="yes">Créer un compte</property>
                         <property name="width_request">200</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -3041,7 +3040,7 @@ courant) est toujours nulle</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">Password</property>
+                        <property name="label">Mot de passe</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 10"/>
                           <attribute name="foreground" value="#000000000000"/>
@@ -3095,7 +3094,7 @@ courant) est toujours nulle</property>
               <object class="GtkMenuItem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">About us</property>
+                <property name="label" translatable="yes">A propos</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
                   <object class="GtkMenu">
@@ -3118,7 +3117,7 @@ courant) est toujours nulle</property>
               <object class="GtkMenuItem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Tools</property>
+                <property name="label" translatable="yes">Outils</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
                   <object class="GtkMenu">
@@ -3191,7 +3190,7 @@ courant) est toujours nulle</property>
                                         <property name="primary_icon_name">edit-find-symbolic</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="primary_icon_sensitive">False</property>
-                                        <property name="placeholder_text" translatable="yes">Search course</property>
+                                        <property name="placeholder_text" translatable="yes">Rechercher un cours</property>
                                       </object>
                                       <packing>
                                         <property name="x">25</property>
@@ -3200,11 +3199,13 @@ courant) est toujours nulle</property>
                                     </child>
                                     <child>
                                       <object class="GtkButton">
-                                        <property name="label" translatable="yes">search</property>
+                                        <property name="label">gtk-find</property>
                                         <property name="width_request">100</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">True</property>
+                                        <property name="use_stock">True</property>
+                                        <property name="always_show_image">True</property>
                                       </object>
                                       <packing>
                                         <property name="x">475</property>
@@ -3217,7 +3218,7 @@ courant) est toujours nulle</property>
                                         <property name="height_request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">The subject</property>
+                                        <property name="label" translatable="yes">Les matières</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 15"/>
                                           <attribute name="foreground" value="#000000000000"/>
@@ -3329,7 +3330,7 @@ courant) est toujours nulle</property>
                                         <property name="height_request">40</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Mathematics</property>
+                                        <property name="label" translatable="yes">Mathematique</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 10"/>
                                           <attribute name="foreground" value="#000000000000"/>
@@ -3346,7 +3347,7 @@ courant) est toujours nulle</property>
                                         <property name="height_request">40</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Algorithm</property>
+                                        <property name="label" translatable="yes">Algorithmique</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 10"/>
                                           <attribute name="foreground" value="#000000000000"/>
@@ -3363,8 +3364,8 @@ courant) est toujours nulle</property>
                                         <property name="height_request">40</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Computer 
-Architecture</property>
+                                        <property name="label" translatable="yes">  Architecture
+des ordinateurs</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 10"/>
                                           <attribute name="foreground" value="#000000000000"/>
@@ -3381,7 +3382,7 @@ Architecture</property>
                                         <property name="height_request">40</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Physic</property>
+                                        <property name="label" translatable="yes">Physique</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 10"/>
                                           <attribute name="foreground" value="#000000000000"/>
@@ -3398,7 +3399,7 @@ Architecture</property>
                                         <property name="height_request">40</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Electronic</property>
+                                        <property name="label" translatable="yes">Electronique</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 10"/>
                                           <attribute name="foreground" value="#000000000000"/>
@@ -3431,7 +3432,7 @@ Architecture</property>
               </object>
               <packing>
                 <property name="name">page1</property>
-                <property name="title" translatable="yes">My Course</property>
+                <property name="title" translatable="yes">Mes cours</property>
               </packing>
             </child>
             <child>
@@ -3471,7 +3472,7 @@ Architecture</property>
                                         <property name="height_request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">MCQ training session:</property>
+                                        <property name="label" translatable="yes">Section d'entraînement des Qcm</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 15"/>
                                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -3488,7 +3489,7 @@ Architecture</property>
                                         <property name="height_request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Math training</property>
+                                        <property name="label" translatable="yes">Entraînement Mathématique</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 15"/>
                                           <attribute name="foreground" value="#a4a400000000"/>
@@ -3501,7 +3502,7 @@ Architecture</property>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="open_mt1">
-                                        <property name="label" translatable="yes">Complex numbers</property>
+                                        <property name="label" translatable="yes">Nombres Complexes</property>
                                         <property name="width_request">200</property>
                                         <property name="height_request">50</property>
                                         <property name="visible">True</property>
@@ -3515,7 +3516,7 @@ Architecture</property>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="open_mt2">
-                                        <property name="label" translatable="yes">Mathematical logic</property>
+                                        <property name="label" translatable="yes">Integration</property>
                                         <property name="width_request">200</property>
                                         <property name="height_request">50</property>
                                         <property name="visible">True</property>
@@ -3528,13 +3529,16 @@ Architecture</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkButton" id="open_mt3">
-                                        <property name="label" translatable="yes">Set and application</property>
-                                        <property name="width_request">200</property>
-                                        <property name="height_request">50</property>
+                                      <object class="GtkLabel">
+                                        <property name="width_request">100</property>
+                                        <property name="height_request">80</property>
                                         <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="label" translatable="yes">Entraînement Algorithmique</property>
+                                        <attributes>
+                                          <attribute name="font-desc" value="Sans Bold 15"/>
+                                          <attribute name="foreground" value="#a4a400000000"/>
+                                        </attributes>
                                       </object>
                                       <packing>
                                         <property name="x">75</property>
@@ -3542,8 +3546,8 @@ Architecture</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkButton" id="open_mt4">
-                                        <property name="label" translatable="yes">Integration</property>
+                                      <object class="GtkButton" id="open_at1">
+                                        <property name="label" translatable="yes">Recherche dans une liste</property>
                                         <property name="width_request">200</property>
                                         <property name="height_request">50</property>
                                         <property name="visible">True</property>
@@ -3556,16 +3560,13 @@ Architecture</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
-                                        <property name="width_request">100</property>
-                                        <property name="height_request">80</property>
+                                      <object class="GtkButton" id="open_at2">
+                                        <property name="label" translatable="yes">Pile et File</property>
+                                        <property name="width_request">200</property>
+                                        <property name="height_request">50</property>
                                         <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Algorythm training</property>
-                                        <attributes>
-                                          <attribute name="font-desc" value="Sans Bold 15"/>
-                                          <attribute name="foreground" value="#a4a400000000"/>
-                                        </attributes>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
                                       </object>
                                       <packing>
                                         <property name="x">75</property>
@@ -3573,8 +3574,8 @@ Architecture</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkButton" id="open_at1">
-                                        <property name="label" translatable="yes">Lists</property>
+                                      <object class="GtkButton" id="open_at3">
+                                        <property name="label" translatable="yes">Arbre Binaire</property>
                                         <property name="width_request">200</property>
                                         <property name="height_request">50</property>
                                         <property name="visible">True</property>
@@ -3587,40 +3588,12 @@ Architecture</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkButton" id="open_at2">
-                                        <property name="label" translatable="yes">Searching in a list</property>
-                                        <property name="width_request">200</property>
-                                        <property name="height_request">50</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">True</property>
-                                      </object>
-                                      <packing>
-                                        <property name="x">75</property>
-                                        <property name="y">675</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkButton" id="open_at3">
-                                        <property name="label" translatable="yes">Binary trees</property>
-                                        <property name="width_request">200</property>
-                                        <property name="height_request">50</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">True</property>
-                                      </object>
-                                      <packing>
-                                        <property name="x">75</property>
-                                        <property name="y">750</property>
-                                      </packing>
-                                    </child>
-                                    <child>
                                       <object class="GtkLabel">
                                         <property name="width_request">100</property>
                                         <property name="height_request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Computer architecture training</property>
+                                        <property name="label" translatable="yes">Entraînement architeture des ordinateurs</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 15"/>
                                           <attribute name="foreground" value="#a4a400000000"/>
@@ -3628,7 +3601,7 @@ Architecture</property>
                                       </object>
                                       <packing>
                                         <property name="x">75</property>
-                                        <property name="y">850</property>
+                                        <property name="y">700</property>
                                       </packing>
                                     </child>
                                     <child>
@@ -3642,12 +3615,12 @@ Architecture</property>
                                       </object>
                                       <packing>
                                         <property name="x">75</property>
-                                        <property name="y">925</property>
+                                        <property name="y">775</property>
                                       </packing>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="open_ct2">
-                                        <property name="label" translatable="yes">Number Bases</property>
+                                        <property name="label" translatable="yes">Bases de numération</property>
                                         <property name="width_request">200</property>
                                         <property name="height_request">50</property>
                                         <property name="visible">True</property>
@@ -3656,12 +3629,12 @@ Architecture</property>
                                       </object>
                                       <packing>
                                         <property name="x">75</property>
-                                        <property name="y">1000</property>
+                                        <property name="y">850</property>
                                       </packing>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="open_ct3">
-                                        <property name="label" translatable="yes">Encoding Integers</property>
+                                        <property name="label" translatable="yes">Encodage d’entiers</property>
                                         <property name="width_request">200</property>
                                         <property name="height_request">50</property>
                                         <property name="visible">True</property>
@@ -3670,7 +3643,7 @@ Architecture</property>
                                       </object>
                                       <packing>
                                         <property name="x">75</property>
-                                        <property name="y">1075</property>
+                                        <property name="y">925</property>
                                       </packing>
                                     </child>
                                     <child>
@@ -3679,7 +3652,7 @@ Architecture</property>
                                         <property name="height_request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Electronic training</property>
+                                        <property name="label" translatable="yes">Entraînement electronique</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 15"/>
                                           <attribute name="foreground" value="#a4a400000000"/>
@@ -3687,12 +3660,43 @@ Architecture</property>
                                       </object>
                                       <packing>
                                         <property name="x">75</property>
-                                        <property name="y">1175</property>
+                                        <property name="y">1025</property>
                                       </packing>
                                     </child>
                                     <child>
                                       <object class="GtkButton" id="open_et1">
-                                        <property name="label" translatable="yes">Theorem</property>
+                                        <property name="label" translatable="yes">Théorème</property>
+                                        <property name="width_request">200</property>
+                                        <property name="height_request">50</property>
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                      </object>
+                                      <packing>
+                                        <property name="x">75</property>
+                                        <property name="y">1100</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="width_request">200</property>
+                                        <property name="height_request">50</property>
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="label" translatable="yes">Entraînement physique</property>
+                                        <attributes>
+                                          <attribute name="font-desc" value="Sans Bold 15"/>
+                                          <attribute name="foreground" value="#a4a400000000"/>
+                                        </attributes>
+                                      </object>
+                                      <packing>
+                                        <property name="x">75</property>
+                                        <property name="y">1200</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkButton" id="open_pt1">
+                                        <property name="label" translatable="yes">Système de coordonné cartésien</property>
                                         <property name="width_request">200</property>
                                         <property name="height_request">50</property>
                                         <property name="visible">True</property>
@@ -3702,37 +3706,6 @@ Architecture</property>
                                       <packing>
                                         <property name="x">75</property>
                                         <property name="y">1250</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="width_request">200</property>
-                                        <property name="height_request">50</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Physic training</property>
-                                        <attributes>
-                                          <attribute name="font-desc" value="Sans Bold 15"/>
-                                          <attribute name="foreground" value="#a4a400000000"/>
-                                        </attributes>
-                                      </object>
-                                      <packing>
-                                        <property name="x">75</property>
-                                        <property name="y">1350</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkButton" id="open_pt1">
-                                        <property name="label" translatable="yes">Cartesian and cylindrical coordinate systems</property>
-                                        <property name="width_request">200</property>
-                                        <property name="height_request">50</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">True</property>
-                                      </object>
-                                      <packing>
-                                        <property name="x">75</property>
-                                        <property name="y">1400</property>
                                       </packing>
                                     </child>
                                   </object>
@@ -3757,7 +3730,7 @@ Architecture</property>
               </object>
               <packing>
                 <property name="name">page2</property>
-                <property name="title" translatable="yes">Trainning</property>
+                <property name="title" translatable="yes">Entraînement</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -3804,7 +3777,7 @@ Architecture</property>
                                         <property name="uri">https://past-exams.epidocs.eu/</property>
                                       </object>
                                       <packing>
-                                        <property name="x">175</property>
+                                        <property name="x">250</property>
                                         <property name="y">475</property>
                                       </packing>
                                     </child>
@@ -3814,9 +3787,10 @@ Architecture</property>
                                         <property name="height_request">40</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Collection of past papers</property>
+                                        <property name="label" translatable="yes">Annales des années précédentes</property>
                                       </object>
                                       <packing>
+                                        <property name="x">25</property>
                                         <property name="y">475</property>
                                       </packing>
                                     </child>
@@ -3842,7 +3816,7 @@ Architecture</property>
               </object>
               <packing>
                 <property name="name">page0</property>
-                <property name="title" translatable="yes">Evaluate</property>
+                <property name="title" translatable="yes">Evaluation</property>
                 <property name="position">2</property>
               </packing>
             </child>
@@ -3883,7 +3857,7 @@ Architecture</property>
                                         <property name="height_request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Mini Game: </property>
+                                        <property name="label" translatable="yes">Mini-jeux</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 20"/>
                                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -3943,7 +3917,7 @@ Architecture</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkButton">
+                                      <object class="GtkButton" id="play_number_game">
                                         <property name="label" translatable="yes">Play</property>
                                         <property name="width_request">100</property>
                                         <property name="height_request">40</property>
@@ -3978,7 +3952,7 @@ Architecture</property>
               </object>
               <packing>
                 <property name="name">page3</property>
-                <property name="title" translatable="yes">Mini games</property>
+                <property name="title" translatable="yes">Mini-jeux</property>
                 <property name="position">3</property>
               </packing>
             </child>
@@ -4198,7 +4172,7 @@ z2
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 1: Complex numbers</property>
+            <property name="label" translatable="yes">Chapitre 1: Nombres complexes</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -4376,7 +4350,7 @@ pour k = 0, 1, ..., n − 1, r = |a| et θ = arg(a)</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 1: Complex numbers</property>
+            <property name="label" translatable="yes">Chapiter 1: Nombres Complexes</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -4591,7 +4565,7 @@ appartenant à E tel que P (x) (soit vraie) »</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 2: Mathematical logic</property>
+            <property name="label" translatable="yes">Chapitre 2: Logique Mathématique</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -4725,7 +4699,7 @@ est vraie (Hérédité).
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 2: Mathematical logic</property>
+            <property name="label" translatable="yes">Chapitre 2: Logique Mathématique</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -4930,7 +4904,7 @@ an−kb</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 3: Sets and application</property>
+            <property name="label" translatable="yes">Chapitre 3: Ensemble et Application</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -5054,7 +5028,7 @@ dent de y. L’ensemble des antécédents de y est f −1({y})</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 3: Sets and application</property>
+            <property name="label" translatable="yes">Chapitre 3: Ensemble et Application</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -5186,7 +5160,7 @@ gof est bijective et (gof )−1 = f −1og−1.</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 3: Sets and application</property>
+            <property name="label" translatable="yes">Chapitre 3: Ensemble et Application</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -5347,7 +5321,7 @@ f (t)dt = F (b) − F (a)</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 4: Integration</property>
+            <property name="label" translatable="yes">Chapitre 4: Integration</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -5475,7 +5449,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 4: Integration</property>
+            <property name="label" translatable="yes">Chapitre 4: Integration</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -5524,7 +5498,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Mathematics</property>
+            <property name="label" translatable="yes">Mathematique</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 20"/>
               <attribute name="foreground" value="#1a1a5f5fb4b4"/>
@@ -5558,7 +5532,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Chapiter 1: Complex numbers</property>
+                        <property name="label" translatable="yes">Chapitre 1: Nombres Complexes</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -5571,7 +5545,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                     </child>
                     <child>
                       <object class="GtkButton" id="math_1_1">
-                        <property name="label" translatable="yes">Lesson 1: Property of Complex Numbers</property>
+                        <property name="label" translatable="yes">Leçon 1: Propriété des nombres complexes</property>
                         <property name="width_request">300</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -5585,7 +5559,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                     </child>
                     <child>
                       <object class="GtkButton" id="math_1_2">
-                        <property name="label" translatable="yes">Lesson 2: Arguments and Trigonometry  </property>
+                        <property name="label" translatable="yes">Leçon 2: Argument et trigonométrie                </property>
                         <property name="width_request">300</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -5603,7 +5577,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Chapiter 2: Mathematical logic </property>
+                        <property name="label" translatable="yes">Chapitre 2: Logique Mathématique</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -5616,7 +5590,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                     </child>
                     <child>
                       <object class="GtkButton" id="math_2_1">
-                        <property name="label" translatable="yes">Lesson 1:  Logic                                                      </property>
+                        <property name="label" translatable="yes">Leçon 1:  Logique                                                         </property>
                         <property name="width_request">300</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -5630,7 +5604,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                     </child>
                     <child>
                       <object class="GtkButton" id="math_2_2">
-                        <property name="label" translatable="yes">Lesson 2:  Reasoning                                           </property>
+                        <property name="label" translatable="yes">Leçon 2:  Raisonnement                                           </property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -5648,7 +5622,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Chapiter 3: Sets and application</property>
+                        <property name="label" translatable="yes">Chapitre 3: Ensemble et Application</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -5661,7 +5635,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                     </child>
                     <child>
                       <object class="GtkButton" id="math_3_1">
-                        <property name="label" translatable="yes">Lesson 1: Finite sets                                           </property>
+                        <property name="label" translatable="yes">Leçon 1: Ensemble fini                                             </property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -5675,8 +5649,8 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                     </child>
                     <child>
                       <object class="GtkButton" id="math_3_2">
-                        <property name="label" translatable="yes">Lesson 2:  Applications: Direct image,    
-  reciprocal image and antecedents</property>
+                        <property name="label" translatable="yes">Leçon 2: Applications : Image directe,           
+image réciproque et antécédents</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -5690,8 +5664,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                     </child>
                     <child>
                       <object class="GtkButton" id="math_3_3">
-                        <property name="label" translatable="yes">Lesson 3: Injection, overjection                   
-                       and bijection</property>
+                        <property name="label" translatable="yes">Leçon 3: Injection, surjection et bijection    </property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -5709,7 +5682,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Chapiter 4: Integration</property>
+                        <property name="label" translatable="yes">Chapitre 4: Integration</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -5722,7 +5695,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                     </child>
                     <child>
                       <object class="GtkButton" id="math_4_1">
-                        <property name="label" translatable="yes">Lesson 1: Primitive of a function                </property>
+                        <property name="label" translatable="yes">Leçon 1: Primitive d'une fonction                     </property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -5736,8 +5709,8 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
                     </child>
                     <child>
                       <object class="GtkButton" id="math_4_2">
-                        <property name="label" translatable="yes">Lesson 2: Integration by parts and            
-                   change of variable</property>
+                        <property name="label" translatable="yes">Leçon 2: Intégration par parties et                  
+             changement de variable</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -6093,7 +6066,7 @@ Dans ce système de coordonnées, on se limite à la base (O, er, eθ ), d’où
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 1: Cinematic mechanics</property>
+            <property name="label" translatable="yes">Chapitre 1: Mécanique cinématique</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -6250,7 +6223,7 @@ est nulle lorsque le mouvement est uniforme.
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Chapiter 1: Cinematic mechanics</property>
+            <property name="label" translatable="yes">Chapitre 1: Mécanique cinématique</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -6299,7 +6272,7 @@ est nulle lorsque le mouvement est uniforme.
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label">Physic</property>
+            <property name="label">Physique</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 20"/>
               <attribute name="foreground" value="#1a1a5f5fb4b4"/>
@@ -6331,7 +6304,7 @@ est nulle lorsque le mouvement est uniforme.
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">Cinematic mechanics</property>
+                        <property name="label">Mécanique cinématique</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#a5a51d1d2d2d"/>
@@ -6344,7 +6317,7 @@ est nulle lorsque le mouvement est uniforme.
                     </child>
                     <child>
                       <object class="GtkButton" id="phy_1_1">
-                        <property name="label" translatable="yes">1/ Cartesian and cylindrical coordinate systems</property>
+                        <property name="label" translatable="yes">1/ Systèmes de coordonnées cartésiennes et cylindriques</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -6358,7 +6331,7 @@ est nulle lorsque le mouvement est uniforme.
                     </child>
                     <child>
                       <object class="GtkButton" id="phy_1_2">
-                        <property name="label">2/ Base of FRENET</property>
+                        <property name="label">2/ Base de FRENET</property>
                         <property name="width_request">100</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -6419,7 +6392,7 @@ est nulle lorsque le mouvement est uniforme.
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label">Profile</property>
+            <property name="label">Profil</property>
             <attributes>
               <attribute name="font-desc" value="Ubuntu Medium 20"/>
               <attribute name="foreground" value="#000000000000"/>
@@ -6453,7 +6426,7 @@ est nulle lorsque le mouvement est uniforme.
                         <property name="height_request">30</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">User name:</property>
+                        <property name="label">Nom d'utilisateur:</property>
                         <attributes>
                           <attribute name="foreground" value="#000000000000"/>
                         </attributes>
@@ -6569,7 +6542,7 @@ est nulle lorsque le mouvement est uniforme.
                         <property name="height_request">30</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">Password:</property>
+                        <property name="label">Mot de passe:</property>
                         <attributes>
                           <attribute name="foreground" value="#000000000000"/>
                         </attributes>
@@ -6716,14 +6689,14 @@ est nulle lorsque le mouvement est uniforme.
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Your answer:</property>
+                        <property name="label" translatable="yes">Votre réponse</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#555557575353"/>
                         </attributes>
                       </object>
                       <packing>
-                        <property name="x">100</property>
+                        <property name="x">75</property>
                         <property name="y">300</property>
                       </packing>
                     </child>
@@ -6780,14 +6753,14 @@ est nulle lorsque le mouvement est uniforme.
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Computer Architecture Training</property>
+            <property name="label" translatable="yes">Entraînement architecture des ordinateurs</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 20"/>
               <attribute name="foreground" value="#20204a4a8787"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">200</property>
+            <property name="x">100</property>
             <property name="y">50</property>
           </packing>
         </child>
@@ -6939,14 +6912,14 @@ est nulle lorsque le mouvement est uniforme.
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Your answer:</property>
+                        <property name="label" translatable="yes">Votre réponse</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 15"/>
                           <attribute name="foreground" value="#555557575353"/>
                         </attributes>
                       </object>
                       <packing>
-                        <property name="x">100</property>
+                        <property name="x">75</property>
                         <property name="y">290</property>
                       </packing>
                     </child>
@@ -6987,14 +6960,14 @@ est nulle lorsque le mouvement est uniforme.
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Computer Architecture Training</property>
+            <property name="label" translatable="yes">Entraînement architecture des ordinateurs</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 20"/>
               <attribute name="foreground" value="#20204a4a8787"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">200</property>
+            <property name="x">100</property>
             <property name="y">50</property>
           </packing>
         </child>
@@ -7186,14 +7159,14 @@ est nulle lorsque le mouvement est uniforme.
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Math Training</property>
+            <property name="label" translatable="yes">Entraînement Mathématique</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 20"/>
               <attribute name="foreground" value="#20204a4a8787"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">325</property>
+            <property name="x">225</property>
             <property name="y">50</property>
           </packing>
         </child>
@@ -7416,32 +7389,15 @@ est nulle lorsque le mouvement est uniforme.
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label">Algo training</property>
+            <property name="label">Entraînement algorithmique</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 20"/>
               <attribute name="foreground" value="#1a1a5f5fb4b4"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">350</property>
+            <property name="x">250</property>
             <property name="y">50</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="width_request">100</property>
-            <property name="height_request">80</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label">Remaining time: </property>
-            <attributes>
-              <attribute name="font-desc" value="Sans 15"/>
-              <attribute name="foreground" value="#777776767b7b"/>
-            </attributes>
-          </object>
-          <packing>
-            <property name="x">75</property>
-            <property name="y">100</property>
           </packing>
         </child>
         <child>
