@@ -1,19 +1,67 @@
 #ifndef MCQGENERATOR_H
 #define MCQGENERATOR_H
 
+#include<stdlib.h>
+#include "../property/mathematics/complex_number/complex_number.h"
+#include <gtk/gtk.h>
+
+typedef struct McqObject
+{
+    GtkButton* valide_button;
+    GtkWidget* question_text;
+
+    GtkWidget* user_answer_object1;
+    GtkWidget* user_answer_object2;
+
+    GtkWidget* answer_text;
+
+    GtkWidget* question_number_text;
+    GtkWidget* score_text;
+
+    GtkButton* prev_button;
+    GtkButton* next_button;
+
+} McqObject;
+
 typedef struct Mcq
 {
     int question_number;
-    int total_time;
 
-    char *question[256];
+    char question[256];
 
-    char *answer1[256];
-    char *answer2[256];
+    char answer1[256];
+    char answer2[256];
+
+    char user_answer[256];
+
+    char correction[256];
+
+    int activate_validate_button;
+    int already_done;
+
+    int activate_prev_button;
+    int activate_next_button;
 
     struct Mcq *next_question;
     struct Mcq *previous_question;
 
 } Mcq;
+
+typedef struct User
+{
+    int score;
+
+    // For the mcq
+    struct Mcq* mcq;
+    struct McqObject* mcqObject;
+
+    // mcq_training_mt1
+    char answer_im[8];
+    char answer_re[8];
+    Complex* a;
+    Complex* b;
+
+    char answer_ct2[64];
+} User;
 
 #endif
