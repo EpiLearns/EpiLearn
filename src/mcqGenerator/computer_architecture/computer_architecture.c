@@ -14,6 +14,10 @@ void init_mcq_ct1(Mcq *mcq)
 
     sprintf(mcq->question,"Combien fait 2^%i",random_number);
     sprintf(mcq->answer1,"%i",1<<random_number);
+    sprintf(mcq->correction,"Correction: %i",1<<random_number);
+
+    printf("%i",random_number);
+    printf("%i",random_number);
 
     mcq->activate_validate_button = 1;
     mcq->already_done = 0;
@@ -37,6 +41,7 @@ void init_mcq_ct1(Mcq *mcq)
 
         sprintf(tmp->question,"Combien fait 2^%i",random_number);
         sprintf(tmp->answer1,"%i",1<<random_number);
+        sprintf(tmp->correction,"Correction: %i",1<<random_number);
 
         tmp->activate_validate_button = 1;
         tmp->already_done = 0;

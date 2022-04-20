@@ -197,6 +197,7 @@ Dylan INNOU</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -381,6 +382,7 @@ ieme(λ, 3) = e3</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -587,6 +589,7 @@ nombre d’éléments, il est conseillé d’utiliser des recherches plus effica
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -802,6 +805,7 @@ entre log2(n) et log2(log2(n)) soit suffisamment grande.</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -1205,6 +1209,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -1557,6 +1562,7 @@ par la base n. Dans le cas contraire, il faut passer par la base 10.
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -1983,6 +1989,7 @@ Décimal Hexadécimal Binaire
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -2164,6 +2171,7 @@ Le complément à deux est principalement utilisé pour l’encodage des entiers
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -2675,6 +2683,7 @@ Mot binaire sur 8 bits 10001101 Extension de signe</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -2892,6 +2901,7 @@ courant) est toujours nulle</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Login</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -4017,6 +4027,7 @@ des ordinateurs</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -4206,6 +4217,7 @@ z2
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -4384,6 +4396,7 @@ pour k = 0, 1, ..., n − 1, r = |a| et θ = arg(a)</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -4599,6 +4612,7 @@ appartenant à E tel que P (x) (soit vraie) »</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -4733,6 +4747,7 @@ est vraie (Hérédité).
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -4938,6 +4953,7 @@ an−kb</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -5062,6 +5078,7 @@ dent de y. L’ensemble des antécédents de y est f −1({y})</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -5194,6 +5211,7 @@ gof est bijective et (gof )−1 = f −1og−1.</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -5355,6 +5373,7 @@ f (t)dt = F (b) − F (a)</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -5755,6 +5774,7 @@ image réciproque et antécédents</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -6100,6 +6120,7 @@ Dans ce système de coordonnées, on se limite à la base (O, er, eθ ), d’où
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -6973,9 +6994,9 @@ est nulle lorsque le mouvement est uniforme.
         </child>
         <child>
           <object class="GtkButton" id="quit_qcm_ct1">
-            <property name="label">gtk-go-back</property>
-            <property name="width_request">120</property>
-            <property name="height_request">50</property>
+            <property name="label">gtk-close</property>
+            <property name="width_request">125</property>
+            <property name="height_request">40</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -6983,7 +7004,7 @@ est nulle lorsque le mouvement est uniforme.
             <property name="always_show_image">True</property>
           </object>
           <packing>
-            <property name="x">650</property>
+            <property name="x">75</property>
             <property name="y">125</property>
           </packing>
         </child>
@@ -7020,7 +7041,7 @@ est nulle lorsque le mouvement est uniforme.
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkLabel" id="question_number_mt1">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
@@ -7032,7 +7053,7 @@ est nulle lorsque le mouvement est uniforme.
                         </attributes>
                       </object>
                       <packing>
-                        <property name="y">100</property>
+                        <property name="y">75</property>
                       </packing>
                     </child>
                     <child>
@@ -7137,6 +7158,22 @@ est nulle lorsque le mouvement est uniforme.
                         <property name="y">405</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkLabel" id="score_mt1">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <attributes>
+                          <attribute name="font-desc" value="Sans Bold 15"/>
+                          <attribute name="foreground" value="#000000000000"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="x">500</property>
+                        <property name="y">50</property>
+                      </packing>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -7172,9 +7209,41 @@ est nulle lorsque le mouvement est uniforme.
         </child>
         <child>
           <object class="GtkButton" id="quit_qcm_mt1">
+            <property name="label">gtk-close</property>
+            <property name="width_request">125</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="x">75</property>
+            <property name="y">125</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="prev_mt1">
             <property name="label">gtk-go-back</property>
+            <property name="width_request">125</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="x">500</property>
+            <property name="y">125</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="next_mt1">
+            <property name="label">gtk-go-forward</property>
             <property name="width_request">120</property>
-            <property name="height_request">50</property>
+            <property name="height_request">40</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
