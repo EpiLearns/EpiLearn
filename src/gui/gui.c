@@ -320,6 +320,12 @@ void get_mcq_object()
     question_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "question_ct2"));
     user_answer_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "user_answer_ct2"));
     answer_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_ct2"));
+
+    question_number_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "question_number_ct2"));
+    score_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "score_ct2"));
+
+    prev_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_ct2"));
+    next_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "next_ct2"));
 }
 
 void mcq_prev(GtkButton* button, gpointer user)
@@ -577,6 +583,52 @@ void enter_mcq_ct1(GtkButton* button, gpointer user)
     gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),"");
 }
 
+void enter_mcq_ct2(GtkButton* button, gpointer user)
+{   
+    gtk_widget_hide(GTK_WIDGET(current_window));
+    gtk_widget_show(GTK_WIDGET(qcm_archi2));
+
+    current_window = qcm_archi2;
+
+    User *client = user;
+    client->score = 0;
+
+    client->mcq =  calloc(1,sizeof(Mcq));
+    client->mcqObject = calloc(1,sizeof(McqObject));
+
+    init_mcq_ct2(client->mcq);
+    
+    client->mcqObject->answer_text = answer_ct2;
+    client->mcqObject->next_button = next_ct2;
+    client->mcqObject->prev_button = prev_ct2;
+    client->mcqObject->question_number_text = question_number_ct2;
+    client->mcqObject->score_text = score_ct2;
+    client->mcqObject->user_answer_object1 = user_answer_ct2;
+    client->mcqObject->valide_button = valide_ct2;
+    client->mcqObject->question_text = question_ct2;
+
+    char question_number_buffer[32];
+    char score_buffer[32];
+
+    sprintf(question_number_buffer,"Question n° %i",client->mcq->question_number);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_number_text),question_number_buffer);
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_text),client->mcq->question);
+
+    sprintf(score_buffer,"Score: %i/20",client->score);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->score_text),score_buffer);
+
+    client->mcq->activate_prev_button = 0;
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->prev_button),FALSE);
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),FALSE);
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,TRUE);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
+    gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),"");
+}
+
 // Function G_signal that launch mcq
 
 void training_signal(User *user)
@@ -586,7 +638,7 @@ void training_signal(User *user)
     g_signal_connect(open_at1,"clicked",G_CALLBACK(enter_page),qcm_at1);
 
     g_signal_connect(open_ct1,"clicked",G_CALLBACK(enter_mcq_ct1),user);
-    g_signal_connect(open_ct2,"clicked",G_CALLBACK(enter_page),qcm_archi2);
+    g_signal_connect(open_ct2,"clicked",G_CALLBACK(enter_mcq_ct2),user);
 
 
 
@@ -599,48 +651,6 @@ void training_signal(User *user)
 
 }
 
-void update_mcq_ct2(GtkButton* button,gpointer user)
-{
-    User* client = user;
-    
-    char rep[64];
-    char reponse[256];
-   
-    sprintf(rep,"%s",gtk_entry_get_text(GTK_ENTRY(user_answer_ct2)));
-    gtk_entry_set_text(GTK_ENTRY(user_answer_ct2),"");
-    gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*)"");
-
-    if (strlen(rep) != 0)
-    { 
-        if (strcmp(rep,client->answer_ct2) == 0)
-        {
-            gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*) "Bonne réponse !");
-        }
-
-        else
-        {
-            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_ct2);
-            gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*)reponse);
-        }
-    }
-
-    char state[256];
-
-    int depart = rand()%9 + 2;
-    int arrivee = rand()%9 + 2;
-
-    int nbre = rand()%100;
-
-    unsigned long nbre_base_depart = convertirEnbase(depart,(unsigned long)nbre,10);
-    unsigned long nbre_base_arrivee = convertirEnbase(arrivee,(unsigned long) nbre,10);
-
-    sprintf(client->answer_ct2,"%lu",nbre_base_arrivee);
-
-    sprintf(state,"Donner la représentation en base %i de %lu (en base %i)?",arrivee,nbre_base_depart,depart);
-    gtk_label_set_text(GTK_LABEL(question_ct2),(const gchar*) state);
-    
-}
-
 void training_update_signal(User* user)
 {
     g_signal_connect(valide_mt1,"clicked",G_CALLBACK(check_reponse),(gpointer) user);
@@ -651,7 +661,9 @@ void training_update_signal(User* user)
     g_signal_connect(prev_ct1,"clicked",G_CALLBACK(mcq_prev),(gpointer) user);
     g_signal_connect(next_ct1,"clicked",G_CALLBACK(mcq_next),(gpointer) user);
 
-    g_signal_connect(valide_ct2,"clicked",G_CALLBACK(update_mcq_ct2),user);
+    g_signal_connect(valide_ct2,"clicked",G_CALLBACK(check_reponse),(gpointer) user);
+    g_signal_connect(prev_ct2,"clicked",G_CALLBACK(mcq_prev),(gpointer) user);
+    g_signal_connect(next_ct2,"clicked",G_CALLBACK(mcq_next),(gpointer) user);
 }
 
 GtkBuilder *init_gui()

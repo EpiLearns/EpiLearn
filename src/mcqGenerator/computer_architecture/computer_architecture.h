@@ -10,6 +10,8 @@
 
 void init_mcq_ct1(Mcq *mcq);
 
+void init_mcq_ct2(Mcq *mcq);
+
 void free_mcq_ct1(Mcq *mcq);
 
 #endif

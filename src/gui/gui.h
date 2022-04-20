@@ -213,6 +213,12 @@ GtkWidget* question_ct2;
 GtkWidget* user_answer_ct2;
 GtkWidget* answer_ct2;
 
+GtkWidget* question_number_ct2;
+GtkWidget* score_ct2;
+
+GtkButton* prev_ct2;
+GtkButton* next_ct2;
+
 GtkBuilder *init_gui();
 
 #endif
