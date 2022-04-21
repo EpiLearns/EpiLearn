@@ -55,7 +55,6 @@ typedef struct User
     struct Mcq* mcq;
     struct McqObject* mcqObject;
 
-    char answer_ct2[64];
 } User;
 
 #endif

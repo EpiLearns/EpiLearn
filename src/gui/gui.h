@@ -27,6 +27,10 @@ GtkWindow* current_window;
 GtkMenuItem* open_calculator;
 GtkMenuItem* open_graph;
 
+GtkMenuItem* open_list;
+GtkMenuItem* open_fifo_lifo;
+GtkMenuItem* open_binary_tree;
+
 // Main Window
 
 GtkWindow* mainWindow;
@@ -154,6 +158,41 @@ GtkButton* quit_elec_1_1;
 GtkButton* quit_phy_1_1;
 GtkButton* quit_phy_1_2;
 
+// Tools List Object
+
+GtkWindow* listWindow;
+
+GtkWidget* tool_list_list_text;
+GtkWidget* tool_list_len_text;
+
+GtkWidget* tool_list_append_entry;
+GtkButton* tool_list_append_button;
+
+GtkButton* tool_list_pop_button;
+
+GtkWidget* tool_list_insert_entry1;
+GtkWidget* tool_list_insert_entry2;
+
+GtkButton* tool_list_insert_button;
+
+// Tools FIFO/LIFO Object
+
+GtkWindow* fifi_lifo_Window;
+
+GtkWidget* tool_pile_text;
+GtkWidget* tool_file_text;
+
+GtkWidget* tool_pile_isempty_text;
+GtkWidget* tool_file_isempty_text;
+
+GtkWidget* tool_pile_push_entry;
+GtkButton* tool_pile_push_button;
+GtkButton* tool_pile_pop_button;
+
+GtkWidget* tool_file_enqueue_entry;
+GtkButton* tool_file_enqueue_button;
+GtkButton* tool_file_pop_button;
+
 // Open Mcq Button
 
 GtkButton* open_mt1;
@@ -165,7 +204,6 @@ GtkButton* open_at3;
 
 GtkButton* open_ct1;
 GtkButton* open_ct2;
-GtkButton* open_ct3;
 
 GtkButton* open_et1;
 

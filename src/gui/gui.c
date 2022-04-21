@@ -1,6 +1,7 @@
 #include "gui.h"
 
 // Function that return allocated User struct
+
 User* init_user()
 {
     User* client = calloc(1,sizeof(User));
@@ -188,7 +189,6 @@ void get_enter_training_button()
 
     open_ct1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_ct1"));
     open_ct2 = GTK_BUTTON(gtk_builder_get_object(builder,"open_ct2"));
-    open_ct3 = GTK_BUTTON(gtk_builder_get_object(builder,"open_ct3"));
 
     open_et1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_et1"));
 
@@ -203,6 +203,44 @@ void get_close_training_button()
 
     quit_qcm_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct1"));
     quit_qcm_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct2"));
+}
+
+// Function get_tools_object
+
+void get_tools_object()
+{
+    //List tools
+    listWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.tools.list"));
+
+    tool_list_list_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_list_list_text"));
+    tool_list_len_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_list_len_text"));
+
+    tool_list_append_entry = GTK_WIDGET(gtk_builder_get_object(builder, "tool_list_append_entry"));
+    tool_list_append_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_list_append_button"));
+
+    tool_list_pop_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_list_pop_button"));
+
+    tool_list_insert_entry1 = GTK_WIDGET(gtk_builder_get_object(builder, "tool_list_insert_entry1"));
+    tool_list_insert_entry2 = GTK_WIDGET(gtk_builder_get_object(builder, "tool_list_insert_entry2"));
+
+    tool_list_insert_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_list_insert_button"));
+
+    // Fifo/Lifo tools
+    fifi_lifo_Window = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.tools.fifo_lifo"));
+
+    tool_pile_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_pile_text"));
+    tool_file_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_file_text"));
+
+    tool_pile_isempty_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_pile_isempty_text"));
+    tool_file_isempty_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_file_isempty_text"));
+
+    tool_pile_push_entry = GTK_WIDGET(gtk_builder_get_object(builder, "tool_pile_push_entry"));
+    tool_pile_push_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_pile_push_button"));
+    tool_pile_pop_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_pile_pop_button"));
+
+    tool_file_enqueue_entry = GTK_WIDGET(gtk_builder_get_object(builder, "tool_file_enqueue_entry"));
+    tool_file_enqueue_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_file_enqueue_button"));
+    tool_file_pop_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_file_pop_button"));
 }
 
 // Functions G_signal for the UI
@@ -499,7 +537,17 @@ void enter_mcq_mt1(GtkButton* button, gpointer user)
     client->score = 0;
 
     client->mcq =  calloc(1,sizeof(Mcq));
+
+    if (!client->mcq)
+    {
+        return;
+    }
     client->mcqObject = calloc(1,sizeof(McqObject));
+
+    if (!client->mcqObject)
+    {
+        return;
+    }
 
     init_mcq_mt1(client->mcq);
 
@@ -548,7 +596,17 @@ void enter_mcq_ct1(GtkButton* button, gpointer user)
     client->score = 0;
 
     client->mcq =  calloc(1,sizeof(Mcq));
+
+    if (!client->mcq)
+    {
+        return;
+    }
     client->mcqObject = calloc(1,sizeof(McqObject));
+
+    if (!client->mcqObject)
+    {
+        return;
+    }
 
     init_mcq_ct1(client->mcq);
     
@@ -594,7 +652,18 @@ void enter_mcq_ct2(GtkButton* button, gpointer user)
     client->score = 0;
 
     client->mcq =  calloc(1,sizeof(Mcq));
+
+    if (!client->mcq)
+    {
+        return;
+    }
+
     client->mcqObject = calloc(1,sizeof(McqObject));
+
+    if (!client->mcqObject)
+    {
+        return;
+    }
 
     init_mcq_ct2(client->mcq);
     
@@ -700,10 +769,16 @@ GtkBuilder *init_gui()
     get_enter_training_button();
     get_close_training_button();
 
+    get_tools_object();
+
     get_mcq_object();
 
     open_calculator = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_calculator"));
     open_graph = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_graph"));
+
+    open_list = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_list"));
+    open_fifo_lifo = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_fifo_lifo"));
+    open_binary_tree = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_binary_tree"));
 
     //UI signals
 
