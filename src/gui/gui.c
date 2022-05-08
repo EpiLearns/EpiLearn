@@ -25,6 +25,12 @@ void enter_page(GtkButton* button,gpointer parameter)
     current_window = new_window;
 }
 
+void open_page(GtkButton* button,gpointer parameter)
+{
+    GtkWindow* window = parameter;
+    gtk_widget_show(GTK_WIDGET(parameter));
+}
+
 // Functions that get all the windows that is used
 
 void get_window()
@@ -735,6 +741,68 @@ void training_update_signal(User* user)
     g_signal_connect(next_ct2,"clicked",G_CALLBACK(mcq_next),(gpointer) user);
 }
 
+// Function and G_signal for tools
+
+// List
+
+void ui_list_append(GtkButton* button, gpointer user)
+{
+    List* list = user;
+    char buff[32];
+
+    const gchar* number = gtk_entry_get_text(GTK_ENTRY(tool_list_append_entry));
+
+    list_append(list,atoi(number));
+
+    gtk_label_set_text(GTK_LABEL(tool_list_list_text),list_to_string(list));
+
+    sprintf(buff,"Taille de la liste: %i",list_len(list));
+    gtk_label_set_text(GTK_LABEL(tool_list_len_text),buff);
+
+    gtk_entry_set_text(GTK_ENTRY(tool_list_append_entry),"");
+}
+
+void ui_list_pop(GtkButton* button, gpointer user)
+{
+    List* list = user;
+    char buff[32];
+
+    list_pop(list);
+    gtk_label_set_text(GTK_LABEL(tool_list_list_text),list_to_string(list));
+
+    sprintf(buff,"Taille de la liste: %i",list_len(list));
+    gtk_label_set_text(GTK_LABEL(tool_list_len_text),buff);
+}
+
+void ui_list_insert(GtkButton* button, gpointer user)
+{
+    List* list = user;
+    char buff[32];
+
+    const gchar* number1 = gtk_entry_get_text(GTK_ENTRY(tool_list_insert_entry1));
+    const gchar* number2 = gtk_entry_get_text(GTK_ENTRY(tool_list_insert_entry2));
+
+    list_insert(list,atoi(number1),atoi(number2));
+
+    gtk_label_set_text(GTK_LABEL(tool_list_list_text),list_to_string(list));
+
+    sprintf(buff,"Taille de la liste: %i",list_len(list));
+    gtk_label_set_text(GTK_LABEL(tool_list_len_text),buff);
+
+    gtk_entry_set_text(GTK_ENTRY(tool_list_insert_entry1),"");
+    gtk_entry_set_text(GTK_ENTRY(tool_list_insert_entry2),"");
+}
+
+void list_signal()
+{
+    List* list = init_list();
+
+    g_signal_connect(tool_list_append_button,"clicked",G_CALLBACK(ui_list_append),list);
+    g_signal_connect(tool_list_pop_button,"clicked",G_CALLBACK(ui_list_pop),list);
+    g_signal_connect(tool_list_insert_button,"clicked",G_CALLBACK(ui_list_insert),list);
+}
+
+
 GtkBuilder *init_gui()
 {
     gtk_init(NULL, NULL);
@@ -779,6 +847,7 @@ GtkBuilder *init_gui()
     open_list = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_list"));
     open_fifo_lifo = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_fifo_lifo"));
     open_binary_tree = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_binary_tree"));
+    open_paint = GTK_MENU_ITEM(gtk_builder_get_object(builder,"open_paint"));
 
     //UI signals
 
@@ -790,6 +859,9 @@ GtkBuilder *init_gui()
 
     g_signal_connect(open_calculator,"activate",G_CALLBACK(open_calculator_fct),NULL);
     g_signal_connect(open_graph,"activate",G_CALLBACK(open_graph_fct),NULL);
+
+    g_signal_connect(open_list,"activate",G_CALLBACK(open_page),listWindow);
+    list_signal();
 
     // Connects event handlers.
     g_signal_connect(mainWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);

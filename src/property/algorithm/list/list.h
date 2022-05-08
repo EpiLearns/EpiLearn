@@ -15,12 +15,14 @@ int list_is_empty(List* list);
 
 int list_len(List* list);
 
-List* list_append(List* list, int data);
+void list_append(List* list, int data);
 
-List* list_pop(List* list);
+void list_pop(List* list);
 
-List* list_insert(List* list, size_t index,int data);
+void list_insert(List* list, size_t index,int data);
 
 void free_list(List* list);
+
+char* list_to_string(List* list);
 
 #endif

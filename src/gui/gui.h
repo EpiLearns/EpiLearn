@@ -20,6 +20,9 @@
 #include "../calculator/calculator.h"
 #include "../graph/graph.h"
 
+
+#include "../property/algorithm/list/list.h"
+
 // Builder important Window
 
 GtkBuilder* builder;
@@ -30,6 +33,7 @@ GtkMenuItem* open_graph;
 GtkMenuItem* open_list;
 GtkMenuItem* open_fifo_lifo;
 GtkMenuItem* open_binary_tree;
+GtkMenuItem* open_paint;
 
 // Main Window
 

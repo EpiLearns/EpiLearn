@@ -35,77 +35,65 @@ int list_len(List* list)
 	return res;
 }
 
-List* list_append(List* list, int data)
+void list_append(List* list, int data)
 {
 	List* new_element = calloc(1,sizeof(List));
 
 	if (!new_element)
 	{
-		return NULL;
+		return;
 	}
 
 	new_element->data = data;
 
-	List* tmp = list->next;
-
-	while(tmp)
+	while(list->next)
 	{
-		tmp = tmp->next;
+		list = list->next;
 	}
 
-	tmp = new_element;
-
-	return list;
+	list->next = new_element;
 }
 
-List* list_pop(List* list)
+void list_pop(List* list)
 {
-	List* tmp = list;
-
-	if (!tmp->next)
+	if (!list->next)
 	{
-		return list;
+		return;
 	}
 
-	while (tmp->next->next)
+	while (list->next->next)
 	{
-		tmp = tmp->next;
+		list = list->next;
 	}
 
-	List* elt = tmp->next;
+	List* elt = list->next;
 
-	tmp->next = NULL;
+	list->next = NULL;
 
 	free(elt);
-
-	return list;
 }
 
-List* list_insert(List* list, size_t index,int data)
+void list_insert(List* list, size_t index,int data)
 {
-	List* tmp = list;
-
 	List* new_element = calloc(1,sizeof(List));
 			
 	if (!new_element)
 	{
-		return NULL;
+		return;
 	}
 
 	new_element->data = data;
 
 	size_t i = 0;
 
-	while (i<index && tmp->next)
+	while (i<index && list->next)
 	{
 		i++;
-		tmp = tmp->next;
+		list = list->next;
 	}
 
-	new_element->next = tmp->next;
-	tmp->next = new_element;
-
-	return list;
+	new_element->next = list->next;
+	list->next = new_element;
 }
 
 void free_list(List* list)
@@ -119,3 +107,51 @@ void free_list(List* list)
 		free(tmp);
 	}
 }
+
+char* list_to_string(List* list)
+{
+	size_t len = list_len(list);
+
+	if (len == 0)
+	{
+		return "Liste = []";
+	}
+
+	char buff[8];
+
+	char* res = calloc(1,sizeof(char)*len + 11);
+
+	strcat(res,"Liste = [");
+	
+	size_t i = 0;
+
+	for (;i<len;i++)
+	{
+		sprintf(buff,"%i,",list->next->data);
+		strcat(res,buff);
+
+		list = list->next;
+	}
+
+	len = strlen(res);
+	res[len-1] = ']';
+
+	return res;
+}
+
+
+/*int main()
+{
+	List* res = init_list();
+
+	for (size_t i = 0;i<20;i++)
+	{
+		list_append(res,i);
+	}
+
+	char* liste = list_to_string(res);
+
+	printf("%s\n",liste);
+
+	return 0;
+}*/

@@ -6,7 +6,7 @@
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">About Epilearn</property>
+    <property name="title" translatable="yes">A propos d'Epilearn</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <child type="titlebar">
@@ -1028,7 +1028,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">algorithm</property>
+    <property name="title" translatable="yes">Algorithmique</property>
     <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
@@ -1043,7 +1043,7 @@ PM(B)=36/15 ' 2,4 PMI(B)=16/9 ' 1,78 PME(B)=20/6 ' 3,33</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Algorithm</property>
+            <property name="label" translatable="yes">Algorithmique</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 20"/>
               <attribute name="foreground" value="#1a1a5f5fb4b4"/>
@@ -2537,7 +2537,7 @@ Mot binaire sur 8 bits 10001101 Extension de signe</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">computer_achitecture</property>
+    <property name="title" translatable="yes">Architecture des ordinateurs</property>
     <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
@@ -2795,7 +2795,7 @@ courant) est toujours nulle</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">electronic</property>
+    <property name="title" translatable="yes">Electronique</property>
     <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
@@ -2900,7 +2900,7 @@ courant) est toujours nulle</property>
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Login</property>
+    <property name="title" translatable="yes">Connexion</property>
     <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
@@ -3169,6 +3169,14 @@ courant) est toujours nulle</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Arbre Binaire</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="open_paint">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Paint 2D</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
@@ -5512,7 +5520,7 @@ Si F est une primitive de f alors F of est une primitive de (f ◦ φ) .φ′.</
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">mathematics</property>
+    <property name="title" translatable="yes">Mathématique</property>
     <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
@@ -6288,7 +6296,7 @@ est nulle lorsque le mouvement est uniforme.
     <property name="width_request">875</property>
     <property name="height_request">825</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">physic</property>
+    <property name="title" translatable="yes">Physique</property>
     <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
@@ -6407,7 +6415,7 @@ est nulle lorsque le mouvement est uniforme.
     <property name="width_request">875</property>
     <property name="height_request">575</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Profile</property>
+    <property name="title" translatable="yes">Profil</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <child type="titlebar">
@@ -8012,7 +8020,6 @@ est nulle lorsque le mouvement est uniforme.
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Liste = [1,2,3,4,5,6,7,8,9,10,11,12]</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#000000000000"/>
@@ -8029,7 +8036,6 @@ est nulle lorsque le mouvement est uniforme.
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Taille de la liste: 12</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 10"/>
               <attribute name="foreground" value="#000000000000"/>
