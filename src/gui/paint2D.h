@@ -12,7 +12,6 @@ GtkBuilder* builder;
 cairo_surface_t* surface;
 
 GtkWidget* Paint2DWindow;
-GtkMenuItem* new_paint;
 
 GtkWidget* paint_draw_area;
 

@@ -36,15 +36,13 @@ gboolean draw_cb (GtkWidget *widget, cairo_t *cr, gpointer   data)
 
 void draw_brush (GtkWidget *widget, gdouble x,gdouble y)
 {
-    cairo_t *cr;
+    cairo_t *cr = cairo_create (surface);
 
-    cr = cairo_create (surface);
-
-    cairo_rectangle (cr, x - 3, y - 3, 6, 6);
+    cairo_rectangle (cr, x - 3, y - 3, 10, 10);
     cairo_fill (cr);
 
     cairo_destroy (cr);
-    gtk_widget_queue_draw_area (widget, x - 3, y - 3, 6, 6);
+    gtk_widget_queue_draw_area (widget, x - 3, y - 3, 200, 200);
 }
 
 gboolean button_press_event_cb (GtkWidget *widget,GdkEventButton *event,gpointer data)
@@ -86,7 +84,6 @@ void open_paint2D_fct()
     
     g_signal_connect (Paint2DWindow, "destroy", G_CALLBACK (gtk_main_quit), NULL);
 
-    new_paint = GTK_MENU_ITEM(gtk_builder_get_object(builder, "new_paint"));
     paint_draw_area = GTK_WIDGET(gtk_builder_get_object(builder, "paint_draw_area"));
 
     g_signal_connect (paint_draw_area, "draw",G_CALLBACK (draw_cb), NULL);
