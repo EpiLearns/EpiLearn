@@ -5,6 +5,7 @@
   <object class="GtkWindow" id="org.epilearn.paint2d">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Paint 2D</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -29,21 +30,12 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="new_paint">
-                        <property name="label">gtk-new</property>
+                      <object class="GtkMenuItem" id="new_paint">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Nouveau</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-open</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="efface" swapped="no"/>
                       </object>
                     </child>
                     <child>
@@ -66,36 +58,6 @@
               </object>
             </child>
           </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="paint_write">
-            <property name="label">gtk-edit</property>
-            <property name="width_request">0</property>
-            <property name="height_request">40</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_stock">True</property>
-            <property name="always_show_image">True</property>
-          </object>
-          <packing>
-            <property name="x">150</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="paint_erase">
-            <property name="label">gtk-clear</property>
-            <property name="width_request">0</property>
-            <property name="height_request">40</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_stock">True</property>
-            <property name="always_show_image">True</property>
-          </object>
-          <packing>
-            <property name="x">250</property>
-          </packing>
         </child>
         <child>
           <object class="GtkDrawingArea" id="paint_draw_area">

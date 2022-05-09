@@ -7,27 +7,15 @@
 #include <gtk/gtk.h>
 #include <string.h>
 
-GtkApplication* app;
 GtkBuilder* builder;
-GtkWidget* Paint2DWindow;
 
 cairo_surface_t* surface;
-GtkWidget* paint_draw_area;
 
+GtkWidget* Paint2DWindow;
 GtkMenuItem* new_paint;
 
-GtkButton* paint_write;
-GtkButton* paint_erase;
+GtkWidget* paint_draw_area;
 
-void clear_surface();
-gboolean clear_paint(GtkWidget* widget,gpointer user);
-
-gboolean on_draw_paint(GtkWidget* widget,cairo_t* contexte, gpointer user);
-gboolean on_motion_paint(GtkWidget* widget,GdkEvent* event, gpointer user);
-
-//void get_paint_object();
-//void paint_signal();
-
-void open_paint2D_fct(GtkApplication* app,gpointer user);
+void open_paint2D_fct();
 
 #endif

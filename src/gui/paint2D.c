@@ -1,138 +1,103 @@
 #include "paint2D.h"
 
-#define CHECK(pointer) \
-        if(pointer == NULL) \
-            return;
+int largeur=700,hauteur=450,bordure=8;
 
-gboolean on_draw_paint(GtkWidget* widget,cairo_t* context, gpointer user)
+gboolean draw_cb (GtkWidget *widget,cairo_t *cr,gpointer data);
+
+void clear_surface (void)
 {
-    cairo_set_source_surface(context,surface,0,0);
-    cairo_paint(context);
+    cairo_t *cr = cairo_create (surface);
 
-    return TRUE; //empêche le signal de se propager (callback suivant)
+    cairo_set_source_rgb (cr, 1, 1, 1);
+    cairo_paint (cr);
+
+    cairo_destroy (cr);
 }
 
-gboolean on_motion_paint(GtkWidget* widget,GdkEvent* event, gpointer user)
+gboolean configure_event_cb (GtkWidget* widget,GdkEventConfigure *event,gpointer data)
 {
-    GdkEventMotion* e = (GdkEventMotion*) event;
+    if (surface)
+        cairo_surface_destroy (surface);
 
-    double x = e->x;
-    double y = e->y;
+    surface = gdk_window_create_similar_surface (gtk_widget_get_window (widget),CAIRO_CONTENT_COLOR,gtk_widget_get_allocated_width (widget),gtk_widget_get_allocated_height (widget));
 
-    cairo_t* context = cairo_create(surface);
-    //cairo_set_source_rgba(context,1,1,1,1);
-
-    cairo_rectangle(context,x,y,10,10);
-    cairo_fill(context);
-    cairo_destroy(context);
-
-    gtk_widget_queue_draw_area(widget,0,0,gtk_widget_get_allocated_width(widget),gtk_widget_get_allocated_height(widget)); // draw area size
+    clear_surface ();
 
     return TRUE;
 }
 
-void clear_surface()
+gboolean draw_cb (GtkWidget *widget, cairo_t *cr, gpointer   data)
 {
-    cairo_t* cr;
+    cairo_set_source_surface (cr, surface, 0, 0);
+    cairo_paint (cr);
 
-    cr = cairo_create(surface);
-
-    cairo_set_source_rgb(cr,1,1,1);
-    cairo_paint(cr);
+    return FALSE;
 }
 
-gboolean clear_paint(GtkWidget* widget,gpointer user)
+void draw_brush (GtkWidget *widget, gdouble x,gdouble y)
 {
-    clear_surface();
-    gtk_widget_queue_draw_area(widget,1,1,gtk_widget_get_allocated_width(widget),gtk_widget_get_allocated_height(widget));
+    cairo_t *cr;
 
-    return TRUE;
+    cr = cairo_create (surface);
+
+    cairo_rectangle (cr, x - 3, y - 3, 6, 6);
+    cairo_fill (cr);
+
+    cairo_destroy (cr);
+    gtk_widget_queue_draw_area (widget, x - 3, y - 3, 6, 6);
 }
 
-/*void get_paint_object()
+gboolean button_press_event_cb (GtkWidget *widget,GdkEventButton *event,gpointer data)
 {
-    Paint2DWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.paint2d"));
+    if (surface == NULL)
+        return FALSE;
 
-    surface = gdk_window_create_similar_surface(gtk_widget_get_parent_window(paint_draw_area),CAIRO_CONTENT_COLOR,700,450);
-    paint_draw_area = GTK_WIDGET(gtk_builder_get_object(builder, "paint_draw_area"));
-
-    paint_write = GTK_BUTTON(gtk_builder_get_object(builder,"paint_write"));
-    paint_erase = GTK_BUTTON(gtk_builder_get_object(builder,"paint_erase"));
-}*/
-
-/*void paint_signal()
-{
-    g_signal_connect(paint_draw_area,"draw",G_CALLBACK(on_draw_paint),NULL);
-    g_signal_connect(paint_draw_area,"motion-notify-event",G_CALLBACK(on_motion_paint),NULL);
-}*/
-
-/*void open_paint2D_fct()
-{
-    gtk_init(NULL, NULL);
-    builder = gtk_builder_new ();
-    GError* error = NULL;
-
-    if (gtk_builder_add_from_file(builder, "../res/Paint2D.glade", &error) == 0)
+    if (event->button == GDK_BUTTON_PRIMARY)
     {
-        g_printerr("Error loading file: %s\n", error->message);
-        g_clear_error(&error);
+        draw_brush (widget, event->x, event->y);
+    }
+    else if (event->button == GDK_BUTTON_SECONDARY)
+    {
+        clear_surface ();
+        gtk_widget_queue_draw (widget);
     }
 
-    get_paint_object();
-    paint_signal();
-    
-    gtk_widget_add_events(paint_draw_area,GDK_POINTER_MOTION_MASK);
+    return TRUE;
+}
 
-    cairo_t* context = cairo_create(surface);
-    cairo_set_source_rgba(context,1,1,1,1);
-
-    cairo_paint(context);
-    cairo_destroy(context);
-
-    // Connects event handlers.
-    g_signal_connect(Paint2DWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);
-    gtk_widget_show(GTK_WIDGET(Paint2DWindow));
-
-    // Run the main window.
-    gtk_main();
-}*/
-
-void open_paint2D_fct(GtkApplication* app,gpointer user)
+gboolean motion_notify_event_cb (GtkWidget *widget,GdkEventMotion *event,gpointer data)
 {
-    gtk_init(NULL, NULL);
+    if (surface == NULL)
+        return FALSE;
+
+    if (event->state & GDK_BUTTON1_MASK)
+        draw_brush (widget, event->x, event->y);
+
+    return TRUE;
+}
+
+void open_paint2D_fct()
+{
+    gtk_init (NULL,NULL);
 
     builder = gtk_builder_new_from_file("../res/Paint2D.glade");
-    CHECK(builder)
 
     Paint2DWindow = GTK_WIDGET(gtk_builder_get_object(builder, "org.epilearn.paint2d"));
-    CHECK(Paint2DWindow)
-
-    paint_draw_area = GTK_WIDGET(gtk_builder_get_object(builder, "paint_draw_area"));
-    CHECK(paint_draw_area);
+    
+    g_signal_connect (Paint2DWindow, "destroy", G_CALLBACK (gtk_main_quit), NULL);
 
     new_paint = GTK_MENU_ITEM(gtk_builder_get_object(builder, "new_paint"));
+    paint_draw_area = GTK_WIDGET(gtk_builder_get_object(builder, "paint_draw_area"));
 
-    paint_write = GTK_BUTTON(gtk_builder_get_object(builder,"paint_write"));
-    paint_erase = GTK_BUTTON(gtk_builder_get_object(builder,"paint_erase"));
+    g_signal_connect (paint_draw_area, "draw",G_CALLBACK (draw_cb), NULL);
+    g_signal_connect (paint_draw_area,"configure-event",G_CALLBACK (configure_event_cb), NULL);
 
-    gtk_widget_add_events(paint_draw_area,GDK_POINTER_MOTION_MASK);
+    g_signal_connect (paint_draw_area, "motion-notify-event",G_CALLBACK (motion_notify_event_cb), NULL);
+    g_signal_connect (paint_draw_area, "button-press-event",G_CALLBACK (button_press_event_cb), NULL);
 
-    g_signal_connect(paint_draw_area,"motion-notify-event",G_CALLBACK(on_motion_paint),NULL);
-    
-    g_signal_connect(paint_draw_area,"draw",G_CALLBACK(on_draw_paint),NULL);
-    g_signal_connect(Paint2DWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);
+    gtk_widget_set_events (paint_draw_area, gtk_widget_get_events (paint_draw_area)| GDK_BUTTON_PRESS_MASK| GDK_POINTER_MOTION_MASK);
 
-    g_signal_connect(new_paint,"activate",G_CALLBACK(clear_paint),NULL);
+    gtk_widget_show_all (Paint2DWindow);
 
-    gtk_widget_show_all(Paint2DWindow);
-
-    surface = gdk_window_create_similar_surface(gtk_widget_get_parent_window(paint_draw_area),CAIRO_CONTENT_COLOR,gtk_widget_get_allocated_width(paint_draw_area),gtk_widget_get_allocated_height(paint_draw_area)); //window surface size
-
-    cairo_t* context = cairo_create(surface);
-    cairo_set_source_rgba(context,1,1,1,1);
-
-    cairo_paint(context);
-    cairo_destroy(context);
-
-    gtk_main();
+    gtk_main ();
 }
