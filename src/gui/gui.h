@@ -22,6 +22,7 @@
 
 
 #include "../property/algorithm/list/list.h"
+#include "list.h"
 
 // Builder important Window
 
@@ -161,23 +162,6 @@ GtkButton* quit_elec_1_1;
 
 GtkButton* quit_phy_1_1;
 GtkButton* quit_phy_1_2;
-
-// Tools List Object
-
-GtkWindow* listWindow;
-
-GtkWidget* tool_list_list_text;
-GtkWidget* tool_list_len_text;
-
-GtkWidget* tool_list_append_entry;
-GtkButton* tool_list_append_button;
-
-GtkButton* tool_list_pop_button;
-
-GtkWidget* tool_list_insert_entry1;
-GtkWidget* tool_list_insert_entry2;
-
-GtkButton* tool_list_insert_button;
 
 // Tools FIFO/LIFO Object
 

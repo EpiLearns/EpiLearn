@@ -25,12 +25,6 @@ void enter_page(GtkButton* button,gpointer parameter)
     current_window = new_window;
 }
 
-void open_page(GtkButton* button,gpointer parameter)
-{
-    GtkWindow* window = parameter;
-    gtk_widget_show(GTK_WIDGET(parameter));
-}
-
 // Functions that get all the windows that is used
 
 void get_window()
@@ -215,22 +209,6 @@ void get_close_training_button()
 
 void get_tools_object()
 {
-    //List tools
-    listWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.tools.list"));
-
-    tool_list_list_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_list_list_text"));
-    tool_list_len_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_list_len_text"));
-
-    tool_list_append_entry = GTK_WIDGET(gtk_builder_get_object(builder, "tool_list_append_entry"));
-    tool_list_append_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_list_append_button"));
-
-    tool_list_pop_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_list_pop_button"));
-
-    tool_list_insert_entry1 = GTK_WIDGET(gtk_builder_get_object(builder, "tool_list_insert_entry1"));
-    tool_list_insert_entry2 = GTK_WIDGET(gtk_builder_get_object(builder, "tool_list_insert_entry2"));
-
-    tool_list_insert_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_list_insert_button"));
-
     // Fifo/Lifo tools
     fifi_lifo_Window = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.tools.fifo_lifo"));
 
@@ -741,67 +719,6 @@ void training_update_signal(User* user)
     g_signal_connect(next_ct2,"clicked",G_CALLBACK(mcq_next),(gpointer) user);
 }
 
-// Function and G_signal for tools
-
-// List
-
-void ui_list_append(GtkButton* button, gpointer user)
-{
-    List* list = user;
-    char buff[32];
-
-    const gchar* number = gtk_entry_get_text(GTK_ENTRY(tool_list_append_entry));
-
-    list_append(list,atoi(number));
-
-    gtk_label_set_text(GTK_LABEL(tool_list_list_text),list_to_string(list));
-
-    sprintf(buff,"Taille de la liste: %i",list_len(list));
-    gtk_label_set_text(GTK_LABEL(tool_list_len_text),buff);
-
-    gtk_entry_set_text(GTK_ENTRY(tool_list_append_entry),"");
-}
-
-void ui_list_pop(GtkButton* button, gpointer user)
-{
-    List* list = user;
-    char buff[32];
-
-    list_pop(list);
-    gtk_label_set_text(GTK_LABEL(tool_list_list_text),list_to_string(list));
-
-    sprintf(buff,"Taille de la liste: %i",list_len(list));
-    gtk_label_set_text(GTK_LABEL(tool_list_len_text),buff);
-}
-
-void ui_list_insert(GtkButton* button, gpointer user)
-{
-    List* list = user;
-    char buff[32];
-
-    const gchar* number1 = gtk_entry_get_text(GTK_ENTRY(tool_list_insert_entry1));
-    const gchar* number2 = gtk_entry_get_text(GTK_ENTRY(tool_list_insert_entry2));
-
-    list_insert(list,atoi(number1),atoi(number2));
-
-    gtk_label_set_text(GTK_LABEL(tool_list_list_text),list_to_string(list));
-
-    sprintf(buff,"Taille de la liste: %i",list_len(list));
-    gtk_label_set_text(GTK_LABEL(tool_list_len_text),buff);
-
-    gtk_entry_set_text(GTK_ENTRY(tool_list_insert_entry1),"");
-    gtk_entry_set_text(GTK_ENTRY(tool_list_insert_entry2),"");
-}
-
-void list_signal()
-{
-    List* list = init_list();
-
-    g_signal_connect(tool_list_append_button,"clicked",G_CALLBACK(ui_list_append),list);
-    g_signal_connect(tool_list_pop_button,"clicked",G_CALLBACK(ui_list_pop),list);
-    g_signal_connect(tool_list_insert_button,"clicked",G_CALLBACK(ui_list_insert),list);
-}
-
 
 GtkBuilder *init_gui()
 {
@@ -856,12 +773,12 @@ GtkBuilder *init_gui()
     courses_page_signal();
     training_signal(client);
     training_update_signal(client);
+    
 
     g_signal_connect(open_calculator,"activate",G_CALLBACK(open_calculator_fct),NULL);
     g_signal_connect(open_graph,"activate",G_CALLBACK(open_graph_fct),NULL);
+    g_signal_connect(open_list,"activate",G_CALLBACK(open_list_fct),NULL);
 
-    g_signal_connect(open_list,"activate",G_CALLBACK(open_page),listWindow);
-    list_signal();
 
     // Connects event handlers.
     g_signal_connect(mainWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);
