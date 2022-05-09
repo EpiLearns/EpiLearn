@@ -14,8 +14,13 @@ GtkWidget* Paint2DWindow;
 cairo_surface_t* surface;
 GtkWidget* paint_draw_area;
 
-//GtkButton* paint_write;
-//GtkButton* paint_erase;
+GtkMenuItem* new_paint;
+
+GtkButton* paint_write;
+GtkButton* paint_erase;
+
+void clear_surface();
+gboolean clear_paint(GtkWidget* widget,gpointer user);
 
 gboolean on_draw_paint(GtkWidget* widget,cairo_t* contexte, gpointer user);
 gboolean on_motion_paint(GtkWidget* widget,GdkEvent* event, gpointer user);

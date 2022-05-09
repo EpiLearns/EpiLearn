@@ -26,7 +26,25 @@ gboolean on_motion_paint(GtkWidget* widget,GdkEvent* event, gpointer user)
     cairo_fill(context);
     cairo_destroy(context);
 
-    gtk_widget_queue_draw_area(widget,0,0,700,450); // draw area size
+    gtk_widget_queue_draw_area(widget,0,0,gtk_widget_get_allocated_width(widget),gtk_widget_get_allocated_height(widget)); // draw area size
+
+    return TRUE;
+}
+
+void clear_surface()
+{
+    cairo_t* cr;
+
+    cr = cairo_create(surface);
+
+    cairo_set_source_rgb(cr,1,1,1);
+    cairo_paint(cr);
+}
+
+gboolean clear_paint(GtkWidget* widget,gpointer user)
+{
+    clear_surface();
+    gtk_widget_queue_draw_area(widget,1,1,gtk_widget_get_allocated_width(widget),gtk_widget_get_allocated_height(widget));
 
     return TRUE;
 }
@@ -92,15 +110,23 @@ void open_paint2D_fct(GtkApplication* app,gpointer user)
     paint_draw_area = GTK_WIDGET(gtk_builder_get_object(builder, "paint_draw_area"));
     CHECK(paint_draw_area);
 
+    new_paint = GTK_MENU_ITEM(gtk_builder_get_object(builder, "new_paint"));
+
+    paint_write = GTK_BUTTON(gtk_builder_get_object(builder,"paint_write"));
+    paint_erase = GTK_BUTTON(gtk_builder_get_object(builder,"paint_erase"));
+
     gtk_widget_add_events(paint_draw_area,GDK_POINTER_MOTION_MASK);
+
     g_signal_connect(paint_draw_area,"motion-notify-event",G_CALLBACK(on_motion_paint),NULL);
     
     g_signal_connect(paint_draw_area,"draw",G_CALLBACK(on_draw_paint),NULL);
     g_signal_connect(Paint2DWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);
 
+    g_signal_connect(new_paint,"activate",G_CALLBACK(clear_paint),NULL);
+
     gtk_widget_show_all(Paint2DWindow);
 
-    surface = gdk_window_create_similar_surface(gtk_widget_get_parent_window(paint_draw_area),CAIRO_CONTENT_COLOR,700,450); //window surface size
+    surface = gdk_window_create_similar_surface(gtk_widget_get_parent_window(paint_draw_area),CAIRO_CONTENT_COLOR,gtk_widget_get_allocated_width(paint_draw_area),gtk_widget_get_allocated_height(paint_draw_area)); //window surface size
 
     cairo_t* context = cairo_create(surface);
     cairo_set_source_rgba(context,1,1,1,1);
