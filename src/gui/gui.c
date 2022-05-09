@@ -1,5 +1,9 @@
 #include "gui.h"
 
+#define CHECK(pointer) \
+        if(pointer == NULL) \
+            return NULL;
+
 // Function that return allocated User struct
 
 User* init_user()
@@ -754,7 +758,8 @@ GtkBuilder *init_gui()
     g_signal_connect(open_graph,"activate",G_CALLBACK(open_graph_fct),NULL);
     g_signal_connect(open_list,"activate",G_CALLBACK(open_list_fct),NULL);
     g_signal_connect(open_fifo_lifo,"activate",G_CALLBACK(open_fifo_lifo_fct),NULL);
-
+    g_signal_connect(open_paint,"activate",G_CALLBACK(open_paint2D_fct),NULL);
+    
     // Connects event handlers.
     g_signal_connect(mainWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);
     gtk_widget_show(GTK_WIDGET(loginWindow));

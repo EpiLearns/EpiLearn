@@ -28,6 +28,7 @@
 
 #include "list.h"
 #include "fifo_lifo.h"
+#include "paint2D.h"
 
 // Builder important Window
 
