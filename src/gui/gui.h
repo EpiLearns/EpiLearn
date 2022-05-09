@@ -22,7 +22,12 @@
 
 
 #include "../property/algorithm/list/list.h"
+
+#include "../property/algorithm/fifo/fifo.h"
+#include "../property/algorithm/lifo/lifo.h"
+
 #include "list.h"
+#include "fifo_lifo.h"
 
 // Builder important Window
 
@@ -162,24 +167,6 @@ GtkButton* quit_elec_1_1;
 
 GtkButton* quit_phy_1_1;
 GtkButton* quit_phy_1_2;
-
-// Tools FIFO/LIFO Object
-
-GtkWindow* fifi_lifo_Window;
-
-GtkWidget* tool_pile_text;
-GtkWidget* tool_file_text;
-
-GtkWidget* tool_pile_isempty_text;
-GtkWidget* tool_file_isempty_text;
-
-GtkWidget* tool_pile_push_entry;
-GtkButton* tool_pile_push_button;
-GtkButton* tool_pile_pop_button;
-
-GtkWidget* tool_file_enqueue_entry;
-GtkButton* tool_file_enqueue_button;
-GtkButton* tool_file_pop_button;
 
 // Open Mcq Button
 

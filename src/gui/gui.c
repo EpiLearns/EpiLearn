@@ -204,29 +204,6 @@ void get_close_training_button()
     quit_qcm_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct1"));
     quit_qcm_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct2"));
 }
-
-// Function get_tools_object
-
-void get_tools_object()
-{
-    // Fifo/Lifo tools
-    fifi_lifo_Window = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.tools.fifo_lifo"));
-
-    tool_pile_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_pile_text"));
-    tool_file_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_file_text"));
-
-    tool_pile_isempty_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_pile_isempty_text"));
-    tool_file_isempty_text = GTK_WIDGET(gtk_builder_get_object(builder, "tool_file_isempty_text"));
-
-    tool_pile_push_entry = GTK_WIDGET(gtk_builder_get_object(builder, "tool_pile_push_entry"));
-    tool_pile_push_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_pile_push_button"));
-    tool_pile_pop_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_pile_pop_button"));
-
-    tool_file_enqueue_entry = GTK_WIDGET(gtk_builder_get_object(builder, "tool_file_enqueue_entry"));
-    tool_file_enqueue_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_file_enqueue_button"));
-    tool_file_pop_button = GTK_BUTTON(gtk_builder_get_object(builder, "tool_file_pop_button"));
-}
-
 // Functions G_signal for the UI
 
 void main_signal()
@@ -754,8 +731,6 @@ GtkBuilder *init_gui()
     get_enter_training_button();
     get_close_training_button();
 
-    get_tools_object();
-
     get_mcq_object();
 
     open_calculator = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_calculator"));
@@ -773,12 +748,12 @@ GtkBuilder *init_gui()
     courses_page_signal();
     training_signal(client);
     training_update_signal(client);
-    
+
 
     g_signal_connect(open_calculator,"activate",G_CALLBACK(open_calculator_fct),NULL);
     g_signal_connect(open_graph,"activate",G_CALLBACK(open_graph_fct),NULL);
     g_signal_connect(open_list,"activate",G_CALLBACK(open_list_fct),NULL);
-
+    g_signal_connect(open_fifo_lifo,"activate",G_CALLBACK(open_fifo_lifo_fct),NULL);
 
     // Connects event handlers.
     g_signal_connect(mainWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);

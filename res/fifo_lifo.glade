@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkWindow" id="org.epilearn.tools.list">
+  <object class="GtkWindow" id="org.epilearn.tools.fifo_lifo">
     <property name="width_request">600</property>
     <property name="height_request">600</property>
     <property name="can_focus">False</property>
@@ -34,7 +34,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkEntry" id="tool_list_append_entry">
+                      <object class="GtkEntry" id="tool_pile_push_entry">
                         <property name="width_request">0</property>
                         <property name="height_request">0</property>
                         <property name="visible">True</property>
@@ -52,7 +52,7 @@
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Liste.append(x)</property>
+                        <property name="label" translatable="yes">Pile.push(x)</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 10"/>
                           <attribute name="foreground" value="#000000000000"/>
@@ -63,7 +63,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="tool_list_append_button">
+                      <object class="GtkButton" id="tool_pile_push_button">
                         <property name="label">gtk-ok</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -82,18 +82,18 @@
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Liste.pop(index = -1)</property>
+                        <property name="label" translatable="yes">Pile.pop()</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 10"/>
                           <attribute name="foreground" value="#000000000000"/>
                         </attributes>
                       </object>
                       <packing>
-                        <property name="y">130</property>
+                        <property name="y">100</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="tool_list_pop_button">
+                      <object class="GtkButton" id="tool_pile_pop_button">
                         <property name="label">gtk-ok</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -102,48 +102,37 @@
                         <property name="always_show_image">True</property>
                       </object>
                       <packing>
-                        <property name="x">165</property>
-                        <property name="y">135</property>
+                        <property name="x">125</property>
+                        <property name="y">105</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Liste.insert(i,x)</property>
+                        <property name="label" translatable="yes">File.enqueue(x)</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 10"/>
                           <attribute name="foreground" value="#000000000000"/>
                         </attributes>
                       </object>
                       <packing>
-                        <property name="y">230</property>
+                        <property name="y">170</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="tool_list_insert_entry1">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="placeholder_text" translatable="yes">indice de l'élément</property>
-                      </object>
-                      <packing>
-                        <property name="x">125</property>
-                        <property name="y">225</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="tool_list_insert_entry2">
+                      <object class="GtkEntry" id="tool_file_enqueue_entry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="placeholder_text" translatable="yes">élément à ajouter</property>
                       </object>
                       <packing>
-                        <property name="x">300</property>
-                        <property name="y">225</property>
+                        <property name="x">125</property>
+                        <property name="y">165</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="tool_list_insert_button">
+                      <object class="GtkButton" id="tool_file_enqueue_button">
                         <property name="label">gtk-ok</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -152,8 +141,36 @@
                         <property name="always_show_image">True</property>
                       </object>
                       <packing>
-                        <property name="x">475</property>
-                        <property name="y">225</property>
+                        <property name="x">300</property>
+                        <property name="y">165</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">File.dequeue()</property>
+                        <attributes>
+                          <attribute name="font-desc" value="Sans Bold 10"/>
+                          <attribute name="foreground" value="#000000000000"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="y">240</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="tool_file_pop_button">
+                        <property name="label">gtk-ok</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
+                      </object>
+                      <packing>
+                        <property name="x">125</property>
+                        <property name="y">240</property>
                       </packing>
                     </child>
                   </object>
@@ -177,24 +194,24 @@
             <property name="height_request">40</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Opération sur les listes</property>
+            <property name="label" translatable="yes">Opération sur les piles et les files</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#000000000000"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">175</property>
+            <property name="x">100</property>
             <property name="y">25</property>
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="tool_list_list_text">
+          <object class="GtkLabel" id="tool_pile_text">
             <property name="width_request">100</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Liste = []</property>
+            <property name="label" translatable="yes">Pile = []</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 15"/>
               <attribute name="foreground" value="#000000000000"/>
@@ -206,12 +223,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="tool_list_len_text">
+          <object class="GtkLabel" id="tool_pile_isempty_text">
             <property name="width_request">100</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Taille de la liste: 0</property>
+            <property name="label" translatable="yes">La pile est vide</property>
             <attributes>
               <attribute name="font-desc" value="Sans Bold 10"/>
               <attribute name="foreground" value="#000000000000"/>
@@ -219,7 +236,41 @@
           </object>
           <packing>
             <property name="x">25</property>
-            <property name="y">175</property>
+            <property name="y">225</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="tool_file_text">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">File = []</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 15"/>
+              <attribute name="foreground" value="#000000000000"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">25</property>
+            <property name="y">150</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="tool_file_isempty_text">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">La file est vide</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 10"/>
+              <attribute name="foreground" value="#000000000000"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">300</property>
+            <property name="y">225</property>
           </packing>
         </child>
       </object>

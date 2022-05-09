@@ -5,7 +5,7 @@
 
 List* init_list()
 {
-	List* res  = calloc(1,sizeof(List));
+	List* res = calloc(1,sizeof(List));
 
 	if (!res)
 	{
@@ -119,7 +119,7 @@ char* list_to_string(List* list)
 
 	char buff[8];
 
-	char* res = calloc(1,sizeof(char)*len + 11);
+	char* res = calloc(1,sizeof(char)*100);
 
 	strcat(res,"Liste = [");
 	

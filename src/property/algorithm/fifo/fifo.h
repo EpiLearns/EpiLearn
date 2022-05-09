@@ -1,6 +1,8 @@
 #ifndef FIFO_H
 #define FIFO_H
 
+#include <stdlib.h>
+
 typedef struct Fifo
 {
     struct Fifo* next;
@@ -12,8 +14,10 @@ Fifo* init_fifo();
 
 int fifo_is_empty(Fifo* fifo);
 
-Fifo* fifo_push(Fifo* fifo, int data);
+void fifo_push(Fifo* fifo, int data);
 
-Fifo* fifo_pop(Fifo* fifo);
+void fifo_pop(Fifo* fifo);
+
+char* fifo_to_string(Fifo* fifo);
 
 #endif

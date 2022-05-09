@@ -12,7 +12,6 @@
 // Tools List Object
 
 GtkBuilder* builder;
-GtkWindow* mainWindow;
 
 GtkWindow* listWindow;
 
