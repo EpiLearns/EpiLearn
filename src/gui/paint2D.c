@@ -1,6 +1,7 @@
 #include "paint2D.h"
 
 int largeur=700,hauteur=450,bordure=8;
+//gdouble coordx,coordy;
 
 gboolean draw_cb (GtkWidget *widget,cairo_t *cr,gpointer data);
 
@@ -36,13 +37,202 @@ gboolean draw_cb (GtkWidget *widget, cairo_t *cr, gpointer   data)
 
 void draw_brush (GtkWidget *widget, gdouble x,gdouble y)
 {
+
+    /*gdouble ecartx = x - coordx;
+    gdouble ecarty = y - coordy;
+
+    if (ecartx>0 && ecarty>0)
+    {
+        if (ecartx>ecarty)
+        {
+            gdouble inc = ecartx/ecarty;
+
+            while(coordx < x)
+            {
+                cairo_t *cr = cairo_create (surface);
+
+                cairo_rectangle (cr, coordx - 3, coordy - 3, 10, 10);
+                cairo_fill (cr);
+
+                cairo_destroy (cr);
+                gtk_widget_queue_draw_area (widget, coordx - 3, coordy - 3, 6, 6);
+
+                coordx += 1;
+                coordy += inc;
+            }
+
+            return;
+        }
+
+        else
+        {
+            gdouble inc = ecarty/ecartx;
+
+            while(coordy < y)
+            {
+                cairo_t *cr = cairo_create (surface);
+
+                cairo_rectangle (cr, coordx - 3, coordy - 3, 10, 10);
+                cairo_fill (cr);
+
+                cairo_destroy (cr);
+                gtk_widget_queue_draw_area (widget, coordx - 3, coordy - 3, 6, 6);
+
+                coordx += inc;
+                coordy += 1;
+            }
+
+            return;
+        }
+
+    }
+
+    if (ecartx<0 && ecarty<0)
+    {
+        if (ecartx>ecarty)
+        {
+            gdouble inc = -(ecarty/ecartx);
+
+            while(coordx > x)
+            {
+                cairo_t *cr = cairo_create (surface);
+
+                cairo_rectangle (cr,coordx - 3, coordy - 3, 10, 10);
+                cairo_fill (cr);
+
+                cairo_destroy (cr);
+                gtk_widget_queue_draw_area (widget, coordx - 3, coordy - 3, 6, 6);
+
+                coordx -= 1;
+                coordy -= inc;
+            }
+
+            return;
+        }
+
+        else
+        {
+            gdouble inc = -(ecartx/ecarty);
+
+            while(coordy > y)
+            {
+                cairo_t *cr = cairo_create (surface);
+
+                cairo_rectangle (cr, coordx - 3, coordy - 3, 10, 10);
+                cairo_fill (cr);
+
+                cairo_destroy (cr);
+                gtk_widget_queue_draw_area (widget, coordx - 3, coordy - 3, 6, 6);
+
+                coordx -= inc;
+                coordy -= 1;
+            }
+
+            return;
+        }
+    }
+
+    if (ecartx<0 && ecarty>0)
+    {
+        if (-ecartx<ecarty)
+        {
+            gdouble inc = -(ecarty/ecartx);
+
+            while(coordx > x)
+            {
+                cairo_t *cr = cairo_create (surface);
+
+                cairo_rectangle (cr,coordx - 3, coordy - 3, 10, 10);
+                cairo_fill (cr);
+
+                cairo_destroy (cr);
+                gtk_widget_queue_draw_area (widget, coordx - 3, coordy - 3, 6, 6);
+
+                coordx -= 1;
+                coordy += inc;
+            }
+
+            return;
+        }
+
+        else
+        {
+            gdouble inc = -(ecartx/ecarty);
+
+            while(coordy < y)
+            {
+                cairo_t *cr = cairo_create (surface);
+
+                cairo_rectangle (cr, coordx - 3, coordy - 3, 10, 10);
+                cairo_fill (cr);
+
+                cairo_destroy (cr);
+                gtk_widget_queue_draw_area (widget, coordx - 3, coordy - 3, 6, 6);
+
+                coordx -= inc;
+                coordy += 1;
+            }
+
+            return;
+        }
+    }
+
+    if (ecartx>0 && ecarty<0)
+    {
+        if (ecartx<-ecarty)
+        {
+            gdouble inc = -(ecartx/ecarty);
+
+            while(coordx < x)
+            {
+                cairo_t *cr = cairo_create (surface);
+
+                cairo_rectangle (cr,coordx - 3, coordy - 3, 10, 10);
+                cairo_fill (cr);
+
+                cairo_destroy (cr);
+                gtk_widget_queue_draw_area (widget, coordx - 3, coordy - 3, 6, 6);
+
+                coordx += 1;
+                coordy -= inc;
+            }
+
+            return;
+        }
+
+        else
+        {
+            gdouble inc = -(ecarty/ecartx);
+
+            while(coordy > y)
+            {
+                cairo_t *cr = cairo_create (surface);
+
+                cairo_rectangle (cr, coordx - 3, coordy - 3, 10, 10);
+                cairo_fill (cr);
+
+                cairo_destroy (cr);
+                gtk_widget_queue_draw_area (widget, coordx - 3, coordy - 3, 6, 6);
+
+                coordx += inc;
+                coordy -= 1;
+            }
+
+            return;
+        }
+    }*/
+
+    
     cairo_t *cr = cairo_create (surface);
 
-    cairo_rectangle (cr, x - 3, y - 3, 10, 10);
+    cairo_rectangle (cr, x, y, 10, 10);
     cairo_fill (cr);
 
     cairo_destroy (cr);
-    gtk_widget_queue_draw_area (widget, x - 3, y - 3, 200, 200);
+    gtk_widget_queue_draw_area (widget, x, y, largeur, hauteur);
+
+    /*coordx = x;
+    coordy = y;*/
 }
 
 gboolean button_press_event_cb (GtkWidget *widget,GdkEventButton *event,gpointer data)
@@ -52,6 +242,9 @@ gboolean button_press_event_cb (GtkWidget *widget,GdkEventButton *event,gpointer
 
     if (event->button == GDK_BUTTON_PRIMARY)
     {
+        //coordx = event->x;
+        //coordy = event->y;
+        
         draw_brush (widget, event->x, event->y);
     }
     else if (event->button == GDK_BUTTON_SECONDARY)
@@ -69,7 +262,9 @@ gboolean motion_notify_event_cb (GtkWidget *widget,GdkEventMotion *event,gpointe
         return FALSE;
 
     if (event->state & GDK_BUTTON1_MASK)
+    {
         draw_brush (widget, event->x, event->y);
+    }
 
     return TRUE;
 }
