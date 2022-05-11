@@ -84,7 +84,8 @@ void get_training_window()
     qcm_mt1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.maths.mt1"));
 
     qcm_at1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm_at1"));
-
+    qcm_at2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm_at2"));
+    
     qcm_archi1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_1"));
     qcm_archi2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_2"));
 
@@ -204,6 +205,7 @@ void get_close_training_button()
     quit_qcm_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_mt1"));
 
     quit_qcm_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_at1"));
+    quit_qcm_at2 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_at2"));
 
     quit_qcm_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct1"));
     quit_qcm_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct2"));
@@ -305,6 +307,40 @@ void get_mcq_object()
 
     prev_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_mt1"));
     next_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "next_mt1"));
+
+    //For qcm_at1
+    valide_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_at1"));
+    question_number_at1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_number_at1"));
+
+    at1_choice_number_a = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_a"));
+    at1_choice_number_b = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_b"));
+    at1_choice_number_c = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_c"));
+    at1_choice_number_d = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_d"));
+
+    answer_at1 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_at1"));
+
+    question_at1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_at1"));
+    score_at1 = GTK_WIDGET(gtk_builder_get_object(builder, "score_at1"));
+
+    prev_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_at1"));
+    next_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "next_at1"));
+
+    //For qcm_at2
+    valide_at2 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_at2"));
+    question_number_at2 = GTK_WIDGET(gtk_builder_get_object(builder, "question_number_at2"));
+
+    at1_choice_number_a1 = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_a1"));
+    at1_choice_number_b1 = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_b1"));
+    at1_choice_number_c1 = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_c1"));
+    at1_choice_number_d1 = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_d1"));
+
+    answer_at2 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_at2"));
+
+    question_at2 = GTK_WIDGET(gtk_builder_get_object(builder, "question_at2"));
+    score_at2 = GTK_WIDGET(gtk_builder_get_object(builder, "score_at2"));
+
+    prev_at2 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_at2"));
+    next_at2 = GTK_BUTTON(gtk_builder_get_object(builder, "next_at2"));
 
     // For qcm_ct1
     valide_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_ct1"));
@@ -670,6 +706,7 @@ void training_signal(User *user)
     g_signal_connect(open_mt1,"clicked",G_CALLBACK(enter_mcq_mt1),user);
     
     g_signal_connect(open_at1,"clicked",G_CALLBACK(enter_page),qcm_at1);
+    g_signal_connect(open_at2,"clicked",G_CALLBACK(enter_page),qcm_at2);
 
     g_signal_connect(open_ct1,"clicked",G_CALLBACK(enter_mcq_ct1),user);
     g_signal_connect(open_ct2,"clicked",G_CALLBACK(enter_mcq_ct2),user);
@@ -679,6 +716,7 @@ void training_signal(User *user)
     g_signal_connect(quit_qcm_mt1,"clicked",G_CALLBACK(enter_page),mainWindow);
 
     g_signal_connect(quit_qcm_at1,"clicked",G_CALLBACK(enter_page),mainWindow);
+    g_signal_connect(quit_qcm_at2,"clicked",G_CALLBACK(enter_page),mainWindow);
 
     g_signal_connect(quit_qcm_ct1,"clicked",G_CALLBACK(enter_page),mainWindow); 
     g_signal_connect(quit_qcm_ct2,"clicked",G_CALLBACK(enter_page),mainWindow);
@@ -698,6 +736,16 @@ void training_update_signal(User* user)
     g_signal_connect(valide_ct2,"clicked",G_CALLBACK(check_reponse),(gpointer) user);
     g_signal_connect(prev_ct2,"clicked",G_CALLBACK(mcq_prev),(gpointer) user);
     g_signal_connect(next_ct2,"clicked",G_CALLBACK(mcq_next),(gpointer) user);
+}
+
+// get game button
+
+void get_game_button()
+{
+    play_grid_game = GTK_BUTTON(gtk_builder_get_object(builder, "play_grid_game"));
+    play_number_game = GTK_BUTTON(gtk_builder_get_object(builder, "play_number_game"));
+    play_tetris = GTK_BUTTON(gtk_builder_get_object(builder, "play_tetris"));
+    play_chimp_game = GTK_BUTTON(gtk_builder_get_object(builder, "play_chimp_game"));
 }
 
 
@@ -736,6 +784,8 @@ GtkBuilder *init_gui()
     get_close_training_button();
 
     get_mcq_object();
+
+    get_game_button();
 
     open_calculator = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_calculator"));
     open_graph = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_graph"));

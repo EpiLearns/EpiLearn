@@ -25,4 +25,12 @@ void free_list(List* list);
 
 char* list_to_string(List* list);
 
+List* random_list();
+
+size_t get_min_index(List* list);
+
+size_t get_max_index(List* list);
+
+int get_val_in_i(List* list,size_t index);
+
 #endif

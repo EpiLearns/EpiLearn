@@ -89,6 +89,7 @@ GtkWindow* cours_phy_1_2;
 GtkWindow* qcm_mt1;
 
 GtkWindow* qcm_at1;
+GtkWindow* qcm_at2;
 
 GtkWindow* qcm_archi1;
 GtkWindow* qcm_archi2;
@@ -190,6 +191,7 @@ GtkButton* open_pt1;
 GtkButton* quit_qcm_mt1;
 
 GtkButton* quit_qcm_at1;
+GtkButton* quit_qcm_at2;
 
 GtkButton* quit_qcm_ct1;
 GtkButton* quit_qcm_ct2;
@@ -208,6 +210,38 @@ GtkWidget* score_mt1;
 
 GtkButton* prev_mt1;
 GtkButton* next_mt1;
+
+//For qcm_at1
+
+GtkButton* valide_at1;
+GtkWidget* question_number_at1;
+GtkWidget* at1_choice_number_a;
+GtkWidget* at1_choice_number_b;
+GtkWidget* at1_choice_number_c;
+GtkWidget* at1_choice_number_d;
+GtkWidget* answer_at1;
+
+GtkWidget* question_at1;
+GtkWidget* score_at1;
+
+GtkButton* prev_at1;
+GtkButton* next_at1;
+
+//For qcm_at2
+
+GtkButton* valide_at2;
+GtkWidget* question_number_at2;
+GtkWidget* at1_choice_number_a1;
+GtkWidget* at1_choice_number_b1;
+GtkWidget* at1_choice_number_c1;
+GtkWidget* at1_choice_number_d1;
+GtkWidget* answer_at2;
+
+GtkWidget* question_at2;
+GtkWidget* score_at2;
+
+GtkButton* prev_at2;
+GtkButton* next_at2;
 
 // For qcm_ct1
 GtkButton* valide_ct1;
@@ -232,6 +266,13 @@ GtkWidget* score_ct2;
 
 GtkButton* prev_ct2;
 GtkButton* next_ct2;
+
+// Game tools
+
+GtkButton* play_grid_game;
+GtkButton* play_number_game;
+GtkButton* play_tetris;
+GtkButton* play_chimp_game;
 
 GtkBuilder *init_gui();
 

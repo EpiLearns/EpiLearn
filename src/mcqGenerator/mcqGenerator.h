@@ -11,6 +11,8 @@ typedef struct McqObject
 
     GtkWidget* user_answer_object1;
     GtkWidget* user_answer_object2;
+    GtkWidget* user_answer_object3;
+    GtkWidget* user_answer_object4;
 
     GtkWidget* answer_text;
 
@@ -56,5 +58,7 @@ typedef struct User
     struct McqObject* mcqObject;
 
 } User;
+
+
 
 #endif

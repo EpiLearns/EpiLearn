@@ -139,19 +139,101 @@ char* list_to_string(List* list)
 	return res;
 }
 
-
-/*int main()
+List* random_list()
 {
 	List* res = init_list();
 
-	for (size_t i = 0;i<20;i++)
+	List* tmp = res;
+
+	size_t len = rand()%10 + 5;
+
+	for (size_t i = 0;i<len;i++)
 	{
-		list_append(res,i);
+		tmp->next = calloc(1,sizeof(List));
+		tmp->next->data = rand()%31;
+
+		tmp = tmp->next;
 	}
+
+	return res;
+}
+
+size_t get_min_index(List* list)
+{
+	list = list->next;
+	size_t res = 0;
+	List* min = list;
+
+	for (size_t i = 0; list; i++)
+	{
+		if(min->data > list->data)
+		{
+			min = list;
+			res = i;
+		}
+
+		list = list->next;
+	}
+
+	return res;
+}
+
+size_t get_max_index(List* list)
+{
+	list = list->next;
+	size_t res = 0;
+	List* max = list;
+
+	for (size_t i = 0; list; i++)
+	{
+		if(max->data < list->data)
+		{
+			max = list;
+			res = i;
+		}
+
+		list = list->next;
+	}
+
+	return res;
+}
+
+int get_val_in_i(List* list,size_t index)
+{
+	list = list->next;
+
+	for (size_t i = 0; list;i++)
+	{
+		if (i == index)
+		{
+			return list->data;
+		}
+
+		list = list->next;
+	}
+
+	return -1;
+}
+
+
+/*int main()
+{
+	List* res = random_list();
+
+	size_t min = get_min_index(res);
+	size_t max = get_max_index(res);
+
+	int val1 = get_val_in_i(res,min);
+	int val2 = get_val_in_i(res,max);
 
 	char* liste = list_to_string(res);
 
 	printf("%s\n",liste);
+
+	printf("index min: %li val: %i\n",min,val1);
+	printf("index max: %li val: %i\n",max,val2);
+
+
 
 	return 0;
 }*/
