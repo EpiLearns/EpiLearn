@@ -1,25 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#include <gtk/gtk.h>
 #include "gui.h"
-#include <stdlib.h>
-#include <string.h>
 
-#include "../mcqGenerator/mcqGenerator.h"
-
-#include "../property/mathematics/complex_number/complex_number.h"
-#include "../property/computer_architecture/integer_representation/integer_representation.h"
-
-#include "../calculator/calculator.h"
-#include "../graph/graph.h"
-
-GtkBuilder* builder;
-GtkWindow* current_window; 
-GtkMenuItem* open_calculator;
-GtkMenuItem* open_graph;
+#define CHECK(pointer) \
+        if(pointer == NULL) \
+            return NULL;
 
 // Function that return allocated User struct
+
 User* init_user()
 {
     User* client = calloc(1,sizeof(User));
@@ -31,7 +17,6 @@ User* init_user()
 
     return client;
 }
-
 
 // Function to change page
 void enter_page(GtkButton* button,gpointer parameter)
@@ -46,11 +31,6 @@ void enter_page(GtkButton* button,gpointer parameter)
 
 // Functions that get all the windows that is used
 
-GtkWindow* mainWindow;
-GtkWindow* loginWindow;
-GtkWindow* profileWindow;
-GtkWindow* aboutUsWindow;
-
 void get_window()
 {
     mainWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.main"));
@@ -62,12 +42,6 @@ void get_window()
     current_window = loginWindow;
 }
 
-GtkWindow* mathsWindow;
-GtkWindow* algoWindow;
-GtkWindow* phyWindow;
-GtkWindow* elecWindow;
-GtkWindow* archiWindow;
-
 void get_courses_window()
 {
     mathsWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.mathematics"));
@@ -76,32 +50,6 @@ void get_courses_window()
     elecWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.electronic"));
     archiWindow = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.computer_architecture"));
 }
-
-
-GtkWindow* cours_math_1_1;
-GtkWindow* cours_math_1_2;
-GtkWindow* cours_math_2_1;
-GtkWindow* cours_math_2_2;
-GtkWindow* cours_math_3_1;
-GtkWindow* cours_math_3_2;
-GtkWindow* cours_math_3_3;
-GtkWindow* cours_math_4_1;
-GtkWindow* cours_math_4_2;
-
-GtkWindow* cours_algo_1_1;
-GtkWindow* cours_algo_2_1;
-GtkWindow* cours_algo_2_2;
-GtkWindow* cours_algo_3_1;
-
-GtkWindow* cours_archi_1_1;
-GtkWindow* cours_archi_1_2;
-GtkWindow* cours_archi_1_3;
-GtkWindow* cours_archi_1_4;
-
-GtkWindow* cours_elec_1_1;
-
-GtkWindow* cours_phy_1_1;
-GtkWindow* cours_phy_1_2;
 
 void get_courses_page()
 {
@@ -131,19 +79,13 @@ void get_courses_page()
     cours_phy_1_2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.phy.chap1.lesson2"));
 }
 
-GtkWindow* qcm_mt1;
-
-GtkWindow* qcm_at1;
-
-GtkWindow* qcm_archi1;
-GtkWindow* qcm_archi2;
-
 void get_training_window()
 {
     qcm_mt1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.maths.mt1"));
 
     qcm_at1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm_at1"));
-
+    qcm_at2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm_at2"));
+    
     qcm_archi1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_1"));
     qcm_archi2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_2"));
 
@@ -152,10 +94,6 @@ void get_training_window()
 
 // Functions that get all the buttons that is used
 
-GtkButton* open_main;
-GtkMenuItem* open_about_us;
-GtkButton* open_profil;
-
 void get_main_enter_button()
 {
     open_main = GTK_BUTTON(gtk_builder_get_object(builder,"open_main"));
@@ -163,20 +101,11 @@ void get_main_enter_button()
     open_profil = GTK_BUTTON(gtk_builder_get_object(builder,"open_profil"));   
 }
 
-GtkButton* close_about_us;
-GtkButton* close_profil;
-
 void get_main_close_button()
 {
     close_about_us = GTK_BUTTON(gtk_builder_get_object(builder,"close_about_us"));
     close_profil = GTK_BUTTON(gtk_builder_get_object(builder,"close_profil"));
 }
-
-GtkButton* open_mathematics;
-GtkButton* open_algorithm;
-GtkButton* open_physic;
-GtkButton* open_electronic;
-GtkButton* open_computer_architecture;
 
 void get_courses_enter_button()
 {
@@ -189,12 +118,6 @@ void get_courses_enter_button()
 
 }
 
-GtkButton* close_mathematics;
-GtkButton* close_algorithm;
-GtkButton* close_physic;
-GtkButton* close_electronic;
-GtkButton* close_computer_architecture;
-
 void get_courses_close_button()
 {
     close_mathematics = GTK_BUTTON(gtk_builder_get_object(builder,"close_mathematics"));
@@ -203,32 +126,6 @@ void get_courses_close_button()
     close_electronic = GTK_BUTTON(gtk_builder_get_object(builder,"close_electronic"));
     close_physic = GTK_BUTTON(gtk_builder_get_object(builder,"close_physic"));
 }
-
-GtkButton* math_1_1;
-GtkButton* math_1_2;
-GtkButton* math_2_1;
-GtkButton* math_2_2;
-GtkButton* math_3_1;
-GtkButton* math_3_2;
-GtkButton* math_3_3;
-GtkButton* math_4_1;
-GtkButton* math_4_2;
-
-GtkButton* algo_1_1;
-GtkButton* algo_2_1;
-GtkButton* algo_2_2;
-GtkButton* algo_3_1;
-
-GtkButton* archi_1_1;
-GtkButton* archi_1_2;
-GtkButton* archi_1_3;
-GtkButton* archi_1_4;
-
-GtkButton* elec_1_1;
-
-GtkButton* phy_1_1;
-GtkButton* phy_1_2;
-
 
 void get_courses_page_enter_button()
 {
@@ -258,31 +155,6 @@ void get_courses_page_enter_button()
     phy_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"phy_1_2"));
 }
 
-GtkButton* quit_math_1_1;
-GtkButton* quit_math_1_2;
-GtkButton* quit_math_2_1;
-GtkButton* quit_math_2_2;
-GtkButton* quit_math_3_1;
-GtkButton* quit_math_3_2;
-GtkButton* quit_math_3_3;
-GtkButton* quit_math_4_1;
-GtkButton* quit_math_4_2;
-
-GtkButton* quit_algo_1_1;
-GtkButton* quit_algo_2_1;
-GtkButton* quit_algo_2_2;
-GtkButton* quit_algo_3_1;
-
-GtkButton* quit_archi_1_1;
-GtkButton* quit_archi_1_2;
-GtkButton* quit_archi_1_3;
-GtkButton* quit_archi_1_4;
-
-GtkButton* quit_elec_1_1;
-
-GtkButton* quit_phy_1_1;
-GtkButton* quit_phy_1_2;
-
 void get_courses_page_close_button()
 {
     quit_math_1_1 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_math_1_1"));
@@ -311,29 +183,10 @@ void get_courses_page_close_button()
     quit_phy_1_2 = GTK_BUTTON(gtk_builder_get_object(builder,"quit_phy_1_2"));
 }
 
-GtkButton* open_mt1;
-GtkButton* open_mt2;
-GtkButton* open_mt3;
-GtkButton* open_mt4;
-
-GtkButton* open_at1;
-GtkButton* open_at2;
-GtkButton* open_at3;
-
-GtkButton* open_ct1;
-GtkButton* open_ct2;
-GtkButton* open_ct3;
-
-GtkButton* open_et1;
-
-GtkButton* open_pt1;
-
 void get_enter_training_button()
 {
     open_mt1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt1"));
     open_mt2 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt2"));
-    open_mt3 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt3"));
-    open_mt4 = GTK_BUTTON(gtk_builder_get_object(builder,"open_mt4"));
 
     open_at1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_at1"));
     open_at2 = GTK_BUTTON(gtk_builder_get_object(builder,"open_at2"));
@@ -341,30 +194,22 @@ void get_enter_training_button()
 
     open_ct1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_ct1"));
     open_ct2 = GTK_BUTTON(gtk_builder_get_object(builder,"open_ct2"));
-    open_ct3 = GTK_BUTTON(gtk_builder_get_object(builder,"open_ct3"));
 
     open_et1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_et1"));
 
     open_pt1 = GTK_BUTTON(gtk_builder_get_object(builder,"open_pt1"));
 }
 
-GtkButton* quit_qcm_mt1;
-
-GtkButton* quit_qcm_at1;
-
-GtkButton* quit_qcm_ct1;
-GtkButton* quit_qcm_ct2;
-
 void get_close_training_button()
 {
     quit_qcm_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_mt1"));
 
     quit_qcm_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_at1"));
+    quit_qcm_at2 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_at2"));
 
     quit_qcm_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct1"));
     quit_qcm_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct2"));
 }
-
 // Functions G_signal for the UI
 
 void main_signal()
@@ -447,49 +292,7 @@ void courses_page_signal()
     g_signal_connect(quit_phy_1_2,"clicked",G_CALLBACK(enter_page),phyWindow);    
 }
 
-void training_signal()
-{
-    g_signal_connect(open_mt1,"clicked",G_CALLBACK(enter_page),qcm_mt1);
-    
-    g_signal_connect(open_at1,"clicked",G_CALLBACK(enter_page),qcm_at1);
-
-    g_signal_connect(open_ct1,"clicked",G_CALLBACK(enter_page),qcm_archi1);
-    g_signal_connect(open_ct2,"clicked",G_CALLBACK(enter_page),qcm_archi2);
-
-
-
-    g_signal_connect(quit_qcm_mt1,"clicked",G_CALLBACK(enter_page),mainWindow);
-
-    g_signal_connect(quit_qcm_at1,"clicked",G_CALLBACK(enter_page),mainWindow);
-
-    g_signal_connect(quit_qcm_ct1,"clicked",G_CALLBACK(enter_page),mainWindow); 
-    g_signal_connect(quit_qcm_ct2,"clicked",G_CALLBACK(enter_page),mainWindow);
-
-}
-
-// Function G_signal that launch mcq
-
-// For qcm_mt1
-GtkButton* valide_mt1;
-GtkWidget* question_mt1;
-
-GtkWidget* im_mt1;
-GtkWidget* re_mt1;
-
-GtkWidget* answer_mt1;
-
-// For qcm_ct1
-GtkButton* valide_ct1;
-GtkWidget* question_ct1;
-GtkWidget* user_answer_ct1;
-GtkWidget* answer_ct1;
-
-// For qcm_ct2
-GtkButton* valide_ct2;
-GtkWidget* question_ct2;
-GtkWidget* user_answer_ct2;
-GtkWidget* answer_ct2;
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void get_mcq_object()
 {
     // For qcm_mt1
@@ -499,156 +302,450 @@ void get_mcq_object()
     answer_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_mt1"));
     valide_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_mt1"));
 
+    question_number_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_number_mt1"));
+    score_mt1 = GTK_WIDGET(gtk_builder_get_object(builder, "score_mt1"));
+
+    prev_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_mt1"));
+    next_mt1 = GTK_BUTTON(gtk_builder_get_object(builder, "next_mt1"));
+
+    //For qcm_at1
+    valide_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_at1"));
+    question_number_at1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_number_at1"));
+
+    at1_choice_number_a = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_a"));
+    at1_choice_number_b = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_b"));
+    at1_choice_number_c = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_c"));
+    at1_choice_number_d = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_d"));
+
+    answer_at1 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_at1"));
+
+    question_at1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_at1"));
+    score_at1 = GTK_WIDGET(gtk_builder_get_object(builder, "score_at1"));
+
+    prev_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_at1"));
+    next_at1 = GTK_BUTTON(gtk_builder_get_object(builder, "next_at1"));
+
+    //For qcm_at2
+    valide_at2 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_at2"));
+    question_number_at2 = GTK_WIDGET(gtk_builder_get_object(builder, "question_number_at2"));
+
+    at1_choice_number_a1 = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_a1"));
+    at1_choice_number_b1 = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_b1"));
+    at1_choice_number_c1 = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_c1"));
+    at1_choice_number_d1 = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_d1"));
+
+    answer_at2 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_at2"));
+
+    question_at2 = GTK_WIDGET(gtk_builder_get_object(builder, "question_at2"));
+    score_at2 = GTK_WIDGET(gtk_builder_get_object(builder, "score_at2"));
+
+    prev_at2 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_at2"));
+    next_at2 = GTK_BUTTON(gtk_builder_get_object(builder, "next_at2"));
+
     // For qcm_ct1
     valide_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_ct1"));
     question_ct1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_ct1"));
     user_answer_ct1 = GTK_WIDGET(gtk_builder_get_object(builder, "user_answer_ct1"));
     answer_ct1 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_ct1"));
 
+    question_number_ct1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_number_ct1"));
+    score_ct1 = GTK_WIDGET(gtk_builder_get_object(builder, "score_ct1"));
+
+    prev_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_ct1"));
+    next_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "next_ct1"));
+
     // For qcm_ct2
     valide_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_ct2"));
     question_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "question_ct2"));
     user_answer_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "user_answer_ct2"));
     answer_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_ct2"));
+
+    question_number_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "question_number_ct2"));
+    score_ct2 = GTK_WIDGET(gtk_builder_get_object(builder, "score_ct2"));
+
+    prev_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_ct2"));
+    next_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "next_ct2"));
 }
 
-void update_mcq_mt1(GtkButton* button,gpointer user)
+void mcq_prev(GtkButton* button, gpointer user)
 {
-    User* client = user;
+    User *client = user;
+    client->mcq = client->mcq->previous_question;
 
-    char state[256];
-    char rep_im[8];
-    char rep_re[8];
-    char reponse[256];
+    client->mcq->activate_next_button = 1;
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),TRUE);
 
-    sprintf(rep_im,"%s",gtk_entry_get_text(GTK_ENTRY(im_mt1)));
-    sprintf(rep_re,"%s",gtk_entry_get_text(GTK_ENTRY(re_mt1)));
+    if (!client->mcq->previous_question)
+    {
+        gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->prev_button),FALSE);
+    }
 
-    gtk_entry_set_text(GTK_ENTRY(im_mt1),"");
-    gtk_entry_set_text(GTK_ENTRY(re_mt1),"");
+    char question_number_buffer[32];
 
-    gtk_label_set_text(GTK_LABEL(answer_mt1),(const gchar*)"");
+    sprintf(question_number_buffer,"Question n° %i",client->mcq->question_number);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_number_text),question_number_buffer);
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_text),client->mcq->question);
     
-    if (strlen(rep_im) != 0 || strlen(rep_re) != 0)
-    {   
-        if (strcmp(rep_im,client->answer_im) == 0 && strcmp(rep_re,client->answer_re) == 0)
-        {
-            gtk_label_set_text(GTK_LABEL(answer_mt1),"Bonne réponse !");
-        }
+    gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),client->mcq->user_answer1);
 
-        else
+    if(strlen(client->mcq->answer2) != 0)
+    {
+        gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object2),client->mcq->user_answer2);
+        gtk_widget_set_sensitive(client->mcqObject->user_answer_object2,FALSE);
+    }
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),client->mcq->correction);
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),FALSE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,FALSE);
+    
+
+    if (client->mcq->activate_prev_button)
+    {
+        gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->prev_button),TRUE);
+    }
+}
+
+void mcq_next(GtkButton* button, gpointer user)
+{
+    User *client = user;
+    client->mcq = client->mcq->next_question;
+
+    client->mcq->activate_prev_button = 1;
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->prev_button),TRUE);
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),client->mcq->already_done && client->mcq->next_question);
+    
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),client->mcq->activate_validate_button);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,client->mcq->activate_validate_button);
+
+    if (strlen(client->mcq->answer2) != 0)
+    {
+        gtk_widget_set_sensitive(client->mcqObject->user_answer_object2,client->mcq->activate_validate_button);
+
+        if (client->mcq->activate_validate_button)
         {
-            sprintf(reponse,"Mauvaise Réponse!\n Correction: %s i + %s", client->answer_im,client->answer_re);
-            gtk_label_set_text(GTK_LABEL(answer_mt1), reponse);
+            gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object2),"");
         }
     }
 
-    int n = rand()%3;
-
-    //generate complex number
-    client->a = random_comp(); 
-    client->b = random_comp();
-
-    Complex* rep; 
-
-    if (n == 0)
+    if (client->mcq->activate_validate_button)
     {
-        sprintf(state,"Soit Z1 = %i i + %i et Z2 = %i i + %i que vaut Z1 + Z2 ?",(int) client->a->Im,(int) client->a->Re,(int) client->b->Im,(int)client->b->Re);
-        rep = comp_plus(client->a,client->b);
+        gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
+        gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),"");
     }
 
-    if (n == 1)
+    char question_number_buffer[32];
+
+    sprintf(question_number_buffer,"Question n° %i",client->mcq->question_number);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_number_text),question_number_buffer);
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_text),client->mcq->question);
+    
+    if (!client->mcq->activate_validate_button)
     {
-        sprintf(state,"Soit Z1 = %i i + %i et Z2 = %i i + %i que vaut Z1 - Z2 ?",(int) client->a->Im,(int) client->a->Re,(int) client->b->Im,(int)client->b->Re);
-        rep = comp_minus(client->a,client->b);
+        gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),client->mcq->user_answer1);
+
+        if (strlen(client->mcq->answer2) != 0)
+        {
+            gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object2),client->mcq->user_answer2);
+        }
+
+        gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),client->mcq->correction);
+    }
+}
+
+void check_reponse(GtkButton* button, gpointer user)
+{
+    User *client = user;
+    char score_buffer[256];
+
+    sprintf(client->mcq->user_answer1,"%s",gtk_entry_get_text(GTK_ENTRY(client->mcqObject->user_answer_object1)));
+
+    if (strlen(client->mcq->answer2) == 0)
+    {
+        if (strlen(client->mcq->user_answer1) != 0)
+        { 
+            if (strcmp(client->mcq->user_answer1,client->mcq->answer1) == 0)
+            {
+                client->score += 2;
+
+                sprintf(score_buffer,"Score: %i/20",client->score);
+                gtk_label_set_text(GTK_LABEL(client->mcqObject->score_text),(const gchar*)score_buffer);
+            }
+
+            else
+            {
+                client->score -= 1;
+
+                sprintf(score_buffer,"Score: %i/20",client->score);
+                gtk_label_set_text(GTK_LABEL(client->mcqObject->score_text),score_buffer);
+            }
+        }
+        gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),(const gchar*) client->mcq->correction);      
     }
 
     else
     {
-        sprintf(state,"Soit Z1 = %i i + %i et Z2 = %i i + %i que vaut Z1 * Z2 ?",(int) client->a->Im,(int) client->a->Re,(int) client->b->Im,(int)client->b->Re);
-        rep = comp_mult(client->a,client->b);
-    }
+        sprintf(client->mcq->user_answer2,"%s",gtk_entry_get_text(GTK_ENTRY(client->mcqObject->user_answer_object2)));
 
-    gtk_label_set_text(GTK_LABEL(question_mt1),(const gchar*) state);
+        if (strlen(client->mcq->user_answer1) != 0 || strlen(client->mcq->user_answer2) != 0)
+        { 
+            if (strcmp(client->mcq->user_answer1,client->mcq->answer1) == 0 && strcmp(client->mcq->user_answer2,client->mcq->answer2) == 0)
+            {
+                client->score += 2;
+
+                sprintf(score_buffer,"Score: %i/20",client->score);
+                gtk_label_set_text(GTK_LABEL(client->mcqObject->score_text),(const gchar*)score_buffer);
+            }
+
+            else
+            {
+                client->score -= 1;
+
+                sprintf(score_buffer,"Score: %i/20",client->score);
+                gtk_label_set_text(GTK_LABEL(client->mcqObject->score_text),score_buffer);
+            }
+        }
+
+        gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),(const gchar*) client->mcq->correction);
+        gtk_widget_set_sensitive(client->mcqObject->user_answer_object2,FALSE);
+    }
     
-    sprintf(client->answer_im,"%i",(int)rep->Im);
-    sprintf(client->answer_re,"%i",(int)rep->Re);
+    client->mcq->activate_validate_button = 0;
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),FALSE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,FALSE);
+
+    client->mcq->already_done = 1;
+    
+    if (client->mcq->next_question != NULL) // avoid the case of question 11
+    {
+        client->mcq->activate_next_button = 1;
+        gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),TRUE);
+    }
 }
 
-void update_mcq_ct1(GtkButton* button,gpointer user)
+
+void enter_mcq_mt1(GtkButton* button, gpointer user)
 {
+    gtk_widget_hide(GTK_WIDGET(current_window));
+    gtk_widget_show(GTK_WIDGET(qcm_mt1));
+
+    current_window = qcm_mt1;
+
     User* client = user;
-    char state[256];
-    char rep[8];
-    char reponse[256];
-   
-    sprintf(rep,"%s",gtk_entry_get_text(GTK_ENTRY(user_answer_ct1)));
-    gtk_entry_set_text(GTK_ENTRY(user_answer_ct1),"");
-    gtk_label_set_text(GTK_LABEL(answer_ct1),(const gchar*)"");
+    client->score = 0;
 
-    if (strlen(rep) != 0)
-    { 
-        if (strcmp(rep,client->answer_ct1) == 0)
-        {
-            gtk_label_set_text(GTK_LABEL(answer_ct1),(const gchar*) "Bonne réponse !");
-        }
+    client->mcq =  calloc(1,sizeof(Mcq));
 
-        else
-        {
-            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_ct1);
-            gtk_label_set_text(GTK_LABEL(answer_ct1),(const gchar*)reponse);
-        }
+    if (!client->mcq)
+    {
+        return;
+    }
+    client->mcqObject = calloc(1,sizeof(McqObject));
+
+    if (!client->mcqObject)
+    {
+        return;
     }
 
-    int n = rand()%17;
+    init_mcq_mt1(client->mcq);
 
-    sprintf(state,"Combien fait 2^%i ?",n);
+    client->mcqObject->answer_text = answer_mt1;
+    client->mcqObject->next_button = next_mt1;
+    client->mcqObject->prev_button = prev_mt1;
+    client->mcqObject->question_number_text = question_number_mt1;
+    client->mcqObject->score_text = score_mt1;
+    client->mcqObject->user_answer_object1 = im_mt1;
+    client->mcqObject->user_answer_object2 = re_mt1;
+    client->mcqObject->valide_button = valide_mt1;
+    client->mcqObject->question_text = question_mt1;
 
-    gtk_label_set_text(GTK_LABEL(question_ct1),(const gchar*) state);
-    
-    sprintf(client->answer_ct1,"%i",1<<n);
+    char question_number_buffer[32];
+    char score_buffer[32];
+
+    sprintf(question_number_buffer,"Question n° %i",client->mcq->question_number);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_number_text),question_number_buffer);
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_text),client->mcq->question);
+
+    sprintf(score_buffer,"Score: %i/20",client->score);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->score_text),score_buffer);
+
+    client->mcq->activate_prev_button = 0;
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->prev_button),FALSE);
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),FALSE);
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object2,TRUE);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
+    gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),"");
+    gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object2),"");
 }
 
-void update_mcq_ct2(GtkButton* button,gpointer user)
-{
-    User* client = user;
-    
-    char rep[64];
-    char reponse[256];
-   
-    sprintf(rep,"%s",gtk_entry_get_text(GTK_ENTRY(user_answer_ct2)));
-    gtk_entry_set_text(GTK_ENTRY(user_answer_ct2),"");
-    gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*)"");
+void enter_mcq_ct1(GtkButton* button, gpointer user)
+{   
+    gtk_widget_hide(GTK_WIDGET(current_window));
+    gtk_widget_show(GTK_WIDGET(qcm_archi1));
 
-    if (strlen(rep) != 0)
-    { 
-        if (strcmp(rep,client->answer_ct2) == 0)
-        {
-            gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*) "Bonne réponse !");
-        }
+    current_window = qcm_archi1;
 
-        else
-        {
-            sprintf(reponse,"Mauvaise réponse!\n Correction: %s",client->answer_ct2);
-            gtk_label_set_text(GTK_LABEL(answer_ct2),(const gchar*)reponse);
-        }
+    User *client = user;
+    client->score = 0;
+
+    client->mcq =  calloc(1,sizeof(Mcq));
+
+    if (!client->mcq)
+    {
+        return;
+    }
+    client->mcqObject = calloc(1,sizeof(McqObject));
+
+    if (!client->mcqObject)
+    {
+        return;
     }
 
-    char state[256];
-
-    int depart = rand()%9 + 2;
-    int arrivee = rand()%9 + 2;
-
-    int nbre = rand()%100;
-
-    unsigned long nbre_base_depart = convertirEnbase(depart,(unsigned long)nbre,10);
-    unsigned long nbre_base_arrivee = convertirEnbase(arrivee,(unsigned long) nbre,10);
-
-    sprintf(client->answer_ct2,"%lu",nbre_base_arrivee);
-
-    sprintf(state,"Donner la représentation en base %i de %lu (en base %i)?",arrivee,nbre_base_depart,depart);
-    gtk_label_set_text(GTK_LABEL(question_ct2),(const gchar*) state);
+    init_mcq_ct1(client->mcq);
     
+    client->mcqObject->answer_text = answer_ct1;
+    client->mcqObject->next_button = next_ct1;
+    client->mcqObject->prev_button = prev_ct1;
+    client->mcqObject->question_number_text = question_number_ct1;
+    client->mcqObject->score_text = score_ct1;
+    client->mcqObject->user_answer_object1 = user_answer_ct1;
+    client->mcqObject->valide_button = valide_ct1;
+    client->mcqObject->question_text = question_ct1;
+
+    char question_number_buffer[32];
+    char score_buffer[32];
+
+    sprintf(question_number_buffer,"Question n° %i",client->mcq->question_number);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_number_text),question_number_buffer);
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_text),client->mcq->question);
+
+    sprintf(score_buffer,"Score: %i/20",client->score);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->score_text),score_buffer);
+
+    client->mcq->activate_prev_button = 0;
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->prev_button),FALSE);
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),FALSE);
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,TRUE);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
+    gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),"");
+}
+
+void enter_mcq_ct2(GtkButton* button, gpointer user)
+{   
+    gtk_widget_hide(GTK_WIDGET(current_window));
+    gtk_widget_show(GTK_WIDGET(qcm_archi2));
+
+    current_window = qcm_archi2;
+
+    User *client = user;
+    client->score = 0;
+
+    client->mcq =  calloc(1,sizeof(Mcq));
+
+    if (!client->mcq)
+    {
+        return;
+    }
+
+    client->mcqObject = calloc(1,sizeof(McqObject));
+
+    if (!client->mcqObject)
+    {
+        return;
+    }
+
+    init_mcq_ct2(client->mcq);
+    
+    client->mcqObject->answer_text = answer_ct2;
+    client->mcqObject->next_button = next_ct2;
+    client->mcqObject->prev_button = prev_ct2;
+    client->mcqObject->question_number_text = question_number_ct2;
+    client->mcqObject->score_text = score_ct2;
+    client->mcqObject->user_answer_object1 = user_answer_ct2;
+    client->mcqObject->valide_button = valide_ct2;
+    client->mcqObject->question_text = question_ct2;
+
+    char question_number_buffer[32];
+    char score_buffer[32];
+
+    sprintf(question_number_buffer,"Question n° %i",client->mcq->question_number);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_number_text),question_number_buffer);
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_text),client->mcq->question);
+
+    sprintf(score_buffer,"Score: %i/20",client->score);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->score_text),score_buffer);
+
+    client->mcq->activate_prev_button = 0;
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->prev_button),FALSE);
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),FALSE);
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,TRUE);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
+    gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),"");
+}
+
+// Function G_signal that launch mcq
+
+void training_signal(User *user)
+{
+    g_signal_connect(open_mt1,"clicked",G_CALLBACK(enter_mcq_mt1),user);
+    
+    g_signal_connect(open_at1,"clicked",G_CALLBACK(enter_page),qcm_at1);
+    g_signal_connect(open_at2,"clicked",G_CALLBACK(enter_page),qcm_at2);
+
+    g_signal_connect(open_ct1,"clicked",G_CALLBACK(enter_mcq_ct1),user);
+    g_signal_connect(open_ct2,"clicked",G_CALLBACK(enter_mcq_ct2),user);
+
+
+
+    g_signal_connect(quit_qcm_mt1,"clicked",G_CALLBACK(enter_page),mainWindow);
+
+    g_signal_connect(quit_qcm_at1,"clicked",G_CALLBACK(enter_page),mainWindow);
+    g_signal_connect(quit_qcm_at2,"clicked",G_CALLBACK(enter_page),mainWindow);
+
+    g_signal_connect(quit_qcm_ct1,"clicked",G_CALLBACK(enter_page),mainWindow); 
+    g_signal_connect(quit_qcm_ct2,"clicked",G_CALLBACK(enter_page),mainWindow);
+
+}
+
+void training_update_signal(User* user)
+{
+    g_signal_connect(valide_mt1,"clicked",G_CALLBACK(check_reponse),(gpointer) user);
+    g_signal_connect(prev_mt1,"clicked",G_CALLBACK(mcq_prev),(gpointer) user);
+    g_signal_connect(next_mt1,"clicked",G_CALLBACK(mcq_next),(gpointer) user);
+
+    g_signal_connect(valide_ct1,"clicked",G_CALLBACK(check_reponse),(gpointer) user);
+    g_signal_connect(prev_ct1,"clicked",G_CALLBACK(mcq_prev),(gpointer) user);
+    g_signal_connect(next_ct1,"clicked",G_CALLBACK(mcq_next),(gpointer) user);
+
+    g_signal_connect(valide_ct2,"clicked",G_CALLBACK(check_reponse),(gpointer) user);
+    g_signal_connect(prev_ct2,"clicked",G_CALLBACK(mcq_prev),(gpointer) user);
+    g_signal_connect(next_ct2,"clicked",G_CALLBACK(mcq_next),(gpointer) user);
+}
+
+// get game button
+
+void get_game_button()
+{
+    play_grid_game = GTK_BUTTON(gtk_builder_get_object(builder, "play_grid_game"));
+    play_number_game = GTK_BUTTON(gtk_builder_get_object(builder, "play_number_game"));
+    play_tetris = GTK_BUTTON(gtk_builder_get_object(builder, "play_tetris"));
+    play_chimp_game = GTK_BUTTON(gtk_builder_get_object(builder, "play_chimp_game"));
 }
 
 
@@ -688,27 +785,33 @@ GtkBuilder *init_gui()
 
     get_mcq_object();
 
+    get_game_button();
+
     open_calculator = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_calculator"));
     open_graph = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_graph"));
+
+    open_list = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_list"));
+    open_fifo_lifo = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_fifo_lifo"));
+    open_binary_tree = GTK_MENU_ITEM(gtk_builder_get_object(builder, "open_binary_tree"));
+    open_paint = GTK_MENU_ITEM(gtk_builder_get_object(builder,"open_paint"));
 
     //UI signals
 
     main_signal();
     courses_signal();
     courses_page_signal();
-    training_signal();
+    training_signal(client);
+    training_update_signal(client);
+
 
     g_signal_connect(open_calculator,"activate",G_CALLBACK(open_calculator_fct),NULL);
     g_signal_connect(open_graph,"activate",G_CALLBACK(open_graph_fct),NULL);
-
-    //Mcq signals
-
-    g_signal_connect(valide_mt1,"clicked",G_CALLBACK(update_mcq_mt1),client);
-    g_signal_connect(valide_ct1,"clicked",G_CALLBACK(update_mcq_ct1),client);
-    g_signal_connect(valide_ct2,"clicked",G_CALLBACK(update_mcq_ct2),client);
-
+    g_signal_connect(open_list,"activate",G_CALLBACK(open_list_fct),NULL);
+    g_signal_connect(open_fifo_lifo,"activate",G_CALLBACK(open_fifo_lifo_fct),NULL);
+    g_signal_connect(open_paint,"activate",G_CALLBACK(open_paint2D_fct),NULL);
+    
     // Connects event handlers.
-    g_signal_connect(mainWindow, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect(mainWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);
     gtk_widget_show(GTK_WIDGET(loginWindow));
     // Run the main window.
     gtk_main();
