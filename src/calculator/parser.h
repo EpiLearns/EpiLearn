@@ -3,14 +3,15 @@
 
 #include "node.h"
 
-char* calculator_replaceWord(char* s, char* oldW,char* newW);
+
+char* replaceWord(char* s, char* oldW,char* newW);
 int calculator_checkSyntax(char* string);
 node* calculator_parseExpression(char* string);
-void calculator_removeSpaces(char* str);
+void removeSpaces(char* str);
 
 
-int calculator_findMatchingParenthesisIndexLeft(char* string, int index);
-int calculator_findMatchingParenthesisIndexRight(char* string, int index);
+int findMatchingParenthesisIndexLeft(char* string, int index);
+int findMatchingParenthesisIndexRight(char* string, int index);
 
 
 #endif
