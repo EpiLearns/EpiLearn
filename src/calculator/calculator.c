@@ -11,24 +11,6 @@ GtkWidget *entrycalculator;
 GtkWidget *labelcalculator;
 char *expressioncalculator = "";
 
-char *calculator_suppression(const char *string)
-{
-    size_t len = strlen(string);
-
-    if (len == 0)
-    {
-        return "";
-    }
-
-    char *res = calloc(len - 1, sizeof(char));
-
-    for (size_t i = 0; i < len - 1; i++)
-    {
-        res[i] = string[i];
-    }
-
-    return res;
-}
 
 const char *calculator_f(char *expression)
 {
@@ -247,14 +229,56 @@ void on_button_calculatorslash()
 
     gtk_entry_set_text(GTK_ENTRY(entrycalculator), expressioncalculator);
 }
-
-void on_button_calculatorsuppr()
+void on_button_sqrtcalculator()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
-    expressioncalculator = calculator_suppression(entryvalue);
-    gtk_entry_set_text(GTK_ENTRY(entrycalculator), expressioncalculator);
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "sqrt");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
+
+void on_button_ecalculator()
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "e");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_lncalculator()
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "ln");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_coscalculator()
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "cos");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+void on_button_sincalcultor()
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "sin");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+
 
 void open_calculator_fct()
 {

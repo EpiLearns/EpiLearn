@@ -10,14 +10,19 @@ typedef struct Node
     struct Node* right;
 }node;
 
-node* calculator_createNode(void);
+node* createNode(void);
 double calculator_evaluate(node* head);
 
-double calculator_add(double a, double b);
-double calculator_sub(double a, double b);
-double calculator_mult(double a, double b);
-double calculator_divi(double a, double b);
-double calculator_power(double a, double b);
+double add(double a, double b);
+double sub(double a, double b);
+double mult(double a, double b);
+double divi(double a, double b);
+double power(double a, double b);
+double cosinus(double a, double b);
+double sinus (double a, double b);
+double square_root(double a, double b);
+double exponential(double a , double b);
+double logarithme(double a, double b);
 
 
 #endif
