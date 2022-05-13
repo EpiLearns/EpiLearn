@@ -237,9 +237,6 @@ void draw_brush (GtkWidget *widget, gdouble x,gdouble y)
 
 gboolean button_press_event_cb (GtkWidget *widget,GdkEventButton *event,gpointer data)
 {
-    if (surface == NULL)
-        return FALSE;
-
     if (event->button == GDK_BUTTON_PRIMARY)
     {
         //coordx = event->x;
@@ -258,9 +255,6 @@ gboolean button_press_event_cb (GtkWidget *widget,GdkEventButton *event,gpointer
 
 gboolean motion_notify_event_cb (GtkWidget *widget,GdkEventMotion *event,gpointer data)
 {
-    if (surface == NULL)
-        return FALSE;
-
     if (event->state & GDK_BUTTON1_MASK)
     {
         draw_brush (widget, event->x, event->y);

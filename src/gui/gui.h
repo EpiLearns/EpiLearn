@@ -29,6 +29,7 @@
 #include "list.h"
 #include "fifo_lifo.h"
 #include "paint2D.h"
+#include "binary_tree.h"
 
 // Builder important Window
 

@@ -809,6 +809,7 @@ GtkBuilder *init_gui()
     g_signal_connect(open_list,"activate",G_CALLBACK(open_list_fct),NULL);
     g_signal_connect(open_fifo_lifo,"activate",G_CALLBACK(open_fifo_lifo_fct),NULL);
     g_signal_connect(open_paint,"activate",G_CALLBACK(open_paint2D_fct),NULL);
+    g_signal_connect(open_binary_tree,"activate",G_CALLBACK(open_binary_tree_fct),NULL);
     
     // Connects event handlers.
     g_signal_connect(mainWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);

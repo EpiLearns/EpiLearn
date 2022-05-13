@@ -36,13 +36,9 @@ double graph_f (double x)
         result = graph_evaluate(head);
     }
     return result;
-    
-
-
 }
 
-static gboolean
-on_draw (GtkWidget *widget, cairo_t *cr)
+gboolean on_draw (GtkWidget *widget, cairo_t *cr)
 {
     GdkRectangle da;            /* GtkDrawingArea size */
     double dx = 5.0, dy = 5.0; /* Pixels between each point */
