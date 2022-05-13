@@ -1,6 +1,6 @@
 #ifndef CALCULATOR_H
 #define CALCULATOR_H
-
+#include "integral.h"
 
 const char* calculator_f(char *expression);
 
