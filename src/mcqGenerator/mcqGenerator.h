@@ -36,6 +36,11 @@ typedef struct Mcq
     char user_answer1[256];
     char user_answer2[256];
 
+    char prop1[256];
+    char prop2[256];
+    char prop3[256];
+    char prop4[256];
+
     char correction[256]; //
 
     int activate_validate_button; //
@@ -52,6 +57,7 @@ typedef struct Mcq
 typedef struct User
 {
     int score;
+    int best_score;
 
     // For the mcq
     struct Mcq* mcq;

@@ -15,6 +15,7 @@
 #include "../property/computer_architecture/integer_representation/integer_representation.h"
 
 #include "../mcqGenerator/mathematics/mathematics.h"
+#include "../mcqGenerator/algorithm/algorithm.h"
 #include "../mcqGenerator/computer_architecture/computer_architecture.h"
 
 #include "../calculator/calculator.h"

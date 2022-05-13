@@ -158,6 +158,19 @@ Dylan INNOU</property>
                         </attributes>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkLinkButton">
+                        <property name="label" translatable="yes">button</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                      </object>
+                      <packing>
+                        <property name="x">160</property>
+                        <property name="y">-9</property>
+                      </packing>
+                    </child>
                   </object>
                 </child>
               </object>

@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include "../../property/algorithm/list/list.h"
+#include "../../mcqGenerator/mcqGenerator.h"
 
 void min_index_at1_qcm(List* list,int* anwser,int* p1,int* p2,int* p3);
 
@@ -18,5 +19,7 @@ void max_val_at1_qcm(List* list,int* anwser,int* p1,int* p2,int* p3);
 void val_in_i_at1_qcm(List* list,size_t index,int* anwser,int* p1,int* p2,int* p3);
 
 void len_at1_qcm(List* list,int* anwser,int* p1,int* p2,int* p3);
+
+void init_mcq_at1(Mcq* mcq);
 
 #endif

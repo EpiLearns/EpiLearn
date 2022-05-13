@@ -586,6 +586,74 @@ void enter_mcq_mt1(GtkButton* button, gpointer user)
     gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object2),"");
 }
 
+void enter_mcq_at1(GtkButton* button, gpointer user)
+{   
+    gtk_widget_hide(GTK_WIDGET(current_window));
+    gtk_widget_show(GTK_WIDGET(qcm_at1));
+
+    current_window = qcm_at1;
+
+    User *client = user;
+    client->score = 0;
+
+    client->mcq =  calloc(1,sizeof(Mcq));
+
+    if (!client->mcq)
+    {
+        return;
+    }
+    client->mcqObject = calloc(1,sizeof(McqObject));
+
+    if (!client->mcqObject)
+    {
+        return;
+    }
+
+    init_mcq_at1(client->mcq);
+    
+    client->mcqObject->answer_text = answer_at1;
+    client->mcqObject->next_button = next_at1;
+    client->mcqObject->prev_button = prev_at1;
+    client->mcqObject->question_number_text = question_number_at1;
+    client->mcqObject->score_text = score_at1;
+    client->mcqObject->user_answer_object1 = at1_choice_number_a;
+    client->mcqObject->user_answer_object2 = at1_choice_number_b;
+    client->mcqObject->user_answer_object3 = at1_choice_number_c;
+    client->mcqObject->user_answer_object4 = at1_choice_number_d;
+    client->mcqObject->valide_button = valide_at1;
+    client->mcqObject->question_text = question_at1;
+
+    char question_number_buffer[32];
+    char score_buffer[32];
+
+    sprintf(question_number_buffer,"Question n° %i",client->mcq->question_number);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_number_text),question_number_buffer);
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_text),client->mcq->question);
+
+    sprintf(score_buffer,"Score: %i/20",client->score);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->score_text),score_buffer);
+
+    client->mcq->activate_prev_button = 0;
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->prev_button),FALSE);
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),FALSE);
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),TRUE);
+
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object2,TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object3,TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object4,TRUE);
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
+
+    gtk_button_set_label(GTK_BUTTON(client->mcqObject->user_answer_object1),client->mcq->prop1);
+    gtk_button_set_label(GTK_BUTTON(client->mcqObject->user_answer_object2),client->mcq->prop2);
+    gtk_button_set_label(GTK_BUTTON(client->mcqObject->user_answer_object3),client->mcq->prop3);
+    gtk_button_set_label(GTK_BUTTON(client->mcqObject->user_answer_object4),client->mcq->prop4);
+}
+
 void enter_mcq_ct1(GtkButton* button, gpointer user)
 {   
     gtk_widget_hide(GTK_WIDGET(current_window));
@@ -705,7 +773,7 @@ void training_signal(User *user)
 {
     g_signal_connect(open_mt1,"clicked",G_CALLBACK(enter_mcq_mt1),user);
     
-    g_signal_connect(open_at1,"clicked",G_CALLBACK(enter_page),qcm_at1);
+    g_signal_connect(open_at1,"clicked",G_CALLBACK(enter_mcq_at1),user);
     g_signal_connect(open_at2,"clicked",G_CALLBACK(enter_page),qcm_at2);
 
     g_signal_connect(open_ct1,"clicked",G_CALLBACK(enter_mcq_ct1),user);
