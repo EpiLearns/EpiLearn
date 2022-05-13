@@ -1,6 +1,7 @@
 #ifndef INTEGRAL_H
 #define INTEGRAL_H
 
+
 long double integral_f(long double x);
 
 const char *simpsonRule(long double a, long double b);
@@ -56,6 +57,8 @@ void on_button_lnintegral();
 void on_button_cosintegral();
 
 void on_button_sinintegral();
+
+void open_integral_fct();
 
 
 
