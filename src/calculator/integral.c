@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "integral.h"
 #include "node.h"
 #include "parser.h"
 #include <math.h>
@@ -318,10 +319,10 @@ void on_button_sinintegral()
     gtk_entry_set_text(GTK_ENTRY(entryintegral),expressionintegral);
 }
 
-int main(int argc, char **argv)
+void open_integral_fct()
 {
     GtkWidget *windowintegral;
-    gtk_init (&argc, &argv);
+    gtk_init (NULL, NULL);
     {
         builder = gtk_builder_new_from_file("../src/calculator/integral.glade");
         windowintegral = GTK_WIDGET(gtk_builder_get_object(builder,"windowintegral"));
@@ -336,7 +337,6 @@ int main(int argc, char **argv)
 
         gtk_widget_show_all(windowintegral);
         gtk_main();
-        return 0;
 
         
     }

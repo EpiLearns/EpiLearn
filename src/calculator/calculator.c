@@ -2,12 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "calculator.h"
 #include "node.h"
 #include "parser.h"
 #include <math.h>
 
 GtkBuilder *builder;
 GtkWidget *entrycalculator;
+GtkButton *openintegral;
 GtkWidget *labelcalculator;
 char *expressioncalculator = "";
 
@@ -280,6 +282,7 @@ void on_button_sincalcultor()
 
 
 
+
 void open_calculator_fct()
 {
     GtkWidget *windowcalculator;
@@ -292,6 +295,9 @@ void open_calculator_fct()
 
         entrycalculator = GTK_WIDGET(gtk_builder_get_object(builder, "entrycalculator"));
         labelcalculator = GTK_WIDGET(gtk_builder_get_object(builder, "labelcalculator"));
+        openintegral = GTK_BUTTON(gtk_builder_get_object(builder, "openintegral"));
+
+        g_signal_connect(openintegral, "clicked", G_CALLBACK(open_integral_fct),NULL);
 
         gtk_widget_show_all(windowcalculator);
         gtk_main();
