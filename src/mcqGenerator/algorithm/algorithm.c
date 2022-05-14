@@ -165,42 +165,39 @@ void init_mcq_at1(Mcq* mcq)
 
         min_index_at1_qcm(list,&a,&b,&c,&d);
 
-        for (size_t i = 0; i<4; i++)
+        int choix = rand()%4;
+
+        if (choix == 0)
         {
-            int choix = rand()%4;
-
-            if (choix == 0)
-            {
-                sprintf(mcq->prop1,"%i",a);
-                sprintf(mcq->prop2,"%i",b);
-                sprintf(mcq->prop3,"%i",c);
-                sprintf(mcq->prop4,"%i",d);
-            }
-
-            if (choix == 1)
-            {
-                sprintf(mcq->prop1,"%i",b);
-                sprintf(mcq->prop2,"%i",c);
-                sprintf(mcq->prop3,"%i",d);
-                sprintf(mcq->prop4,"%i",a);
-            }
-
-            if (choix == 2)
-            {
-                sprintf(mcq->prop1,"%i",c);
-                sprintf(mcq->prop2,"%i",d);
-                sprintf(mcq->prop3,"%i",a);
-                sprintf(mcq->prop4,"%i",b);
-            }
-
-            if (choix == 3)
-            {
-                sprintf(mcq->prop1,"%i",d);
-                sprintf(mcq->prop2,"%i",a);
-                sprintf(mcq->prop3,"%i",b);
-                sprintf(mcq->prop4,"%i",c);
-            }
+            sprintf(mcq->prop1,"%i",a);
+            sprintf(mcq->prop2,"%i",b);
+            sprintf(mcq->prop3,"%i",c);
+            sprintf(mcq->prop4,"%i",d);
         }
+
+        if (choix == 1)
+        {
+            sprintf(mcq->prop1,"%i",b);
+            sprintf(mcq->prop2,"%i",c);
+            sprintf(mcq->prop3,"%i",d);
+            sprintf(mcq->prop4,"%i",a);
+        }
+
+        if (choix == 2)
+        {
+            sprintf(mcq->prop1,"%i",c);
+            sprintf(mcq->prop2,"%i",d);
+            sprintf(mcq->prop3,"%i",a);
+            sprintf(mcq->prop4,"%i",b);
+        }
+
+        if (choix == 3)
+        {
+            sprintf(mcq->prop1,"%i",d);
+            sprintf(mcq->prop2,"%i",a);
+            sprintf(mcq->prop3,"%i",b);
+            sprintf(mcq->prop4,"%i",c);
+        }    
 
         sprintf(mcq->answer1,"%i",a);
         sprintf(mcq->correction,"Correction: %i",a);
@@ -214,42 +211,41 @@ void init_mcq_at1(Mcq* mcq)
 
         max_index_at1_qcm(list,&a,&b,&c,&d);
 
-        for (size_t i = 0; i<4; i++)
+        int choix = rand()%4;
+
+        if (choix == 0)
         {
-            int choix = rand()%4;
-
-            if (choix == 0)
-            {
-                sprintf(mcq->prop1,"%i",a);
-                sprintf(mcq->prop2,"%i",b);
-                sprintf(mcq->prop3,"%i",c);
-                sprintf(mcq->prop4,"%i",d);
-            }
-
-            if (choix == 1)
-            {
-                sprintf(mcq->prop1,"%i",b);
-                sprintf(mcq->prop2,"%i",c);
-                sprintf(mcq->prop3,"%i",d);
-                sprintf(mcq->prop4,"%i",a);
-            }
-
-            if (choix == 2)
-            {
-                sprintf(mcq->prop1,"%i",c);
-                sprintf(mcq->prop2,"%i",d);
-                sprintf(mcq->prop3,"%i",a);
-                sprintf(mcq->prop4,"%i",b);
-            }
-
-            if (choix == 3)
-            {
-                sprintf(mcq->prop1,"%i",d);
-                sprintf(mcq->prop2,"%i",a);
-                sprintf(mcq->prop3,"%i",b);
-                sprintf(mcq->prop4,"%i",c);
-            }
+            sprintf(mcq->prop1,"%i",a);
+            sprintf(mcq->prop2,"%i",b);
+            sprintf(mcq->prop3,"%i",c);
+            sprintf(mcq->prop4,"%i",d);
         }
+
+        if (choix == 1)
+        {
+            sprintf(mcq->prop1,"%i",b);
+            sprintf(mcq->prop2,"%i",c);
+            sprintf(mcq->prop3,"%i",d);
+            sprintf(mcq->prop4,"%i",a);
+        }
+
+        if (choix == 2)
+        {
+            sprintf(mcq->prop1,"%i",c);
+            sprintf(mcq->prop2,"%i",d);
+            sprintf(mcq->prop3,"%i",a);
+            sprintf(mcq->prop4,"%i",b);
+        }
+
+        if (choix == 3)
+        {
+            sprintf(mcq->prop1,"%i",d);
+            sprintf(mcq->prop2,"%i",a);
+            sprintf(mcq->prop3,"%i",b);
+            sprintf(mcq->prop4,"%i",c);
+        }    
+            
+        
 
         sprintf(mcq->answer1,"%i",a);
         sprintf(mcq->correction,"Correction: %i",a);
@@ -263,42 +259,41 @@ void init_mcq_at1(Mcq* mcq)
 
         min_val_at1_qcm(list,&a,&b,&c,&d);
 
-        for (size_t i = 0; i<4; i++)
+        
+        int choix = rand()%4;
+
+        if (choix == 0)
         {
-            int choix = rand()%4;
-
-            if (choix == 0)
-            {
-                sprintf(mcq->prop1,"%i",a);
-                sprintf(mcq->prop2,"%i",b);
-                sprintf(mcq->prop3,"%i",c);
-                sprintf(mcq->prop4,"%i",d);
-            }
-
-            if (choix == 1)
-            {
-                sprintf(mcq->prop1,"%i",b);
-                sprintf(mcq->prop2,"%i",c);
-                sprintf(mcq->prop3,"%i",d);
-                sprintf(mcq->prop4,"%i",a);
-            }
-
-            if (choix == 2)
-            {
-                sprintf(mcq->prop1,"%i",c);
-                sprintf(mcq->prop2,"%i",d);
-                sprintf(mcq->prop3,"%i",a);
-                sprintf(mcq->prop4,"%i",b);
-            }
-
-            if (choix == 3)
-            {
-                sprintf(mcq->prop1,"%i",d);
-                sprintf(mcq->prop2,"%i",a);
-                sprintf(mcq->prop3,"%i",b);
-                sprintf(mcq->prop4,"%i",c);
-            }
+            sprintf(mcq->prop1,"%i",a);
+            sprintf(mcq->prop2,"%i",b);
+            sprintf(mcq->prop3,"%i",c);
+            sprintf(mcq->prop4,"%i",d);
         }
+
+        if (choix == 1)
+        {
+            sprintf(mcq->prop1,"%i",b);
+            sprintf(mcq->prop2,"%i",c);
+            sprintf(mcq->prop3,"%i",d);
+            sprintf(mcq->prop4,"%i",a);
+        }
+
+        if (choix == 2)
+        {
+            sprintf(mcq->prop1,"%i",c);
+            sprintf(mcq->prop2,"%i",d);
+            sprintf(mcq->prop3,"%i",a);
+            sprintf(mcq->prop4,"%i",b);
+        }
+
+        if (choix == 3)
+        {
+            sprintf(mcq->prop1,"%i",d);
+            sprintf(mcq->prop2,"%i",a);
+            sprintf(mcq->prop3,"%i",b);
+            sprintf(mcq->prop4,"%i",c);
+        }
+        
 
         sprintf(mcq->answer1,"%i",a);
         sprintf(mcq->correction,"Correction: %i",a);
@@ -312,42 +307,41 @@ void init_mcq_at1(Mcq* mcq)
 
         max_val_at1_qcm(list,&a,&b,&c,&d);
 
-        for (size_t i = 0; i<4; i++)
+        
+        int choix = rand()%4;
+
+        if (choix == 0)
         {
-            int choix = rand()%4;
-
-            if (choix == 0)
-            {
-                sprintf(mcq->prop1,"%i",a);
-                sprintf(mcq->prop2,"%i",b);
-                sprintf(mcq->prop3,"%i",c);
-                sprintf(mcq->prop4,"%i",d);
-            }
-
-            if (choix == 1)
-            {
-                sprintf(mcq->prop1,"%i",b);
-                sprintf(mcq->prop2,"%i",c);
-                sprintf(mcq->prop3,"%i",d);
-                sprintf(mcq->prop4,"%i",a);
-            }
-
-            if (choix == 2)
-            {
-                sprintf(mcq->prop1,"%i",c);
-                sprintf(mcq->prop2,"%i",d);
-                sprintf(mcq->prop3,"%i",a);
-                sprintf(mcq->prop4,"%i",b);
-            }
-
-            if (choix == 3)
-            {
-                sprintf(mcq->prop1,"%i",d);
-                sprintf(mcq->prop2,"%i",a);
-                sprintf(mcq->prop3,"%i",b);
-                sprintf(mcq->prop4,"%i",c);
-            }
+            sprintf(mcq->prop1,"%i",a);
+            sprintf(mcq->prop2,"%i",b);
+            sprintf(mcq->prop3,"%i",c);
+            sprintf(mcq->prop4,"%i",d);
         }
+
+        if (choix == 1)
+        {
+            sprintf(mcq->prop1,"%i",b);
+            sprintf(mcq->prop2,"%i",c);
+            sprintf(mcq->prop3,"%i",d);
+            sprintf(mcq->prop4,"%i",a);
+        }
+
+        if (choix == 2)
+        {
+            sprintf(mcq->prop1,"%i",c);
+            sprintf(mcq->prop2,"%i",d);
+            sprintf(mcq->prop3,"%i",a);
+            sprintf(mcq->prop4,"%i",b);
+        }
+
+        if (choix == 3)
+        {
+            sprintf(mcq->prop1,"%i",d);
+            sprintf(mcq->prop2,"%i",a);
+            sprintf(mcq->prop3,"%i",b);
+            sprintf(mcq->prop4,"%i",c);
+        }
+        
 
         sprintf(mcq->answer1,"%i",a);
         sprintf(mcq->correction,"Correction: %i",a);
@@ -365,42 +359,41 @@ void init_mcq_at1(Mcq* mcq)
 
         val_in_i_at1_qcm(list,index,&a,&b,&c,&d);
 
-        for (size_t i = 0; i<4; i++)
+        
+        int choix = rand()%4;
+
+        if (choix == 0)
         {
-            int choix = rand()%4;
-
-            if (choix == 0)
-            {
-                sprintf(mcq->prop1,"%i",a);
-                sprintf(mcq->prop2,"%i",b);
-                sprintf(mcq->prop3,"%i",c);
-                sprintf(mcq->prop4,"%i",d);
-            }
-
-            if (choix == 1)
-            {
-                sprintf(mcq->prop1,"%i",b);
-                sprintf(mcq->prop2,"%i",c);
-                sprintf(mcq->prop3,"%i",d);
-                sprintf(mcq->prop4,"%i",a);
-            }
-
-            if (choix == 2)
-            {
-                sprintf(mcq->prop1,"%i",c);
-                sprintf(mcq->prop2,"%i",d);
-                sprintf(mcq->prop3,"%i",a);
-                sprintf(mcq->prop4,"%i",b);
-            }
-
-            if (choix == 3)
-            {
-                sprintf(mcq->prop1,"%i",d);
-                sprintf(mcq->prop2,"%i",a);
-                sprintf(mcq->prop3,"%i",b);
-                sprintf(mcq->prop4,"%i",c);
-            }
+            sprintf(mcq->prop1,"%i",a);
+            sprintf(mcq->prop2,"%i",b);
+            sprintf(mcq->prop3,"%i",c);
+            sprintf(mcq->prop4,"%i",d);
         }
+
+        if (choix == 1)
+        {
+            sprintf(mcq->prop1,"%i",b);
+            sprintf(mcq->prop2,"%i",c);
+            sprintf(mcq->prop3,"%i",d);
+            sprintf(mcq->prop4,"%i",a);
+        }
+
+        if (choix == 2)
+        {
+            sprintf(mcq->prop1,"%i",c);
+            sprintf(mcq->prop2,"%i",d);
+            sprintf(mcq->prop3,"%i",a);
+            sprintf(mcq->prop4,"%i",b);
+        }
+
+        if (choix == 3)
+        {
+            sprintf(mcq->prop1,"%i",d);
+            sprintf(mcq->prop2,"%i",a);
+            sprintf(mcq->prop3,"%i",b);
+            sprintf(mcq->prop4,"%i",c);
+        }
+
 
         sprintf(mcq->answer1,"%i",a);
         sprintf(mcq->correction,"Correction: %i",a);
@@ -415,41 +408,38 @@ void init_mcq_at1(Mcq* mcq)
 
         len_at1_qcm(list,&a,&b,&c,&d);
 
-        for (size_t i = 0; i<4; i++)
+        int choix = rand()%4;
+
+        if (choix == 0)
         {
-            int choix = rand()%4;
+            sprintf(mcq->prop1,"%i",a);
+            sprintf(mcq->prop2,"%i",b);
+            sprintf(mcq->prop3,"%i",c);
+            sprintf(mcq->prop4,"%i",d);
+        }
 
-            if (choix == 0)
-            {
-                sprintf(mcq->prop1,"%i",a);
-                sprintf(mcq->prop2,"%i",b);
-                sprintf(mcq->prop3,"%i",c);
-                sprintf(mcq->prop4,"%i",d);
-            }
+        if (choix == 1)
+        {
+            sprintf(mcq->prop1,"%i",b);
+            sprintf(mcq->prop2,"%i",c);
+            sprintf(mcq->prop3,"%i",d);
+            sprintf(mcq->prop4,"%i",a);
+        }
 
-            if (choix == 1)
-            {
-                sprintf(mcq->prop1,"%i",b);
-                sprintf(mcq->prop2,"%i",c);
-                sprintf(mcq->prop3,"%i",d);
-                sprintf(mcq->prop4,"%i",a);
-            }
+        if (choix == 2)
+        {
+            sprintf(mcq->prop1,"%i",c);
+            sprintf(mcq->prop2,"%i",d);
+            sprintf(mcq->prop3,"%i",a);
+            sprintf(mcq->prop4,"%i",b);
+        }
 
-            if (choix == 2)
-            {
-                sprintf(mcq->prop1,"%i",c);
-                sprintf(mcq->prop2,"%i",d);
-                sprintf(mcq->prop3,"%i",a);
-                sprintf(mcq->prop4,"%i",b);
-            }
-
-            if (choix == 3)
-            {
-                sprintf(mcq->prop1,"%i",d);
-                sprintf(mcq->prop2,"%i",a);
-                sprintf(mcq->prop3,"%i",b);
-                sprintf(mcq->prop4,"%i",c);
-            }
+        if (choix == 3)
+        {
+            sprintf(mcq->prop1,"%i",d);
+            sprintf(mcq->prop2,"%i",a);
+            sprintf(mcq->prop3,"%i",b);
+            sprintf(mcq->prop4,"%i",c);
         }
 
         sprintf(mcq->answer1,"%i",a);
@@ -483,43 +473,41 @@ void init_mcq_at1(Mcq* mcq)
             sprintf(tmp->question,"Liste = %s\nQuel est l'indice de la valeur minimale de la liste ?",liste);
 
             min_index_at1_qcm(list,&a,&b,&c,&d);
+        
+            int choix = rand()%4;
 
-            for (size_t i = 0; i<4; i++)
+            if (choix == 0)
             {
-                int choix = rand()%4;
-
-                if (choix == 0)
-                {
-                    sprintf(tmp->prop1,"%i",a);
-                    sprintf(tmp->prop2,"%i",b);
-                    sprintf(tmp->prop3,"%i",c);
-                    sprintf(tmp->prop4,"%i",d);
-                }
-
-                if (choix == 1)
-                {
-                    sprintf(tmp->prop1,"%i",b);
-                    sprintf(tmp->prop2,"%i",c);
-                    sprintf(tmp->prop3,"%i",d);
-                    sprintf(tmp->prop4,"%i",a);
-                }
-
-                if (choix == 2)
-                {
-                    sprintf(tmp->prop1,"%i",c);
-                    sprintf(tmp->prop2,"%i",d);
-                    sprintf(tmp->prop3,"%i",a);
-                    sprintf(tmp->prop4,"%i",b);
-                }
-
-                if (choix == 3)
-                {
-                    sprintf(tmp->prop1,"%i",d);
-                    sprintf(tmp->prop2,"%i",a);
-                    sprintf(tmp->prop3,"%i",b);
-                    sprintf(tmp->prop4,"%i",c);
-                }
+                sprintf(tmp->prop1,"%i",a);
+                sprintf(tmp->prop2,"%i",b);
+                sprintf(tmp->prop3,"%i",c);
+                sprintf(tmp->prop4,"%i",d);
             }
+
+            if (choix == 1)
+            {
+                sprintf(tmp->prop1,"%i",b);
+                sprintf(tmp->prop2,"%i",c);
+                sprintf(tmp->prop3,"%i",d);
+                sprintf(tmp->prop4,"%i",a);
+            }
+
+            if (choix == 2)
+            {
+                sprintf(tmp->prop1,"%i",c);
+                sprintf(tmp->prop2,"%i",d);
+                sprintf(tmp->prop3,"%i",a);
+                sprintf(tmp->prop4,"%i",b);
+            }
+
+            if (choix == 3)
+            {
+                sprintf(tmp->prop1,"%i",d);
+                sprintf(tmp->prop2,"%i",a);
+                sprintf(tmp->prop3,"%i",b);
+                sprintf(tmp->prop4,"%i",c);
+            }
+            
 
             sprintf(tmp->answer1,"%i",a);
             sprintf(tmp->correction,"Correction: %i",a);
@@ -533,41 +521,38 @@ void init_mcq_at1(Mcq* mcq)
 
             max_index_at1_qcm(list,&a,&b,&c,&d);
 
-            for (size_t i = 0; i<4; i++)
+            int choix = rand()%4;
+
+            if (choix == 0)
             {
-                int choix = rand()%4;
+                sprintf(tmp->prop1,"%i",a);
+                sprintf(tmp->prop2,"%i",b);
+                sprintf(tmp->prop3,"%i",c);
+                sprintf(tmp->prop4,"%i",d);
+            }
 
-                if (choix == 0)
-                {
-                    sprintf(tmp->prop1,"%i",a);
-                    sprintf(tmp->prop2,"%i",b);
-                    sprintf(tmp->prop3,"%i",c);
-                    sprintf(tmp->prop4,"%i",d);
-                }
+            if (choix == 1)
+            {
+                sprintf(tmp->prop1,"%i",b);
+                sprintf(tmp->prop2,"%i",c);
+                sprintf(tmp->prop3,"%i",d);
+                sprintf(tmp->prop4,"%i",a);
+            }
 
-                if (choix == 1)
-                {
-                    sprintf(tmp->prop1,"%i",b);
-                    sprintf(tmp->prop2,"%i",c);
-                    sprintf(tmp->prop3,"%i",d);
-                    sprintf(tmp->prop4,"%i",a);
-                }
+            if (choix == 2)
+            {
+                sprintf(tmp->prop1,"%i",c);
+                sprintf(tmp->prop2,"%i",d);
+                sprintf(tmp->prop3,"%i",a);
+                sprintf(tmp->prop4,"%i",b);
+            }
 
-                if (choix == 2)
-                {
-                    sprintf(tmp->prop1,"%i",c);
-                    sprintf(tmp->prop2,"%i",d);
-                    sprintf(tmp->prop3,"%i",a);
-                    sprintf(tmp->prop4,"%i",b);
-                }
-
-                if (choix == 3)
-                {
-                    sprintf(tmp->prop1,"%i",d);
-                    sprintf(tmp->prop2,"%i",a);
-                    sprintf(tmp->prop3,"%i",b);
-                    sprintf(tmp->prop4,"%i",c);
-                }
+            if (choix == 3)
+            {
+                sprintf(tmp->prop1,"%i",d);
+                sprintf(tmp->prop2,"%i",a);
+                sprintf(tmp->prop3,"%i",b);
+                sprintf(tmp->prop4,"%i",c);
             }
 
             sprintf(tmp->answer1,"%i",a);
@@ -582,41 +567,39 @@ void init_mcq_at1(Mcq* mcq)
 
             min_val_at1_qcm(list,&a,&b,&c,&d);
 
-            for (size_t i = 0; i<4; i++)
+            
+            int choix = rand()%4;
+
+            if (choix == 0)
             {
-                int choix = rand()%4;
+                sprintf(tmp->prop1,"%i",a);
+                sprintf(tmp->prop2,"%i",b);
+                sprintf(tmp->prop3,"%i",c);
+                sprintf(tmp->prop4,"%i",d);
+            }
 
-                if (choix == 0)
-                {
-                    sprintf(tmp->prop1,"%i",a);
-                    sprintf(tmp->prop2,"%i",b);
-                    sprintf(tmp->prop3,"%i",c);
-                    sprintf(tmp->prop4,"%i",d);
-                }
+            if (choix == 1)
+            {
+                sprintf(tmp->prop1,"%i",b);
+                sprintf(tmp->prop2,"%i",c);
+                sprintf(tmp->prop3,"%i",d);
+                sprintf(tmp->prop4,"%i",a);
+            }
 
-                if (choix == 1)
-                {
-                    sprintf(tmp->prop1,"%i",b);
-                    sprintf(tmp->prop2,"%i",c);
-                    sprintf(tmp->prop3,"%i",d);
-                    sprintf(tmp->prop4,"%i",a);
-                }
+            if (choix == 2)
+            {
+                sprintf(tmp->prop1,"%i",c);
+                sprintf(tmp->prop2,"%i",d);
+                sprintf(tmp->prop3,"%i",a);
+                sprintf(tmp->prop4,"%i",b);
+            }
 
-                if (choix == 2)
-                {
-                    sprintf(tmp->prop1,"%i",c);
-                    sprintf(tmp->prop2,"%i",d);
-                    sprintf(tmp->prop3,"%i",a);
-                    sprintf(tmp->prop4,"%i",b);
-                }
-
-                if (choix == 3)
-                {
-                    sprintf(tmp->prop1,"%i",d);
-                    sprintf(tmp->prop2,"%i",a);
-                    sprintf(tmp->prop3,"%i",b);
-                    sprintf(tmp->prop4,"%i",c);
-                }
+            if (choix == 3)
+            {
+                sprintf(tmp->prop1,"%i",d);
+                sprintf(tmp->prop2,"%i",a);
+                sprintf(tmp->prop3,"%i",b);
+                sprintf(tmp->prop4,"%i",c);
             }
 
             sprintf(tmp->answer1,"%i",a);
@@ -631,41 +614,38 @@ void init_mcq_at1(Mcq* mcq)
 
             max_val_at1_qcm(list,&a,&b,&c,&d);
 
-            for (size_t i = 0; i<4; i++)
+            int choix = rand()%4;
+
+            if (choix == 0)
             {
-                int choix = rand()%4;
+                sprintf(tmp->prop1,"%i",a);
+                sprintf(tmp->prop2,"%i",b);
+                sprintf(tmp->prop3,"%i",c);
+                sprintf(tmp->prop4,"%i",d);
+            }
 
-                if (choix == 0)
-                {
-                    sprintf(tmp->prop1,"%i",a);
-                    sprintf(tmp->prop2,"%i",b);
-                    sprintf(tmp->prop3,"%i",c);
-                    sprintf(tmp->prop4,"%i",d);
-                }
+            if (choix == 1)
+            {
+                sprintf(tmp->prop1,"%i",b);
+                sprintf(tmp->prop2,"%i",c);
+                sprintf(tmp->prop3,"%i",d);
+                sprintf(tmp->prop4,"%i",a);
+            }
 
-                if (choix == 1)
-                {
-                    sprintf(tmp->prop1,"%i",b);
-                    sprintf(tmp->prop2,"%i",c);
-                    sprintf(tmp->prop3,"%i",d);
-                    sprintf(tmp->prop4,"%i",a);
-                }
+            if (choix == 2)
+            {
+                sprintf(tmp->prop1,"%i",c);
+                sprintf(tmp->prop2,"%i",d);
+                sprintf(tmp->prop3,"%i",a);
+                sprintf(tmp->prop4,"%i",b);
+            }
 
-                if (choix == 2)
-                {
-                    sprintf(tmp->prop1,"%i",c);
-                    sprintf(tmp->prop2,"%i",d);
-                    sprintf(tmp->prop3,"%i",a);
-                    sprintf(tmp->prop4,"%i",b);
-                }
-
-                if (choix == 3)
-                {
-                    sprintf(tmp->prop1,"%i",d);
-                    sprintf(tmp->prop2,"%i",a);
-                    sprintf(tmp->prop3,"%i",b);
-                    sprintf(tmp->prop4,"%i",c);
-                }
+            if (choix == 3)
+            {
+                sprintf(tmp->prop1,"%i",d);
+                sprintf(tmp->prop2,"%i",a);
+                sprintf(tmp->prop3,"%i",b);
+                sprintf(tmp->prop4,"%i",c);
             }
 
             sprintf(tmp->answer1,"%i",a);
@@ -684,41 +664,38 @@ void init_mcq_at1(Mcq* mcq)
 
             val_in_i_at1_qcm(list,index,&a,&b,&c,&d);
 
-            for (size_t i = 0; i<4; i++)
+            int choix = rand()%4;
+
+            if (choix == 0)
             {
-                int choix = rand()%4;
+                sprintf(tmp->prop1,"%i",a);
+                sprintf(tmp->prop2,"%i",b);
+                sprintf(tmp->prop3,"%i",c);
+                sprintf(tmp->prop4,"%i",d);
+            }
 
-                if (choix == 0)
-                {
-                    sprintf(tmp->prop1,"%i",a);
-                    sprintf(tmp->prop2,"%i",b);
-                    sprintf(tmp->prop3,"%i",c);
-                    sprintf(tmp->prop4,"%i",d);
-                }
+            if (choix == 1)
+            {
+                sprintf(tmp->prop1,"%i",b);
+                sprintf(tmp->prop2,"%i",c);
+                sprintf(tmp->prop3,"%i",d);
+                sprintf(tmp->prop4,"%i",a);
+            }
 
-                if (choix == 1)
-                {
-                    sprintf(tmp->prop1,"%i",b);
-                    sprintf(tmp->prop2,"%i",c);
-                    sprintf(tmp->prop3,"%i",d);
-                    sprintf(tmp->prop4,"%i",a);
-                }
+            if (choix == 2)
+            {
+                sprintf(tmp->prop1,"%i",c);
+                sprintf(tmp->prop2,"%i",d);
+                sprintf(tmp->prop3,"%i",a);
+                sprintf(tmp->prop4,"%i",b);
+            }
 
-                if (choix == 2)
-                {
-                    sprintf(tmp->prop1,"%i",c);
-                    sprintf(tmp->prop2,"%i",d);
-                    sprintf(tmp->prop3,"%i",a);
-                    sprintf(tmp->prop4,"%i",b);
-                }
-
-                if (choix == 3)
-                {
-                    sprintf(tmp->prop1,"%i",d);
-                    sprintf(tmp->prop2,"%i",a);
-                    sprintf(tmp->prop3,"%i",b);
-                    sprintf(tmp->prop4,"%i",c);
-                }
+            if (choix == 3)
+            {
+                sprintf(tmp->prop1,"%i",d);
+                sprintf(tmp->prop2,"%i",a);
+                sprintf(tmp->prop3,"%i",b);
+                sprintf(tmp->prop4,"%i",c);
             }
 
             sprintf(tmp->answer1,"%i",a);
@@ -733,42 +710,39 @@ void init_mcq_at1(Mcq* mcq)
             sprintf(tmp->question,"Liste = %s\nQuel est la taille de la liste ?",liste);
 
             len_at1_qcm(list,&a,&b,&c,&d);
+    
+            int choix = rand()%4;
 
-            for (size_t i = 0; i<4; i++)
+            if (choix == 0)
             {
-                int choix = rand()%4;
+                sprintf(tmp->prop1,"%i",a);
+                sprintf(tmp->prop2,"%i",b);
+                sprintf(tmp->prop3,"%i",c);
+                sprintf(tmp->prop4,"%i",d);
+            }
 
-                if (choix == 0)
-                {
-                    sprintf(tmp->prop1,"%i",a);
-                    sprintf(tmp->prop2,"%i",b);
-                    sprintf(tmp->prop3,"%i",c);
-                    sprintf(tmp->prop4,"%i",d);
-                }
+            if (choix == 1)
+            {
+                sprintf(tmp->prop1,"%i",b);
+                sprintf(tmp->prop2,"%i",c);
+                sprintf(tmp->prop3,"%i",d);
+                sprintf(tmp->prop4,"%i",a);
+            }
 
-                if (choix == 1)
-                {
-                    sprintf(tmp->prop1,"%i",b);
-                    sprintf(tmp->prop2,"%i",c);
-                    sprintf(tmp->prop3,"%i",d);
-                    sprintf(tmp->prop4,"%i",a);
-                }
+            if (choix == 2)
+            {
+                sprintf(tmp->prop1,"%i",c);
+                sprintf(tmp->prop2,"%i",d);
+                sprintf(tmp->prop3,"%i",a);
+                sprintf(tmp->prop4,"%i",b);
+            }
 
-                if (choix == 2)
-                {
-                    sprintf(tmp->prop1,"%i",c);
-                    sprintf(tmp->prop2,"%i",d);
-                    sprintf(tmp->prop3,"%i",a);
-                    sprintf(tmp->prop4,"%i",b);
-                }
-
-                if (choix == 3)
-                {
-                    sprintf(tmp->prop1,"%i",d);
-                    sprintf(tmp->prop2,"%i",a);
-                    sprintf(tmp->prop3,"%i",b);
-                    sprintf(tmp->prop4,"%i",c);
-                }
+            if (choix == 3)
+            {
+                sprintf(tmp->prop1,"%i",d);
+                sprintf(tmp->prop2,"%i",a);
+                sprintf(tmp->prop3,"%i",b);
+                sprintf(tmp->prop4,"%i",c);
             }
 
             sprintf(tmp->answer1,"%i",a);
@@ -781,3 +755,234 @@ void init_mcq_at1(Mcq* mcq)
         tmp->activate_next_button = 0;
     }
 }
+
+void init_mcq_at2(Mcq* mcq)
+{
+    Fifo* fifo;
+    Lifo* lifo;
+    char* liste;
+
+    mcq->previous_question = NULL;
+    mcq->question_number = 1;
+
+    int nbre = rand()%2;
+
+    if (nbre == 0)
+    {
+        fifo = random_fifo();
+        liste = fifo_to_string(fifo);
+        sprintf(mcq->question,"%s\nQuel est la sommet de la pile ?",liste);
+
+        int choix = rand()%4;
+
+        if (choix == 0)
+        {
+            sprintf(mcq->prop1,"%i",fifo->next->data);
+            sprintf(mcq->prop2,"%i",rand()%31);
+            sprintf(mcq->prop3,"%i",rand()%31);
+            sprintf(mcq->prop4,"%i",rand()%31);
+        }
+
+        if (choix == 1)
+        {
+            sprintf(mcq->prop1,"%i",rand()%31);
+            sprintf(mcq->prop2,"%i",fifo->next->data);
+            sprintf(mcq->prop3,"%i",rand()%31);
+            sprintf(mcq->prop4,"%i",rand()%31);
+        }
+
+        if (choix == 2)
+        {
+            sprintf(mcq->prop1,"%i",rand()%31);
+            sprintf(mcq->prop2,"%i",rand()%31);
+            sprintf(mcq->prop3,"%i",fifo->next->data);
+            sprintf(mcq->prop4,"%i",rand()%31);
+        }
+
+        if (choix == 3)
+        {
+            sprintf(mcq->prop1,"%i",rand()%31);
+            sprintf(mcq->prop2,"%i",rand()%31);
+            sprintf(mcq->prop3,"%i",rand()%31);
+            sprintf(mcq->prop4,"%i",fifo->next->data);
+        }    
+
+        sprintf(mcq->answer1,"%i",fifo->next->data);
+        sprintf(mcq->correction,"Correction: %i",fifo->next->data);
+    }
+
+    if (nbre == 1)
+    {
+        lifo = random_lifo();
+        liste = lifo_to_string(lifo);
+        sprintf(mcq->question,"%s\nQuel est le dernier élément de la file ?",liste);
+
+        int choix = rand()%4;
+
+        while (lifo->next)
+        {
+            lifo = lifo->next;
+        }
+
+        if (choix == 0)
+        {
+            sprintf(mcq->prop1,"%i",lifo->data);
+            sprintf(mcq->prop2,"%i",rand()%31);
+            sprintf(mcq->prop3,"%i",rand()%31);
+            sprintf(mcq->prop4,"%i",rand()%31);
+        }
+
+        if (choix == 1)
+        {
+            sprintf(mcq->prop1,"%i",rand()%31);
+            sprintf(mcq->prop2,"%i",lifo->data);
+            sprintf(mcq->prop3,"%i",rand()%31);
+            sprintf(mcq->prop4,"%i",rand()%31);
+        }
+
+        if (choix == 2)
+        {
+            sprintf(mcq->prop1,"%i",rand()%31);
+            sprintf(mcq->prop2,"%i",rand()%31);
+            sprintf(mcq->prop3,"%i",lifo->data);
+            sprintf(mcq->prop4,"%i",rand()%31);
+        }
+
+        if (choix == 3)
+        {
+            sprintf(mcq->prop1,"%i",rand()%31);
+            sprintf(mcq->prop2,"%i",rand()%31);
+            sprintf(mcq->prop3,"%i",rand()%31);
+            sprintf(mcq->prop4,"%i",lifo->data);
+        }    
+
+        sprintf(mcq->answer1,"%i",lifo->data);
+        sprintf(mcq->correction,"Correction: %i",lifo->data);
+    }
+
+    mcq->activate_validate_button = 1;
+    mcq->already_done = 0;
+    mcq->activate_prev_button = 0;
+    mcq->activate_next_button = 0;
+
+    Mcq *tmp = mcq;
+    
+    for (int i = 2 ; i<=10 ; i++)
+    {
+        Mcq *next = calloc(1,sizeof(Mcq));
+
+        next->previous_question = tmp;
+        tmp->next_question = next;
+
+        tmp = tmp->next_question;
+
+        tmp->question_number = i;
+
+        nbre = rand()%2;
+
+        if (nbre == 0)
+        {
+            fifo = random_fifo();
+            liste = fifo_to_string(fifo);
+            sprintf(tmp->question,"%s\nQuel est la sommet de la pile ?",liste);
+
+            int choix = rand()%4;
+
+            if (choix == 0)
+            {
+                sprintf(tmp->prop1,"%i",fifo->next->data);
+                sprintf(tmp->prop2,"%i",rand()%31);
+                sprintf(tmp->prop3,"%i",rand()%31);
+                sprintf(tmp->prop4,"%i",rand()%31);
+            }
+
+            if (choix == 1)
+            {
+                sprintf(tmp->prop1,"%i",rand()%31);
+                sprintf(tmp->prop2,"%i",fifo->next->data);
+                sprintf(tmp->prop3,"%i",rand()%31);
+                sprintf(tmp->prop4,"%i",rand()%31);
+            }
+
+            if (choix == 2)
+            {
+                sprintf(tmp->prop1,"%i",rand()%31);
+                sprintf(tmp->prop2,"%i",rand()%31);
+                sprintf(tmp->prop3,"%i",fifo->next->data);
+                sprintf(tmp->prop4,"%i",rand()%31);
+            }
+
+            if (choix == 3)
+            {
+                sprintf(tmp->prop1,"%i",rand()%31);
+                sprintf(tmp->prop2,"%i",rand()%31);
+                sprintf(tmp->prop3,"%i",rand()%31);
+                sprintf(tmp->prop4,"%i",fifo->next->data);
+            }    
+
+            sprintf(tmp->answer1,"%i",fifo->next->data);
+            sprintf(tmp->correction,"Correction: %i",fifo->next->data);
+        }
+
+        if (nbre == 1)
+        {
+            lifo = random_lifo();
+            liste = lifo_to_string(lifo);
+            sprintf(tmp->question,"%s\nQuel est le dernier élément de la file ?",liste);
+
+            int choix = rand()%4;
+
+            while (lifo->next)
+            {
+                lifo = lifo->next;
+            }
+
+            if (choix == 0)
+            {
+                sprintf(tmp->prop1,"%i",lifo->data);
+                sprintf(tmp->prop2,"%i",rand()%31);
+                sprintf(tmp->prop3,"%i",rand()%31);
+                sprintf(tmp->prop4,"%i",rand()%31);
+            }
+
+            if (choix == 1)
+            {
+                sprintf(tmp->prop1,"%i",rand()%31);
+                sprintf(tmp->prop2,"%i",lifo->data);
+                sprintf(tmp->prop3,"%i",rand()%31);
+                sprintf(tmp->prop4,"%i",rand()%31);
+            }
+
+            if (choix == 2)
+            {
+                sprintf(tmp->prop1,"%i",rand()%31);
+                sprintf(tmp->prop2,"%i",rand()%31);
+                sprintf(tmp->prop3,"%i",lifo->data);
+                sprintf(tmp->prop4,"%i",rand()%31);
+            }
+
+            if (choix == 3)
+            {
+                sprintf(tmp->prop1,"%i",rand()%31);
+                sprintf(tmp->prop2,"%i",rand()%31);
+                sprintf(tmp->prop3,"%i",rand()%31);
+                sprintf(tmp->prop4,"%i",lifo->data);
+            }    
+
+            sprintf(tmp->answer1,"%i",lifo->data);
+            sprintf(tmp->correction,"Correction: %i",lifo->data);
+        }
+
+        tmp->activate_validate_button = 1;
+        tmp->already_done = 0;
+        tmp->activate_prev_button = 0;
+        tmp->activate_next_button = 0;
+    }
+}
+
+/*int main()
+{
+    Mcq* mcq = calloc(1,sizeof(Mcq));
+
+    init_mcq_at2(mcq);
+}*/

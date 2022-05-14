@@ -18,4 +18,6 @@ void lifo_dequeue(Lifo* lifo);
 
 char* lifo_to_string(Lifo* lifo);
 
+Lifo* random_lifo();
+
 #endif

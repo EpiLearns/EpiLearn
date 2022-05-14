@@ -54,7 +54,6 @@ const char *simpsonRule(long double a, long double b)
         }
     }
     res = (h/3)*res;
-    printf("\nL'intégrale de %Lf %Lf avec la méthode simpson \nest environ égal à : %Lf \n", a, b, res); // Résultat
     const char *s = malloc(sizeof(long double));
     sprintf((char*)s, "%Lf", res);
     return s;

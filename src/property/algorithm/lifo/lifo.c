@@ -78,6 +78,24 @@ char* lifo_to_string(Lifo* lifo)
 	return res;
 }
 
+Lifo* random_lifo()
+{
+    Lifo* res = init_lifo();
+
+	Lifo* tmp = res;
+
+	size_t len = rand()%10 + 5;
+
+	for (size_t i = 0;i<len;i++)
+	{
+		tmp->next = calloc(1,sizeof(Lifo));
+		tmp->next->data = rand()%31;
+
+		tmp = tmp->next;
+	}
+
+	return res;
+}
 
 /*int main()
 {
