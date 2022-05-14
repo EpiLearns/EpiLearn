@@ -52,12 +52,18 @@ typedef struct Mcq
     struct Mcq *next_question; //
     struct Mcq *previous_question; //
 
+    gboolean p1;
+    gboolean p2;
+    gboolean p3;
+    gboolean p4;
+
 } Mcq;
 
 typedef struct User
 {
     int score;
     int best_score;
+    int current_score;
 
     // For the mcq
     struct Mcq* mcq;

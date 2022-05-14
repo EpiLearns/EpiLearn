@@ -165,6 +165,7 @@ Dylan INNOU</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
+                        <property name="uri">https://epilearn.000webhostapp.com/</property>
                       </object>
                       <packing>
                         <property name="x">160</property>
@@ -3844,7 +3845,7 @@ des ordinateurs</property>
                                         <property name="height_request">80</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Meilleur score: ?/50</property>
+                                        <property name="label" translatable="yes">Meilleur score: ?/80</property>
                                         <attributes>
                                           <attribute name="font-desc" value="Sans Bold 15"/>
                                           <attribute name="foreground" value="#000000000000"/>
