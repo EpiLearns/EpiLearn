@@ -26,7 +26,7 @@ enum
 };
 
 
-
+Block* useless_block;
 
 
 #define TYPE_BLOCK (block_get_type())
@@ -39,7 +39,7 @@ G_DEFINE_TYPE(Block,block,GTK_TYPE_DRAWING_AREA)
 
 static void block_init(Block*blk)
 {
-    
+    useless_block = blk;
 }
 
 
