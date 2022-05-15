@@ -34,9 +34,9 @@ int choose_number()
     
 }
 
-int main(int argc, char *argv[]) {
+void open_type_game_fct() {
 
-	gtk_init(&argc, &argv); // init Gtk
+	gtk_init(NULL,NULL); // init Gtk
 
 //---------------------------------------------------------------------
 // establish contact with xml code used to adjust widget settings
@@ -49,9 +49,9 @@ int main(int argc, char *argv[]) {
     number = GTK_WIDGET(gtk_builder_get_object(builder, "number"));
     response = GTK_WIDGET(gtk_builder_get_object(builder, "response"));
 
-	g_signal_connect(start, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+	/*g_signal_connect(start, "destroy", G_CALLBACK(gtk_main_quit), NULL);
     g_signal_connect(number, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-    g_signal_connect(response, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect(response, "destroy", G_CALLBACK(gtk_main_quit), NULL);*/
 
     gtk_builder_connect_signals(builder, NULL);
 
@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
     X3 = GTK_WIDGET(gtk_builder_get_object(builder, "X3"));
 
     response_print = GTK_WIDGET(gtk_builder_get_object(builder, "response_print"));
-
+    type_game_title = GTK_WIDGET(gtk_builder_get_object(builder, "type_game_title"));
 
 	gtk_widget_show(window);
     gtk_widget_show(background);
@@ -90,9 +90,9 @@ int main(int argc, char *argv[]) {
     gtk_widget_hide(X3);
     gtk_widget_hide(response_print);
 
+    g_signal_connect(GTK_WINDOW(window),"destroy", G_CALLBACK(gtk_main_quit), NULL);
 	gtk_main();
 
-	return EXIT_SUCCESS;
 	}
 
 // signal funtion
@@ -109,11 +109,13 @@ void	on_start_button_clicked_type () {
     z= 0 ;
 	gtk_widget_hide(start_button);
     r = choose_number();
-    sprintf(s,strs[r]);
+    sprintf(s,"%s",strs[r]);
     gtk_label_set_text (GTK_LABEL(number_print), (const gchar*) s);
     gtk_widget_show(number_print);
     gtk_label_set_text(GTK_LABEL(response_print), suppresion);
     gtk_widget_show(response_print);
+
+    gtk_widget_hide(type_game_title);
 	}
 
 
@@ -125,7 +127,7 @@ void on_response_entry_changed_type (GtkEntry *e)
         if (position == 13)
         {
             r = choose_number();
-            sprintf(s,strs[r]);
+            sprintf(s,"%s",strs[r]);
             gtk_label_set_text (GTK_LABEL(number_print), (const gchar*) s);
             const char *suppresion = "";
             gtk_entry_set_text(GTK_ENTRY(response_entry), suppresion);
@@ -163,6 +165,7 @@ void on_response_entry_changed_type (GtkEntry *e)
             gtk_widget_hide(X1);
             gtk_widget_hide(X2);
             gtk_widget_hide(X3);
+            gtk_widget_hide(number_print);
             const char *suppresion = "";
             gtk_label_set_text(GTK_LABEL(response_print), suppresion);
         }
@@ -210,4 +213,6 @@ void on_restart_clicked_type ()
     }
     r = 0;
     z = 0;
+
+    gtk_widget_show(type_game_title);
 }

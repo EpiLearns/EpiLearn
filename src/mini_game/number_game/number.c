@@ -156,4 +156,6 @@ void on_restart_clicked_number ()
     gtk_widget_hide(restart);
     gtk_widget_show(start_button);
     level_number = 0;
+
+    gtk_widget_show(number_game_label);
 }

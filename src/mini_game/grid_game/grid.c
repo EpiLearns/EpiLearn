@@ -231,6 +231,7 @@ void open_grid_game_fct() {
 	red25 = GTK_WIDGET(gtk_builder_get_object(builder, "red25"));
 
 	level_print = GTK_WIDGET(gtk_builder_get_object(builder, "level"));
+	grid_game_title = GTK_WIDGET(gtk_builder_get_object(builder, "grid_game_title"));
 
 	g_signal_connect(GTK_WINDOW(window),"destroy", G_CALLBACK(gtk_main_quit), NULL);
 
@@ -493,6 +494,8 @@ void	on_start_button_clicked_grid () {
 	level_grid = 1;
 	lives = 3;
 	change_level(level_grid);
+
+	gtk_widget_hide(grid_game_title);
 	}
 
 void on_restart_clicked_grid ()
@@ -500,6 +503,8 @@ void on_restart_clicked_grid ()
     gtk_widget_hide(end_print);
     gtk_widget_hide(restart);
     gtk_widget_show(start_button);
+
+	gtk_widget_show(grid_game_title);
 }
 
 void end_window()

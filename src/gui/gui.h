@@ -35,6 +35,7 @@
 #include "../mini_game/tetris_game/tetris.h"
 #include "../mini_game/number_game/number.h"
 #include "../mini_game/grid_game/grid.h"
+#include "../mini_game/type_game/type.h"
 
 // Builder important Window
 
@@ -291,7 +292,7 @@ GtkButton* next_ct2;
 GtkButton* play_grid_game;
 GtkButton* play_number_game;
 GtkButton* play_tetris;
-GtkButton* play_chimp_game;
+GtkButton* play_type_game;
 
 GtkBuilder *init_gui();
 

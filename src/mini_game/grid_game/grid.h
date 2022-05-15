@@ -25,6 +25,8 @@ GtkWidget	*start_button;
 GtkWidget	*end_print;
 GtkWidget	*restart;
 
+GtkWidget   *grid_game_title;
+
 // buttons
 GtkWidget	*button1;
 GtkWidget	*button2;

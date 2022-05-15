@@ -1072,7 +1072,7 @@ void get_game_button()
     play_grid_game = GTK_BUTTON(gtk_builder_get_object(builder, "play_grid_game"));
     play_number_game = GTK_BUTTON(gtk_builder_get_object(builder, "play_number_game"));
     play_tetris = GTK_BUTTON(gtk_builder_get_object(builder, "play_tetris"));
-    play_chimp_game = GTK_BUTTON(gtk_builder_get_object(builder, "play_chimp_game"));
+    play_type_game = GTK_BUTTON(gtk_builder_get_object(builder, "play_type_game"));
 }
 
 
@@ -1142,7 +1142,8 @@ GtkBuilder *init_gui()
     g_signal_connect(play_number_game,"clicked",open_number_game_fct,NULL);
     g_signal_connect(play_tetris,"clicked",G_CALLBACK(open_tetris_fct),NULL);
     g_signal_connect(play_grid_game,"clicked",G_CALLBACK(open_grid_game_fct),NULL);
-    
+    g_signal_connect(play_type_game,"clicked",G_CALLBACK(open_type_game_fct),NULL);
+
     // Connects event handlers.
     g_signal_connect(mainWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);
     gtk_widget_show(GTK_WIDGET(loginWindow));

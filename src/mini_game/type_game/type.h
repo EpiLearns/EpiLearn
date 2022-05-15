@@ -36,6 +36,7 @@ GtkWidget	*end;
 GtkWidget	*end_fixed;
 GtkWidget	*end_print;
 GtkWidget	*restart;
+GtkWidget   *type_game_title;
 
 // game
 GtkWidget	*background;
@@ -54,5 +55,5 @@ int choose_number();
 void	on_start_button_clicked_type ();
 void on_response_entry_changed_type (GtkEntry *e);
 void on_restart_clicked_type ();
-
+void open_type_game_fct();
 #endif
