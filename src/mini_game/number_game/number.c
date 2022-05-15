@@ -29,9 +29,9 @@ int generate_number(int level)
 
 
 
-int main(int argc, char *argv[]) {
+void open_number_game_fct() {
 
-	gtk_init(&argc, &argv); // init Gtk
+	gtk_init(NULL,NULL); // init Gtk
 
 //---------------------------------------------------------------------
 // establish contact with xml code used to adjust widget settings
@@ -43,10 +43,13 @@ int main(int argc, char *argv[]) {
 	start = GTK_WIDGET(gtk_builder_get_object(builder, "start"));
     number = GTK_WIDGET(gtk_builder_get_object(builder, "number"));
     response = GTK_WIDGET(gtk_builder_get_object(builder, "response"));
+    number_game_label = GTK_WIDGET(gtk_builder_get_object(builder, "number_game_label"));
 
-	g_signal_connect(start, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-    g_signal_connect(number, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-    g_signal_connect(response, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+	//g_signal_connect(start, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    //g_signal_connect(number, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    //g_signal_connect(response, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+    g_signal_connect(GTK_WINDOW(window),"destroy", G_CALLBACK(gtk_main_quit), NULL);
 
     gtk_builder_connect_signals(builder, NULL);
 
@@ -79,7 +82,6 @@ int main(int argc, char *argv[]) {
 
 	gtk_main();
 
-	return EXIT_SUCCESS;
 	}
 
 // signal funtion
@@ -103,6 +105,8 @@ void	on_start_button_clicked () {
     gtk_label_set_text (GTK_LABEL(number_print), (const gchar*) str);
     gtk_widget_show(number_print);
     event = g_timeout_add(3000, on_number, number_print);
+
+    gtk_widget_hide(number_game_label);
 	}
 
 void	on_response_confirm_clicked () {

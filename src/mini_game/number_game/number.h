@@ -37,6 +37,7 @@ GtkWidget	*end;
 GtkWidget	*end_fixed;
 GtkWidget	*end_print;
 GtkWidget	*restart;
+GtkWidget   *number_game_label;
 
 // game
 GtkWidget	*background;
@@ -56,5 +57,7 @@ void	on_start_button_clicked ();
 void	on_response_confirm_clicked ();
 void on_response_entry_changed (GtkEntry *e);
 void on_restart_clicked ();
+
+void open_number_game_fct();
 
 #endif

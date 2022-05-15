@@ -1138,6 +1138,8 @@ GtkBuilder *init_gui()
     g_signal_connect(open_paint,"activate",G_CALLBACK(open_paint2D_fct),NULL);
     g_signal_connect(open_binary_tree,"activate",G_CALLBACK(open_binary_tree_fct),NULL);
 
+
+    g_signal_connect(play_number_game,"clicked",open_number_game_fct,NULL);
     g_signal_connect(play_tetris,"clicked",G_CALLBACK(open_tetris_fct),NULL);
     
     // Connects event handlers.

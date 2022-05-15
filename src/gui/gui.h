@@ -33,6 +33,7 @@
 #include "binary_tree.h"
 
 #include "../mini_game/tetris_game/tetris.h"
+#include "../mini_game/number_game/number.h"
 
 // Builder important Window
 
