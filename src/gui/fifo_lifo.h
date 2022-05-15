@@ -30,6 +30,8 @@ GtkWidget* tool_file_enqueue_entry;
 GtkButton* tool_file_enqueue_button;
 GtkButton* tool_file_pop_button;
 
+GtkButton* useless_button2;
+
 void get_tools_object();
 
 void ui_fifo_push(GtkButton* button, gpointer user);

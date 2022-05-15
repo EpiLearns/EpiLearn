@@ -27,6 +27,8 @@ void enter_page(GtkButton* button,gpointer parameter)
     gtk_widget_show(GTK_WIDGET(new_window));
 
     current_window = new_window;
+
+    bouton_anti_warning = button;
 }
 
 // Functions that get all the windows that is used
@@ -418,6 +420,8 @@ void mcq_prev(GtkButton* button, gpointer user)
     {
         gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->prev_button),TRUE);
     }
+
+    bouton_anti_warning = button;
 }
 
 void mcq_prev2(GtkButton* button, gpointer user)
@@ -462,6 +466,8 @@ void mcq_prev2(GtkButton* button, gpointer user)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object2),client->mcq->p2);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object3),client->mcq->p3);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object4),client->mcq->p4);
+
+    bouton_anti_warning = button;
 }
 
 void mcq_next(GtkButton* button, gpointer user)
@@ -511,6 +517,7 @@ void mcq_next(GtkButton* button, gpointer user)
 
         gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),client->mcq->correction);
     }
+    bouton_anti_warning = button;
 }
 
 void mcq_next2(GtkButton* button, gpointer user)
@@ -559,6 +566,8 @@ void mcq_next2(GtkButton* button, gpointer user)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object3),FALSE);
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object4),FALSE);
     }
+    
+    bouton_anti_warning = button;
 }
 
 void check_reponse(GtkButton* button, gpointer user)
@@ -629,6 +638,8 @@ void check_reponse(GtkButton* button, gpointer user)
         client->mcq->activate_next_button = 1;
         gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),TRUE);
     }
+
+    bouton_anti_warning = button;
 }
 
 void check_reponse2(GtkButton* button, gpointer user)
@@ -696,6 +707,8 @@ void check_reponse2(GtkButton* button, gpointer user)
         client->mcq->activate_next_button = 1;
         gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),TRUE);
     }
+
+    bouton_anti_warning = button;
 }
 
 void enter_mcq_mt1(GtkButton* button, gpointer user)
@@ -755,6 +768,8 @@ void enter_mcq_mt1(GtkButton* button, gpointer user)
     gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
     gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),"");
     gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object2),"");
+
+    bouton_anti_warning = button;
 }
 
 void enter_mcq_at1(GtkButton* button, gpointer user)
@@ -828,6 +843,8 @@ void enter_mcq_at1(GtkButton* button, gpointer user)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object2),FALSE);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object3),FALSE);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object4),FALSE);
+
+    bouton_anti_warning = button;
 }
 
 void enter_mcq_at2(GtkButton* button, gpointer user)
@@ -901,6 +918,8 @@ void enter_mcq_at2(GtkButton* button, gpointer user)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object2),FALSE);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object3),FALSE);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object4),FALSE);
+
+    bouton_anti_warning = button;
 }
 
 void enter_mcq_ct1(GtkButton* button, gpointer user)
@@ -957,6 +976,8 @@ void enter_mcq_ct1(GtkButton* button, gpointer user)
     gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,TRUE);
     gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
     gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),"");
+
+    bouton_anti_warning = button;
 }
 
 void enter_mcq_ct2(GtkButton* button, gpointer user)
@@ -1014,6 +1035,8 @@ void enter_mcq_ct2(GtkButton* button, gpointer user)
     gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,TRUE);
     gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
     gtk_entry_set_text(GTK_ENTRY(client->mcqObject->user_answer_object1),"");
+
+    bouton_anti_warning = button;
 }
 
 // Function G_signal that launch mcq

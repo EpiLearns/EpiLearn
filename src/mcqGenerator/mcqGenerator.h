@@ -68,7 +68,6 @@ typedef struct User
     // For the mcq
     struct Mcq* mcq;
     struct McqObject* mcqObject;
-
 } User;
 
 

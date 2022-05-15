@@ -37,6 +37,9 @@
 #include "../mini_game/grid_game/grid.h"
 #include "../mini_game/type_game/type.h"
 
+GtkButton* bouton_anti_warning;
+GtkWidget* widget_anti_warning;
+
 // Builder important Window
 
 GtkBuilder* builder;

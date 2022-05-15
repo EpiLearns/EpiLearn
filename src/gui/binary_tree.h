@@ -38,6 +38,8 @@ GtkButton* tool_b_root_button;
 
 GtkWidget* tool_b_key_text;
 
+GtkButton* useless_button4;
+
 GtkWidget* bt1;
 GtkWidget* bt2;
 GtkWidget* bt3;

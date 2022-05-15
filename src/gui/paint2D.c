@@ -15,7 +15,7 @@ void clear_surface (void)
     cairo_destroy (cr);
 }
 
-gboolean configure_event_cb (GtkWidget* widget,GdkEventConfigure *event,gpointer data)
+gboolean configure_event_cb (GtkWidget* widget,gpointer data)
 {
     if (surface)
         cairo_surface_destroy (surface);
@@ -24,6 +24,9 @@ gboolean configure_event_cb (GtkWidget* widget,GdkEventConfigure *event,gpointer
 
     clear_surface ();
 
+    useless_widget = widget;
+    useless_ptr = data;
+
     return TRUE;
 }
 
@@ -31,6 +34,9 @@ gboolean draw_cb (GtkWidget *widget, cairo_t *cr, gpointer   data)
 {
     cairo_set_source_surface (cr, surface, 0, 0);
     cairo_paint (cr);
+
+    useless_widget = widget;
+    useless_ptr = data;
 
     return FALSE;
 }
@@ -231,6 +237,8 @@ void draw_brush (GtkWidget *widget, gdouble x,gdouble y)
     cairo_destroy (cr);
     gtk_widget_queue_draw_area (widget, x, y, largeur, hauteur);
 
+    useless_widget = widget;
+
     /*coordx = x;
     coordy = y;*/
 }
@@ -250,6 +258,9 @@ gboolean button_press_event_cb (GtkWidget *widget,GdkEventButton *event,gpointer
         gtk_widget_queue_draw (widget);
     }
 
+    useless_widget = widget;
+    useless_ptr = data;
+
     return TRUE;
 }
 
@@ -259,6 +270,8 @@ gboolean motion_notify_event_cb (GtkWidget *widget,GdkEventMotion *event,gpointe
     {
         draw_brush (widget, event->x, event->y);
     }
+    useless_widget = widget;
+    useless_ptr = data;
 
     return TRUE;
 }

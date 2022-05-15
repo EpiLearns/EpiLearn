@@ -44,6 +44,8 @@ void ui_fifo_push(GtkButton* button, gpointer user)
     
 
     gtk_entry_set_text(GTK_ENTRY(tool_pile_push_entry),"");
+
+    useless_button2 = button;
 }
 
 void ui_fifo_pop(GtkButton* button, gpointer user)
@@ -62,6 +64,8 @@ void ui_fifo_pop(GtkButton* button, gpointer user)
     {
         gtk_label_set_text(GTK_LABEL(tool_pile_isempty_text),"La pile n'est pas vide");
     }
+
+    useless_button2 = button;
 }
 
 void ui_lifo_enqueue(GtkButton* button,gpointer user)
@@ -86,6 +90,8 @@ void ui_lifo_enqueue(GtkButton* button,gpointer user)
     
 
     gtk_entry_set_text(GTK_ENTRY(tool_file_enqueue_entry),"");
+
+    useless_button2 = button;
 }
 
 void ui_lifo_dequeue(GtkButton* button,gpointer user)
@@ -104,6 +110,8 @@ void ui_lifo_dequeue(GtkButton* button,gpointer user)
     {
         gtk_label_set_text(GTK_LABEL(tool_file_isempty_text),"La file n'est pas vide");
     }
+
+    useless_button2 = button;
 }
 
 void fifo_lifo_signal()

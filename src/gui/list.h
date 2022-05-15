@@ -28,6 +28,8 @@ GtkWidget* tool_list_insert_entry2;
 
 GtkButton* tool_list_insert_button;
 
+GtkButton* useless_button;
+
 void get_list_object();
 
 void ui_list_append(GtkButton* button, gpointer user);

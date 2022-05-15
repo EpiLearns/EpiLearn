@@ -5,6 +5,8 @@
 #include"shape.h"
 #include"tetwin.h"
 
+#include "tetris.h"
+
 TetShape *curshape, *nextshape;
 
 
@@ -16,7 +18,7 @@ gboolean timeout_act(TetWin*win)
     CollisionType col;
     //TetShape*shape=win->shape;
     TetChecker*checker=win->checker;
-    TetChecker*preview=win->preview;
+    //TetChecker*preview=win->preview;
 
     /*fall*/
     tet_shape_move_down(win->shape);
@@ -29,7 +31,7 @@ gboolean timeout_act(TetWin*win)
         n_eliminated=tet_checker_eliminate(checker,win->shape->x);
         win->score+=n_eliminated; 
 
-        tet_window_set_info(win,".");
+        tet_window_set_info(win);
         tet_shape_free(win->shape);
         
         /*get next shape*/
@@ -107,6 +109,9 @@ gboolean move_cb(GtkWidget * widget, GdkEventKey * event, TetWin*win)
             }
         }
     }
+
+    useless_widget2 = widget;
+
     return TRUE;
 }
 
@@ -134,6 +139,8 @@ void close_cb(GtkWidget *widget, TetWin *tetwin)
     tet_checker_fill_all(tetwin->checker,FALSE);
     tet_window_reset(tetwin);*/
     gtk_widget_destroy(tetwin->window);
+
+    useless_widget2 = widget;
 }
 
 void stop_cb (GtkWidget * widget, TetWin * tetwin)
@@ -153,6 +160,8 @@ void stop_cb (GtkWidget * widget, TetWin * tetwin)
     gtk_widget_set_sensitive(tetwin->start,TRUE);
     gtk_widget_set_sensitive(tetwin->pause,FALSE);
     gtk_widget_set_sensitive(tetwin->stop,FALSE);
+
+    useless_widget2 = widget;
 }
 
 
@@ -175,6 +184,8 @@ pause_cb (GtkWidget * widget, TetWin * tetwin)
         g_signal_handler_block(tetwin->window,tetwin->key_sig_no);
         g_source_remove(tetwin->timeout);
     }
+
+    useless_widget2 = widget;
 }
 
 
@@ -204,6 +215,8 @@ start_cb (GtkWidget * widget, TetWin * tetwin)
     gtk_widget_set_sensitive(tetwin->start,FALSE);
     gtk_widget_set_sensitive(tetwin->pause,TRUE);
     gtk_widget_set_sensitive(tetwin->stop,TRUE);
+
+    useless_widget2 = widget;
 }
 
 

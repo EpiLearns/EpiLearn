@@ -15,6 +15,9 @@ GtkWidget* Paint2DWindow;
 
 GtkWidget* paint_draw_area;
 
+GtkWidget* useless_widget;
+gpointer useless_ptr;
+
 void open_paint2D_fct();
 
 #endif

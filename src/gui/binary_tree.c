@@ -97,6 +97,8 @@ void bt_insert_left_ui(GtkButton* b, gpointer user)
 
         gtk_label_set_text(GTK_LABEL(tmp->bt),buff2);
     }
+
+    useless_button4 = b;
 }
 
 void bt_insert_right_ui(GtkButton* b, gpointer user)
@@ -138,9 +140,11 @@ void bt_insert_right_ui(GtkButton* b, gpointer user)
 
         gtk_label_set_text(GTK_LABEL(tmp->bt),buff2);
     }
+
+    useless_button4 = b;
 }
 
-void bt_go_left_ui(GtkButton* b, gpointer user)
+void bt_go_left_ui()
 {
     if (currentTree)
     {
@@ -155,7 +159,7 @@ void bt_go_left_ui(GtkButton* b, gpointer user)
     }
 }
 
-void bt_go_right_ui(GtkButton* b, gpointer user)
+void bt_go_right_ui()
 {
     if (currentTree)
     {
@@ -170,7 +174,7 @@ void bt_go_right_ui(GtkButton* b, gpointer user)
     }
 }
 
-void bt_clear_ui(GtkButton* b, gpointer user)
+void bt_clear_ui(GtkButton* b,gpointer user)
 {
     bt_free(rootTree);
     rootTree = NULL;
@@ -185,9 +189,11 @@ void bt_clear_ui(GtkButton* b, gpointer user)
         gtk_label_set_text(GTK_LABEL(tmp->bt),"");
         tmp = tmp->next;
     }
+
+    useless_button4 = b;
 }
 
-void bt_go_root(GtkButton* b, gpointer user)
+void bt_go_root()
 {
     if (currentTree)
     {
@@ -220,6 +226,8 @@ void bt_del_left(GtkButton* b, gpointer user)
             free(elt);
         }
     }
+
+    useless_button4 = b;
 }
 
 void bt_del_right(GtkButton* b, gpointer user)
@@ -243,6 +251,8 @@ void bt_del_right(GtkButton* b, gpointer user)
             free(elt);
         }
     }
+
+    useless_button4 = b;
 }
 
 void b_signal()

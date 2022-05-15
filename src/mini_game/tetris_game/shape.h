@@ -86,13 +86,6 @@ typedef struct _TetShape
     gint ly;
 } TetShape;
 
-
-
-
-
-
-void shape_print(TetShape * shape, char *text);
-
 Shape get_shape_type();
 
 void shape_path_assign(TetShape * shape, Point * path);
@@ -109,7 +102,7 @@ void tet_shape_transform(TetShape * shape);
 
 void tet_shape_transform_restore(TetShape * shape);
 
-static void tet_shape_align_border(TetShape * ahape);	//invoked by transform only;
+void tet_shape_align_border(TetShape * ahape);	//invoked by transform only;
 
 CollisionType tet_shape_is_collision(TetShape * shape);
 

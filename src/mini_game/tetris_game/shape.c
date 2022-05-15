@@ -19,23 +19,6 @@ Point shape_path_T1[4] = { {0, 0}, {-1, 0}, {-2, 0}, {-1, 1} };
 Point shape_path_T2[4] = { {-1, 0}, {-1, 1}, {-1, 2}, {0, 1} };
 Point shape_path_T3[4] = { {-1, 0}, {-1, 1}, {-2, 1}, {0, 1} };
 
-
-
-void shape_print(TetShape * shape, char *text)
-{
-
-    //g_print("%s\n", text);
-    //g_print("[x:%d,y:%d]<--[lx:%d,ly:%d]\n", shape->x, shape->y, shape->lx,shape->ly);
-    int i;
-    for (i = 0; i < SHAPE_STEP; i++) 
-	{
-		//g_print("[%d,%d].", shape->path[i].x, shape->path[i].y);
-    }
-    //g_print("\n");
-
-
-}
-
 void shape_path_swap(TetShape * shape)
 {
     int i;

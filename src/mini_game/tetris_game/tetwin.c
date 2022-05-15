@@ -83,7 +83,7 @@ void tet_window_reset(TetWin*win)
 {
     win->score=0;
     win->time_start=0;
-    tet_window_set_info(win,"");
+    tet_window_set_info(win);
 }
 
 
@@ -107,7 +107,7 @@ void tet_window_set_shape(TetWin*win,TetShape *shape)
     win->shape=shape;
 }
 
-void tet_window_set_info(TetWin*win,char*text)
+void tet_window_set_info(TetWin*win)
 {
     gchar*mark=g_markup_printf_escaped(fmt,win->score);
     gtk_label_set_markup(GTK_LABEL(win->info),mark);

@@ -34,6 +34,8 @@ void ui_list_append(GtkButton* button, gpointer user)
     gtk_label_set_text(GTK_LABEL(tool_list_len_text),buff);
 
     gtk_entry_set_text(GTK_ENTRY(tool_list_append_entry),"");
+
+    useless_button = button;
 }
 
 void ui_list_pop(GtkButton* button, gpointer user)
@@ -46,6 +48,8 @@ void ui_list_pop(GtkButton* button, gpointer user)
 
     sprintf(buff,"Taille de la liste: %i",list_len(list));
     gtk_label_set_text(GTK_LABEL(tool_list_len_text),buff);
+
+    useless_button = button;
 }
 
 void ui_list_insert(GtkButton* button, gpointer user)
@@ -65,6 +69,8 @@ void ui_list_insert(GtkButton* button, gpointer user)
 
     gtk_entry_set_text(GTK_ENTRY(tool_list_insert_entry1),"");
     gtk_entry_set_text(GTK_ENTRY(tool_list_insert_entry2),"");
+
+    useless_button = button;
 }
 
 void list_signal()
