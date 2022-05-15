@@ -1,62 +1,32 @@
-#include <stdlib.h>
-#include <sys/types.h>
-#include <signal.h>
-//  #include <unistd.h>
-#include <string.h>
-#include <gtk/gtk.h>
-#include <gtk/gtkx.h>
-#include <math.h>
-#include <ctype.h>
-#include "script.h"
+#include "number.h"
 
-// gcc -Wno-format -o window window.c script.c -Wno-deprecated-declarations -rdynamic -Wno-format-security -lm `pkg-config --cflags --libs gtk+-3.0`
+// gcc -Wno-format -o window window.c -Wno-deprecated-declarations -rdynamic -Wno-format-security -lm `pkg-config --cflags --libs gtk+-3.0`
 // export DISPLAY=0:0 
 
-// Make them global
-GtkBuilder	*builder; 
-
-//window
-GtkWidget	*window;
-
-// window start
-GtkWidget	*start;
-GtkWidget	*start_fixed;
-GtkWidget	*start_button;
-
-//window number
-GtkWidget	*number;
-GtkWidget	*number_fixed;
-GtkWidget	*number_print;
-
-//window response
-GtkWidget	*response;
-GtkWidget	*response_fixed;
-GtkWidget	*response_entry;
-GtkWidget	*response_confirm;
-
-//windows end
-GtkWidget	*end;
-GtkWidget	*end_fixed;
-GtkWidget	*end_print;
-GtkWidget	*restart;
-
-// game
-GtkWidget	*background;
-GtkWidget	*level_print;
  
 int level = 1;
-int n;
-char str[128];
-char l_string[128];
-char n_string[128];
-guint event;
 int lives = 3;
 
+int generate_number(int level)
+{
+    srand(time(NULL));
+    int number = 0;
+    int random = 0;
+    if (level != 1)
+    {
+        random = rand() % 9 + 1;
+        number = number*10 + random;
+        level = level - 1;
+    }
+    while (level > 0)
+    {
+        random = rand() % 10;
+        number = number*10 + random;
+        level = level - 1;
+    }
+    return number;
+}
 
-
-// signal
-
-//G_MODULE_EXPORT void	on_start_button_clicked (GtkButton *b);
 
 
 int main(int argc, char *argv[]) {
