@@ -4,8 +4,8 @@
 // export DISPLAY=0:0 
 
  
-int level = 1;
-int lives = 3;
+int level_number = 1;
+int lives_number = 3;
 
 int generate_number(int level)
 {
@@ -94,13 +94,13 @@ gboolean on_number()
     return FALSE;
 }
 
-void	on_start_button_clicked () {
+void	on_start_button_clicked_number () {
     gtk_widget_show(level_print);
-    sprintf(l_string,"CURRENT LEVEL : %d",level);
+    sprintf(l_string,"CURRENT LEVEL : %d",level_number);
     gtk_label_set_text (GTK_LABEL(level_print), (const gchar*) l_string);
-    lives = 3;
+    lives_number = 3;
 	gtk_widget_hide(start_button);
-    n = generate_number(level);
+    n = generate_number(level_number);
     sprintf(str,"%d",n);
     gtk_label_set_text (GTK_LABEL(number_print), (const gchar*) str);
     gtk_widget_show(number_print);
@@ -112,20 +112,20 @@ void	on_start_button_clicked () {
 void	on_response_confirm_clicked () {
     if (strcmp(str,n_string) == 0)
     {
-        level = level + 1;
+        level_number = level_number + 1;
     }
     else
     {
-        lives = lives - 1;   
+        lives_number = lives_number - 1;   
     }
 
-    if (lives < 0)
+    if (lives_number < 0)
     {
         gtk_widget_hide(response_confirm);
         gtk_widget_hide(response_entry);
         gtk_widget_hide(level_print);
         char end_level[128];
-        sprintf(end_level,"YOU REACHED LEVEL : %d",level);
+        sprintf(end_level,"YOU REACHED LEVEL : %d",level_number);
         gtk_label_set_text (GTK_LABEL(end_print), (const gchar*) end_level);
         gtk_widget_show(end_print);
         gtk_widget_show(restart);
@@ -134,9 +134,9 @@ void	on_response_confirm_clicked () {
     {
         gtk_widget_hide(response_confirm);
         gtk_widget_hide(response_entry);
-        sprintf(l_string,"CURRENT LEVEL : %d",level);
+        sprintf(l_string,"CURRENT LEVEL : %d",level_number);
         gtk_label_set_text (GTK_LABEL(level_print), (const gchar*) l_string);
-        n = generate_number(level);
+        n = generate_number(level_number);
         sprintf(str,"%d",n);
         gtk_label_set_text (GTK_LABEL(number_print), (const gchar*) str);
         gtk_widget_show(number_print);
@@ -150,10 +150,10 @@ void on_response_entry_changed (GtkEntry *e)
     sprintf(n_string,"%s", gtk_entry_get_text(e));
 }
 
-void on_restart_clicked ()
+void on_restart_clicked_number ()
 {
     gtk_widget_hide(end_print);
     gtk_widget_hide(restart);
     gtk_widget_show(start_button);
-    level = 0;
+    level_number = 0;
 }

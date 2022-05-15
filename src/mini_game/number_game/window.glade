@@ -20,8 +20,7 @@
 MMMMMMMM
 MMMMMMMM
 MMMMMMMM
-MMMMMMMM
-</property>
+MMMMMMMM</property>
             <attributes>
               <attribute name="font-desc" value="DejaVu Sans Bold 72"/>
               <attribute name="foreground" value="#20204a4a8787"/>
@@ -37,7 +36,7 @@ MMMMMMMM
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <signal name="clicked" handler="on_restart_clicked" swapped="no"/>
+            <signal name="clicked" handler="on_restart_clicked_number" swapped="no"/>
           </object>
           <packing>
             <property name="x">340</property>
@@ -75,7 +74,7 @@ MMMMMMMM
             <property name="receives_default">True</property>
             <property name="halign">center</property>
             <property name="valign">end</property>
-            <signal name="clicked" handler="on_start_button_clicked" swapped="no"/>
+            <signal name="clicked" handler="on_start_button_clicked_number" swapped="no"/>
           </object>
           <packing>
             <property name="x">340</property>

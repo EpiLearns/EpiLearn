@@ -34,6 +34,7 @@
 
 #include "../mini_game/tetris_game/tetris.h"
 #include "../mini_game/number_game/number.h"
+#include "../mini_game/grid_game/grid.h"
 
 // Builder important Window
 

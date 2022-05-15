@@ -110,17 +110,38 @@ gboolean move_cb(GtkWidget * widget, GdkEventKey * event, TetWin*win)
     return TRUE;
 }
 
+void close_cb(GtkWidget *widget, TetWin *tetwin)
+{
+    
+    g_source_remove(tetwin->timeout);
+    g_signal_handler_disconnect(tetwin->window,tetwin->key_sig_no);
+    GtkWidget*msgdialog=gtk_message_dialog_new(GTK_WINDOW(tetwin->window),GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,GTK_MESSAGE_INFO,GTK_BUTTONS_CLOSE,"Your score is %d.",tetwin->score);
+
+    if(GTK_RESPONSE_CLOSE==gtk_dialog_run(GTK_DIALOG(msgdialog)))
+    {    
+        tet_window_reset(tetwin);
+        tet_checker_clear_all (tetwin->checker);
+        tet_checker_clear_all (tetwin->preview);
+        tet_checker_fill_all(tetwin->checker,FALSE);
+    }
+    gtk_widget_destroy(msgdialog);
+    gtk_widget_set_sensitive(tetwin->start,TRUE);
+    gtk_widget_set_sensitive(tetwin->pause,FALSE);
+    gtk_widget_set_sensitive(tetwin->stop,FALSE);
+
+    /*tet_checker_clear_all (tetwin->checker);
+    tet_checker_clear_all (tetwin->preview);
+    tet_checker_fill_all(tetwin->checker,FALSE);
+    tet_window_reset(tetwin);*/
+    gtk_widget_destroy(tetwin->window);
+}
+
 void stop_cb (GtkWidget * widget, TetWin * tetwin)
 {
     g_source_remove(tetwin->timeout);
     g_signal_handler_disconnect(tetwin->window,tetwin->key_sig_no);
-    //  tet_checker_clear_all (tetwin->checker);
-    //  tet_checker_clear_all (tetwin->preview);
-    //   tet_checker_fill_all(tetwin->checker,FALSE);
-    //   tet_window_reset(tetwin);
-    //    gchar*info=g_strdup_printf("Your score is %d. ^.^",tetwin->score);
     GtkWidget*msgdialog=gtk_message_dialog_new(GTK_WINDOW(tetwin->window),GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,GTK_MESSAGE_INFO,GTK_BUTTONS_CLOSE,"Your score is %d.",tetwin->score);
-    //   g_free(info);
+
     if(GTK_RESPONSE_CLOSE==gtk_dialog_run(GTK_DIALOG(msgdialog)))
     {    
         tet_window_reset(tetwin);
@@ -199,10 +220,12 @@ void open_tetris_fct ()
     GtkWidget*but_start = tetwin->start;
     GtkWidget*but_stop = tetwin->stop;
     GtkWidget*but_pause = tetwin->pause;
+    GtkWidget*but_close = tetwin->close;
 
     g_signal_connect(G_OBJECT(but_start),"clicked",G_CALLBACK(start_cb),tetwin);
     g_signal_connect(G_OBJECT(but_stop),"clicked",G_CALLBACK(stop_cb),tetwin);
     g_signal_connect(G_OBJECT(but_pause),"clicked",G_CALLBACK(pause_cb),tetwin);
+    g_signal_connect(G_OBJECT(but_close),"clicked",G_CALLBACK(close_cb),tetwin);
 
     gtk_main ();
 }

@@ -4,8 +4,7 @@
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkWindow" id="window">
     <property name="can_focus">False</property>
-    <property name="default_width">1920</property>
-    <property name="default_height">1082</property>
+    <property name="resizable">False</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -20,16 +19,13 @@
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">MMMMMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMM
-</property>
+            <property name="label" translatable="yes">MMMMMMM
+MMMMMMM
+MMMMMMM
+MMMMMMM
+MMMMMMM
+MMMMMMM
+MMMMMMM</property>
             <attributes>
               <attribute name="font-desc" value="DejaVu Sans Bold 72"/>
               <attribute name="foreground" value="#20204a4a8787"/>
@@ -56,18 +52,18 @@ MMMMMMMMMMMMMMMMMMMM
         </child>
         <child>
           <object class="GtkLabel" id="end_print">
-            <property name="width_request">853</property>
+            <property name="width_request">500</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <attributes>
-              <attribute name="font-desc" value="DejaVu Sans Bold 48"/>
+              <attribute name="font-desc" value="DejaVu Sans Bold 30"/>
               <attribute name="foreground" value="#a4a400000000"/>
               <attribute name="background" value="#20204a4a8787"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">325</property>
+            <property name="x">75</property>
             <property name="y">200</property>
           </packing>
         </child>
@@ -80,10 +76,10 @@ MMMMMMMMMMMMMMMMMMMM
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="resize_mode">immediate</property>
-            <signal name="clicked" handler="on_start_button_clicked" swapped="no"/>
+            <signal name="clicked" handler="on_start_button_clicked_grid" swapped="no"/>
           </object>
           <packing>
-            <property name="x">725</property>
+            <property name="x">275</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -95,11 +91,11 @@ MMMMMMMMMMMMMMMMMMMM
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <signal name="clicked" handler="on_restart_clicked" swapped="no"/>
+            <signal name="clicked" handler="on_restart_clicked_grid" swapped="no"/>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">500</property>
+            <property name="x">275</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -113,8 +109,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">130</property>
+            <property name="x">25</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -128,8 +124,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">129</property>
+            <property name="x">150</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -143,8 +139,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">130</property>
+            <property name="x">275</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -158,8 +154,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">240</property>
+            <property name="x">25</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -173,8 +169,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">240</property>
+            <property name="x">150</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -188,8 +184,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">240</property>
+            <property name="x">275</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -203,7 +199,7 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">505</property>
+            <property name="x">25</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -218,7 +214,7 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">615</property>
+            <property name="x">150</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -233,7 +229,7 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">725</property>
+            <property name="x">275</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -248,8 +244,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">570</property>
+            <property name="x">400</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -263,8 +259,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">460</property>
+            <property name="x">25</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -278,8 +274,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">570</property>
+            <property name="x">25</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -293,8 +289,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">460</property>
+            <property name="x">150</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -308,8 +304,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">570</property>
+            <property name="x">150</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -323,8 +319,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">460</property>
+            <property name="x">275</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -338,8 +334,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">570</property>
+            <property name="x">275</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -353,8 +349,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">130</property>
+            <property name="x">400</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -368,8 +364,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">240</property>
+            <property name="x">400</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -383,7 +379,7 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">835</property>
+            <property name="x">400</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -398,8 +394,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">460</property>
+            <property name="x">400</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -413,8 +409,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">130</property>
+            <property name="x">525</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -428,8 +424,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">240</property>
+            <property name="x">525</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -443,7 +439,7 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">945</property>
+            <property name="x">525</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -458,8 +454,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">460</property>
+            <property name="x">525</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -473,8 +469,8 @@ MMMMMMMMMMMMMMMMMMMM
             <signal name="clicked" handler="on_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">570</property>
+            <property name="x">525</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -495,8 +491,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">130</property>
+            <property name="x">25</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -517,8 +513,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">129</property>
+            <property name="x">150</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -539,8 +535,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">130</property>
+            <property name="x">275</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -561,8 +557,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">240</property>
+            <property name="x">25</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -583,8 +579,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">240</property>
+            <property name="x">150</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -605,8 +601,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">240</property>
+            <property name="x">275</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -627,7 +623,7 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">505</property>
+            <property name="x">25</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -649,7 +645,7 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">615</property>
+            <property name="x">150</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -671,7 +667,7 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">725</property>
+            <property name="x">275</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -693,8 +689,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">130</property>
+            <property name="x">400</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -715,8 +711,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">240</property>
+            <property name="x">400</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -737,7 +733,7 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">835</property>
+            <property name="x">400</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -759,8 +755,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">460</property>
+            <property name="x">25</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -781,8 +777,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">460</property>
+            <property name="x">150</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -803,8 +799,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">460</property>
+            <property name="x">275</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -825,8 +821,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">460</property>
+            <property name="x">400</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -847,8 +843,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">130</property>
+            <property name="x">525</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -869,8 +865,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">240</property>
+            <property name="x">525</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -891,7 +887,7 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">945</property>
+            <property name="x">525</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -913,8 +909,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">460</property>
+            <property name="x">525</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -935,8 +931,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">570</property>
+            <property name="x">25</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -957,8 +953,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">570</property>
+            <property name="x">150</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -979,8 +975,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">570</property>
+            <property name="x">275</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -1001,8 +997,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">570</property>
+            <property name="x">400</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -1023,8 +1019,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">570</property>
+            <property name="x">525</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -1045,8 +1041,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">130</property>
+            <property name="x">25</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -1067,8 +1063,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">129</property>
+            <property name="x">150</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -1089,8 +1085,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">130</property>
+            <property name="x">275</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -1111,8 +1107,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">240</property>
+            <property name="x">25</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -1133,8 +1129,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">240</property>
+            <property name="x">150</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -1155,8 +1151,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">240</property>
+            <property name="x">275</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -1177,7 +1173,7 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">505</property>
+            <property name="x">25</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -1199,7 +1195,7 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">615</property>
+            <property name="x">150</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -1221,7 +1217,7 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">725</property>
+            <property name="x">275</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -1243,8 +1239,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">130</property>
+            <property name="x">400</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -1265,8 +1261,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">240</property>
+            <property name="x">400</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -1287,7 +1283,7 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">835</property>
+            <property name="x">400</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -1309,8 +1305,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">460</property>
+            <property name="x">25</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -1331,8 +1327,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">460</property>
+            <property name="x">150</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -1353,8 +1349,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">460</property>
+            <property name="x">275</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -1375,8 +1371,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">460</property>
+            <property name="x">400</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -1397,8 +1393,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">130</property>
+            <property name="x">525</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -1419,8 +1415,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">240</property>
+            <property name="x">525</property>
+            <property name="y">250</property>
           </packing>
         </child>
         <child>
@@ -1441,7 +1437,7 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">945</property>
+            <property name="x">525</property>
             <property name="y">350</property>
           </packing>
         </child>
@@ -1463,8 +1459,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">460</property>
+            <property name="x">525</property>
+            <property name="y">450</property>
           </packing>
         </child>
         <child>
@@ -1485,8 +1481,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">505</property>
-            <property name="y">570</property>
+            <property name="x">25</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -1507,8 +1503,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">615</property>
-            <property name="y">570</property>
+            <property name="x">150</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -1529,8 +1525,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">725</property>
-            <property name="y">570</property>
+            <property name="x">275</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -1551,8 +1547,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">835</property>
-            <property name="y">570</property>
+            <property name="x">400</property>
+            <property name="y">550</property>
           </packing>
         </child>
         <child>
@@ -1573,8 +1569,8 @@ MMMMMMMM</property>
             </attributes>
           </object>
           <packing>
-            <property name="x">945</property>
-            <property name="y">570</property>
+            <property name="x">525</property>
+            <property name="y">550</property>
           </packing>
         </child>
       </object>

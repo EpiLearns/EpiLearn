@@ -3,7 +3,7 @@
 // gcc -Wno-format -o window window.c script.c -Wno-deprecated-declarations -rdynamic -Wno-format-security -lm `pkg-config --cflags --libs gtk+-3.0`
 // export DISPLAY=0:0 
 
-int level = 1;
+int level_grid = 1;
 int lives = 3;
 
 void create_grid2(int level,  int l[]) // 0 en trop !! 
@@ -131,9 +131,9 @@ gboolean back_normal()
 	return FALSE;
 }
 
-int main(int argc, char *argv[]) {
+void open_grid_game_fct() {
 
-	gtk_init(&argc, &argv); // init Gtk
+	gtk_init(NULL,NULL); // init Gtk
 
 //---------------------------------------------------------------------
 // establish contact with xml code used to adjust widget settings
@@ -232,12 +232,14 @@ int main(int argc, char *argv[]) {
 
 	level_print = GTK_WIDGET(gtk_builder_get_object(builder, "level"));
 
+	g_signal_connect(GTK_WINDOW(window),"destroy", G_CALLBACK(gtk_main_quit), NULL);
+
 	gtk_widget_show(window);
 	hide_all();
 	gboolean x = back_normal();
 	if(x == 123)
 	{
-		return 0;
+		return;
 	}
 	
 
@@ -245,8 +247,6 @@ int main(int argc, char *argv[]) {
 	gtk_widget_hide(end_print);
 
 	gtk_main();
-
-	return EXIT_SUCCESS;
 	}
 
 // signal funtion
@@ -446,10 +446,10 @@ void change_color(int level)
 
 void change_level()
 {
-	create_grid2(level,l);
-	nb = level;
+	create_grid2(level_grid,l);
+	nb = level_grid;
 	lives = 3;
-	if (level == 3)
+	if (level_grid == 3)
 	{
 		gtk_widget_show(button10);
 		gtk_widget_show(button11);
@@ -459,7 +459,7 @@ void change_level()
 		gtk_widget_show(button15);
 		gtk_widget_show(button16);
 	}
-	if(level == 6)
+	if(level_grid == 6)
 	{
 		gtk_widget_show(button17);
 		gtk_widget_show(button18);
@@ -472,13 +472,13 @@ void change_level()
 		gtk_widget_show(button25);
 	}
 	char level_p[128];
-    sprintf(level_p,"CURRENT LEVEL : %d",level);
+    sprintf(level_p,"CURRENT LEVEL : %d",level_grid);
     gtk_label_set_text (GTK_LABEL(level_print), (const gchar*) level_p);
-	change_color(level);
+	change_color(level_grid);
 	
 }
 
-void	on_start_button_clicked () {
+void	on_start_button_clicked_grid () {
 	gtk_widget_hide(start_button);
 	gtk_widget_show(level_print);
 	gtk_widget_show(button1);
@@ -490,12 +490,12 @@ void	on_start_button_clicked () {
 	gtk_widget_show(button7);
 	gtk_widget_show(button8);
 	gtk_widget_show(button9);
-	level = 1;
+	level_grid = 1;
 	lives = 3;
-	change_level(level);
+	change_level(level_grid);
 	}
 
-void on_restart_clicked ()
+void on_restart_clicked_grid ()
 {
     gtk_widget_hide(end_print);
     gtk_widget_hide(restart);
@@ -505,7 +505,7 @@ void on_restart_clicked ()
 void end_window()
 {
 	char end_level[128];
-    sprintf(end_level,"YOU REACHED LEVEL : %d",level);
+    sprintf(end_level,"YOU REACHED LEVEL : %d",level_grid);
     gtk_label_set_text (GTK_LABEL(end_print), (const gchar*) end_level);
 	gtk_widget_show(end_print);
     gtk_widget_show(restart);
@@ -605,7 +605,7 @@ void	on_button_clicked (GtkButton *b) {
 		nb = nb - 1;
 		if (nb == 0)
 		{
-			level = level+1;
+			level_grid = level_grid+1;
 			change_level();
 		}
 	}

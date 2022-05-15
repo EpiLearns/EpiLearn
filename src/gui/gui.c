@@ -1141,6 +1141,7 @@ GtkBuilder *init_gui()
 
     g_signal_connect(play_number_game,"clicked",open_number_game_fct,NULL);
     g_signal_connect(play_tetris,"clicked",G_CALLBACK(open_tetris_fct),NULL);
+    g_signal_connect(play_grid_game,"clicked",G_CALLBACK(open_grid_game_fct),NULL);
     
     // Connects event handlers.
     g_signal_connect(mainWindow,"destroy", G_CALLBACK(gtk_main_quit), NULL);
