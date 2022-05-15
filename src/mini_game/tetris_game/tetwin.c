@@ -9,7 +9,6 @@ static const char* fmt="<span font_family=\"Serif\" font_weight=\"bold\" >:Info:
 
 TetWin* tet_window_new()
 {
-
     TetWin*tetwin=g_slice_new0(TetWin);
 
     tetwin->window=gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -52,14 +51,11 @@ TetWin* tet_window_new()
     g_signal_connect(G_OBJECT(tetwin->window),"delete-event",G_CALLBACK(gtk_main_quit),NULL);
 
     return tetwin;
-
-
 }
 
 
 void tet_window_over(TetWin*tetwin)
 {
-
     g_source_remove(tetwin->timeout);
     g_signal_handler_disconnect(tetwin->window,tetwin->key_sig_no);
 
@@ -69,77 +65,51 @@ void tet_window_over(TetWin*tetwin)
             GTK_MESSAGE_INFO,GTK_BUTTONS_CLOSE,"Your score is %d.",tetwin->score);
 
     if(GTK_RESPONSE_CLOSE==gtk_dialog_run(GTK_DIALOG(msgdialog)))
-    {
-    
-        
-    tet_window_reset(tetwin);
-    tet_checker_clear_all (tetwin->checker);
-    tet_checker_clear_all (tetwin->preview);
-    tet_checker_fill_all(tetwin->checker,FALSE);
-    
+    {    
+        tet_window_reset(tetwin);
+        tet_checker_clear_all (tetwin->checker);
+        tet_checker_clear_all (tetwin->preview);
+        tet_checker_fill_all(tetwin->checker,FALSE);   
     }
 
     gtk_widget_destroy(msgdialog);
     gtk_widget_set_sensitive(tetwin->start,TRUE);
     gtk_widget_set_sensitive(tetwin->pause,FALSE);
     gtk_widget_set_sensitive(tetwin->stop,FALSE);
-
 }
-
-
-
-
-
-
-
-
-
-
 
 void tet_window_reset(TetWin*win)
 {
-
     win->score=0;
     win->time_start=0;
     tet_window_set_info(win,"");
-
-
 }
 
 
 void tet_window_set_preview(TetWin*win,Shape type)
 {
-
     /*Clean every shape at win->preview*/
     tet_checker_clear_all(win->preview);
     tet_checker_fill_all(win->preview,FALSE);
 
     /*paint a new shape with type*/
     TetShape*shape=tet_shape_new(win->preview,win->preview->height-1,0,type);
-//    tet_shape_move(shape,...);//
-//    shape_print(shape,"set preview");
+    //    tet_shape_move(shape,...);//
+    //    shape_print(shape,"set preview");
     tet_shape_realize(shape);
     
     tet_shape_free(shape);
-
-
 }
-
 
 void tet_window_set_shape(TetWin*win,TetShape *shape)
 {
     win->shape=shape;
-
 }
-
-
 
 void tet_window_set_info(TetWin*win,char*text)
 {
-
     gchar*mark=g_markup_printf_escaped(fmt,win->score);
     gtk_label_set_markup(GTK_LABEL(win->info),mark);
     gtk_label_set_justify(GTK_LABEL(win->info),GTK_JUSTIFY_CENTER);
     g_free(mark);
-
 }
