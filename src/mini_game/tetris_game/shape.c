@@ -2,7 +2,7 @@
 //#include"tet-checker.h"
 
 
-volatile static gboolean realize_locked = FALSE;
+static volatile gboolean realize_locked = FALSE;
 
 
 Point shape_path_O0[4] = { {0, 1}, {0, 2}, {-1, 1}, {-1, 2} };
@@ -24,14 +24,13 @@ Point shape_path_T3[4] = { {-1, 0}, {-1, 1}, {-2, 1}, {0, 1} };
 void shape_print(TetShape * shape, char *text)
 {
 
-    g_print("%s\n", text);
-    g_print("[x:%d,y:%d]<--[lx:%d,ly:%d]\n", shape->x, shape->y, shape->lx,
-	    shape->ly);
+    //g_print("%s\n", text);
+    //g_print("[x:%d,y:%d]<--[lx:%d,ly:%d]\n", shape->x, shape->y, shape->lx,shape->ly);
     int i;
     for (i = 0; i < SHAPE_STEP; i++) {
-	g_print("[%d,%d].", shape->path[i].x, shape->path[i].y);
+	//g_print("[%d,%d].", shape->path[i].x, shape->path[i].y);
     }
-    g_print("\n");
+    //g_print("\n");
 
 
 }
@@ -199,17 +198,17 @@ CollisionType tet_shape_is_collision(TetShape * shape)
 	if (x < 0) {
 
 	    type |= COLLISION_TOP;
-	    g_message("TOP[%d,%d]", x, y);
+	    //g_message("TOP[%d,%d]", x, y);
 
 	}
 
 	if (x >= shape->checker->height) {
 	    type |= COLLISION_BOTTOM;
-	    g_message("BOTTOM[%d,%d]", x, y);
+	    //g_message("BOTTOM[%d,%d]", x, y);
 	}
 	if (is_filled(shape->checker, x, y)) {
 	    type |= COLLISION_FILL;
-	    g_message("FILLED[%d,%d]", x, y);
+	    //g_message("FILLED[%d,%d]", x, y);
 //          break;
 	}
     }

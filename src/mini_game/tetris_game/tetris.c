@@ -37,7 +37,7 @@
 
     col=tet_shape_is_collision(win->shape);
     if(COLLISION_FILL&col){
-        g_message("GameOver..");
+        //g_message("GameOver..");
         tet_window_over(win);
         return FALSE;
     }
@@ -201,37 +201,23 @@ start_cb (GtkWidget * widget, TetWin * tetwin)
 }
 
 
-int
-main (int argc, char **argv)
+void open_tetris_fct ()
 {
+    gtk_init (NULL,NULL);
 
-  gtk_init (&argc, &argv);
+    TetWin *tetwin = tet_window_new ();
 
+    random = g_rand_new();
 
+    gtk_widget_show_all (tetwin->window);
 
-  TetWin *tetwin = tet_window_new ();
+    GtkWidget*but_start = tetwin->start;
+    GtkWidget*but_stop = tetwin->stop;
+    GtkWidget*but_pause = tetwin->pause;
 
-random=g_rand_new();
+    g_signal_connect(G_OBJECT(but_start),"clicked",G_CALLBACK(start_cb),tetwin);
+    g_signal_connect(G_OBJECT(but_stop),"clicked",G_CALLBACK(stop_cb),tetwin);
+    g_signal_connect(G_OBJECT(but_pause),"clicked",G_CALLBACK(pause_cb),tetwin);
 
-
-
-  gtk_widget_show_all (tetwin->window);
-
-
-
-  GtkWidget*but_start=tetwin->start;
-  GtkWidget*but_stop=tetwin->stop;
-  GtkWidget*but_pause=tetwin->pause;
-
-  g_signal_connect(G_OBJECT(but_start),"clicked",G_CALLBACK(start_cb),tetwin);
-  g_signal_connect(G_OBJECT(but_stop),"clicked",G_CALLBACK(stop_cb),tetwin);
-  g_signal_connect(G_OBJECT(but_pause),"clicked",G_CALLBACK(pause_cb),tetwin);
-
-
-
-  gtk_main ();
-
-
-
-  return 0;
+    gtk_main ();
 }

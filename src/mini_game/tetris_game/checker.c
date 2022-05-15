@@ -297,8 +297,8 @@ void tet_checker_color_block(TetChecker * checker, gint i, gint j,
     int height=checker->height;
 
     if (i < 0 || j < 0 || i >= height|| j >= width)
-	return;
-        block_color(BLOCK(checker->grid[i*width+j]),rgba);
+	    return;
+    block_color(BLOCK(checker->grid[i*width+j]),rgba);
     //    checker->filling[i][j]=TRUE;
 
 }
@@ -310,9 +310,9 @@ void tet_checker_clear_block(TetChecker * checker, gint i, gint j)
     int height=checker->height;
 
     if (i < 0 || j < 0 || i >= height|| j >= width)
-	return;
+	    return;
     
-        block_clear(BLOCK(checker->grid[i*width+j]));
+    block_clear(BLOCK(checker->grid[i*width+j]));
     //    checker->filling[i][j]=FALSE;
 
 }

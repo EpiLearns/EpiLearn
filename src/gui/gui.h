@@ -32,6 +32,8 @@
 #include "paint2D.h"
 #include "binary_tree.h"
 
+#include "../mini_game/tetris_game/tetris.h"
+
 // Builder important Window
 
 GtkBuilder* builder;
@@ -89,6 +91,7 @@ GtkWindow* cours_phy_1_2;
 // Mcq Window
 
 GtkWindow* qcm_mt1;
+GtkWindow* qcm_mt2;
 
 GtkWindow* qcm_at1;
 GtkWindow* qcm_at2;
@@ -179,7 +182,6 @@ GtkButton* open_mt2;
 
 GtkButton* open_at1;
 GtkButton* open_at2;
-GtkButton* open_at3;
 
 GtkButton* open_ct1;
 GtkButton* open_ct2;
@@ -191,6 +193,7 @@ GtkButton* open_pt1;
 //Close Mcq Button
 
 GtkButton* quit_qcm_mt1;
+GtkButton* quit_qcm_mt2;
 
 GtkButton* quit_qcm_at1;
 GtkButton* quit_qcm_at2;
@@ -212,6 +215,18 @@ GtkWidget* score_mt1;
 
 GtkButton* prev_mt1;
 GtkButton* next_mt1;
+
+// For qcm_mt2
+GtkButton* valide_mt2;
+GtkWidget* question_mt2;
+GtkWidget* user_answer_mt2;
+GtkWidget* answer_mt2;
+
+GtkWidget* question_number_mt2;
+GtkWidget* score_mt2;
+
+GtkButton* prev_mt2;
+GtkButton* next_mt2;
 
 //For qcm_at1
 
