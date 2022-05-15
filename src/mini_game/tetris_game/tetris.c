@@ -8,7 +8,7 @@
 TetShape *curshape, *nextshape;
 
 
-GRand *random;
+GRand *randomp;
 
 gboolean timeout_act(TetWin*win)
 {
@@ -192,7 +192,7 @@ void open_tetris_fct ()
 
     TetWin *tetwin = tet_window_new ();
 
-    random = g_rand_new();
+    randomp = g_rand_new();
 
     gtk_widget_show_all (tetwin->window);
 

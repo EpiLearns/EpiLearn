@@ -71,8 +71,8 @@ void shape_path_assign(TetShape * shape, Point * path)
 
 Shape get_shape_type()
 {
-    static GRand *random;
-    random = g_rand_new();
+    static GRand *randomp;
+    randomp = g_rand_new();
     static Shape shapepool[] =
 	{ 	TET_O0,TET_O0,TET_O0,TET_O0,
         TET_I0, TET_I0, TET_I0, TET_I1,
@@ -81,7 +81,7 @@ Shape get_shape_type()
         TET_T0, TET_T1, TET_T2, TET_T3 
 	};
 
-    return shapepool[g_rand_int(random) % 20];
+    return shapepool[g_rand_int(randomp) % 20];
 }
 
 TetShape *tet_shape_new(TetChecker * checker, int x, int y, Shape type)
