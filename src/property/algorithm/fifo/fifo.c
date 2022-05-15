@@ -23,7 +23,7 @@ int fifo_is_empty(Fifo* fifo)
 
 void fifo_push(Fifo* fifo, int data)
 {
-    Fifo* new_element = calloc(1,sizeof(Fifo));
+    Fifo* new_element = calloc(1,sizeof(struct Fifo));
 
     if (!new_element)
     {
@@ -75,9 +75,28 @@ char* fifo_to_string(Fifo* fifo)
 	return res;
 }
 
+Fifo* random_fifo()
+{
+    Fifo* res = init_fifo();
+
+	Fifo* tmp = res;
+
+	size_t len = rand()%10 + 5;
+
+	for (size_t i = 0;i<len;i++)
+	{
+		tmp->next = calloc(1,sizeof(Fifo));
+		tmp->next->data = rand()%31;
+
+		tmp = tmp->next;
+	}
+
+	return res;
+}
+
 /*int main()
 {
-	Fifo* res = init_fifo();
+	Fifo* res = random_fifo();
 
 	for (size_t i = 0;i<20;i++)
 	{

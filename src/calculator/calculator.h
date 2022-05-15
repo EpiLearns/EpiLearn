@@ -1,7 +1,6 @@
 #ifndef CALCULATOR_H
 #define CALCULATOR_H
-
-char* calculator_suppression(const char *string);
+#include "integral.h"
 
 const char* calculator_f(char *expression);
 
@@ -38,7 +37,15 @@ void on_button_calculatorproduct();
 
 void on_button_calculatorslash();
 
-void on_button_calculatorsuppr();
+void on_button_sqrtcalculator();
+
+void on_button_ecalculator();
+
+void on_button_lncalculator();
+
+void on_button_coscalculator();
+
+void on_button_sincalcultor();
 
 void open_calculator_fct();
 

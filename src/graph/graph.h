@@ -7,7 +7,7 @@
 
 double graph_f (double x);
 
-on_draw (GtkWidget *widget, cairo_t *cr);
+gboolean on_draw (GtkWidget *widget, cairo_t *cr);
 
 void on_button2_clicked();
 

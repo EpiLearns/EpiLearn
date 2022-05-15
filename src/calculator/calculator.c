@@ -2,33 +2,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "calculator.h"
 #include "node.h"
 #include "parser.h"
 #include <math.h>
 
 GtkBuilder *builder;
 GtkWidget *entrycalculator;
+GtkButton *openintegral;
 GtkWidget *labelcalculator;
 char *expressioncalculator = "";
 
-char *calculator_suppression(const char *string)
-{
-    size_t len = strlen(string);
-
-    if (len == 0)
-    {
-        return "";
-    }
-
-    char *res = calloc(len - 1, sizeof(char));
-
-    for (size_t i = 0; i < len - 1; i++)
-    {
-        res[i] = string[i];
-    }
-
-    return res;
-}
 
 const char *calculator_f(char *expression)
 {
@@ -247,14 +231,57 @@ void on_button_calculatorslash()
 
     gtk_entry_set_text(GTK_ENTRY(entrycalculator), expressioncalculator);
 }
-
-void on_button_calculatorsuppr()
+void on_button_sqrtcalculator()
 {
     const char *entryvalue;
     entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
-    expressioncalculator = calculator_suppression(entryvalue);
-    gtk_entry_set_text(GTK_ENTRY(entrycalculator), expressioncalculator);
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "sqrt");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
 }
+
+void on_button_ecalculator()
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "e");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_lncalculator()
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "ln");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+void on_button_coscalculator()
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "cos");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+void on_button_sincalcultor()
+{
+    const char *entryvalue;
+    entryvalue = gtk_entry_get_text(GTK_ENTRY(entrycalculator));
+    expressioncalculator = strdup(entryvalue);
+    expressioncalculator = strcat(expressioncalculator, "sin");
+   
+    gtk_entry_set_text(GTK_ENTRY(entrycalculator),expressioncalculator);
+}
+
+
+
 
 void open_calculator_fct()
 {
@@ -268,6 +295,9 @@ void open_calculator_fct()
 
         entrycalculator = GTK_WIDGET(gtk_builder_get_object(builder, "entrycalculator"));
         labelcalculator = GTK_WIDGET(gtk_builder_get_object(builder, "labelcalculator"));
+        openintegral = GTK_BUTTON(gtk_builder_get_object(builder, "openintegral"));
+
+        g_signal_connect(openintegral, "clicked", G_CALLBACK(open_integral_fct),NULL);
 
         gtk_widget_show_all(windowcalculator);
         gtk_main();

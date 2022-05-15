@@ -20,4 +20,6 @@ void fifo_pop(Fifo* fifo);
 
 char* fifo_to_string(Fifo* fifo);
 
+Fifo* random_fifo();
+
 #endif

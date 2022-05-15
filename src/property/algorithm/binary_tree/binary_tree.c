@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "binary_tree.h"
 
 BinaryTree* init_binary_tree(int data)
@@ -17,20 +14,32 @@ BinaryTree* init_binary_tree(int data)
     return res;
 }
 
-void search_key(BinaryTree* binaryTree, int data, BinaryTree* res)
+void bt_insert_left(BinaryTree* bt,int data)
 {
-    if (binaryTree->key == data)
-    {
-        res = binaryTree;
-    }
+    bt->left = init_binary_tree(data);
+    bt->left->order = bt->order * 2;
+}
 
-    if (binaryTree->left)
-    {
-        search_key(binaryTree->left,data,res);
-    }
+void bt_insert_right(BinaryTree* bt,int data)
+{
+    bt->right = init_binary_tree(data);
+    bt->right->order = bt->order * 2 + 1;
+}
 
-    if (binaryTree->right)
-    {
-        search_key(binaryTree->right,data,res);
+void bt_free(BinaryTree* bt)
+{
+    if (bt)
+    {   
+        if(bt->left)
+        {
+            bt_free(bt->left);
+        }
+
+        if (bt->right)
+        {
+            bt_free(bt->right);
+        }
+
+        free((bt));
     }
 }

@@ -15,6 +15,7 @@
 #include "../property/computer_architecture/integer_representation/integer_representation.h"
 
 #include "../mcqGenerator/mathematics/mathematics.h"
+#include "../mcqGenerator/algorithm/algorithm.h"
 #include "../mcqGenerator/computer_architecture/computer_architecture.h"
 
 #include "../calculator/calculator.h"
@@ -29,6 +30,7 @@
 #include "list.h"
 #include "fifo_lifo.h"
 #include "paint2D.h"
+#include "binary_tree.h"
 
 // Builder important Window
 

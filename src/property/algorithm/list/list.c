@@ -215,7 +215,6 @@ int get_val_in_i(List* list,size_t index)
 	return -1;
 }
 
-
 /*int main()
 {
 	List* res = random_list();
