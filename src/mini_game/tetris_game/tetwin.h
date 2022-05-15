@@ -14,7 +14,7 @@ typedef struct _TetWin{
     TetShape*shape;
     GtkWidget* info;
     
-    GtkWidget* start,*stop,*pause;
+    GtkWidget* start,*stop,*pause,*close;
 
     GtkWidget*window;
 
