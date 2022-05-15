@@ -50,6 +50,7 @@ guint event;
 
 //fonctions 
 
+int generate_number(int level);
 gboolean on_number();
 void	on_start_button_clicked ();
 void	on_response_confirm_clicked ();
