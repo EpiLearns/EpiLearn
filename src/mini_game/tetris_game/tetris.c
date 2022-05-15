@@ -112,10 +112,27 @@ gboolean move_cb(GtkWidget * widget, GdkEventKey * event, TetWin*win)
 
 void close_cb(GtkWidget *widget, TetWin *tetwin)
 {
-    tet_checker_clear_all (tetwin->checker);
+    
+    g_source_remove(tetwin->timeout);
+    g_signal_handler_disconnect(tetwin->window,tetwin->key_sig_no);
+    GtkWidget*msgdialog=gtk_message_dialog_new(GTK_WINDOW(tetwin->window),GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,GTK_MESSAGE_INFO,GTK_BUTTONS_CLOSE,"Your score is %d.",tetwin->score);
+
+    if(GTK_RESPONSE_CLOSE==gtk_dialog_run(GTK_DIALOG(msgdialog)))
+    {    
+        tet_window_reset(tetwin);
+        tet_checker_clear_all (tetwin->checker);
+        tet_checker_clear_all (tetwin->preview);
+        tet_checker_fill_all(tetwin->checker,FALSE);
+    }
+    gtk_widget_destroy(msgdialog);
+    gtk_widget_set_sensitive(tetwin->start,TRUE);
+    gtk_widget_set_sensitive(tetwin->pause,FALSE);
+    gtk_widget_set_sensitive(tetwin->stop,FALSE);
+
+    /*tet_checker_clear_all (tetwin->checker);
     tet_checker_clear_all (tetwin->preview);
     tet_checker_fill_all(tetwin->checker,FALSE);
-    tet_window_reset(tetwin);
+    tet_window_reset(tetwin);*/
     gtk_widget_destroy(tetwin->window);
 }
 
