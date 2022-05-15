@@ -117,9 +117,10 @@ void hide_all();
 gboolean back_normal();
 void change_color(int level);
 void change_level();
-void	on_start_button_clicked ();
-void on_restart_clicked ();
+void	on_start_button_clicked_grid ();
+void on_restart_clicked_grid ();
 void end_window();
 void	on_button_clicked (GtkButton *b);
+void open_grid_game_fct();
 
 #endif

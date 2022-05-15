@@ -53,10 +53,10 @@ guint event;
 
 int generate_number(int level);
 gboolean on_number();
-void	on_start_button_clicked ();
+void	on_start_button_clicked_number ();
 void	on_response_confirm_clicked ();
 void on_response_entry_changed (GtkEntry *e);
-void on_restart_clicked ();
+void on_restart_clicked_number ();
 
 void open_number_game_fct();
 
