@@ -312,7 +312,8 @@
             </child>
           </object>
           <packing>
-            <property name="y">675</property>
+            <property name="x">800</property>
+            <property name="y">475</property>
           </packing>
         </child>
         <child>
