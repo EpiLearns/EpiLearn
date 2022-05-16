@@ -92,7 +92,7 @@ void get_training_window()
     qcm_archi1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_1"));
     qcm_archi2 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm.archi_2"));
 
-
+    qcm_et1 = GTK_WINDOW(gtk_builder_get_object(builder, "org.epilearn.qcm_et1"));
 }
 
 // Functions that get all the buttons that is used
@@ -212,6 +212,8 @@ void get_close_training_button()
 
     quit_qcm_ct1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct1"));
     quit_qcm_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_ct2"));
+
+    quit_qcm_et1 = GTK_BUTTON(gtk_builder_get_object(builder, "quit_qcm_et1"));
 }
 // Functions G_signal for the UI
 
@@ -380,6 +382,25 @@ void get_mcq_object()
 
     prev_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_ct2"));
     next_ct2 = GTK_BUTTON(gtk_builder_get_object(builder, "next_ct2"));
+
+    // For qcm_et1
+    valide_et1 = GTK_BUTTON(gtk_builder_get_object(builder, "valide_et1"));
+    question_number_et1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_number_et1"));
+    et1_choice_number_eta = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_eta"));
+    et1_choice_number_etb = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_etb"));
+    et1_choice_number_etc = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_etc"));
+    et1_choice_number_etd = GTK_WIDGET(gtk_builder_get_object(builder, "at1_choice_number_etd"));
+    answer_et1 = GTK_WIDGET(gtk_builder_get_object(builder, "answer_et1"));
+
+    question_et1 = GTK_WIDGET(gtk_builder_get_object(builder, "question_et1"));
+    score_et1 = GTK_WIDGET(gtk_builder_get_object(builder, "score_et1"));
+
+    prev_et1 = GTK_BUTTON(gtk_builder_get_object(builder, "prev_et1"));
+    next_et1 = GTK_BUTTON(gtk_builder_get_object(builder, "next_et1"));
+
+    qcm_image =  GTK_IMAGE(gtk_builder_get_object(builder, "qcm_image"));
+
+
 }
 
 void mcq_prev(GtkButton* button, gpointer user)
@@ -466,6 +487,11 @@ void mcq_prev2(GtkButton* button, gpointer user)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object2),client->mcq->p2);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object3),client->mcq->p3);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object4),client->mcq->p4);
+
+    if (client->mcq->image_path)
+    {
+        gtk_image_set_from_file(qcm_image,client->mcq->image_path);
+    }
 
     bouton_anti_warning = button;
 }
@@ -567,6 +593,11 @@ void mcq_next2(GtkButton* button, gpointer user)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object4),FALSE);
     }
     
+    if (client->mcq->image_path)
+    {
+        gtk_image_set_from_file(qcm_image,client->mcq->image_path);
+    }
+
     bouton_anti_warning = button;
 }
 
@@ -1039,6 +1070,83 @@ void enter_mcq_ct2(GtkButton* button, gpointer user)
     bouton_anti_warning = button;
 }
 
+void enter_mcq_et1(GtkButton* button, gpointer user)
+{   
+    gtk_widget_hide(GTK_WIDGET(current_window));
+    gtk_widget_show(GTK_WIDGET(qcm_et1));
+
+    current_window = qcm_et1;
+
+    User *client = user;
+    client->score = 0;
+
+    client->mcq =  calloc(1,sizeof(Mcq));
+
+    if (!client->mcq)
+    {
+        return;
+    }
+    client->mcqObject = calloc(1,sizeof(McqObject));
+
+    if (!client->mcqObject)
+    {
+        return;
+    }
+
+    init_mcq_et1(client->mcq);
+    
+    client->mcqObject->answer_text = answer_et1;
+    client->mcqObject->next_button = next_et1;
+    client->mcqObject->prev_button = prev_et1;
+    client->mcqObject->question_number_text = question_number_et1;
+    client->mcqObject->score_text = score_et1;
+    client->mcqObject->user_answer_object1 = et1_choice_number_eta;
+    client->mcqObject->user_answer_object2 = et1_choice_number_etb;
+    client->mcqObject->user_answer_object3 = et1_choice_number_etc;
+    client->mcqObject->user_answer_object4 = et1_choice_number_etd;
+    client->mcqObject->valide_button = valide_et1;
+    client->mcqObject->question_text = question_et1;
+
+    char question_number_buffer[32];
+    char score_buffer[32];
+
+    sprintf(question_number_buffer,"Question n° %i",client->mcq->question_number);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_number_text),question_number_buffer);
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->question_text),client->mcq->question);
+
+    sprintf(score_buffer,"Score: %i/20",client->score);
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->score_text),score_buffer);
+
+    client->mcq->activate_prev_button = 0;
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->prev_button),FALSE);
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->next_button),FALSE);
+
+    gtk_widget_set_sensitive(GTK_WIDGET(client->mcqObject->valide_button),TRUE);
+
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object1,TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object2,TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object3,TRUE);
+    gtk_widget_set_sensitive(client->mcqObject->user_answer_object4,TRUE);
+
+    gtk_label_set_text(GTK_LABEL(client->mcqObject->answer_text),"");
+
+    gtk_button_set_label(GTK_BUTTON(client->mcqObject->user_answer_object1),client->mcq->prop1);
+    gtk_button_set_label(GTK_BUTTON(client->mcqObject->user_answer_object2),client->mcq->prop2);
+    gtk_button_set_label(GTK_BUTTON(client->mcqObject->user_answer_object3),client->mcq->prop3);
+    gtk_button_set_label(GTK_BUTTON(client->mcqObject->user_answer_object4),client->mcq->prop4);
+
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object1),FALSE);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object2),FALSE);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object3),FALSE);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(client->mcqObject->user_answer_object4),FALSE);
+
+    gtk_image_set_from_file(qcm_image,client->mcq->image_path);
+
+    bouton_anti_warning = button;
+}
+
 // Function G_signal that launch mcq
 
 void training_signal(User *user)
@@ -1052,6 +1160,8 @@ void training_signal(User *user)
     g_signal_connect(open_ct1,"clicked",G_CALLBACK(enter_mcq_ct1),user);
     g_signal_connect(open_ct2,"clicked",G_CALLBACK(enter_mcq_ct2),user);
 
+    g_signal_connect(open_et1,"clicked",G_CALLBACK(enter_mcq_et1),user);
+
 
 
     g_signal_connect(quit_qcm_mt1,"clicked",G_CALLBACK(enter_page),mainWindow);
@@ -1063,6 +1173,7 @@ void training_signal(User *user)
     g_signal_connect(quit_qcm_ct1,"clicked",G_CALLBACK(enter_page),mainWindow); 
     g_signal_connect(quit_qcm_ct2,"clicked",G_CALLBACK(enter_page),mainWindow);
 
+    g_signal_connect(quit_qcm_et1,"clicked",G_CALLBACK(enter_page),mainWindow);
 }
 
 void training_update_signal(User* user)
@@ -1086,6 +1197,10 @@ void training_update_signal(User* user)
     g_signal_connect(valide_ct2,"clicked",G_CALLBACK(check_reponse),(gpointer) user);
     g_signal_connect(prev_ct2,"clicked",G_CALLBACK(mcq_prev),(gpointer) user);
     g_signal_connect(next_ct2,"clicked",G_CALLBACK(mcq_next),(gpointer) user);
+
+    g_signal_connect(valide_et1,"clicked",G_CALLBACK(check_reponse2),(gpointer) user);
+    g_signal_connect(prev_et1,"clicked",G_CALLBACK(mcq_prev2),(gpointer) user);
+    g_signal_connect(next_et1,"clicked",G_CALLBACK(mcq_next2),(gpointer) user);
 }
 
 // get game button

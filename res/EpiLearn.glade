@@ -3206,6 +3206,7 @@ courant) est toujours nulle</property>
             <property name="height_request">575</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="transition_type">over-left-right</property>
             <child>
               <object class="GtkFixed">
                 <property name="visible">True</property>
@@ -3794,157 +3795,6 @@ des ordinateurs</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <child>
-                                      <object class="GtkLinkButton">
-                                        <property name="label" translatable="yes">Epidocs past exam</property>
-                                        <property name="width_request">100</property>
-                                        <property name="height_request">40</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">True</property>
-                                        <property name="relief">none</property>
-                                        <property name="uri">https://past-exams.epidocs.eu/</property>
-                                      </object>
-                                      <packing>
-                                        <property name="x">250</property>
-                                        <property name="y">475</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="width_request">100</property>
-                                        <property name="height_request">40</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Annales des années précédentes</property>
-                                      </object>
-                                      <packing>
-                                        <property name="x">25</property>
-                                        <property name="y">475</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="width_request">100</property>
-                                        <property name="height_request">80</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">S'évaluer</property>
-                                        <attributes>
-                                          <attribute name="font-desc" value="Sans Bold 15"/>
-                                          <attribute name="foreground" value="#efef29292929"/>
-                                        </attributes>
-                                      </object>
-                                      <packing>
-                                        <property name="x">25</property>
-                                        <property name="y">150</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="width_request">100</property>
-                                        <property name="height_request">80</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Meilleur score: ?/80</property>
-                                        <attributes>
-                                          <attribute name="font-desc" value="Sans Bold 15"/>
-                                          <attribute name="foreground" value="#000000000000"/>
-                                        </attributes>
-                                      </object>
-                                      <packing>
-                                        <property name="x">500</property>
-                                        <property name="y">25</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkButton">
-                                        <property name="label" translatable="yes">commencer</property>
-                                        <property name="width_request">100</property>
-                                        <property name="height_request">40</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">True</property>
-                                      </object>
-                                      <packing>
-                                        <property name="x">200</property>
-                                        <property name="y">175</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="width_request">100</property>
-                                        <property name="height_request">80</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Evaluation</property>
-                                        <attributes>
-                                          <attribute name="font-desc" value="Sans Bold 15"/>
-                                          <attribute name="foreground" value="#000000000000"/>
-                                        </attributes>
-                                      </object>
-                                      <packing>
-                                        <property name="x">25</property>
-                                        <property name="y">25</property>
-                                      </packing>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child type="label">
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="x">25</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="name">page0</property>
-                <property name="title" translatable="yes">Evaluation</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkFixed">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <child>
-                  <object class="GtkFrame">
-                    <property name="width_request">825</property>
-                    <property name="height_request">550</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label_xalign">0</property>
-                    <property name="shadow_type">none</property>
-                    <child>
-                      <object class="GtkAlignment">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="left_padding">12</property>
-                        <child>
-                          <object class="GtkScrolledWindow">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="vscrollbar_policy">always</property>
-                            <property name="shadow_type">in</property>
-                            <child>
-                              <object class="GtkViewport">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <child>
-                                  <object class="GtkFixed">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <child>
                                       <object class="GtkLabel">
                                         <property name="width_request">100</property>
                                         <property name="height_request">80</property>
@@ -4176,7 +4026,7 @@ des ordinateurs</property>
               <packing>
                 <property name="name">page3</property>
                 <property name="title" translatable="yes">Mini-jeux</property>
-                <property name="position">3</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
@@ -4191,7 +4041,7 @@ des ordinateurs</property>
             <property name="stack">stack</property>
           </object>
           <packing>
-            <property name="x">200</property>
+            <property name="x">250</property>
             <property name="y">200</property>
           </packing>
         </child>
@@ -8249,6 +8099,281 @@ est nulle lorsque le mouvement est uniforme.
         </child>
         <child>
           <object class="GtkButton" id="quit_qcm_at2">
+            <property name="label">gtk-close</property>
+            <property name="width_request">125</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="x">75</property>
+            <property name="y">125</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="org.epilearn.qcm_et1">
+    <property name="width_request">875</property>
+    <property name="height_request">825</property>
+    <property name="can_focus">False</property>
+    <property name="resizable">False</property>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkFixed">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkFrame">
+            <property name="width_request">725</property>
+            <property name="height_request">600</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">etched-out</property>
+            <child>
+              <object class="GtkAlignment">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkFixed">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkLabel" id="question_number_et1">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">Question n° :</property>
+                        <attributes>
+                          <attribute name="font-desc" value="Sans Bold 15"/>
+                          <attribute name="foreground" value="#000000000000"/>
+                        </attributes>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="question_et1">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">Statement:</property>
+                        <attributes>
+                          <attribute name="font-desc" value="Sans Bold 10"/>
+                          <attribute name="foreground" value="#000000000000"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="y">75</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="at1_choice_number_eta">
+                        <property name="label" translatable="yes">premier choix</property>
+                        <property name="width_request">100</property>
+                        <property name="height_request">60</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="x">25</property>
+                        <property name="y">150</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="at1_choice_number_etb">
+                        <property name="label" translatable="yes">deuxieme choix</property>
+                        <property name="width_request">100</property>
+                        <property name="height_request">60</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="x">25</property>
+                        <property name="y">250</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="at1_choice_number_etc">
+                        <property name="label" translatable="yes">troisieme choix</property>
+                        <property name="width_request">100</property>
+                        <property name="height_request">60</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="x">25</property>
+                        <property name="y">350</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="at1_choice_number_etd">
+                        <property name="label" translatable="yes">dernier choix</property>
+                        <property name="width_request">100</property>
+                        <property name="height_request">60</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="x">25</property>
+                        <property name="y">450</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="valide_et1">
+                        <property name="label">gtk-ok</property>
+                        <property name="width_request">120</property>
+                        <property name="height_request">40</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
+                      </object>
+                      <packing>
+                        <property name="x">250</property>
+                        <property name="y">500</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="score_et1">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Score ../20</property>
+                        <attributes>
+                          <attribute name="font-desc" value="Sans Bold 15"/>
+                          <attribute name="foreground" value="#000000000000"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="x">500</property>
+                        <property name="y">25</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="answer_et1">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <attributes>
+                          <attribute name="font-desc" value="Sans Bold 15"/>
+                          <attribute name="foreground" value="#a4a400000000"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="x">400</property>
+                        <property name="y">500</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="qcm_image">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="x">200</property>
+                        <property name="y">150</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">75</property>
+            <property name="y">175</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="x">282</property>
+            <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label">Entraînement éléctronique</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 20"/>
+              <attribute name="foreground" value="#1a1a5f5fb4b4"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">225</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="prev_et1">
+            <property name="label">gtk-go-back</property>
+            <property name="width_request">125</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="x">500</property>
+            <property name="y">125</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="next_et1">
+            <property name="label">gtk-go-forward</property>
+            <property name="width_request">125</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="x">650</property>
+            <property name="y">125</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="quit_qcm_et1">
             <property name="label">gtk-close</property>
             <property name="width_request">125</property>
             <property name="height_request">40</property>

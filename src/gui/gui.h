@@ -17,6 +17,7 @@
 #include "../mcqGenerator/mathematics/mathematics.h"
 #include "../mcqGenerator/algorithm/algorithm.h"
 #include "../mcqGenerator/computer_architecture/computer_architecture.h"
+#include "../mcqGenerator/electronic/electronic.h"
 
 #include "../calculator/calculator.h"
 #include "../graph/graph.h"
@@ -104,6 +105,8 @@ GtkWindow* qcm_at2;
 
 GtkWindow* qcm_archi1;
 GtkWindow* qcm_archi2;
+
+GtkWindow* qcm_et1;
 
 // Open/Close Main Window Button
 
@@ -207,6 +210,8 @@ GtkButton* quit_qcm_at2;
 GtkButton* quit_qcm_ct1;
 GtkButton* quit_qcm_ct2;
 
+GtkButton* quit_qcm_et1;
+
 ///////////////////////////////
 
 // For qcm_mt1
@@ -289,6 +294,23 @@ GtkWidget* score_ct2;
 
 GtkButton* prev_ct2;
 GtkButton* next_ct2;
+
+// For qcm_et1
+GtkButton* valide_et1;
+GtkWidget* question_number_et1;
+GtkWidget* et1_choice_number_eta;
+GtkWidget* et1_choice_number_etb;
+GtkWidget* et1_choice_number_etc;
+GtkWidget* et1_choice_number_etd;
+GtkWidget* answer_et1;
+
+GtkWidget* question_et1;
+GtkWidget* score_et1;
+
+GtkButton* prev_et1;
+GtkButton* next_et1;
+
+GtkImage* qcm_image;
 
 // Game tools
 

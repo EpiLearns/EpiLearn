@@ -57,6 +57,8 @@ typedef struct Mcq
     gboolean p3;
     gboolean p4;
 
+    char image_path[256];
+
 } Mcq;
 
 typedef struct User
